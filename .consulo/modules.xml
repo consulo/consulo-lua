@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ModuleManager">
+    <modules>
+      <module name="IDLuaErrors" dirurl="file://$PROJECT_DIR$/err">
+        <extension id="java" sdk-module-name="consulo-lua" sdk-name="" language-level-module-name="consulo-lua" language-level-name="" special-dir-location="MODULE_DIR" />
+        <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
+        <content url="file://$MODULE_DIR$">
+          <content-folder type="SOURCE" url="file://$MODULE_DIR$" />
+        </content>
+        <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
+        <orderEntry type="module-extension-sdk" extension-id="java" />
+        <orderEntry type="sourceFolder" forTests="false" />
+      </module>
+      <module name="IDLuaHelp" dirurl="file://$PROJECT_DIR$/help">
+        <content url="file://$MODULE_DIR$" />
+        <orderEntry type="sourceFolder" forTests="false" />
+      </module>
+      <module name="consulo-lua" dirurl="file://$PROJECT_DIR$">
+        <extension id="java" sdk-module-name="" sdk-name="1.6" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="MODULE_DIR" />
+        <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
+        <content url="file://$MODULE_DIR$">
+          <content-folder type="SOURCE" url="file://$MODULE_DIR$/src" />
+          <content-folder type="RESOURCE" url="file://$MODULE_DIR$/resources" />
+        </content>
+        <orderEntry type="module-extension-sdk" extension-id="java" />
+        <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
+        <orderEntry type="sourceFolder" forTests="false" />
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/kahlua-core.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES>
+              <root url="file://$MODULE_DIR$/../Kahlua/j2se/src" />
+              <root url="file://$MODULE_DIR$/../Kahlua/j2se/test" />
+              <root url="file://$MODULE_DIR$/../Kahlua/core/src" />
+              <root url="file://$MODULE_DIR$/../Kahlua/cldc11/src" />
+            </SOURCES>
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/kahlua-j2se.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES>
+              <root url="file://$MODULE_DIR$/../Kahlua/core/src" />
+              <root url="file://$MODULE_DIR$/../Kahlua/j2se/test" />
+              <root url="file://$MODULE_DIR$/../Kahlua/j2se/src" />
+              <root url="file://$MODULE_DIR$/../Kahlua/cldc11/src" />
+            </SOURCES>
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/jsyntaxpane-0.9.5.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module" module-name="IDLuaErrors" />
+        <orderEntry type="module" module-name="IDLuaHelp" />
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$APPLICATION_HOME_DIR$/plugins/copyright/lib/copyright.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES>
+              <root url="file://$MODULE_DIR$/../community/plugins/copyright/src" />
+            </SOURCES>
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$APPLICATION_HOME_DIR$/lib/cglib-2.2.2.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES />
+          </library>
+        </orderEntry>
+        <orderEntry type="module-library">
+          <library>
+            <CLASSES>
+              <root url="jar://$MODULE_DIR$/lib/luaj-jse-3.0-alpha2.jar!/" />
+            </CLASSES>
+            <JAVADOC />
+            <SOURCES>
+              <root url="jar://$MODULE_DIR$/../luaj-3.0-alpha2/lib/luaj-sources-3.0-alpha2.jar!/" />
+            </SOURCES>
+          </library>
+        </orderEntry>
+      </module>
+    </modules>
+  </component>
+</project>
+
