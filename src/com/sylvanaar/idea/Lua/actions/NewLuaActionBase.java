@@ -24,6 +24,7 @@ import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.PsiDirectory;
@@ -31,6 +32,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.LuaFileType;
+import org.consulo.lua.module.extension.LuaModuleExtension;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
@@ -72,7 +74,7 @@ abstract class NewLuaActionBase extends CreateElementActionBase {
 
         log.debug("update: module: " + module);
 
-        final boolean hasModule = module != null;
+        final boolean hasModule = module != null && ModuleUtilCore.getExtension(module, LuaModuleExtension.class) != null;
         presentation.setEnabled(hasModule);
         presentation.setVisible(hasModule);
     }

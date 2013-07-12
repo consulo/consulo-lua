@@ -51,7 +51,7 @@ public class LuaTemplatesFactory  {
                                            @NonNls String... parameters) throws IncorrectOperationException {
         log.debug("createFromTemplate: dir:" + directory + ", filename: " + fileName);
 
-        final FileTemplate template = FileTemplateManager.getInstance().getTemplate(templateName);
+        final FileTemplate template = FileTemplateManager.getInstance().getInternalTemplate(templateName);
 
         Properties properties = new Properties(FileTemplateManager.getInstance().getDefaultProperties());
 

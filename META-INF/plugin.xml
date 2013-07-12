@@ -271,6 +271,7 @@
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFileMacro"/>
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFunctionMacro"/>
 
+		<internalFileTemplate name="Lua Script" />
 		<!-- control -->
 		<intentionAction>
 			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
