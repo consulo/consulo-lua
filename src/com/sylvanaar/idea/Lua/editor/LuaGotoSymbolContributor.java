@@ -16,6 +16,7 @@
 
 package com.sylvanaar.idea.Lua.editor;
 
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.navigation.ChooseByNameContributor;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.project.Project;
@@ -59,7 +60,7 @@ public class LuaGotoSymbolContributor implements ChooseByNameContributor {
                 continue;
 
             if (global.getDefinedName().startsWith(pattern))
-                symbols.add(new BaseNavigationItem(global, global.getDefinedName(), global.getIcon(0)));
+                symbols.add(new BaseNavigationItem(global, global.getDefinedName(), IconDescriptorUpdaters.getIcon(global, 0)));
         }
 
         //symbols.addAll(StubIndex.getInstance().get(LuaGlobalDeclarationIndex.KEY, name, project, scope));

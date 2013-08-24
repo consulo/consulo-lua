@@ -26,13 +26,10 @@ import com.intellij.psi.impl.source.tree.SharedImplUtil;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 /**
  * @author ilyas
@@ -84,11 +81,6 @@ public abstract class LuaStubElementBase<T extends StubElement> extends StubBase
         }
 
         return SharedImplUtil.getParent(getNode());
-    }
-
-    @Override
-    public Icon getIcon(int flags) {
-        return LuaIcons.LUA_ICON;
     }
 
     public String getPresentationText() {

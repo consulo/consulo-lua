@@ -18,7 +18,11 @@ package com.sylvanaar.idea.Lua.lang.documentor;
 
 import com.intellij.lang.documentation.DocumentationProvider;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.vfs.*;
+import com.intellij.openapi.vfs.CharsetToolkit;
+import com.intellij.openapi.vfs.VfsUtil;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.openapi.vfs.util.ArchiveVfsUtil;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
@@ -99,7 +103,7 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
         String url = VfsUtil.pathToUrl(PathUtil.getJarPathForClass(LuaPsiFile.class));
         VirtualFile sdkFile = VirtualFileManager.getInstance().findFileByUrl(url);
         if (sdkFile != null) {
-            VirtualFile jarFile = JarFileSystem.getInstance().getJarRootForLocalFile(sdkFile);
+            VirtualFile jarFile = ArchiveVfsUtil.getJarRootForLocalFile(sdkFile);
             if (jarFile != null) {
                 return jarFile.getUrl();
             } else {

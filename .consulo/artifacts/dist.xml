@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact name="lua">
-    <output-path>$PROJECT_DIR$/out/artifacts/lua</output-path>
+  <artifact name="dist">
+    <output-path>$PROJECT_DIR$/out/artifacts/dist</output-path>
     <root id="root">
       <element id="directory" name="lua">
         <element id="directory" name="lib">

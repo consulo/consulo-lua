@@ -29,12 +29,9 @@ import com.intellij.psi.impl.source.tree.CompositeElement;
 import com.intellij.psi.impl.source.tree.TreeElement;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
 
 public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiElement  {
     private static final Logger log = Logger.getInstance("Lua.LuaPsiElementImpl");
@@ -46,11 +43,6 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
 
     protected void log(String text) {
         log.debug(this + ": " + text);
-    }
-
-    @Override
-    public Icon getIcon(int flags) {
-        return LuaIcons.LUA_ICON;
     }
 
     @Override

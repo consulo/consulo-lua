@@ -31,7 +31,7 @@
             <CLASSES>
               <root url="jar://$MODULE_DIR$/lib/kahlua-core.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES>
               <root url="file://$MODULE_DIR$/../Kahlua/j2se/src" />
               <root url="file://$MODULE_DIR$/../Kahlua/j2se/test" />
@@ -45,7 +45,7 @@
             <CLASSES>
               <root url="jar://$MODULE_DIR$/lib/kahlua-j2se.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES>
               <root url="file://$MODULE_DIR$/../Kahlua/core/src" />
               <root url="file://$MODULE_DIR$/../Kahlua/j2se/test" />
@@ -59,7 +59,7 @@
             <CLASSES>
               <root url="jar://$MODULE_DIR$/lib/jsyntaxpane-0.9.5.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES />
           </library>
         </orderEntry>
@@ -70,7 +70,7 @@
             <CLASSES>
               <root url="jar://$APPLICATION_HOME_DIR$/plugins/copyright/lib/copyright.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES>
               <root url="file://$MODULE_DIR$/../community/plugins/copyright/src" />
             </SOURCES>
@@ -81,7 +81,7 @@
             <CLASSES>
               <root url="jar://$APPLICATION_HOME_DIR$/lib/cglib-2.2.2.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES />
           </library>
         </orderEntry>
@@ -90,7 +90,7 @@
             <CLASSES>
               <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.10.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES />
           </library>
         </orderEntry>
@@ -99,7 +99,7 @@
             <CLASSES>
               <root url="jar://$MODULE_DIR$/lib/luaj-jse-3.0-alpha2.jar!/" />
             </CLASSES>
-            <JAVADOC />
+            <DOCUMENTATION />
             <SOURCES>
               <root url="jar://$MODULE_DIR$/../luaj-3.0-alpha2/lib/luaj-sources-3.0-alpha2.jar!/" />
             </SOURCES>

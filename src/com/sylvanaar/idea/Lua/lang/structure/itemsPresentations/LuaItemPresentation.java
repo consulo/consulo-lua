@@ -17,11 +17,8 @@ package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations;
 
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 
 public abstract class LuaItemPresentation implements ItemPresentation {
@@ -34,11 +31,6 @@ public abstract class LuaItemPresentation implements ItemPresentation {
   @Nullable
     public String getLocationString() {
     return null;
-  }
-
-  @Nullable
-    public Icon getIcon(boolean open) {
-    return  myElement.getIcon(Iconable.ICON_FLAG_OPEN);
   }
 
   @Nullable

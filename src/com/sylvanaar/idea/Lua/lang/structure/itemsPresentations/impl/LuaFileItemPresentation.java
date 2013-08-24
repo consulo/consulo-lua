@@ -15,17 +15,27 @@
  */
 package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
 
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
+import org.jetbrains.annotations.Nullable;
+
+import javax.swing.*;
 
 
- public class LuaFileItemPresentation extends LuaItemPresentation {
+public class LuaFileItemPresentation extends LuaItemPresentation {
   public LuaFileItemPresentation(LuaPsiFile myElement) {
     super(myElement);
   }
 
   public String getPresentableText() {
     return LuaElementPresentation.getFilePresentableText(((LuaPsiFile) myElement));
+  }
+
+  @Nullable
+  @Override
+  public Icon getIcon(boolean b) {
+    return IconDescriptorUpdaters.getIcon(myElement, 0);
   }
 }
