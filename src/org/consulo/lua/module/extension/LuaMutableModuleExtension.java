@@ -22,7 +22,6 @@ public class LuaMutableModuleExtension extends LuaModuleExtension implements Mut
 	public LuaMutableModuleExtension(@NotNull String id, @NotNull Module module, @NotNull LuaModuleExtension moduleExtension) {
 		super(id, module);
 		myModuleExtension = moduleExtension;
-		commit(myModuleExtension);
 	}
 
 	@NotNull

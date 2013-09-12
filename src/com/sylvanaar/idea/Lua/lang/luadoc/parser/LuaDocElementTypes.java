@@ -20,6 +20,7 @@ import com.intellij.lang.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.ILazyParseableElementType;
+import com.intellij.util.LanguageVersionUtil;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocElementTypeImpl;
@@ -56,10 +57,10 @@ public interface LuaDocElementTypes extends LuaDocTokenTypes {
         
       final Project project = parentElement.getProject();
 
-      final PsiBuilder builder = PsiBuilderFactory.getInstance().createBuilder(project, chameleon, new LuaDocLexer(), getLanguage(), Language.UNKNOWN_VERSION, chameleon.getText());
+      final PsiBuilder builder = PsiBuilderFactory.getInstance().createBuilder(project, chameleon, new LuaDocLexer(), getLanguage(), LanguageVersionUtil.findDefaultVersion(getLanguage()), chameleon.getText());
       final PsiParser parser = new LuaDocParser();
 
-      return parser.parse(this, builder, Language.UNKNOWN_VERSION).getFirstChildNode();
+      return parser.parse(this, builder, LanguageVersionUtil.findDefaultVersion(getLanguage())).getFirstChildNode();
     }
 
     @Override

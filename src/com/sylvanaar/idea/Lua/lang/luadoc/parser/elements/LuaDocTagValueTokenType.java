@@ -17,12 +17,12 @@
 package com.sylvanaar.idea.Lua.lang.luadoc.parser.elements;
 
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.Language;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilderFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import com.intellij.util.LanguageVersionUtil;
 import com.intellij.util.containers.HashSet;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.ILuaDocElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
@@ -98,7 +98,7 @@ public class LuaDocTagValueTokenType extends LuaDocChameleonElementType implemen
         final PsiBuilder builder = PsiBuilderFactory.getInstance()
                                                     .createBuilder(project, chameleon, new LuaDocLexer(),
                                                             getLanguage(),
-															Language.UNKNOWN_VERSION,
+															LanguageVersionUtil.findDefaultVersion(getLanguage()),
                                                             chameleon.getText());
 
         PsiBuilder.Marker rootMarker = builder.mark();
