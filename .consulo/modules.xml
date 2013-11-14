@@ -68,17 +68,6 @@
         <orderEntry type="module-library">
           <library>
             <CLASSES>
-              <root url="jar://$APPLICATION_HOME_DIR$/plugins/copyright/lib/copyright.jar!/" />
-            </CLASSES>
-            <DOCUMENTATION />
-            <SOURCES>
-              <root url="file://$MODULE_DIR$/../community/plugins/copyright/src" />
-            </SOURCES>
-          </library>
-        </orderEntry>
-        <orderEntry type="module-library">
-          <library>
-            <CLASSES>
               <root url="jar://$APPLICATION_HOME_DIR$/lib/cglib-2.2.2.jar!/" />
             </CLASSES>
             <DOCUMENTATION />

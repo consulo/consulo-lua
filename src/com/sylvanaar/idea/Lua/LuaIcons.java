@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua;
 
-import com.intellij.openapi.util.IconLoader;
+import javax.swing.Icon;
 
-import javax.swing.*;
+import com.intellij.openapi.util.IconLoader;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,7 +33,6 @@ public interface LuaIcons {
     final Icon LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
 
     final Icon LUA_IDEA_MODULE_ICON = IconLoader.findIcon("/icons/logo_24x24.png");
-    final Icon TAIL_RECURSION       = IconLoader.findIcon("/icons/repeat-icon-16x16.png");
 }
 
 

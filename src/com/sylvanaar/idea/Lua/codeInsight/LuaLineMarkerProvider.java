@@ -15,10 +15,14 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
+import java.util.Collection;
+import java.util.List;
+
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.DaemonCodeAnalyzerSettings;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProvider;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.editor.colors.CodeInsightColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
@@ -28,15 +32,11 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.NullableFunction;
-import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
 import com.sylvanaar.idea.Lua.options.LuaApplicationSettings;
-
-import java.util.Collection;
-import java.util.List;
 
 public class LuaLineMarkerProvider implements LineMarkerProvider, DumbAware {
     DaemonCodeAnalyzerSettings myDaemonSettings = null;
@@ -62,7 +62,7 @@ public class LuaLineMarkerProvider implements LineMarkerProvider, DumbAware {
 
             if (e.isTailCall())
                 return new LineMarkerInfo<PsiElement>(element, element.getTextRange(),
-                        LuaIcons.TAIL_RECURSION, Pass.UPDATE_ALL,
+                        AllIcons.Gutter.RecursiveMethod, Pass.UPDATE_ALL,
                         tailCallTooltip, null,
                         GutterIconRenderer.Alignment.LEFT);
         }

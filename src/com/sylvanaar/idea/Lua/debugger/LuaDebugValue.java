@@ -16,10 +16,14 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import com.intellij.icons.*;
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.xdebugger.frame.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.icons.AllIcons;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.xdebugger.frame.XNavigatable;
+import com.intellij.xdebugger.frame.XValue;
+import com.intellij.xdebugger.frame.XValueModifier;
+import com.intellij.xdebugger.frame.XValueNode;
+import com.intellij.xdebugger.frame.XValuePlace;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,11 +40,6 @@ public class LuaDebugValue extends XValue {
     LuaDebugValue(String typeName, String stringValue) {
         myValueAsString = stringValue;
         myTypeName = typeName;
-    }
-
-    @Override
-    public void computePresentation(@NotNull XValueNode node) {
-        node.setPresentation(AllIcons.Debugger.Value, myTypeName, myValueAsString, false);
     }
 
     @Override
