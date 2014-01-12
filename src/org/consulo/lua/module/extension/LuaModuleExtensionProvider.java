@@ -30,13 +30,6 @@ public class LuaModuleExtensionProvider implements ModuleExtensionProvider<LuaMo
 
 	@NotNull
 	@Override
-	public Class<LuaModuleExtension> getImmutableClass()
-	{
-		return LuaModuleExtension.class;
-	}
-
-	@NotNull
-	@Override
 	public LuaModuleExtension createImmutable(@NotNull String s, @NotNull Module module)
 	{
 		return new LuaModuleExtension(s, module);
