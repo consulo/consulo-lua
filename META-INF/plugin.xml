@@ -17,7 +17,7 @@
 <idea-plugin>
 	<id>org.consulo.lua</id>
 	<name>Lua</name>
-	<version>1.0a54</version>
+	<version>SNAPSHOT</version>
 	<category>Custom Languages</category>
 	<vendor>sylvanaar@mindspring.com</vendor>
 	<!-- <application-components>
