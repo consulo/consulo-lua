@@ -16,13 +16,13 @@
 
 package com.sylvanaar.idea.Lua.console;
 
+import java.nio.charset.Charset;
+
 import com.intellij.execution.console.LanguageConsoleImpl;
 import com.intellij.execution.process.ColoredProcessHandler;
 import com.intellij.execution.process.ProcessOutputTypes;
 import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.openapi.util.Key;
-
-import java.nio.charset.Charset;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,35 +30,48 @@ import java.nio.charset.Charset;
  * Date: 2/20/11
  * Time: 4:55 PM
  */
-public class LuaConsoleProcessHandler extends ColoredProcessHandler {
+public class LuaConsoleProcessHandler extends ColoredProcessHandler
+{
+	private final LanguageConsoleImpl myLanguageConsole;
 
-    public LuaConsoleProcessHandler(Process process, LanguageConsoleImpl languageConsole, String commandLine,
-                                    Charset charset) {
-        super(process, commandLine, charset);
-        myLanguageConsole = languageConsole;
-    }
+	public LuaConsoleProcessHandler(Process process, LanguageConsoleImpl languageConsole, String commandLine, Charset charset)
+	{
+		super(process, commandLine, charset);
+		myLanguageConsole = languageConsole;
+	}
 
-    protected void textAvailable(String text, Key attributes) {
-        ConsoleViewContentType outputType;
-        if (attributes == ProcessOutputTypes.STDERR) outputType = ConsoleViewContentType.ERROR_OUTPUT;
-        else if (attributes == ProcessOutputTypes.SYSTEM) outputType = ConsoleViewContentType.SYSTEM_OUTPUT;
-        else outputType = ConsoleViewContentType.NORMAL_OUTPUT;
+	@Override
+	public void coloredTextAvailable(String text, Key attributes)
+	{
+		ConsoleViewContentType outputType;
+		if(attributes == ProcessOutputTypes.STDERR)
+		{
+			outputType = ConsoleViewContentType.ERROR_OUTPUT;
+		}
+		else if(attributes == ProcessOutputTypes.SYSTEM)
+		{
+			outputType = ConsoleViewContentType.SYSTEM_OUTPUT;
+		}
+		else
+		{
+			outputType = ConsoleViewContentType.NORMAL_OUTPUT;
+		}
 
-        if (text.startsWith(">>")) {
-            text = text.substring(3);
-            myLanguageConsole.setPrompt(">>");
-        } else if (text.startsWith(">")) {
-            text = text.substring(2);
-            myLanguageConsole.setPrompt(">");
-        }
+		if(text.startsWith(">>"))
+		{
+			text = text.substring(3);
+			myLanguageConsole.setPrompt(">>");
+		}
+		else if(text.startsWith(">"))
+		{
+			text = text.substring(2);
+			myLanguageConsole.setPrompt(">");
+		}
 
-        if (outputType != ConsoleViewContentType.SYSTEM_OUTPUT)
-            LanguageConsoleImpl.printToConsole(myLanguageConsole, text, outputType, null);
-
-        myLanguageConsole.queueUiUpdate(true);
-    }
-
-
-    private final LanguageConsoleImpl myLanguageConsole;
+		if(outputType != ConsoleViewContentType.SYSTEM_OUTPUT)
+		{
+			myLanguageConsole.printToHistory(text, outputType.getAttributes());
+		}
+	}
 }
 
