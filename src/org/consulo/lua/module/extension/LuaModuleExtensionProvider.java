@@ -37,8 +37,8 @@ public class LuaModuleExtensionProvider implements ModuleExtensionProvider<LuaMo
 
 	@NotNull
 	@Override
-	public LuaMutableModuleExtension createMutable(@NotNull String s, @NotNull Module module, @NotNull LuaModuleExtension moduleExtension)
+	public LuaMutableModuleExtension createMutable(@NotNull String s, @NotNull Module module)
 	{
-		return new LuaMutableModuleExtension(s, module, moduleExtension);
+		return new LuaMutableModuleExtension(s, module);
 	}
 }

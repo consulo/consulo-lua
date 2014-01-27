@@ -69,7 +69,7 @@
 
 	<extensions defaultExtensionNs="com.intellij">
 		<!-- Error reporter-->
-		<errorHandler implementation="com.sylvanaar.idea.errorreporting.YouTrackBugReporter"/>
+		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
 
 		<!-- Facet -->
 		<!--<facetType id="Lua" implementation="com.sylvanaar.idea.Lua.settings.facet.LuaFacetType" />-->
