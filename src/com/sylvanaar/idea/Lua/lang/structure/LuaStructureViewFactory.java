@@ -16,13 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.structure;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import com.intellij.ide.structureView.StructureViewBuilder;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
 import com.intellij.lang.PsiStructureViewFactory;
+import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,11 +33,13 @@ import org.jetbrains.annotations.NotNull;
  * Time: 2:04:03 AM
  */
 public class LuaStructureViewFactory implements PsiStructureViewFactory {
+  @Override
   public StructureViewBuilder getStructureViewBuilder(final PsiFile psiFile) {
     return new TreeBasedStructureViewBuilder() {
 
-      @NotNull
-      public StructureViewModel createStructureViewModel() {
+      @Override
+	  @NotNull
+      public StructureViewModel createStructureViewModel(@Nullable Editor editor) {
         return new LuaStructureViewModel((LuaPsiFile) psiFile);
       }
     };
