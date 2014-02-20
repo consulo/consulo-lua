@@ -16,68 +16,89 @@
 
 package com.sylvanaar.idea.Lua.sdk;
 
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.process.ProcessOutput;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.projectRoots.*;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.util.SystemInfo;
-import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
+import java.io.File;
+
+import javax.swing.Icon;
+
 import org.consulo.lua.module.extension.LuaModuleExtension;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
-import java.io.File;
+import com.intellij.execution.ExecutionException;
+import com.intellij.execution.process.ProcessOutput;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleUtilCore;
+import com.intellij.openapi.projectRoots.AdditionalDataConfigurable;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.projectRoots.SdkAdditionalData;
+import com.intellij.openapi.projectRoots.SdkModel;
+import com.intellij.openapi.projectRoots.SdkModificator;
+import com.intellij.openapi.projectRoots.SdkType;
+import com.intellij.openapi.roots.OrderRootType;
+import com.intellij.openapi.util.SystemInfo;
+import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
 /**
  * @author Maxim.Manuylov
  *         Date: 03.04.2010
  */
-public class LuaSdkType extends SdkType {
+public class LuaSdkType extends SdkType
+{
 	@NotNull
-	public static LuaSdkType getInstance() {
+	public static LuaSdkType getInstance()
+	{
 		return SdkType.findInstance(LuaSdkType.class);
 	}
 
-	public LuaSdkType() {
+	public LuaSdkType()
+	{
 		super("Lua SDK");
 	}
 
+	@Override
 	@NotNull
-	public Icon getIcon() {
+	public Icon getIcon()
+	{
 		return LuaIcons.LUA_ICON;
 	}
 
 	@Nullable
 	@Override
-	public Icon getGroupIcon() {
+	public Icon getGroupIcon()
+	{
 		return getIcon();
 	}
 
-	public static Sdk findLuaSdk(Module module) {
-		if (module == null) {
+	public static Sdk findLuaSdk(Module module)
+	{
+		if(module == null)
+		{
 			return null;
 		}
 
 		return ModuleUtilCore.getSdk(module, LuaModuleExtension.class);
 	}
 
+	@Override
 	@Nullable
-	public String suggestHomePath() {
-		if (SystemInfo.isWindows) {
+	public String suggestHomePath()
+	{
+		if(SystemInfo.isWindows)
+		{
 			return "C:\\Lua";
-		} else if (SystemInfo.isLinux) {
+		}
+		else if(SystemInfo.isLinux)
+		{
 			return "/usr/bin";
 		}
 		return null;
 	}
 
-	public boolean isValidSdkHome(@NotNull final String path) {
+	@Override
+	public boolean isValidSdkHome(@NotNull final String path)
+	{
 		final File lua = getTopLevelExecutable(path);
 		// final File luac = getByteCodeCompilerExecutable(path);
 
@@ -85,19 +106,23 @@ public class LuaSdkType extends SdkType {
 	}
 
 	@NotNull
-	public static File getTopLevelExecutable(@NotNull final String sdkHome) {
+	public static File getTopLevelExecutable(@NotNull final String sdkHome)
+	{
 		File executable = getExecutable(sdkHome, "lua");
-		if (executable.canExecute()) {
+		if(executable.canExecute())
+		{
 			return executable;
 		}
 
 		executable = getExecutable(sdkHome, "lua5.1");
-		if (executable.canExecute()) {
+		if(executable.canExecute())
+		{
 			return executable;
 		}
 
 		executable = getExecutable(sdkHome, "luajit");
-		if (executable.canExecute()) {
+		if(executable.canExecute())
+		{
 			return executable;
 		}
 
@@ -107,9 +132,11 @@ public class LuaSdkType extends SdkType {
 	}
 
 	@NotNull
-	public static File getByteCodeCompilerExecutable(@NotNull final String sdkHome) {
+	public static File getByteCodeCompilerExecutable(@NotNull final String sdkHome)
+	{
 		File executable = getExecutable(sdkHome, "luac");
-		if (executable.canExecute()) {
+		if(executable.canExecute())
+		{
 			return executable;
 		}
 
@@ -118,33 +145,44 @@ public class LuaSdkType extends SdkType {
 		return executable;
 	}
 
+	@Override
 	@NotNull
-	public String suggestSdkName(@Nullable final String currentSdkName, @NotNull final String sdkHome) {
+	public String suggestSdkName(@Nullable final String currentSdkName, @NotNull final String sdkHome)
+	{
 		String[] version = getExecutableVersionOutput(sdkHome);
-		if (version == null) {
+		if(version == null)
+		{
 			return "Unknown at " + sdkHome;
 		}
 		return version[0] + " " + version[1];
 	}
 
+	@Override
 	@Nullable
-	public String getVersionString(@NotNull final String sdkHome) {
+	public String getVersionString(@NotNull final String sdkHome)
+	{
 		return getExecutableVersionOutput(sdkHome)[1];
 	}
 
-	private String[] getExecutableVersionOutput(String sdkHome) {
+	private String[] getExecutableVersionOutput(String sdkHome)
+	{
 		final String exePath = getTopLevelExecutable(sdkHome).getAbsolutePath();
 		final ProcessOutput processOutput;
-		try {
+		try
+		{
 			processOutput = LuaSystemUtil.getProcessOutput(sdkHome, exePath, "-v");
-		} catch (final ExecutionException e) {
+		}
+		catch(final ExecutionException e)
+		{
 			return null;
 		}
-		if (processOutput.getExitCode() != 0) {
+		if(processOutput.getExitCode() != 0)
+		{
 			return null;
 		}
 		final String stdout = processOutput.getStderr().trim();
-		if (stdout.isEmpty()) {
+		if(stdout.isEmpty())
+		{
 			return null;
 		}
 
@@ -153,26 +191,36 @@ public class LuaSdkType extends SdkType {
 		return sa;
 	}
 
+	@Override
 	@Nullable
 	public AdditionalDataConfigurable createAdditionalDataConfigurable(@NotNull final SdkModel sdkModel,
-																	   @NotNull final SdkModificator sdkModificator) {
+			@NotNull final SdkModificator sdkModificator)
+	{
 		return null;
 	}
 
-	public void saveAdditionalData(@NotNull final SdkAdditionalData additionalData, @NotNull final Element additional) {
+	@Override
+	public void saveAdditionalData(@NotNull final SdkAdditionalData additionalData, @NotNull final Element additional)
+	{
 	}
 
+	@NotNull
+	@Override
 	@NonNls
-	public String getPresentableName() {
+	public String getPresentableName()
+	{
 		return "Lua SDK";
 	}
 
 	@Override
-	public boolean isRootTypeApplicable(OrderRootType type) {
+	public boolean isRootTypeApplicable(OrderRootType type)
+	{
 		return type == OrderRootType.CLASSES;
 	}
 
-	public void setupSdkPaths(@NotNull final Sdk sdk) {
+	@Override
+	public void setupSdkPaths(@NotNull final Sdk sdk)
+	{
 		final SdkModificator[] sdkModificatorHolder = new SdkModificator[]{null};
 
 		final SdkModificator sdkModificator = sdk.getSdkModificator();
@@ -181,13 +229,15 @@ public class LuaSdkType extends SdkType {
 
 		sdkModificatorHolder[0] = sdkModificator;
 
-		if (sdkModificatorHolder[0] != null) {
+		if(sdkModificatorHolder[0] != null)
+		{
 			sdkModificatorHolder[0].commitChanges();
 		}
 	}
 
 	@NotNull
-	private static File getExecutable(@NotNull final String path, @NotNull final String command) {
+	private static File getExecutable(@NotNull final String path, @NotNull final String command)
+	{
 		return new File(path, SystemInfo.isWindows ? command + ".exe" : command);
 	}
 }

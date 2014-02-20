@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ModuleManager">
     <modules>
-      <module name="IDLuaErrors" dirurl="file://$PROJECT_DIR$/err">
-        <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
-        <extension id="java" sdk-module-name="consulo-lua" sdk-name="" language-level-module-name="consulo-lua" language-level-name="" special-dir-location="MODULE_DIR" />
-        <content url="file://$MODULE_DIR$">
-          <content-folder type="PRODUCTION" url="file://$MODULE_DIR$" />
-        </content>
-        <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
-        <orderEntry type="module-extension-sdk" extension-id="java" />
-        <orderEntry type="sourceFolder" forTests="false" />
-      </module>
       <module name="IDLuaHelp" dirurl="file://$PROJECT_DIR$/help">
         <content url="file://$MODULE_DIR$" />
         <orderEntry type="sourceFolder" forTests="false" />
       </module>
       <module name="consulo-lua" dirurl="file://$PROJECT_DIR$">
         <extension id="consulo-plugin" sdk-module-name="" sdk-name="Consulo 1.SNAPSHOT" />
-        <extension id="java" sdk-module-name="" sdk-name="1.6" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="MODULE_DIR" />
+        <extension id="java" sdk-module-name="" sdk-name="1.6" language-level-module-name="" language-level-name="JDK_1_6" special-dir-location="SOURCE_DIR" />
         <content url="file://$MODULE_DIR$">
           <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src" />
           <content-folder type="PRODUCTION_RESOURCE" url="file://$MODULE_DIR$/resources" />
@@ -63,7 +53,6 @@
             <SOURCES />
           </library>
         </orderEntry>
-        <orderEntry type="module" module-name="IDLuaErrors" />
         <orderEntry type="module" module-name="IDLuaHelp" />
         <orderEntry type="module-library">
           <library>
