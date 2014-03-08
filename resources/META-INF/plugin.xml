@@ -160,7 +160,12 @@
 						   implementationClass="com.sylvanaar.idea.Lua.lang.LuaBraceMatcher"/>
 
 
-		<moduleExtensionProvider key="lua" implementationClass="org.consulo.lua.module.extension.LuaModuleExtensionProvider" allow-mixin="true"/>
+		<moduleExtensionProvider key="lua"
+								 allowMixin="true"
+								 icon="/icons/Lua.png"
+								 name="Lua"
+								 immutableClass="org.consulo.lua.module.extension.LuaModuleExtension"
+								 mutableClass="org.consulo.lua.module.extension.LuaMutableModuleExtension"/>
 		<lang.parserDefinition language="Lua"
 							   implementationClass="com.sylvanaar.idea.Lua.lang.parser.LuaParserDefinition"/>
 
