@@ -17,8 +17,9 @@ public class LuaModuleExtension extends ModuleExtensionWithSdkImpl<LuaModuleExte
 		super(id, module);
 	}
 
+	@NotNull
 	@Override
-	protected Class<? extends SdkType> getSdkTypeClass()
+	public Class<? extends SdkType> getSdkTypeClass()
 	{
 		return LuaSdkType.class;
 	}
