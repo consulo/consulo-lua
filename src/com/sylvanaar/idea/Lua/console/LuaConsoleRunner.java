@@ -16,23 +16,29 @@
 
 package com.sylvanaar.idea.Lua.console;
 
-import com.intellij.execution.*;
-import com.intellij.execution.configuration.*;
-import com.intellij.execution.configurations.*;
-import com.intellij.execution.console.*;
-import com.intellij.execution.process.*;
-import com.intellij.execution.runners.*;
-import com.intellij.openapi.project.*;
-import com.intellij.openapi.projectRoots.*;
-import com.intellij.openapi.util.io.*;
-import com.intellij.openapi.util.text.*;
-import com.intellij.openapi.vfs.*;
-import com.intellij.util.*;
-import com.sylvanaar.idea.Lua.sdk.*;
-import com.sylvanaar.idea.Lua.util.*;
-import org.jetbrains.annotations.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import java.util.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.execution.ExecutionException;
+import com.intellij.execution.configuration.EnvironmentVariablesComponent;
+import com.intellij.execution.configurations.GeneralCommandLine;
+import com.intellij.execution.console.ConsoleHistoryController;
+import com.intellij.execution.process.CommandLineArgumentsProvider;
+import com.intellij.execution.process.OSProcessHandler;
+import com.intellij.execution.runners.ConsoleExecuteActionHandler;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.util.io.FileUtil;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.vfs.CharsetToolkit;
+import com.intellij.util.ArrayUtil;
+import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
+import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -138,7 +144,7 @@ public class LuaConsoleRunner extends AbstractConsoleRunnerWithHistory<LuaLangua
         Map customEnvVariables;
         if (userDefinedEnvs == null) customEnvVariables = new HashMap();
         else customEnvVariables = new HashMap(userDefinedEnvs);
-        cmdLine.setPassParentEnvs(passParentEnvs);
+        cmdLine.setPassParentEnvironment(passParentEnvs);
         EnvironmentVariablesComponent.inlineParentOccurrences(customEnvVariables);
         Map envParams = new HashMap();
         if (passParentEnvs) envParams.putAll(System.getenv());
@@ -149,7 +155,7 @@ public class LuaConsoleRunner extends AbstractConsoleRunnerWithHistory<LuaLangua
             String path = (String)envParams.get(PATH_KEY);
             envParams.put(PATH_KEY, LuaSystemUtil.appendToPATHenvVariable(path, additionalLoadPath));
         }
-        cmdLine.setEnvParams(envParams);
+        cmdLine.getEnvironment().putAll(envParams);
         return cmdLine;
     }
 

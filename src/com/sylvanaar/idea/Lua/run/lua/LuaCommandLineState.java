@@ -16,6 +16,9 @@
 
 package com.sylvanaar.idea.Lua.run.lua;
 
+import static com.sylvanaar.idea.Lua.sdk.LuaSdkType.getTopLevelExecutable;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.CommandLineState;
 import com.intellij.execution.configurations.GeneralCommandLine;
@@ -28,9 +31,6 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.text.StringUtil;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
-import org.jetbrains.annotations.NotNull;
-
-import static com.sylvanaar.idea.Lua.sdk.LuaSdkType.getTopLevelExecutable;
 
 public class LuaCommandLineState extends CommandLineState {
     public ExecutionEnvironment getExecutionEnvironment() {
@@ -74,8 +74,8 @@ public class LuaCommandLineState extends CommandLineState {
             }
         }
 
-        commandLine.setEnvParams(cfg.getEnvs());
-        commandLine.setPassParentEnvs(cfg.isPassParentEnvs());
+        commandLine.getEnvironment().putAll(cfg.getEnvs());
+        commandLine.setPassParentEnvironment(cfg.isPassParentEnvs());
 
         return configureCommandLine(commandLine);
     }
