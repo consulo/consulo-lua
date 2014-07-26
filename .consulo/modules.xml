@@ -23,10 +23,10 @@
             </CLASSES>
             <DOCUMENTATION />
             <SOURCES>
-              <root url="file://$MODULE_DIR$/../Kahlua/j2se/src" />
-              <root url="file://$MODULE_DIR$/../Kahlua/j2se/test" />
-              <root url="file://$MODULE_DIR$/../Kahlua/core/src" />
-              <root url="file://$MODULE_DIR$/../Kahlua/cldc11/src" />
+              <root url="file://F:/Kahlua/j2se/src" />
+              <root url="file://F:/Kahlua/j2se/test" />
+              <root url="file://F:/Kahlua/core/src" />
+              <root url="file://F:/Kahlua/cldc11/src" />
             </SOURCES>
           </library>
         </orderEntry>
@@ -37,10 +37,10 @@
             </CLASSES>
             <DOCUMENTATION />
             <SOURCES>
-              <root url="file://$MODULE_DIR$/../Kahlua/core/src" />
-              <root url="file://$MODULE_DIR$/../Kahlua/j2se/test" />
-              <root url="file://$MODULE_DIR$/../Kahlua/j2se/src" />
-              <root url="file://$MODULE_DIR$/../Kahlua/cldc11/src" />
+              <root url="file://F:/Kahlua/core/src" />
+              <root url="file://F:/Kahlua/j2se/test" />
+              <root url="file://F:/Kahlua/j2se/src" />
+              <root url="file://F:/Kahlua/cldc11/src" />
             </SOURCES>
           </library>
         </orderEntry>
@@ -79,7 +79,7 @@
             </CLASSES>
             <DOCUMENTATION />
             <SOURCES>
-              <root url="jar://$MODULE_DIR$/../luaj-3.0-alpha2/lib/luaj-sources-3.0-alpha2.jar!/" />
+              <root url="jar://F:/luaj-3.0-alpha2/lib/luaj-sources-3.0-alpha2.jar!/" />
             </SOURCES>
           </library>
         </orderEntry>

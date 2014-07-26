@@ -17,6 +17,7 @@
 package com.sylvanaar.idea.Lua.lang.lexer;
 
 import com.intellij.lexer.Lexer;
+import com.intellij.lexer.MergeFunction;
 import com.intellij.lexer.MergingLexerAdapterBase;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
@@ -27,34 +28,46 @@ import com.intellij.psi.tree.TokenSet;
  * Date: 4/3/11
  * Time: 12:27 AM
  */
-public class LuaParsingLexerMergingAdapter extends MergingLexerAdapterBase implements LuaTokenTypes{
-    static final TokenSet tokensToMerge = TokenSet.create(LONGSTRING_BEGIN, LONGSTRING, LONGSTRING_END, NL_BEFORE_LONGSTRING);
-    static final TokenSet tokensToMerge2 = TokenSet.create(LONGCOMMENT_BEGIN, LONGCOMMENT, LONGCOMMENT_END,
-            NL_BEFORE_LONGSTRING);
+public class LuaParsingLexerMergingAdapter extends MergingLexerAdapterBase implements LuaTokenTypes
+{
+	static final TokenSet tokensToMerge = TokenSet.create(LONGSTRING_BEGIN, LONGSTRING, LONGSTRING_END, NL_BEFORE_LONGSTRING);
+	static final TokenSet tokensToMerge2 = TokenSet.create(LONGCOMMENT_BEGIN, LONGCOMMENT, LONGCOMMENT_END, NL_BEFORE_LONGSTRING);
 
-    static final TokenSet allMergables = TokenSet.orSet(tokensToMerge, tokensToMerge2);
+	static final TokenSet allMergables = TokenSet.orSet(tokensToMerge, tokensToMerge2);
+	private static final MergeFunction ourMergeFunction = new MergeFunction()
+	{
+		@Override
+		public IElementType merge(IElementType type, Lexer originalLexer)
+		{
+			if(!allMergables.contains(type))
+			{
+				return type;
+			}
 
-    public LuaParsingLexerMergingAdapter(Lexer original) {
-        super(original, new MergeFunction() {
+			TokenSet merging = tokensToMerge.contains(type) ? tokensToMerge : tokensToMerge2;
 
-            @Override
-            public IElementType merge(IElementType type, Lexer originalLexer) {
-                if (!allMergables.contains(type)) {
-                    return type;
-                }
+			while(true)
+			{
+				final IElementType tokenType = originalLexer.getTokenType();
+				if(!merging.contains(tokenType))
+				{
+					break;
+				}
+				originalLexer.advance();
+			}
 
-                TokenSet merging = tokensToMerge.contains(type) ? tokensToMerge : tokensToMerge2;
-                
-                while (true) {
-                    final IElementType tokenType = originalLexer.getTokenType();
-                    if (!merging.contains(tokenType)) break;
-                    originalLexer.advance();
-                }
-                
-                return merging == tokensToMerge ? LONGSTRING : LONGCOMMENT;
-            }
-        });
-    }
+			return merging == tokensToMerge ? LONGSTRING : LONGCOMMENT;
+		}
+	};
 
+	@Override
+	public MergeFunction getMergeFunction()
+	{
+		return ourMergeFunction;
+	}
 
+	public LuaParsingLexerMergingAdapter(Lexer original)
+	{
+		super(original);
+	}
 }
