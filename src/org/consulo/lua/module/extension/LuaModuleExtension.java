@@ -3,7 +3,7 @@ package org.consulo.lua.module.extension;
 import org.consulo.module.extension.impl.ModuleExtensionWithSdkImpl;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.projectRoots.SdkType;
-import com.intellij.openapi.roots.ModifiableRootModel;
+import com.intellij.openapi.roots.ModuleRootLayer;
 import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
 
 /**
@@ -12,7 +12,7 @@ import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
  */
 public class LuaModuleExtension extends ModuleExtensionWithSdkImpl<LuaModuleExtension>
 {
-	public LuaModuleExtension(@NotNull String id, @NotNull ModifiableRootModel module)
+	public LuaModuleExtension(@NotNull String id, @NotNull ModuleRootLayer module)
 	{
 		super(id, module);
 	}
