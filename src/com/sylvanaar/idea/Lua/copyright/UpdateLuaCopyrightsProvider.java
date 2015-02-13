@@ -20,31 +20,43 @@
 */
 package com.sylvanaar.idea.Lua.copyright;
 
+import org.jetbrains.annotations.NotNull;
+import org.mustbe.consulo.copyright.config.CopyrightFileConfig;
 import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiFile;
 import com.maddyhome.idea.copyright.CopyrightProfile;
-import com.maddyhome.idea.copyright.options.LanguageOptions;
-import com.maddyhome.idea.copyright.psi.UpdateCopyright;
 import com.maddyhome.idea.copyright.psi.UpdateCopyrightsProvider;
+import com.maddyhome.idea.copyright.psi.UpdatePsiFileCopyright;
+import com.maddyhome.idea.copyright.ui.TemplateCommentPanel;
 
-public class UpdateLuaCopyrightsProvider extends UpdateCopyrightsProvider {
-    @Override
-    public UpdateCopyright createInstance(Project project, Module module, VirtualFile file, FileType base,
-                                          CopyrightProfile options) {
-        return new UpdateLuaFileCopyright(project, module, file, options);
-    }
+public class UpdateLuaCopyrightsProvider extends UpdateCopyrightsProvider<CopyrightFileConfig>
+{
+	@NotNull
+	@Override
+	public UpdatePsiFileCopyright<CopyrightFileConfig> createInstance(@NotNull PsiFile file, @NotNull CopyrightProfile copyrightProfile)
+	{
+		return new UpdateLuaFileCopyright(file, copyrightProfile);
+	}
 
-    @Override
-    public LanguageOptions getDefaultOptions() {
-        LanguageOptions options = super.getDefaultOptions();
+	@NotNull
+	@Override
+	public CopyrightFileConfig createDefaultOptions()
+	{
+		CopyrightFileConfig options = new CopyrightFileConfig();
 
-        options.setFiller("=");
-        options.setBlock(false);
-        options.setPrefixLines(false);
-        options.setFileTypeOverride(LanguageOptions.USE_TEXT);
+		options.setFiller("=");
+		options.setBlock(false);
+		options.setPrefixLines(false);
+		options.setFileTypeOverride(CopyrightFileConfig.USE_TEXT);
 
-        return options;
-    }
+		return options;
+	}
+
+	@NotNull
+	@Override
+	public TemplateCommentPanel createConfigurable(@NotNull Project project, @NotNull TemplateCommentPanel parentPane, @NotNull FileType fileType)
+	{
+		return new TemplateCommentPanel(fileType, parentPane, project);
+	}
 }

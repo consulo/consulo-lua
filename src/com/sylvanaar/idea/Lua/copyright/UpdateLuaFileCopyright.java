@@ -16,58 +16,56 @@
 
 package com.sylvanaar.idea.Lua.copyright;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
+import org.jetbrains.annotations.NotNull;
+import org.mustbe.consulo.copyright.config.CopyrightFileConfig;
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiWhiteSpace;
 import com.maddyhome.idea.copyright.CopyrightProfile;
 import com.maddyhome.idea.copyright.psi.UpdatePsiFileCopyright;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 
 
-
-public class UpdateLuaFileCopyright extends UpdatePsiFileCopyright
+public class UpdateLuaFileCopyright extends UpdatePsiFileCopyright<CopyrightFileConfig>
 {
-    private static final Logger log = Logger.getInstance("Lua.UpdateLuaFileCopyright");
+	public UpdateLuaFileCopyright(@NotNull PsiFile psiFile, @NotNull CopyrightProfile copyrightProfile)
+	{
+		super(psiFile, copyrightProfile);
+	}
 
-    public UpdateLuaFileCopyright(Project project, Module module, VirtualFile root, CopyrightProfile options)
-    {
-        super(project, module, root, options);
-    }
+	@Override
+	protected boolean accept()
+	{
+		return getFile() instanceof LuaPsiFile;
+	}
 
-    @Override
-    protected boolean accept() {
-        return getFile() instanceof LuaPsiFile;
-    }
+	@Override
+	protected void scanFile()
+	{
+		PsiElement first = getFile().getFirstChild();
+		PsiElement last = first;
+		PsiElement next = first;
+		while(next != null)
+		{
+			if(next instanceof PsiComment || next instanceof PsiWhiteSpace)
+			{
+				next = getNextSibling(next);
+			}
+			else
+			{
+				break;
+			}
+			last = next;
+		}
 
-    protected void scanFile()
-    {
-        PsiElement first = getFile().getFirstChild();
-        PsiElement last = first;
-        PsiElement next = first;
-        while (next != null)
-        {
-            if (next instanceof PsiComment || next instanceof PsiWhiteSpace)
-            {
-                next = getNextSibling(next);
-            }
-            else
-            {
-                break;
-            }
-            last = next;
-        }
-
-        if (first != null)
-        {
-            checkComments(first, last, true);
-        }
-        else
-        {
-            checkComments(null, null, true);
-        }
-    }
+		if(first != null)
+		{
+			checkComments(first, last, true);
+		}
+		else
+		{
+			checkComments(null, null, true);
+		}
+	}
 }
