@@ -17,11 +17,12 @@
 package com.sylvanaar.idea.Lua.sdk;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.List;
 
 import javax.swing.Icon;
 
 import org.consulo.lua.module.extension.LuaModuleExtension;
-import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -29,14 +30,13 @@ import com.intellij.execution.ExecutionException;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.projectRoots.AdditionalDataConfigurable;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkAdditionalData;
-import com.intellij.openapi.projectRoots.SdkModel;
 import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.roots.OrderRootType;
+import com.intellij.openapi.roots.types.BinariesOrderRootType;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.util.SmartList;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
@@ -49,12 +49,12 @@ public class LuaSdkType extends SdkType
 	@NotNull
 	public static LuaSdkType getInstance()
 	{
-		return SdkType.findInstance(LuaSdkType.class);
+		return EP_NAME.findExtension(LuaSdkType.class);
 	}
 
 	public LuaSdkType()
 	{
-		super("Lua SDK");
+		super("LUA_SDK");
 	}
 
 	@Override
@@ -81,19 +81,26 @@ public class LuaSdkType extends SdkType
 		return ModuleUtilCore.getSdk(module, LuaModuleExtension.class);
 	}
 
+	@NotNull
 	@Override
-	@Nullable
-	public String suggestHomePath()
+	public Collection<String> suggestHomePaths()
 	{
+		List<String> list = new SmartList<String>();
 		if(SystemInfo.isWindows)
 		{
-			return "C:\\Lua";
+			list.add("C:\\Lua");
 		}
 		else if(SystemInfo.isLinux)
 		{
-			return "/usr/bin";
+			list.add("/usr/bin");
 		}
-		return null;
+		return list;
+	}
+
+	@Override
+	public boolean canCreatePredefinedSdks()
+	{
+		return true;
 	}
 
 	@Override
@@ -186,22 +193,7 @@ public class LuaSdkType extends SdkType
 			return null;
 		}
 
-		String[] sa = stdout.split(" ");
-
-		return sa;
-	}
-
-	@Override
-	@Nullable
-	public AdditionalDataConfigurable createAdditionalDataConfigurable(@NotNull final SdkModel sdkModel,
-			@NotNull final SdkModificator sdkModificator)
-	{
-		return null;
-	}
-
-	@Override
-	public void saveAdditionalData(@NotNull final SdkAdditionalData additionalData, @NotNull final Element additional)
-	{
+		return stdout.split(" ");
 	}
 
 	@NotNull
@@ -215,24 +207,17 @@ public class LuaSdkType extends SdkType
 	@Override
 	public boolean isRootTypeApplicable(OrderRootType type)
 	{
-		return type == OrderRootType.CLASSES;
+		return type == BinariesOrderRootType.getInstance();
 	}
 
 	@Override
 	public void setupSdkPaths(@NotNull final Sdk sdk)
 	{
-		final SdkModificator[] sdkModificatorHolder = new SdkModificator[]{null};
-
 		final SdkModificator sdkModificator = sdk.getSdkModificator();
 
-		sdkModificator.addRoot(StdLibrary.getStdFileLocation(), OrderRootType.CLASSES);
+		sdkModificator.addRoot(StdLibrary.getStdFileLocation(), BinariesOrderRootType.getInstance());
 
-		sdkModificatorHolder[0] = sdkModificator;
-
-		if(sdkModificatorHolder[0] != null)
-		{
-			sdkModificatorHolder[0].commitChanges();
-		}
+		sdkModificator.commitChanges();
 	}
 
 	@NotNull

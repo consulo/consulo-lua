@@ -5,7 +5,7 @@
       <module name="IDLuaHelp" dirurl="file://$PROJECT_DIR$/help" current-layer="Default">
         <module-layer name="Default">
           <content url="file://$MODULE_DIR$" />
-          <orderEntry type="sourceFolder" forTests="false" />
+          <orderEntry type="sourceFolder" />
         </module-layer>
       </module>
       <module name="consulo-lua" dirurl="file://$PROJECT_DIR$" current-layer="Default">
@@ -18,7 +18,7 @@
           </content>
           <orderEntry type="module-extension-sdk" extension-id="java" />
           <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
-          <orderEntry type="sourceFolder" forTests="false" />
+          <orderEntry type="sourceFolder" />
           <orderEntry type="module-library">
             <library>
               <binaries>
@@ -82,4 +82,3 @@
     </modules>
   </component>
 </project>
-
