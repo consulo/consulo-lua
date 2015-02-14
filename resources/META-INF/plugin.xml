@@ -15,7 +15,7 @@
   -->
 
 <idea-plugin>
-	<id>org.consulo.lua</id>
+	<id>org.mustbe.consulo.lua</id>
 	<name>Lua</name>
 	<version>SNAPSHOT</version>
 	<category>Custom Languages</category>

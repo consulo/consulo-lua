@@ -16,11 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.types;
 
-import com.intellij.ide.plugins.*;
-import com.intellij.openapi.extensions.*;
-import com.sylvanaar.idea.Lua.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.*;
+import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,7 +47,7 @@ public abstract class LuaTypeImpl implements LuaType {
         if (input == null || input.length == 0)
             return LuaPrimitiveType.ANY;
 
-        ClassLoader classLoader = PluginManager.getPlugin(PluginId.getId("Lua")).getPluginClassLoader();
+        ClassLoader classLoader = getClass().getClassLoader();
 
         Object result = LuaSerializationUtils.deserialize(input, classLoader);
 
