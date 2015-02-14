@@ -36,6 +36,7 @@ import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.roots.types.BinariesOrderRootType;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.SmartList;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
@@ -215,7 +216,11 @@ public class LuaSdkType extends SdkType
 	{
 		final SdkModificator sdkModificator = sdk.getSdkModificator();
 
-		sdkModificator.addRoot(StdLibrary.getStdFileLocation(), BinariesOrderRootType.getInstance());
+		VirtualFile stdFileLocation = StdLibrary.getStdFileLocation();
+		if(stdFileLocation != null)
+		{
+			sdkModificator.addRoot(stdFileLocation, BinariesOrderRootType.getInstance());
+		}
 
 		sdkModificator.commitChanges();
 	}
