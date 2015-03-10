@@ -14,72 +14,42 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.sdk;
+package org.mustbe.consulo.lua.bundle;
 
 import java.io.File;
 import java.util.Collection;
 import java.util.List;
 
-import javax.swing.Icon;
-
-import org.consulo.lua.module.extension.LuaModuleExtension;
+import org.consulo.lombok.annotations.LazyInstance;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.process.ProcessOutput;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
-import com.intellij.openapi.projectRoots.SdkType;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.roots.types.BinariesOrderRootType;
+import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.SmartList;
-import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.Lua.run.LuaDebugCommandlineState;
+import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
+import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
 /**
  * @author Maxim.Manuylov
  *         Date: 03.04.2010
  */
-public class LuaSdkType extends SdkType
+public class BaseLuaSdkType extends LuaSdkType
 {
 	@NotNull
-	public static LuaSdkType getInstance()
+	@LazyInstance
+	public static BaseLuaSdkType getInstance()
 	{
-		return EP_NAME.findExtension(LuaSdkType.class);
+		return EP_NAME.findExtension(BaseLuaSdkType.class);
 	}
 
-	public LuaSdkType()
+	public BaseLuaSdkType()
 	{
 		super("LUA_SDK");
-	}
-
-	@Override
-	@NotNull
-	public Icon getIcon()
-	{
-		return LuaIcons.LUA_ICON;
-	}
-
-	@Nullable
-	@Override
-	public Icon getGroupIcon()
-	{
-		return getIcon();
-	}
-
-	public static Sdk findLuaSdk(Module module)
-	{
-		if(module == null)
-		{
-			return null;
-		}
-
-		return ModuleUtilCore.getSdk(module, LuaModuleExtension.class);
 	}
 
 	@NotNull
@@ -205,29 +175,20 @@ public class LuaSdkType extends SdkType
 		return "Lua SDK";
 	}
 
-	@Override
-	public boolean isRootTypeApplicable(OrderRootType type)
-	{
-		return type == BinariesOrderRootType.getInstance();
-	}
-
-	@Override
-	public void setupSdkPaths(@NotNull final Sdk sdk)
-	{
-		final SdkModificator sdkModificator = sdk.getSdkModificator();
-
-		VirtualFile stdFileLocation = StdLibrary.getStdFileLocation();
-		if(stdFileLocation != null)
-		{
-			sdkModificator.addRoot(stdFileLocation, BinariesOrderRootType.getInstance());
-		}
-
-		sdkModificator.commitChanges();
-	}
-
 	@NotNull
 	private static File getExecutable(@NotNull final String path, @NotNull final String command)
 	{
 		return new File(path, SystemInfo.isWindows ? command + ".exe" : command);
+	}
+
+	@NotNull
+	@Override
+	public LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration, ExecutionEnvironment env, boolean isDebugger)
+	{
+		if(isDebugger)
+		{
+			return new LuaDebugCommandlineState(luaRunConfiguration, env);
+		}
+		return new LuaCommandLineState(luaRunConfiguration, env);
 	}
 }

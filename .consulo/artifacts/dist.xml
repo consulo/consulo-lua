@@ -17,6 +17,7 @@
             <element id="dir-copy" path="$PROJECT_DIR$/help" />
           </element>
         </element>
+        <element id="dir-copy" path="$PROJECT_DIR$/dist" />
       </element>
     </root>
   </artifact>

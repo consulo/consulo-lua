@@ -20,14 +20,6 @@
 	<version>SNAPSHOT</version>
 	<category>Custom Languages</category>
 	<vendor>sylvanaar@mindspring.com</vendor>
-	<!-- <application-components>
-			<component>
-				<implementation-class>com.sylvanaar.idea.Lua.sdk.KahluaSdk</implementation-class>
-			</component>
-			<component>
-				<implementation-class>com.sylvanaar.idea.Lua.sdk.LuaJSdk</implementation-class>
-			</component>
-		</application-components>    -->
 
 	<project-components>
 		<component>
@@ -84,11 +76,6 @@
 		<!-- Application Configuration -->
 		<applicationConfigurable instance="com.sylvanaar.idea.Lua.options.LuaOptionsPanel"/>
 		<applicationService serviceImplementation="com.sylvanaar.idea.Lua.options.LuaApplicationSettings"/>
-
-		<!-- Project Configuration -->
-		<!--<projectConfigurable  instance="com.sylvanaar.idea.Lua.settings.LuaProjectSettingsConfigurable" />-->
-		<!--<projectService serviceImplementation="com.sylvanaar.idea.Lua.settings.LuaProjectSettings"-->
-		<!--serviceInterface="com.sylvanaar.idea.Lua.settings.LuaProjectSettings" />-->
 
 		<fileTypeFactory implementation="com.sylvanaar.idea.Lua.LuaFileTypeLoader"/>
 
@@ -164,8 +151,8 @@
 								 allowMixin="true"
 								 icon="/icons/Lua.png"
 								 name="Lua"
-								 immutableClass="org.consulo.lua.module.extension.LuaModuleExtension"
-								 mutableClass="org.consulo.lua.module.extension.LuaMutableModuleExtension"/>
+								 immutableClass="org.mustbe.consulo.lua.module.extension.LuaModuleExtension"
+								 mutableClass="org.mustbe.consulo.lua.module.extension.LuaMutableModuleExtension"/>
 		<lang.parserDefinition language="Lua"
 							   implementationClass="com.sylvanaar.idea.Lua.lang.parser.LuaParserDefinition"/>
 
@@ -212,7 +199,10 @@
 										implementationClass="com.sylvanaar.idea.Lua.codeInsight.LuaLineMarkerProvider"/>
 
 
-		<sdkType implementation="com.sylvanaar.idea.Lua.sdk.LuaSdkType"/>
+		<sdkType implementation="org.mustbe.consulo.lua.bundle.BaseLuaSdkType"/>
+		<sdkType implementation="org.mustbe.consulo.lua.bundle.KahluaSdkType"/>
+		<sdkType implementation="org.mustbe.consulo.lua.bundle.LuaJSdkType"/>
+		<predefinedBundlesProvider implementation="org.mustbe.consulo.lua.bundle.LuaPredefinedBundlesProvider" />
 
 		<consoleFilterProvider implementation="com.sylvanaar.idea.Lua.run.LuaLineErrorFilterProvider"/>
 

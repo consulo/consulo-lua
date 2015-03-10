@@ -37,7 +37,7 @@ import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.CharsetToolkit;
 import com.intellij.util.ArrayUtil;
-import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
+import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
 /**
@@ -168,7 +168,8 @@ public class LuaConsoleRunner extends AbstractConsoleRunnerWithHistory<LuaLangua
 
         @Override
         public String[] getArguments() {
-            return new String[]{LuaSdkType.getTopLevelExecutable(mySdk.getHomePath()).getAbsolutePath(), "-i", "-e",
+            return new String[]{
+                    BaseLuaSdkType.getTopLevelExecutable(mySdk.getHomePath()).getAbsolutePath(), "-i", "-e",
                     "io.stdout:setvbuf([[no]])"};
         }
 

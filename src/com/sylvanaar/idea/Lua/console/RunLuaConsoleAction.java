@@ -26,7 +26,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
+import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
+import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,14 +48,14 @@ public class RunLuaConsoleAction extends AnAction implements DumbAware {
         if (project != null) {
             for (Module module : ModuleManager.getInstance(project).getModules()) {
                 e.getPresentation().setVisible(true);
-                Sdk luaSdk = LuaSdkType.findLuaSdk(module);
+                Sdk luaSdk = LuaModuleUtil.findLuaSdk(module);
                 if (luaSdk != null) {
                     final String homePath = luaSdk.getHomePath();
                     if (homePath == null) {
                         e.getPresentation().setEnabled(false);
                         break;
                     }
-                    if (LuaSdkType.getTopLevelExecutable(homePath).exists()) {
+                    if (BaseLuaSdkType.getTopLevelExecutable(homePath).exists()) {
                         e.getPresentation().setEnabled(true);
                         break;
                     }
@@ -74,7 +75,7 @@ public class RunLuaConsoleAction extends AnAction implements DumbAware {
 
         for (Module m : modules) {
             module = m;
-            sdk = LuaSdkType.findLuaSdk(m);
+            sdk = LuaModuleUtil.findLuaSdk(m);
             if (sdk != null) break;
         }
 

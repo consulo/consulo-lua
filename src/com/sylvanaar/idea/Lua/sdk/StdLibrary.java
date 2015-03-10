@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.sdk;
 
-import com.intellij.openapi.vfs.*;
-import com.sylvanaar.idea.Lua.util.*;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.sylvanaar.idea.Lua.util.LuaFileUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,45 +25,30 @@ import com.sylvanaar.idea.Lua.util.*;
  * Date: 2/9/11
  * Time: 3:07 AM
  */
-public class StdLibrary {
-    public static final String STDLIBRARY    = "stdlibrary";
-    public static final String DEBUG_LIBRARY = "remdebug";
-    public static final String LISTING_GENERATOR = "listing";
-    
-    public static VirtualFile getStdFileLocation() {
-        VirtualFile dir = LuaFileUtil.getPluginVirtualDirectory();
+public class StdLibrary
+{
+	public static final String DEBUG_LIBRARY = "remdebug";
+	public static final String LISTING_GENERATOR = "listing";
 
-        if (dir != null) dir = dir.findChild(STDLIBRARY);
+	public static VirtualFile getDebugModuleLocation()
+	{
+		VirtualFile dir = LuaFileUtil.getPluginVirtualDirectory();
 
-        if (dir != null) return dir;
+		if(dir == null)
+		{
+			return null;
+		}
+		return dir.findChild(DEBUG_LIBRARY);
+	}
 
-        dir = LuaFileUtil.getPluginVirtualDirectory();
+	public static VirtualFile getListingModuleLocation()
+	{
+		VirtualFile dir = LuaFileUtil.getPluginVirtualDirectory();
 
-        if (dir != null)
-            dir = dir.findChild("classes");
-        if (dir != null)
-            dir = dir.findChild(STDLIBRARY);
-
-        return dir;
-    }
-
-    public static VirtualFile getDebugModuleLocation() {
-        VirtualFile dir = LuaFileUtil.getPluginVirtualDirectory();
-
-        if (dir != null) dir = dir.findChild(DEBUG_LIBRARY);
-
-        if (dir != null) return dir;
-
-        return null;
-    }
-
-    public static VirtualFile getListingModuleLocation() {
-        VirtualFile dir = LuaFileUtil.getPluginVirtualDirectory();
-
-        if (dir != null) dir = dir.findChild(LISTING_GENERATOR);
-
-        if (dir != null) return dir;
-
-        return null;
-    }
+		if(dir == null)
+		{
+			return null;
+		}
+		return dir.findChild(LISTING_GENERATOR);
+	}
 }

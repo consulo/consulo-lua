@@ -16,53 +16,38 @@
 
 package com.sylvanaar.idea.Lua.util;
 
+import org.mustbe.consulo.lua.module.extension.LuaModuleExtension;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author Maxim.Manuylov
  *         Date: 29.04.2010
  */
-public class LuaModuleUtil {
-    public static boolean isLuaSdk(@Nullable final Sdk sdk) {
-        return sdk != null && sdk.getSdkType() instanceof LuaSdkType;
-    }
+public class LuaModuleUtil
+{
+	public static Sdk findLuaSdk(Module module)
+	{
+		if(module == null)
+		{
+			return null;
+		}
 
-//    public static void checkForSdkFile(final LuaPsiFile file, Project project) {
-//        ModuleManager mm = ModuleManager.getInstance(project);
-//        boolean isSdkFile = false;
-//
-//        for (final Module module : mm.getModules()) {
-//            ModuleRootManager mrm = ModuleRootManager.getInstance(module);
-//            Sdk sdk = mrm.getSdk();
-//
-//            if (sdk != null) {
-//                VirtualFile[] vf = sdk.getRootProvider().getFiles(OrderRootType.CLASSES);
-//
-//                for (VirtualFile libraryFile : vf)
-//                    LuaFileUtil.iterateRecursively(libraryFile, new ContentIterator() {
-//                        @Override
-//                        public boolean processFile(VirtualFile virtualFile) {
-//                            if (file.getVirtualFile() == virtualFile) {
-//                                file.setSdkFile(true);
-//                                return false;
-//                            }
-//                            return true;
-//                        }
-//                    });
-//            }
-//        }
-//    }
+		return ModuleUtilCore.getSdk(module, LuaModuleExtension.class);
+	}
 
-    public static boolean isLuaContentFile(ProjectFileIndex myIndex, VirtualFile file) {
-        final String extension = file.getExtension();
-        if (extension == null) return false;
+	public static boolean isLuaContentFile(ProjectFileIndex myIndex, VirtualFile file)
+	{
+		final String extension = file.getExtension();
+		if(extension == null)
+		{
+			return false;
+		}
 
-        return extension.equals(LuaFileType.DEFAULT_EXTENSION) &&
-               (myIndex.isInContent(file) || myIndex.isInLibraryClasses(file));
-    }
+		return extension.equals(LuaFileType.DEFAULT_EXTENSION) && (myIndex.isInContent(file) || myIndex.isInLibraryClasses(file));
+	}
 }

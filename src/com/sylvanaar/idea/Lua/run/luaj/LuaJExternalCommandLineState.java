@@ -16,14 +16,14 @@
 
 package com.sylvanaar.idea.Lua.run.luaj;
 
+import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
-import com.sylvanaar.idea.Lua.sdk.LuaJSdk;
+import com.sylvanaar.idea.Lua.util.LuaFileUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,23 +33,50 @@ import com.sylvanaar.idea.Lua.sdk.LuaJSdk;
  */
 
 
-public class LuaJExternalCommandLineState extends LuaCommandLineState {
-    private static final Logger      log      = Logger.getInstance("Lua.LuaJExternalCommandLineState");
-    public static final  VirtualFile LUAJ_JAR = LuaJSdk.getLuaJJarFile();
+public class LuaJExternalCommandLineState extends LuaCommandLineState
+{
+	public LuaJExternalCommandLineState(RunConfiguration runConfiguration, ExecutionEnvironment env)
+	{
+		super(runConfiguration, env);
+	}
 
-    public LuaJExternalCommandLineState(RunConfiguration runConfiguration, ExecutionEnvironment env) {
-        super(runConfiguration, env);
-    }
+	@Override
+	protected GeneralCommandLine generateCommandLine()
+	{
 
-    @Override
-    protected GeneralCommandLine generateCommandLine() {
-        GeneralCommandLine commandLine = new GeneralCommandLine();
-        final LuaRunConfiguration cfg = (LuaRunConfiguration) getRunConfiguration();
+		GeneralCommandLine commandLine = new GeneralCommandLine();
+		final LuaRunConfiguration cfg = (LuaRunConfiguration) getRunConfiguration();
 
-        commandLine.setExePath("java");
+		commandLine.setExePath("java");
 
-        commandLine.addParameters("-cp", LUAJ_JAR.getPath(), "lua");
+		commandLine.addParameters("-cp", getLuaJJarFile().getPath(), "lua");
 
-        return configureCommandLine(commandLine);
-    }
+		return configureCommandLine(commandLine);
+	}
+
+	@Nullable
+	public static VirtualFile getLuaJJarFile()
+	{
+		final VirtualFile directory = LuaFileUtil.getPluginVirtualDirectory();
+		if(directory != null)
+		{
+			final VirtualFile lib = directory.findChild("lib");
+			if(lib != null)
+			{
+				VirtualFile[] children = lib.getChildren();
+				if(children != null)
+				{
+					for(VirtualFile child : children)
+					{
+						if(child.getName().startsWith("luaj-jse"))
+						{
+							return child;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
 }

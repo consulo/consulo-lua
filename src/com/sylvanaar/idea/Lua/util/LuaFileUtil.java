@@ -16,69 +16,80 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import com.intellij.ide.plugins.*;
-import com.intellij.openapi.extensions.*;
-import com.intellij.openapi.fileTypes.*;
-import com.intellij.openapi.roots.*;
-import com.intellij.openapi.util.io.*;
-import com.intellij.openapi.vfs.*;
-import com.sylvanaar.idea.Lua.*;
-import org.jetbrains.annotations.*;
-
-import java.io.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.plugins.IdeaPluginDescriptor;
+import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.cl.PluginClassLoader;
+import com.intellij.openapi.fileTypes.ExtensionFileNameMatcher;
+import com.intellij.openapi.roots.ContentIterator;
+import com.intellij.openapi.util.io.FileUtil;
+import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.vfs.VfsUtilCore;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileFilter;
+import com.sylvanaar.idea.Lua.LuaFileType;
 
 /**
  * @author Maxim.Manuylov
  *         Date: 07.04.2010
  */
-public class LuaFileUtil {
-    @NotNull
-    public static String getPathToDisplay(final VirtualFile file) {
-        if (file == null) {
-            return "";
-        }
-        return FileUtil.toSystemDependentName(file.getPath());
-    }
+public class LuaFileUtil
+{
+	@NotNull
+	public static String getPathToDisplay(final VirtualFile file)
+	{
+		if(file == null)
+		{
+			return "";
+		}
+		return FileUtil.toSystemDependentName(file.getPath());
+	}
 
 
-    @Nullable
-    public static VirtualFile getPluginVirtualDirectory() {
-        IdeaPluginDescriptor descriptor = PluginManager.getPlugin(PluginId.getId(LuaFileType.LUA_PLUGIN_ID));
-        if (descriptor != null) {
-            File pluginPath = descriptor.getPath();
+	@Nullable
+	public static VirtualFile getPluginVirtualDirectory()
+	{
+		PluginClassLoader classLoader = (PluginClassLoader) LuaFileUtil.class.getClassLoader();
+		IdeaPluginDescriptor plugin = PluginManager.getPlugin(classLoader.getPluginId());
+		assert plugin != null;
+		return LocalFileSystem.getInstance().findFileByIoFile(plugin.getPath());
+	}
 
-            String url = VfsUtil.pathToUrl(pluginPath.getAbsolutePath());
+	public static boolean iterateRecursively(@Nullable final VirtualFile root, @NotNull final ContentIterator processor)
+	{
+		return root != null && VfsUtilCore.iterateChildrenRecursively(root, VirtualFileFilter.ALL, processor);
+	}
 
-            return VirtualFileManager.getInstance().findFileByUrl(url);
-        }
+	public static boolean iterateLuaFilesRecursively(@Nullable final VirtualFile root, @NotNull final ContentIterator processor)
+	{
+		return root != null && VfsUtilCore.iterateChildrenRecursively(root, LUA_FILE_FILTER, processor);
+	}
 
-        return null;
-    }
+	static VirtualFileFilter LUA_FILE_FILTER = new VirtualFileFilter()
+	{
+		@Override
+		public boolean accept(VirtualFile file)
+		{
+			if(file.isDirectory())
+			{
+				return true;
+			}
 
+			for(ExtensionFileNameMatcher matcher : LuaFileType.EXTENSION_FILE_NAME_MATCHERS)
+			{
+				if(matcher.accept(file.getName()))
+				{
+					return true;
+				}
+			}
 
-    public static boolean iterateRecursively(@Nullable final VirtualFile root, @NotNull final ContentIterator processor) {
-        return root != null && VfsUtilCore.iterateChildrenRecursively(root, VirtualFileFilter.ALL, processor);
-    }
+			return false;
+		}
 
-    public static boolean iterateLuaFilesRecursively(@Nullable final VirtualFile root, @NotNull final ContentIterator
-            processor) {
-        return root != null && VfsUtilCore.iterateChildrenRecursively(root, LUA_FILE_FILTER, processor);
-    }
-
-    static VirtualFileFilter LUA_FILE_FILTER = new VirtualFileFilter() {
-        @Override
-        public boolean accept(VirtualFile file) {
-            if (file.isDirectory()) return true;
-
-            for (ExtensionFileNameMatcher matcher : LuaFileType.EXTENSION_FILE_NAME_MATCHERS) {
-                if (matcher.accept(file.getName())) return true;
-            }
-
-            return false;
-        }
-
-        public String toString() {
-            return "LUA";
-        }
-    };
+		public String toString()
+		{
+			return "LUA";
+		}
+	};
 }

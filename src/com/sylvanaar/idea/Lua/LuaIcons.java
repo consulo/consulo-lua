@@ -26,13 +26,11 @@ import com.intellij.openapi.util.IconLoader;
  * Date: Apr 3, 2010
  * Time: 2:30:48 AM
  */
-public interface LuaIcons {
-
-	final Icon LUA_ICON            = IconLoader.findIcon("/icons/Lua.png");
-    final Icon LUA_FUNCTION        = IconLoader.findIcon("/icons/function.png");
-    final Icon LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
-
-    final Icon LUA_IDEA_MODULE_ICON = IconLoader.findIcon("/icons/logo_24x24.png");
+public interface LuaIcons
+{
+	final Icon LUA_ICON = IconLoader.findIcon("/icons/Lua.png");
+	final Icon LUA_FUNCTION = IconLoader.findIcon("/icons/function.png");
+	final Icon LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
 }
 
 

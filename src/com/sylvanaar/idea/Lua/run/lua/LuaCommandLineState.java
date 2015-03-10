@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.run.lua;
 
-import static com.sylvanaar.idea.Lua.sdk.LuaSdkType.getTopLevelExecutable;
+import static org.mustbe.consulo.lua.bundle.BaseLuaSdkType.getTopLevelExecutable;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
@@ -30,7 +30,7 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.text.StringUtil;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
+import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
 
 public class LuaCommandLineState extends CommandLineState {
     public ExecutionEnvironment getExecutionEnvironment() {
@@ -68,7 +68,7 @@ public class LuaCommandLineState extends CommandLineState {
         } else {
             final Sdk sdk = cfg.getSdk();
 
-            if (sdk != null && sdk.getSdkType() instanceof LuaSdkType) {
+            if (sdk != null && sdk.getSdkType() instanceof BaseLuaSdkType) {
                 commandLine
                         .setExePath(getTopLevelExecutable(StringUtil.notNullize(sdk.getHomePath())).getAbsolutePath());
             }

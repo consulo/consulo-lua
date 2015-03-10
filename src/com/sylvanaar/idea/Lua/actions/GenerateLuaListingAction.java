@@ -16,6 +16,7 @@
 
 package com.sylvanaar.idea.Lua.actions;
 
+import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.execution.ui.ConsoleViewContentType;
@@ -39,8 +40,8 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.sdk.LuaSdkType;
 import com.sylvanaar.idea.Lua.sdk.StdLibrary;
+import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
 /**
@@ -58,13 +59,13 @@ public class GenerateLuaListingAction extends AnAction {
         if (project != null) {
             for (Module module : ModuleManager.getInstance(project).getModules()) {
                 e.getPresentation().setVisible(true);
-                Sdk luaSdk = LuaSdkType.findLuaSdk(module);
+                Sdk luaSdk = LuaModuleUtil.findLuaSdk(module);
                 if (luaSdk == null) continue;
 
                 final String homePath = luaSdk.getHomePath();
                 if (homePath == null) continue;
 
-                if (LuaSdkType.getByteCodeCompilerExecutable(homePath).exists()) {
+                if (BaseLuaSdkType.getByteCodeCompilerExecutable(homePath).exists()) {
                     e.getPresentation().setEnabled(true);
                     break;
                 }
@@ -80,14 +81,14 @@ public class GenerateLuaListingAction extends AnAction {
         Module module = e.getData(LangDataKeys.MODULE);
         assert module != null;
 
-        Sdk    sdk = LuaSdkType.findLuaSdk(module);
+        Sdk    sdk = LuaModuleUtil.findLuaSdk(module);
         assert sdk != null;
 
         final String homePath = sdk.getHomePath();
         if (homePath == null) return;
 
-        String path = LuaSdkType.getByteCodeCompilerExecutable(homePath).getParent();
-        String exePath = LuaSdkType.getTopLevelExecutable(homePath).getAbsolutePath();
+        String path = BaseLuaSdkType.getByteCodeCompilerExecutable(homePath).getParent();
+        String exePath = BaseLuaSdkType.getTopLevelExecutable(homePath).getAbsolutePath();
 
         PsiFile currfile = e.getData(LangDataKeys.PSI_FILE);
         if (currfile == null || !(currfile instanceof LuaPsiFile)) return;
