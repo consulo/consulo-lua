@@ -17,6 +17,7 @@
 package com.sylvanaar.idea.Lua.luaj;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ComponentAdapter;
@@ -38,8 +39,11 @@ import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
 import com.google.common.base.Charsets;
+import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.ui.JBColor;
+import com.intellij.util.ui.UIUtil;
 import jsyntaxpane.lexers.LuaLexer;
 import se.krka.kahlua.j2se.interpreter.History;
 import se.krka.kahlua.j2se.interpreter.InputTerminal;
@@ -72,13 +76,18 @@ public class LuaJInterpreter extends JPanel
 		// create a Lua engine
 		_G = JsePlatform.debugGlobals();
 
-		final InputTerminal input = new InputTerminal(JBColor.BLACK);
+		Color consoleColor = JBColor.BLACK;
+		if(UIUtil.isUnderDarkBuildInLaf())
+		{
+			consoleColor = EditorColorsManager.getInstance().getGlobalScheme().getColor(ConsoleViewContentType.CONSOLE_BACKGROUND_KEY);
+		}
+		final InputTerminal input = new InputTerminal(consoleColor);
 
 		final KahluaKit kit = new KahluaKit(new LuaLexer());
 		JSyntaxUtil.installSyntax(input, true, kit);
 		//new AutoComplete(input, platform, env);
 
-		terminal = new OutputTerminal(JBColor.BLACK, input.getFont(), input);
+		terminal = new OutputTerminal(consoleColor, input.getFont(), input);
 		terminal.setPreferredSize(new Dimension(800, 400));
 		terminal.addKeyListener(new KeyListener()
 		{
