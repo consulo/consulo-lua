@@ -17,7 +17,6 @@
 package org.mustbe.consulo.lua.module.extension;
 
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import org.consulo.module.extension.MutableModuleExtensionWithSdk;
 import org.consulo.module.extension.MutableModuleInheritableNamedPointer;
@@ -27,7 +26,8 @@ import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.RequiredDispatchThread;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ModuleRootLayer;
-import com.intellij.openapi.ui.VerticalFlowLayout;
+import com.intellij.util.ui.JBUI;
+import com.intellij.util.ui.components.VerticalLayoutPanel;
 
 /**
  * @author VISTALL
@@ -53,9 +53,9 @@ public class LuaMutableModuleExtension extends LuaModuleExtension implements
 	@Override
 	public JComponent createConfigurablePanel(@Nullable Runnable runnable)
 	{
-		JPanel panel = new JPanel(new VerticalFlowLayout());
-		panel.add(ModuleExtensionSdkBoxBuilder.createAndDefine(this, runnable).build());
-		return panel;
+		VerticalLayoutPanel verticalLayoutPanel = JBUI.Panels.verticalPanel();
+		verticalLayoutPanel.addComponent(ModuleExtensionSdkBoxBuilder.createAndDefine(this, runnable).build());
+		return verticalLayoutPanel;
 	}
 
 	@Override
