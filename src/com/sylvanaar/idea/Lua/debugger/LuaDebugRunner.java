@@ -16,6 +16,9 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.mustbe.consulo.RequiredReadAction;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.configurations.RunProfile;
@@ -26,14 +29,11 @@ import com.intellij.execution.runners.GenericProgramRunner;
 import com.intellij.execution.ui.RunContentDescriptor;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.openapi.project.Project;
 import com.intellij.xdebugger.XDebugProcess;
 import com.intellij.xdebugger.XDebugProcessStarter;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebuggerManager;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,14 +56,15 @@ public class LuaDebugRunner extends GenericProgramRunner {
 
   @Nullable
   @Override
-  protected RunContentDescriptor doExecute(Project project, RunProfileState state, RunContentDescriptor runContentDescriptor, ExecutionEnvironment env) throws ExecutionException {
+  @RequiredReadAction
+  protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env) throws ExecutionException {
     FileDocumentManager.getInstance().saveAllDocuments();
 
     if (log.isDebugEnabled()) log.debug("Starting LuaDebugProcess");
 
     executionResult = state.execute(env.getExecutor(), this);
 
-    XDebugSession session = XDebuggerManager.getInstance(project).startSession(this, env, runContentDescriptor, processStarter);
+    XDebugSession session = XDebuggerManager.getInstance(env.getProject()).startSession(env, processStarter);
 
     return session.getRunContentDescriptor();
   }
