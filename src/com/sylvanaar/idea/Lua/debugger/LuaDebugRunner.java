@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.debugger;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.RequiredReadAction;
+import org.mustbe.consulo.RequiredDispatchThread;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.configurations.RunProfile;
@@ -27,7 +27,6 @@ import com.intellij.execution.executors.DefaultDebugExecutor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.runners.GenericProgramRunner;
 import com.intellij.execution.ui.RunContentDescriptor;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.xdebugger.XDebugProcess;
 import com.intellij.xdebugger.XDebugProcessStarter;
@@ -41,45 +40,40 @@ import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
  * Date: 3/19/11
  * Time: 6:42 PM
  */
-public class LuaDebugRunner extends GenericProgramRunner {
-  private static final Logger log = Logger.getInstance("Lua.LuaDebugRunner");
+public class LuaDebugRunner extends GenericProgramRunner
+{
+	@Nullable
+	@Override
+	@RequiredDispatchThread
+	protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env) throws ExecutionException
+	{
+		FileDocumentManager.getInstance().saveAllDocuments();
 
-  ExecutionResult executionResult;
+		final ExecutionResult executionResult = state.execute(env.getExecutor(), this);
 
-  private final XDebugProcessStarter processStarter = new XDebugProcessStarter() {
-    @NotNull
-    @Override
-    public XDebugProcess start(@NotNull XDebugSession session) throws ExecutionException {
-      return new LuaDebugProcess(session, executionResult);
-    }
-  };
+		XDebugSession session = XDebuggerManager.getInstance(env.getProject()).startSession(env, new XDebugProcessStarter()
+		{
+			@NotNull
+			@Override
+			public XDebugProcess start(@NotNull XDebugSession session) throws ExecutionException
+			{
+				return new LuaDebugProcess(session, executionResult);
+			}
+		});
 
-  @Nullable
-  @Override
-  @RequiredReadAction
-  protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env) throws ExecutionException {
-    FileDocumentManager.getInstance().saveAllDocuments();
+		return session.getRunContentDescriptor();
+	}
 
-    if (log.isDebugEnabled()) log.debug("Starting LuaDebugProcess");
+	@NotNull
+	@Override
+	public String getRunnerId()
+	{
+		return "com.sylvanaar.idea.Lua.debugger.LuaDebugRunner";
+	}
 
-    executionResult = state.execute(env.getExecutor(), this);
-
-    XDebugSession session = XDebuggerManager.getInstance(env.getProject()).startSession(env, processStarter);
-
-    return session.getRunContentDescriptor();
-  }
-
-  @NotNull
-  @Override
-  public String getRunnerId() {
-    return "com.sylvanaar.idea.Lua.debugger.LuaDebugRunner";
-  }
-
-  @Override
-  public boolean canRun(@NotNull java.lang.String executorId, @NotNull RunProfile profile) {
-    if (!(executorId.equals(DefaultDebugExecutor.EXECUTOR_ID) && profile instanceof LuaRunConfiguration))
-      return false;
-
-    return true;
-  }
+	@Override
+	public boolean canRun(@NotNull java.lang.String executorId, @NotNull RunProfile profile)
+	{
+		return executorId.equals(DefaultDebugExecutor.EXECUTOR_ID) && profile instanceof LuaRunConfiguration;
+	}
 }
