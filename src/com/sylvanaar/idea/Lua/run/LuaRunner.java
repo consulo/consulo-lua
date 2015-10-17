@@ -16,6 +16,7 @@
 
 package com.sylvanaar.idea.Lua.run;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.configurations.RunProfile;
@@ -26,8 +27,6 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.runners.RunContentBuilder;
 import com.intellij.execution.ui.RunContentDescriptor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,13 +47,13 @@ public class LuaRunner extends DefaultProgramRunner {
   }
 
   @Override
-  protected RunContentDescriptor doExecute(Project project, RunProfileState state, RunContentDescriptor contentToReuse, ExecutionEnvironment env) throws ExecutionException {
+  protected RunContentDescriptor doExecute(RunProfileState state, ExecutionEnvironment env) throws ExecutionException {
     FileDocumentManager.getInstance().saveAllDocuments();
     ExecutionResult executionResult = state.execute(env.getExecutor(), this);
     // if (executionResult == null) return null;
 
-    final RunContentBuilder contentBuilder = new RunContentBuilder(this, executionResult, env);
+    final RunContentBuilder contentBuilder = new RunContentBuilder(executionResult, env);
 
-    return contentBuilder.showRunContent(contentToReuse);
+    return contentBuilder.showRunContent(env.getContentToReuse());
   }
 }
