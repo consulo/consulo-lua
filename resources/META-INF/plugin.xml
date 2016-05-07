@@ -219,8 +219,7 @@
 
 		<!-- Live Templates -->
 		<liveTemplateContext implementation="com.sylvanaar.idea.Lua.lang.template.LuaTemplateContextType"/>
-		<defaultLiveTemplatesProvider
-				implementation="com.sylvanaar.idea.Lua.lang.template.LuaDefaultLiveTemplateProvider"/>
+		<bundleLiveTemplateSet path="liveTemplates/lua" />
 
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFileMacro"/>
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFunctionMacro"/>
