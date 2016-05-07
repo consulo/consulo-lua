@@ -49,8 +49,8 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
-import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
-import org.mustbe.consulo.lua.bundle.LuaSdkType;
+import consulo.lua.bundle.BaseLuaSdkType;
+import consulo.lua.bundle.LuaSdkType;
 
 public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurationModule> implements CommonLuaRunConfigurationParams,
 		LuaRunConfigurationParams

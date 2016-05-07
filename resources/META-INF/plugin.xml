@@ -63,10 +63,6 @@
 		<!-- Error reporter-->
 		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
 
-		<!-- Facet -->
-		<!--<facetType id="Lua" implementation="com.sylvanaar.idea.Lua.settings.facet.LuaFacetType" />-->
-		<!--<frameworkSupport id="Lua" implementation="com.sylvanaar.idea.Lua.settings.facet.LuaFacetFrameworkSupportProvider" />-->
-
 		<!-- Repl Window -->
 		<!--<toolWindow id="Kahlua" anchor="right" icon="/icons/logo_13x13.png"-->
 		<!--factoryClass="com.sylvanaar.idea.Lua.kahlua.KahLuaInterpreterWindowFactory"/>-->
@@ -152,8 +148,8 @@
 								 allowMixin="true"
 								 icon="/icons/Lua.png"
 								 name="Lua"
-								 immutableClass="org.mustbe.consulo.lua.module.extension.LuaModuleExtension"
-								 mutableClass="org.mustbe.consulo.lua.module.extension.LuaMutableModuleExtension"/>
+								 immutableClass="consulo.lua.module.extension.LuaModuleExtension"
+								 mutableClass="consulo.lua.module.extension.LuaMutableModuleExtension"/>
 		<lang.parserDefinition language="Lua"
 							   implementationClass="com.sylvanaar.idea.Lua.lang.parser.LuaParserDefinition"/>
 
@@ -200,10 +196,10 @@
 										implementationClass="com.sylvanaar.idea.Lua.codeInsight.LuaLineMarkerProvider"/>
 
 
-		<sdkType implementation="org.mustbe.consulo.lua.bundle.BaseLuaSdkType"/>
-		<sdkType implementation="org.mustbe.consulo.lua.bundle.KahluaSdkType"/>
-		<sdkType implementation="org.mustbe.consulo.lua.bundle.LuaJSdkType"/>
-		<predefinedBundlesProvider implementation="org.mustbe.consulo.lua.bundle.LuaPredefinedBundlesProvider" />
+		<sdkType implementation="consulo.lua.bundle.BaseLuaSdkType"/>
+		<sdkType implementation="consulo.lua.bundle.KahluaSdkType"/>
+		<sdkType implementation="consulo.lua.bundle.LuaJSdkType"/>
+		<predefinedBundlesProvider implementation="consulo.lua.bundle.LuaPredefinedBundlesProvider" />
 
 		<consoleFilterProvider implementation="com.sylvanaar.idea.Lua.run.LuaLineErrorFilterProvider"/>
 

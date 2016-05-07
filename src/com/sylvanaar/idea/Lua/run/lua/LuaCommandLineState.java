@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.run.lua;
 
-import static org.mustbe.consulo.lua.bundle.BaseLuaSdkType.getTopLevelExecutable;
+import static consulo.lua.bundle.BaseLuaSdkType.getTopLevelExecutable;
 
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
@@ -30,7 +30,7 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.text.StringUtil;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
+import consulo.lua.bundle.BaseLuaSdkType;
 
 public class LuaCommandLineState extends CommandLineState {
     public ExecutionEnvironment getExecutionEnvironment() {

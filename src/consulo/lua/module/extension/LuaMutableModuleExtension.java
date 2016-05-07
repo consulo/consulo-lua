@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.lua.module.extension;
+package consulo.lua.module.extension;
 
 import javax.swing.JComponent;
 

@@ -37,7 +37,7 @@ import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.CharsetToolkit;
 import com.intellij.util.ArrayUtil;
-import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
+import consulo.lua.bundle.BaseLuaSdkType;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 
 /**

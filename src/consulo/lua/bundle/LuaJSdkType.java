@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.lua.bundle;
+package consulo.lua.bundle;
 
 import org.consulo.lombok.annotations.LazyInstance;
 import org.jetbrains.annotations.NotNull;
@@ -22,25 +22,25 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import com.sylvanaar.idea.Lua.run.kahlua.KahluaCommandLineState;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
+import com.sylvanaar.idea.Lua.run.luaj.LuaJExternalCommandLineState;
 
 /**
  * @author VISTALL
  * @since 10.03.2015
  */
-public class KahluaSdkType extends LuaSdkType
+public class LuaJSdkType extends LuaSdkType
 {
 	@NotNull
 	@LazyInstance
-	public static KahluaSdkType getInstance()
+	public static LuaJSdkType getInstance()
 	{
-		return EP_NAME.findExtension(KahluaSdkType.class);
+		return EP_NAME.findExtension(LuaJSdkType.class);
 	}
 
-	public KahluaSdkType()
+	public LuaJSdkType()
 	{
-		super("KAHLUA_SDK");
+		super("LUAJ_SDK");
 	}
 
 	@Override
@@ -72,7 +72,7 @@ public class KahluaSdkType extends LuaSdkType
 	@Override
 	public String getPresentableName()
 	{
-		return "Kahlua";
+		return "LuaJ";
 	}
 
 	@NotNull
@@ -84,6 +84,7 @@ public class KahluaSdkType extends LuaSdkType
 		if(isDebugger)
 		{
 			throw new ExecutionException("Debugger is not supported");
-		} return new KahluaCommandLineState(luaRunConfiguration, env);
+		}
+		return new LuaJExternalCommandLineState(luaRunConfiguration, env);
 	}
 }

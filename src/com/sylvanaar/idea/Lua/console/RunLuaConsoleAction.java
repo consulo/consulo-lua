@@ -27,7 +27,7 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
-import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
+import consulo.lua.bundle.BaseLuaSdkType;
 
 /**
  * Created by IntelliJ IDEA.

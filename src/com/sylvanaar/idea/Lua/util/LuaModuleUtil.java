@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import org.mustbe.consulo.lua.module.extension.LuaModuleExtension;
+import consulo.lua.module.extension.LuaModuleExtension;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.projectRoots.Sdk;

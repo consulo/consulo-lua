@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.actions;
 
-import org.mustbe.consulo.lua.bundle.BaseLuaSdkType;
+import consulo.lua.bundle.BaseLuaSdkType;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.execution.ui.ConsoleViewContentType;

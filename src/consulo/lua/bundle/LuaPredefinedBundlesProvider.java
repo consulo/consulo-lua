@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.mustbe.consulo.lua.bundle;
+package consulo.lua.bundle;
 
 import java.util.HashMap;
 import java.util.Map;
