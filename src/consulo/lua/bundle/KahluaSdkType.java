@@ -16,7 +16,6 @@
 
 package consulo.lua.bundle;
 
-import org.consulo.lombok.annotations.LazyInstance;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.execution.ExecutionException;
@@ -24,6 +23,7 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.kahlua.KahluaCommandLineState;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
+import consulo.lombok.annotations.Lazy;
 
 /**
  * @author VISTALL
@@ -32,7 +32,7 @@ import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 public class KahluaSdkType extends LuaSdkType
 {
 	@NotNull
-	@LazyInstance
+	@Lazy
 	public static KahluaSdkType getInstance()
 	{
 		return EP_NAME.findExtension(KahluaSdkType.class);

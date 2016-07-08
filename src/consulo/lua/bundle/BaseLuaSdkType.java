@@ -20,7 +20,6 @@ import java.io.File;
 import java.util.Collection;
 import java.util.List;
 
-import org.consulo.lombok.annotations.LazyInstance;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +32,7 @@ import com.sylvanaar.idea.Lua.run.LuaDebugCommandlineState;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
+import consulo.lombok.annotations.Lazy;
 
 /**
  * @author Maxim.Manuylov
@@ -41,7 +41,7 @@ import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
 public class BaseLuaSdkType extends LuaSdkType
 {
 	@NotNull
-	@LazyInstance
+	@Lazy
 	public static BaseLuaSdkType getInstance()
 	{
 		return EP_NAME.findExtension(BaseLuaSdkType.class);
