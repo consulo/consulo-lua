@@ -20,9 +20,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jetbrains.annotations.NotNull;
-import org.mustbe.consulo.bundle.PredefinedBundlesProvider;
 import com.intellij.openapi.projectRoots.impl.SdkImpl;
 import com.intellij.util.Consumer;
+import consulo.bundle.PredefinedBundlesProvider;
 
 /**
  * @author VISTALL

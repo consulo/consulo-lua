@@ -16,24 +16,22 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.parser;
 
-import com.intellij.lang.*;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.lang.ASTNode;
+import com.intellij.lang.Language;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.lang.PsiBuilderFactory;
+import com.intellij.lang.PsiParser;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.ILazyParseableElementType;
-import com.intellij.util.LanguageVersionUtil;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocElementTypeImpl;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.LuaDocCommentImpl;
-import org.jetbrains.annotations.NotNull;
-
-
-
-
-
-
+import consulo.lang.util.LanguageVersionUtil;
 
 /**
  * @author ilyas

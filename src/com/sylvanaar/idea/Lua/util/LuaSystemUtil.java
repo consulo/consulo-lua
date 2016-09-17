@@ -16,6 +16,14 @@
 
 package com.sylvanaar.idea.Lua.util;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.impl.ConsoleViewImpl;
@@ -37,10 +45,6 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.wm.ex.ToolWindowManagerEx;
 import com.intellij.openapi.wm.ex.ToolWindowManagerListener;
 import com.intellij.ui.content.impl.ContentImpl;
-import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.util.*;
 
 /**
  * @author Maxim.Manuylov
@@ -80,7 +84,7 @@ public class LuaSystemUtil {
     @NotNull
     public static ProcessOutput execute(@NotNull final GeneralCommandLine cmd,
                                         final int timeout) throws ExecutionException {
-        final CapturingProcessHandler processHandler = new CapturingProcessHandler(cmd.createProcess());
+        final CapturingProcessHandler processHandler = new CapturingProcessHandler(cmd);
         return timeout < 0 ? processHandler.runProcess() : processHandler.runProcess(timeout);
     }
 

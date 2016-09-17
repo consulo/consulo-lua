@@ -2,7 +2,7 @@
   <artifact build-on-make="true" name="dist">
     <output-path>$PROJECT_DIR$/out/artifacts/dist</output-path>
     <root id="root">
-      <element id="directory" name="lua">
+      <element id="directory" name="consulo.lua">
         <element id="directory" name="lib">
           <element id="zip-archive" name="lua.jar">
             <element id="module-output" name="consulo-lua" />

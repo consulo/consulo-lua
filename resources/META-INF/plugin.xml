@@ -15,7 +15,7 @@
   -->
 
 <idea-plugin>
-	<id>org.mustbe.consulo.lua</id>
+	<id>consulo.lua</id>
 	<name>Lua</name>
 	<version>SNAPSHOT</version>
 	<category>Custom Languages</category>
@@ -35,11 +35,11 @@
 		<!--<action id="trigger.exception" class="com.sylvanaar.idea.errorreporting.TriggerExceptionAction" text="Trigger Exception">-->
 		<!--<add-to-group group-id="NewGroup" relative-to-action="NewFile" anchor="after"/>-->
 		<!--</action>-->
-		<action id="com.sylvanaar.idea.Lua.console.RunLuaConsoleAction"
+		<!--<action id="com.sylvanaar.idea.Lua.console.RunLuaConsoleAction"
 				class="com.sylvanaar.idea.Lua.console.RunLuaConsoleAction"
 				text="Run Lua Console..." description="Run the Lua console">
 			<add-to-group group-id="ToolsMenu" anchor="last"/>
-		</action>
+		</action> -->
 		<action id="com.sylvanaar.idea.Lua.actions.GenerateLuaListingAction"
 				class="com.sylvanaar.idea.Lua.actions.GenerateLuaListingAction"
 				text="Generate Lua Listing"
@@ -60,9 +60,6 @@
 	</extensions>
 
 	<extensions defaultExtensionNs="com.intellij">
-		<!-- Error reporter-->
-		<errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
-
 		<!-- Repl Window -->
 		<!--<toolWindow id="Kahlua" anchor="right" icon="/icons/logo_13x13.png"-->
 		<!--factoryClass="com.sylvanaar.idea.Lua.kahlua.KahLuaInterpreterWindowFactory"/>-->

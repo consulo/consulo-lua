@@ -18,23 +18,22 @@ package consulo.lua.module.extension;
 
 import javax.swing.JComponent;
 
-import org.consulo.module.extension.MutableModuleExtensionWithSdk;
-import org.consulo.module.extension.MutableModuleInheritableNamedPointer;
-import org.consulo.module.extension.ui.ModuleExtensionSdkBoxBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.RequiredDispatchThread;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ModuleRootLayer;
 import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.components.VerticalLayoutPanel;
+import consulo.annotations.RequiredDispatchThread;
+import consulo.extension.ui.ModuleExtensionSdkBoxBuilder;
+import consulo.module.extension.MutableModuleExtensionWithSdk;
+import consulo.module.extension.MutableModuleInheritableNamedPointer;
+import consulo.roots.ModuleRootLayer;
+import consulo.util.ui.components.VerticalLayoutPanel;
 
 /**
  * @author VISTALL
  * @since 12.07.13.
  */
-public class LuaMutableModuleExtension extends LuaModuleExtension implements
-		MutableModuleExtensionWithSdk<LuaModuleExtension>
+public class LuaMutableModuleExtension extends LuaModuleExtension implements MutableModuleExtensionWithSdk<LuaModuleExtension>
 {
 	public LuaMutableModuleExtension(@NotNull String id, @NotNull ModuleRootLayer module)
 	{

@@ -16,25 +16,25 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.parser.elements;
 
+import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_PLAIN_VALUE_TOKEN;
+import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_VALUE;
+
+import java.util.Arrays;
+import java.util.Set;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilderFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.intellij.util.LanguageVersionUtil;
 import com.intellij.util.containers.HashSet;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.ILuaDocElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
 import com.sylvanaar.idea.Lua.lang.parser.util.ParserUtils;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
-import java.util.Set;
-
-import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_PLAIN_VALUE_TOKEN;
-import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_VALUE;
+import consulo.lang.util.LanguageVersionUtil;
 
 /**
  * @author ilyas

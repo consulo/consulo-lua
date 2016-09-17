@@ -18,7 +18,6 @@ package com.sylvanaar.idea.Lua.debugger;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.RequiredDispatchThread;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.configurations.RunProfile;
@@ -33,6 +32,7 @@ import com.intellij.xdebugger.XDebugProcessStarter;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebuggerManager;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
+import consulo.annotations.RequiredDispatchThread;
 
 /**
  * Created by IntelliJ IDEA.

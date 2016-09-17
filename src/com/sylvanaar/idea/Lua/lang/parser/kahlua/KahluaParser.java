@@ -15,20 +15,26 @@
  */
 package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 
-import com.intellij.diagnostic.*;
-import com.intellij.lang.*;
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.openapi.extensions.*;
-import com.intellij.openapi.progress.*;
-import com.intellij.openapi.vfs.*;
-import com.intellij.psi.*;
-import com.intellij.psi.tree.*;
-import com.sylvanaar.idea.Lua.lang.lexer.*;
-import com.sylvanaar.idea.Lua.lang.parser.*;
-import org.jetbrains.annotations.*;
-import se.krka.kahlua.vm.*;
+import java.io.IOException;
+import java.io.Reader;
 
-import java.io.*;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.diagnostic.PluginException;
+import com.intellij.lang.ASTNode;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.lang.PsiParser;
+import com.intellij.lang.WhitespaceSkippedCallback;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.extensions.PluginId;
+import com.intellij.openapi.progress.ProcessCanceledException;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.tree.IElementType;
+import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.Lua.lang.parser.LuaPsiBuilder;
+import consulo.lang.LanguageVersion;
+import se.krka.kahlua.vm.Prototype;
 
 
 public class KahluaParser implements PsiParser, LuaElementTypes {

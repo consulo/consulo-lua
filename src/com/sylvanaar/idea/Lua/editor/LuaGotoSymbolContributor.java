@@ -16,7 +16,10 @@
 
 package com.sylvanaar.idea.Lua.editor;
 
-import com.intellij.ide.IconDescriptorUpdaters;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import com.intellij.navigation.ChooseByNameContributor;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.project.Project;
@@ -24,10 +27,7 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.ResolveUtil;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import consulo.ide.IconDescriptorUpdaters;
 
 /**
  * Created by IntelliJ IDEA.
