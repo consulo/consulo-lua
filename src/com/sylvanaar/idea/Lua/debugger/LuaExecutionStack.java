@@ -16,12 +16,12 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.intellij.openapi.project.Project;
 import com.intellij.xdebugger.frame.XExecutionStack;
 import com.intellij.xdebugger.frame.XStackFrame;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -53,13 +53,13 @@ public class LuaExecutionStack extends XExecutionStack {
     }
 
     @Override
-    public void computeStackFrames(int firstFrameIndex, XStackFrameContainer container) {
+    public void computeStackFrames(XStackFrameContainer container) {
         String[] frames = myEncodedStackFrame.split("#");
 
 
         List<LuaStackFrame> frameList = new ArrayList<LuaStackFrame>();
 
-        int reverseIndex = frames.length - 1 - firstFrameIndex;
+        int reverseIndex = frames.length - 1;
         if (frames.length > 0) {
             for (int i = reverseIndex; i > 0; i--) {
                 String[] frameData = frames[i].split("[|]");
