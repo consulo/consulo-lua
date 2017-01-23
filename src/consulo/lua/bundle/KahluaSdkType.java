@@ -23,7 +23,6 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.kahlua.KahluaCommandLineState;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
-import consulo.lombok.annotations.Lazy;
 
 /**
  * @author VISTALL
@@ -32,7 +31,6 @@ import consulo.lombok.annotations.Lazy;
 public class KahluaSdkType extends LuaSdkType
 {
 	@NotNull
-	@Lazy
 	public static KahluaSdkType getInstance()
 	{
 		return EP_NAME.findExtension(KahluaSdkType.class);

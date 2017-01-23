@@ -23,7 +23,6 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.run.luaj.LuaJExternalCommandLineState;
-import consulo.lombok.annotations.Lazy;
 
 /**
  * @author VISTALL
@@ -32,7 +31,6 @@ import consulo.lombok.annotations.Lazy;
 public class LuaJSdkType extends LuaSdkType
 {
 	@NotNull
-	@Lazy
 	public static LuaJSdkType getInstance()
 	{
 		return EP_NAME.findExtension(LuaJSdkType.class);

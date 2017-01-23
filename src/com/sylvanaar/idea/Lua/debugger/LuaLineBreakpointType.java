@@ -23,7 +23,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
 import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
-import consulo.lombok.annotations.Lazy;
 import consulo.lua.debugger.breakpoint.LuaLineBreakpointProperties;
 
 /**
@@ -35,7 +34,6 @@ import consulo.lua.debugger.breakpoint.LuaLineBreakpointProperties;
 public class LuaLineBreakpointType extends XLineBreakpointType<LuaLineBreakpointProperties>
 {
 	@NotNull
-	@Lazy
 	public static LuaLineBreakpointType getInstance()
 	{
 		return EXTENSION_POINT_NAME.findExtension(LuaLineBreakpointType.class);

@@ -32,7 +32,6 @@ import com.sylvanaar.idea.Lua.run.LuaDebugCommandlineState;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
-import consulo.lombok.annotations.Lazy;
 
 /**
  * @author Maxim.Manuylov
@@ -41,7 +40,6 @@ import consulo.lombok.annotations.Lazy;
 public class BaseLuaSdkType extends LuaSdkType
 {
 	@NotNull
-	@Lazy
 	public static BaseLuaSdkType getInstance()
 	{
 		return EP_NAME.findExtension(BaseLuaSdkType.class);
