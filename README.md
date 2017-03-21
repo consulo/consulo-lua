@@ -1,1 +1,1 @@
-![Build Status](http://must-be.org/vulcan/statusImage?name=consulo-lua)
+[![Build Status](https://ci.consulo.io/job/consulo-lua/badge/icon)](https://ci.consulo.io/job/consulo-lua/)
