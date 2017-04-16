@@ -29,13 +29,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
  * Time: 5:33:53 PM
  */
 
-@State(
-        name = "LuaApplicationSettings",
-        storages = {
-                @Storage(id = "other",
-                        file = "$APP_CONFIG$/other.xml")
-        }
-)
+@State(name = "LuaApplicationSettings", storages = @Storage("lua.xml"))
 public class LuaApplicationSettings implements PersistentStateComponent<LuaApplicationSettings> {
     public boolean INCLUDE_ALL_FIELDS_IN_COMPLETIONS = false;
     public boolean SHOW_TAIL_CALLS_IN_GUTTER = true;
