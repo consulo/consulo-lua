@@ -67,7 +67,7 @@
 					factoryClass="com.sylvanaar.idea.Lua.luaj.LuaJInterpreterWindowFactory" requireModuleExtensions="lua"/>
 
 		<!-- Application Configuration -->
-		<applicationConfigurable instance="com.sylvanaar.idea.Lua.options.LuaOptionsPanel"/>
+		<applicationConfigurable id="lua" displayName="Lua" parentId="editor" instance="com.sylvanaar.idea.Lua.options.LuaOptionsPanel"/>
 		<applicationService serviceImplementation="com.sylvanaar.idea.Lua.options.LuaApplicationSettings"/>
 
 		<fileTypeFactory implementation="com.sylvanaar.idea.Lua.LuaFileTypeLoader"/>
@@ -189,13 +189,15 @@
 		<enterHandlerDelegate implementation="com.sylvanaar.idea.Lua.lang.luadoc.editor.LuaDocEnterHandlerDelegate"/>
 
 		<codeInsight.lineMarkerProvider language="Lua"
-										implementationClass="com.sylvanaar.idea.Lua.codeInsight.LuaLineMarkerProvider"/>
+										implementationClass="com.sylvanaar.idea.Lua.codeInsight.LuaTailCallLineMarkerProvider"/>
+		<codeInsight.lineMarkerProvider language="Lua"
+										implementationClass="com.sylvanaar.idea.Lua.codeInsight.LuaMethodSeparatorMarkerProvider"/>
 
 
 		<sdkType implementation="consulo.lua.bundle.BaseLuaSdkType"/>
 		<sdkType implementation="consulo.lua.bundle.KahluaSdkType"/>
 		<sdkType implementation="consulo.lua.bundle.LuaJSdkType"/>
-		<predefinedBundlesProvider implementation="consulo.lua.bundle.LuaPredefinedBundlesProvider" />
+		<predefinedBundlesProvider implementation="consulo.lua.bundle.LuaPredefinedBundlesProvider"/>
 
 		<consoleFilterProvider implementation="com.sylvanaar.idea.Lua.run.LuaLineErrorFilterProvider"/>
 
@@ -211,12 +213,12 @@
 
 		<!-- Live Templates -->
 		<liveTemplateContext implementation="com.sylvanaar.idea.Lua.lang.template.LuaTemplateContextType"/>
-		<bundleLiveTemplateSet path="liveTemplates/lua" />
+		<bundleLiveTemplateSet path="liveTemplates/lua"/>
 
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFileMacro"/>
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFunctionMacro"/>
 
-		<internalFileTemplate name="Lua Script" />
+		<internalFileTemplate name="Lua Script"/>
 		<!-- control -->
 		<intentionAction>
 			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>

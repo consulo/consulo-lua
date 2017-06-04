@@ -16,16 +16,18 @@
 
 package com.sylvanaar.idea.Lua.options;
 
-import com.intellij.codeInsight.daemon.*;
-import com.intellij.openapi.options.*;
-import com.intellij.openapi.project.*;
-import com.intellij.psi.*;
-import com.sylvanaar.idea.Lua.*;
-import org.apache.log4j.*;
-import org.jetbrains.annotations.*;
+import javax.swing.JCheckBox;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
-import javax.swing.*;
-import java.awt.event.*;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.Nls;
+import com.intellij.openapi.options.BaseConfigurable;
+import com.intellij.openapi.options.Configurable;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.psi.PsiManager;
+import com.sylvanaar.idea.Lua.LuaFileType;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,97 +35,93 @@ import java.awt.event.*;
  * Date: Apr 20, 2010
  * Time: 7:08:52 PM
  */
-public class LuaOptionsPanel extends BaseConfigurable implements Configurable {
-    static final Logger log = Logger.getLogger(LuaOptionsPanel.class);
+public class LuaOptionsPanel extends BaseConfigurable implements Configurable
+{
+	static final Logger log = Logger.getLogger(LuaOptionsPanel.class);
 
-    public LuaOptionsPanel() {
-        addAdditionalCompletionsCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setModified(isModified(LuaApplicationSettings.getInstance()));
-            }
-        });
-        enableTypeInference.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setModified(isModified(LuaApplicationSettings.getInstance()));
-            }
-        });
-        checkBoxTailCalls.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setModified(isModified(LuaApplicationSettings.getInstance()));
-            }
-        });
-    }
+	public LuaOptionsPanel()
+	{
+		addAdditionalCompletionsCheckBox.addActionListener(e -> setModified(isModified(LuaApplicationSettings.getInstance())));
+		enableTypeInference.addActionListener(e -> setModified(isModified(LuaApplicationSettings.getInstance())));
+	}
 
-    JPanel getMainPanel() {
-        return mainPanel;
-    }
+	JPanel getMainPanel()
+	{
+		return mainPanel;
+	}
 
-    private JPanel mainPanel;
-    private JCheckBox addAdditionalCompletionsCheckBox;
-    private JCheckBox enableTypeInference;
-    private JCheckBox checkBoxTailCalls;
+	private JPanel mainPanel;
+	private JCheckBox addAdditionalCompletionsCheckBox;
+	private JCheckBox enableTypeInference;
 
-    @Override
-    public JComponent createComponent() {
-        setData(LuaApplicationSettings.getInstance());
-        return getMainPanel();
-    }
+	@Override
+	public JComponent createComponent()
+	{
+		setData(LuaApplicationSettings.getInstance());
+		return getMainPanel();
+	}
 
-    public void apply() {
-        getData(LuaApplicationSettings.getInstance());
-        setModified(false);
-    }
+	public void apply()
+	{
+		getData(LuaApplicationSettings.getInstance());
+		setModified(false);
+	}
 
-    public void reset() {
-        setData(LuaApplicationSettings.getInstance());
-    }
+	public void reset()
+	{
+		setData(LuaApplicationSettings.getInstance());
+	}
 
-    @Override
-    public void disposeUIResources() {
+	@Override
+	public void disposeUIResources()
+	{
 
-    }
+	}
 
-    @Nls
-    @Override
-    public String getDisplayName() {
-        return LuaFileType.LUA;
-    }
+	@Nls
+	@Override
+	public String getDisplayName()
+	{
+		return LuaFileType.LUA;
+	}
 
-    @Override
-    public String getHelpTopic() {
-        return null;
-    }
+	@Override
+	public String getHelpTopic()
+	{
+		return null;
+	}
 
-    public void setData(LuaApplicationSettings data) {
-        addAdditionalCompletionsCheckBox.setSelected(data.INCLUDE_ALL_FIELDS_IN_COMPLETIONS);
-        enableTypeInference.setSelected(data.ENABLE_TYPE_INFERENCE);
-        checkBoxTailCalls.setSelected(data.SHOW_TAIL_CALLS_IN_GUTTER);
-    }
+	public void setData(LuaApplicationSettings data)
+	{
+		addAdditionalCompletionsCheckBox.setSelected(data.INCLUDE_ALL_FIELDS_IN_COMPLETIONS);
+		enableTypeInference.setSelected(data.ENABLE_TYPE_INFERENCE);
+	}
 
-    public void getData(LuaApplicationSettings data) {
-        if (checkBoxTailCalls.isSelected() != data.SHOW_TAIL_CALLS_IN_GUTTER) {
-            data.SHOW_TAIL_CALLS_IN_GUTTER = checkBoxTailCalls.isSelected();
+	public void getData(LuaApplicationSettings data)
+	{
 
-            for(Project project : ProjectManager.getInstance().getOpenProjects())
-              DaemonCodeAnalyzer.getInstance(project).restart();
-        }
+		data.INCLUDE_ALL_FIELDS_IN_COMPLETIONS = addAdditionalCompletionsCheckBox.isSelected();
+		data.ENABLE_TYPE_INFERENCE = enableTypeInference.isSelected();
+		if(data.ENABLE_TYPE_INFERENCE)
+		{
+			for(Project project : ProjectManager.getInstance().getOpenProjects())
+			{
+				PsiManager.getInstance(project).dropResolveCaches();
+			}
+		}
+	}
 
-        data.INCLUDE_ALL_FIELDS_IN_COMPLETIONS = addAdditionalCompletionsCheckBox.isSelected();
-        data.ENABLE_TYPE_INFERENCE = enableTypeInference.isSelected();
-        if (data.ENABLE_TYPE_INFERENCE) {
-            for (Project project : ProjectManager.getInstance().getOpenProjects())
-                PsiManager.getInstance(project).dropResolveCaches();
-        }
-    }
+	public boolean isModified(LuaApplicationSettings data)
+	{
+		if(addAdditionalCompletionsCheckBox.isSelected() != data.INCLUDE_ALL_FIELDS_IN_COMPLETIONS)
+		{
+			return true;
+		}
+		if(enableTypeInference.isSelected() != data.ENABLE_TYPE_INFERENCE)
+		{
+			return true;
+		}
 
-    public boolean isModified(LuaApplicationSettings data) {
-        if (addAdditionalCompletionsCheckBox.isSelected() != data.INCLUDE_ALL_FIELDS_IN_COMPLETIONS) return true;
-        if (enableTypeInference.isSelected() != data.ENABLE_TYPE_INFERENCE) return true;
-        if (checkBoxTailCalls.isSelected() != data.SHOW_TAIL_CALLS_IN_GUTTER) return true;
-
-        return false;
-    }
+		return false;
+	}
 }
