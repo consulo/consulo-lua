@@ -142,7 +142,6 @@
 
 
 		<moduleExtensionProvider key="lua"
-								 allowMixin="true"
 								 icon="/icons/Lua.png"
 								 name="Lua"
 								 immutableClass="consulo.lua.module.extension.LuaModuleExtension"
