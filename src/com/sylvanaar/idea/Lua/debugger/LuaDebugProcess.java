@@ -16,6 +16,11 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
+import java.util.ArrayList;
+
+import javax.swing.SwingUtilities;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ui.ConsoleView;
@@ -32,11 +37,6 @@ import com.intellij.xdebugger.XSourcePosition;
 import com.intellij.xdebugger.breakpoints.XBreakpoint;
 import com.intellij.xdebugger.breakpoints.XBreakpointHandler;
 import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
-import org.apache.commons.lang.NotImplementedException;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.util.ArrayList;
 
 /**
  * Created by IntelliJ IDEA.
@@ -102,7 +102,7 @@ public class LuaDebugProcess extends XDebugProcess {
 
     @Override
     public void runToPosition(@NotNull XSourcePosition position) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     @Override

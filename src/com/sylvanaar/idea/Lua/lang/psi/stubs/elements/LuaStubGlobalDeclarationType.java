@@ -15,27 +15,27 @@
 */
 package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.openapi.util.*;
-import com.intellij.openapi.util.text.StringUtil;
-
-import com.intellij.psi.stubs.*;
-
-import com.intellij.util.io.*;
-
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.index.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-
-import org.apache.commons.lang.*;
+import java.io.IOException;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.io.*;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.util.Pair;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.psi.stubs.IndexSink;
+import com.intellij.psi.stubs.StubElement;
+import com.intellij.psi.stubs.StubInputStream;
+import com.intellij.psi.stubs.StubOutputStream;
+import com.intellij.util.io.StringRef;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaGlobalDeclarationImpl;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubUtils;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaGlobalDeclarationStubImpl;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobalDeclaration;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 
 
 /**
@@ -72,7 +72,7 @@ public class LuaStubGlobalDeclarationType extends LuaStubElementType<LuaGlobalDe
     LuaGlobalDeclaration psi, StubElement parentStub) {
         final LuaType luaType = psi.getLuaType();
         final byte[] bytes = (luaType instanceof LuaPrimitiveType) ? null
-                                                                   : SerializationUtils.serialize(luaType);
+                                                                   : LuaSerializationUtils.serialize(luaType);
 
         return new LuaGlobalDeclarationStubImpl(parentStub,
             StringRef.fromNullableString(psi.getName()),

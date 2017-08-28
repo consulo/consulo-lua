@@ -16,18 +16,24 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
-import com.intellij.openapi.util.*;
-import com.intellij.psi.stubs.*;
-import com.intellij.util.io.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.*;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import org.apache.commons.lang.*;
-import org.jetbrains.annotations.*;
+import java.io.IOException;
 
-import java.io.*;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.util.Pair;
+import com.intellij.psi.stubs.IndexSink;
+import com.intellij.psi.stubs.StubElement;
+import com.intellij.psi.stubs.StubInputStream;
+import com.intellij.psi.stubs.StubOutputStream;
+import com.intellij.psi.stubs.StubSerializer;
+import com.intellij.util.io.StringRef;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaFieldIdentifierImpl;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubUtils;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaFieldStub;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 
 /**
 * Created by IntelliJ IDEA.
@@ -50,7 +56,7 @@ public class LuaFieldStubType
     @Override
     public LuaFieldStub createStub(@NotNull LuaFieldIdentifier psi, StubElement parentStub) {
         final LuaType luaType = psi.getLuaType();
-        final byte[] bytes = luaType instanceof LuaPrimitiveType ? null : SerializationUtils.serialize(luaType);
+        final byte[] bytes = luaType instanceof LuaPrimitiveType ? null : LuaSerializationUtils.serialize(luaType);
         return new LuaFieldStub(parentStub, StringRef.fromString(psi.getName()), bytes,
                 luaType);
     }

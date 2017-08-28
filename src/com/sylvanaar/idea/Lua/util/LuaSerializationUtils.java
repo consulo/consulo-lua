@@ -16,9 +16,13 @@
  */
 package com.sylvanaar.idea.Lua.util;
 
-import org.apache.commons.lang.SerializationException;
-
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.Serializable;
 
 /**
  * <p>Assists with the serialization process and performs additional functionality based 
@@ -69,7 +73,7 @@ public class LuaSerializationUtils {
      * 
      * @param object  the <code>Serializable</code> object to clone
      * @return the cloned object
-     * @throws SerializationException (runtime) if the serialization fails
+     * @throws RuntimeException (runtime) if the serialization fails
      */
     public static Object clone(Serializable object, ClassLoader classLoader) {
         return deserialize(serialize(object), classLoader);
@@ -90,7 +94,7 @@ public class LuaSerializationUtils {
      * @param obj  the object to serialize to bytes, may be null
      * @param outputStream  the stream to write to, must not be null
      * @throws IllegalArgumentException if <code>outputStream</code> is <code>null</code>
-     * @throws SerializationException (runtime) if the serialization fails
+     * @throws RuntimeException (runtime) if the serialization fails
      */
     public static void serialize(Serializable obj, OutputStream outputStream) {
         if (outputStream == null) {
@@ -103,7 +107,7 @@ public class LuaSerializationUtils {
             out.writeObject(obj);
             
         } catch (IOException ex) {
-            throw new SerializationException(ex);
+            throw new RuntimeException(ex);
         } finally {
             try {
                 if (out != null) {
@@ -121,7 +125,7 @@ public class LuaSerializationUtils {
      *
      * @param obj  the object to serialize to bytes
      * @return a byte[] with the converted Serializable
-     * @throws SerializationException (runtime) if the serialization fails
+     * @throws RuntimeException (runtime) if the serialization fails
      */
     public static byte[] serialize(Serializable obj) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream(512);
@@ -144,7 +148,7 @@ public class LuaSerializationUtils {
      * @param inputStream  the serialized object input stream, must not be null
      * @return the deserialized object
      * @throws IllegalArgumentException if <code>inputStream</code> is <code>null</code>
-     * @throws SerializationException (runtime) if the serialization fails
+     * @throws RuntimeException (runtime) if the serialization fails
      */
     public static Object deserialize(InputStream inputStream, ClassLoader classLoader) {
         if (inputStream == null) {
@@ -157,9 +161,9 @@ public class LuaSerializationUtils {
             return in.readObject();
             
         } catch (ClassNotFoundException ex) {
-            throw new SerializationException(ex);
+            throw new RuntimeException(ex);
         } catch (IOException ex) {
-            throw new SerializationException(ex);
+            throw new RuntimeException(ex);
         } finally {
             try {
                 if (in != null) {
@@ -177,7 +181,7 @@ public class LuaSerializationUtils {
      * @param objectData  the serialized object, must not be null
      * @return the deserialized object
      * @throws IllegalArgumentException if <code>objectData</code> is <code>null</code>
-     * @throws SerializationException (runtime) if the serialization fails
+     * @throws RuntimeException (runtime) if the serialization fails
      */
     public static Object deserialize(byte[] objectData, ClassLoader classLoader) {
         if (objectData == null) {

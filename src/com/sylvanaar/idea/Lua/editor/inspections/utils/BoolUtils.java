@@ -15,13 +15,13 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.utils;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.tree.IElementType;
+import com.intellij.util.ObjectUtil;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaUnaryExpression;
-import org.apache.commons.lang.ObjectUtils;
-import org.jetbrains.annotations.NotNull;
 
 public class BoolUtils {
   private static Object UNKNOWN = new Object();
@@ -35,12 +35,12 @@ public class BoolUtils {
   }
 
   public static boolean isTrue(LuaConditionalExpression condition) {
-    Object value = ObjectUtils.defaultIfNull(condition.evaluate(), UNKNOWN);
+    Object value = ObjectUtil.notNull(condition.evaluate(), UNKNOWN);
     return value.equals(Boolean.TRUE);
   }
 
   public static boolean isFalse(LuaConditionalExpression condition) {
-      Object value = ObjectUtils.defaultIfNull(condition.evaluate(), UNKNOWN);
+      Object value = ObjectUtil.notNull(condition.evaluate(), UNKNOWN);
 
       return value.equals(Boolean.FALSE);
   }

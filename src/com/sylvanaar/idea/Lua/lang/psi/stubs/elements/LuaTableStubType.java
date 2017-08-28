@@ -16,17 +16,23 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
-import com.intellij.psi.stubs.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.*;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import org.apache.commons.lang.*;
-import org.jetbrains.annotations.*;
+import java.io.IOException;
 
-import java.io.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.psi.stubs.IndexSink;
+import com.intellij.psi.stubs.SerializationManagerEx;
+import com.intellij.psi.stubs.StubElement;
+import com.intellij.psi.stubs.StubInputStream;
+import com.intellij.psi.stubs.StubOutputStream;
+import com.intellij.psi.stubs.StubSerializer;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
+import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaTableConstructorImpl;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaTableStub;
+import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaTableStubImpl;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaTable;
+import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 
 /**
  * Created by IntelliJ IDEA.
@@ -51,7 +57,7 @@ public class LuaTableStubType extends LuaStubElementType<LuaTableStub, LuaTableC
     public LuaTableStub createStub(@NotNull LuaTableConstructor psi, StubElement parentStub) {
         assert psi.getLuaType() instanceof LuaTable;
 //        if (((LuaTable) psi.getLuaType()).getFieldSet().size() > 0)
-            return new LuaTableStubImpl(parentStub, SerializationUtils.serialize(psi.getLuaType()));
+            return new LuaTableStubImpl(parentStub, LuaSerializationUtils.serialize(psi.getLuaType()));
 
 //        return new LuaTableStubImpl(parentStub);
     }

@@ -16,6 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
+import java.io.IOException;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.util.Pair;
 import com.intellij.psi.stubs.IndexSink;
 import com.intellij.psi.stubs.StubElement;
@@ -31,10 +34,7 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.apache.commons.lang.SerializationUtils;
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
+import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 
 /**
  * Created by IntelliJ IDEA.
@@ -61,7 +61,7 @@ public class LuaStubCompoundIdentifierType
     @Override
     public LuaCompoundIdentifierStub createStub(@NotNull LuaCompoundIdentifier psi, StubElement parentStub) {
         final LuaType luaType = psi.getLuaType();
-        final byte[] bytes = luaType instanceof LuaPrimitiveType ? null : SerializationUtils.serialize(luaType);
+        final byte[] bytes = luaType instanceof LuaPrimitiveType ? null : LuaSerializationUtils.serialize(luaType);
         final boolean declaration = psi.isCompoundDeclaration() && psi.getScopeIdentifier() instanceof LuaGlobal;
         return new LuaCompoundIdentifierStubImpl(parentStub, StringRef.fromNullableString(psi.getName()), declaration, bytes, luaType);
     }

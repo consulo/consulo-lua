@@ -16,6 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
+import java.io.IOException;
+
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.stubs.IndexSink;
@@ -29,10 +32,7 @@ import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaModuleDeclarationStubImpl;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
-import org.apache.commons.lang.SerializationUtils;
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
+import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 
 /**
  * Created by IntelliJ IDEA.
@@ -64,8 +64,7 @@ public class LuaStubModuleDeclarationType extends LuaStubElementType<LuaModuleDe
 
         log.debug(psi.getText());
         final String moduleName = psi.getModuleName();
-        return new LuaModuleDeclarationStubImpl(parentStub, StringRef.fromNullableString(psi.getName()), StringRef.fromNullableString(moduleName),
-                SerializationUtils.serialize(psi.getLuaType()));
+        return new LuaModuleDeclarationStubImpl(parentStub, StringRef.fromNullableString(psi.getName()), StringRef.fromNullableString(moduleName), LuaSerializationUtils.serialize(psi.getLuaType()));
     }
 
     @Override

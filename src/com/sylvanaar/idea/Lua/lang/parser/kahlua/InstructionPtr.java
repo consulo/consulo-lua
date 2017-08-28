@@ -15,33 +15,49 @@
  */
 package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import com.google.common.base.MoreObjects;
 
-class InstructionPtr {
-
-
+class InstructionPtr
+{
 	final int[] code;
 	final int idx;
-	InstructionPtr(int[] code, int idx ) {
+
+	InstructionPtr(int[] code, int idx)
+	{
 		this.code = code;
 		this.idx = idx;
 	}
-	int get() {
-        try {
-		return code[idx];
-        } catch (Throwable unused) {}
 
-        return 0;
-	}
-	void set(int value) {
-        try {
-            code[idx] = value;
-        } catch (Throwable unused) {}
+	int get()
+	{
+		try
+		{
+			return code[idx];
+		}
+		catch(Throwable unused)
+		{
+		}
+
+		return 0;
 	}
 
-    @Override
-    public String toString() {
-        ReflectionToStringBuilder sb = new ReflectionToStringBuilder(this);
-        return sb.toString();
-    }
+	void set(int value)
+	{
+		try
+		{
+			code[idx] = value;
+		}
+		catch(Throwable unused)
+		{
+		}
+	}
+
+	@Override
+	public String toString()
+	{
+		MoreObjects.ToStringHelper sb = MoreObjects.toStringHelper(this);
+		sb.add("code", code);
+		sb.add("idx", idx);
+		return sb.toString();
+	}
 }
