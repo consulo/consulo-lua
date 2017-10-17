@@ -33,7 +33,7 @@ import java.util.Collection;
  * Date: 12/22/11
  * Time: 12:58 PM
  */
-public class LuaProjectTreeSubElementProvider implements /*Selectable*/ TreeStructureProvider, DumbAware {
+public class LuaProjectTreeSubElementProvider implements TreeStructureProvider, DumbAware {
     private final Project myProject;
 
     public LuaProjectTreeSubElementProvider(Project project) {
@@ -55,14 +55,4 @@ public class LuaProjectTreeSubElementProvider implements /*Selectable*/ TreeStru
         }
         return result;
     }
-
-    @Override
-    public Object getData(Collection<AbstractTreeNode> selected, String dataName) {
-        return null;
-    }
-
-//    @Override
-//    public PsiElement getTopLevelElement(PsiElement element) {
-//        return null;  //To change body of implemented methods use File | Settings | File Templates.
-//    }
 }

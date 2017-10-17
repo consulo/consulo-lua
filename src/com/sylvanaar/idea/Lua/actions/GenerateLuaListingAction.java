@@ -118,7 +118,7 @@ public class GenerateLuaListingAction extends AnAction {
         }
         String listing = processOutput.getStdout();
 
-        final IdeView view = LangDataKeys.IDE_VIEW.getData(e.getDataContext());
+        final IdeView view = e.getData(LangDataKeys.IDE_VIEW);
         if (view == null) return;
 
         final PsiDirectory dir = view.getOrChooseDirectory();

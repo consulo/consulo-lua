@@ -16,6 +16,12 @@
 
 package com.sylvanaar.idea.Lua.actions;
 
+import java.util.Arrays;
+
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.CommonBundle;
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -33,11 +39,6 @@ import com.intellij.psi.PsiFile;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import consulo.lua.module.extension.LuaModuleExtension;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-import java.util.*;
 
 
 /**
@@ -69,8 +70,7 @@ abstract class NewLuaActionBase extends CreateElementActionBase {
         super.update(event);
 
         final Presentation presentation = event.getPresentation();
-        final DataContext context = event.getDataContext();
-        Module module = (Module) context.getData(LangDataKeys.MODULE.getName());
+        Module module = event.getData(LangDataKeys.MODULE);
 
         log.debug("update: module: " + module);
 
