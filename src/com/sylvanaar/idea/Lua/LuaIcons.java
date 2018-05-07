@@ -19,6 +19,7 @@ package com.sylvanaar.idea.Lua;
 import javax.swing.Icon;
 
 import com.intellij.openapi.util.IconLoader;
+import consulo.ui.image.Image;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +29,7 @@ import com.intellij.openapi.util.IconLoader;
  */
 public interface LuaIcons
 {
-	final Icon LUA_ICON = IconLoader.findIcon("/icons/Lua.png");
+	final Image LUA_ICON = IconLoader.findIcon("/icons/Lua.png");
 	final Icon LUA_FUNCTION = IconLoader.findIcon("/icons/function.png");
 	final Icon LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
 }

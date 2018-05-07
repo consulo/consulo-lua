@@ -16,22 +16,30 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
-import com.intellij.codeInsight.completion.*;
-import com.intellij.codeInsight.completion.util.*;
-import com.intellij.codeInsight.lookup.*;
-import com.intellij.lang.*;
-import com.intellij.lang.refactoring.*;
-import com.intellij.openapi.project.*;
-import com.intellij.openapi.projectRoots.*;
-import com.intellij.openapi.roots.*;
-import com.intellij.openapi.util.text.*;
-import com.intellij.openapi.vfs.*;
-import com.sylvanaar.idea.Lua.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.*;
-import org.jetbrains.annotations.*;
+import java.util.List;
 
-import java.util.*;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.codeInsight.completion.InsertionContext;
+import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler;
+import com.intellij.codeInsight.lookup.LookupElement;
+import com.intellij.codeInsight.lookup.LookupElementBuilder;
+import com.intellij.codeInsight.lookup.LookupElementPresentation;
+import com.intellij.lang.LanguageNamesValidation;
+import com.intellij.lang.refactoring.NamesValidator;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.roots.LibraryOrderEntry;
+import com.intellij.openapi.roots.ModuleExtensionWithSdkOrderEntry;
+import com.intellij.openapi.roots.OrderEntry;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.util.text.StringUtil;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
+import consulo.awt.TargetAWT;
 
 /**
  * Created by IntelliJ IDEA.
@@ -122,14 +130,14 @@ public class LuaLookupElement extends LookupElement {
 
                 if (libraryName != null)
                     return LookupElementBuilder.create(symbol, name).withTypeText(
-                            String.format("< %s > (%s)", libraryName, file.getName()), true).withIcon(LuaIcons.LUA_ICON)
+                            String.format("< %s > (%s)", libraryName, file.getName()), true).withIcon(TargetAWT.to(LuaIcons.LUA_ICON))
                                                                     .withInsertHandler(new LuaInsertHandler());
             } else {
                 return LookupElementBuilder.create(symbol, name).withTypeText("External File", true);
             }
 
         return LookupElementBuilder.create(symbol, name).withTypeText(symbol.getContainingFile().getName(), true)
-                                   .withIcon(LuaIcons.LUA_ICON).withInsertHandler(new LuaInsertHandler());
+                                   .withIcon(TargetAWT.to(LuaIcons.LUA_ICON)).withInsertHandler(new LuaInsertHandler());
     }
 
     public static LookupElement createElement(String s) {
@@ -141,7 +149,7 @@ public class LuaLookupElement extends LookupElement {
 //    }
 
     public static LookupElement createKeywordElement(String s) {
-        return LookupElementBuilder.create(s).withBoldness(true).withIcon(LuaIcons.LUA_ICON);
+        return LookupElementBuilder.create(s).withBoldness(true).withIcon(TargetAWT.to(LuaIcons.LUA_ICON));
     }
 
     public static LookupElement createTypedElement(String s) {
@@ -155,7 +163,7 @@ public class LuaLookupElement extends LookupElement {
     @Override
     public void renderElement(LookupElementPresentation presentation) {
         super.renderElement(presentation);
-        presentation.setIcon(LuaIcons.LUA_ICON);
+        presentation.setIcon(TargetAWT.to(LuaIcons.LUA_ICON));
 
         if (typeInferred) {
             presentation.setTypeText("(inferred)");

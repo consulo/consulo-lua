@@ -15,6 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.run;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.RunConfiguration;
@@ -23,9 +24,7 @@ import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.containers.ContainerUtil;
 import com.sylvanaar.idea.Lua.LuaIcons;
-import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
+import consulo.ui.image.Image;
 
 public class LuaConfigurationType implements ConfigurationType {
   private final ConfigurationFactory myFactory;
@@ -46,7 +45,7 @@ public class LuaConfigurationType implements ConfigurationType {
         return "Lua run configuration";
     }
 
-    public Icon getIcon() {
+    public Image getIcon() {
         return LuaIcons.LUA_ICON;
     }
 

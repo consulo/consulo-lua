@@ -37,6 +37,7 @@ import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import consulo.roots.types.BinariesOrderRootType;
+import consulo.ui.image.Image;
 
 /**
  * @author VISTALL
@@ -86,7 +87,7 @@ public abstract class LuaSdkType extends SdkType
 
 	@Override
 	@NotNull
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return LuaIcons.LUA_ICON;
 	}

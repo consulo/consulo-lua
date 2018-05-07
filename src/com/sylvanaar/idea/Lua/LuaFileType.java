@@ -16,12 +16,13 @@
 
 package com.sylvanaar.idea.Lua;
 
-import com.intellij.lang.*;
-import com.intellij.openapi.fileTypes.*;
-import com.sylvanaar.idea.Lua.lang.*;
-import org.jetbrains.annotations.*;
-
-import javax.swing.*;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.lang.Language;
+import com.intellij.openapi.fileTypes.ExtensionFileNameMatcher;
+import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import consulo.ui.image.Image;
 
 /**
  * Created by IntelliJ IDEA.
@@ -71,7 +72,7 @@ public class LuaFileType extends LanguageFileType {
         return DEFAULT_EXTENSION;
     }
 
-    public Icon getIcon() {
+    public Image getIcon() {
         return LuaIcons.LUA_ICON;
     }
 

@@ -16,14 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.presentation;
 
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.Nullable;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.ItemPresentationProvider;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
+import consulo.awt.TargetAWT;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,7 +48,7 @@ public class LuaElementPresentationProvider implements ItemPresentationProvider<
 
             @Nullable
             public Icon getIcon(boolean open) {
-                return LuaIcons.LUA_ICON;
+                return TargetAWT.to(LuaIcons.LUA_ICON);
             }
 
             @Nullable

@@ -131,12 +131,6 @@ public class LuaColorsPage  implements ColorSettingsPage {
     }
 
     @Override
-    @Nullable
-    public Icon getIcon() {
-        return LuaIcons.LUA_ICON;
-    }
-
-    @Override
     @NotNull
     public AttributesDescriptor[] getAttributeDescriptors() {
         return ATTRS;
