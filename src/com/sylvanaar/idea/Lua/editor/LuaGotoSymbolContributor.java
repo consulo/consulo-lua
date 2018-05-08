@@ -27,6 +27,7 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.ResolveUtil;
+import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
 
 /**
@@ -60,7 +61,7 @@ public class LuaGotoSymbolContributor implements ChooseByNameContributor {
                 continue;
 
             if (global.getDefinedName().startsWith(pattern))
-                symbols.add(new BaseNavigationItem(global, global.getDefinedName(), IconDescriptorUpdaters.getIcon(global, 0)));
+                symbols.add(new BaseNavigationItem(global, global.getDefinedName(), TargetAWT.to(IconDescriptorUpdaters.getIcon(global, 0))));
         }
 
         //symbols.addAll(StubIndex.getInstance().get(LuaGlobalDeclarationIndex.KEY, name, project, scope));

@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
+import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
 
 
@@ -36,6 +37,6 @@ public class LuaFileItemPresentation extends LuaItemPresentation {
   @Nullable
   @Override
   public Icon getIcon(boolean b) {
-    return IconDescriptorUpdaters.getIcon(myElement, 0);
+    return TargetAWT.to(IconDescriptorUpdaters.getIcon(myElement, 0));
   }
 }
