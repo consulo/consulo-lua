@@ -15,8 +15,6 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import javax.swing.Icon;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.codeHighlighting.Pass;
@@ -29,6 +27,7 @@ import com.intellij.psi.PsiElement;
 import com.intellij.util.NullableFunction;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
 import consulo.annotations.RequiredReadAction;
+import consulo.ui.image.Image;
 
 public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor implements DumbAware
 {
@@ -52,7 +51,7 @@ public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor 
 
 	@Nullable
 	@Override
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return AllIcons.Gutter.RecursiveMethod;
 	}
