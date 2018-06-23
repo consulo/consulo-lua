@@ -1,3 +1,0 @@
-function a()
-end
-<caret>
