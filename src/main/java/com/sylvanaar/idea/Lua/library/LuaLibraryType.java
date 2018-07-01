@@ -18,7 +18,6 @@ package com.sylvanaar.idea.Lua.library;
 
 import java.util.List;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +38,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.LuaBundle;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.LuaIcons;
-import consulo.awt.TargetAWT;
+import consulo.ui.image.Image;
 
 /**
  * Created by IntelliJ IDEA.
@@ -95,8 +94,8 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
 //    }
 
     @Override
-    public Icon getIcon() {
-        return TargetAWT.to(LuaIcons.LUA_ICON);
+    public Image getIcon() {
+        return LuaIcons.LUA_ICON;
     }
 
 //    @Override
