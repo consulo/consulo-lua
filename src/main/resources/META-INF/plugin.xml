@@ -21,12 +21,6 @@
 	<category>Custom Languages</category>
 	<vendor>sylvanaar@mindspring.com</vendor>
 
-	<project-components>
-		<component>
-			<implementation-class>com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager</implementation-class>
-		</component>
-	</project-components>
-
 	<actions>
 		<action id="Lua.NewLuaScript" class="com.sylvanaar.idea.Lua.actions.NewLuaFileAction"
 				text="Lua Script" description="Create new Lua script file">
@@ -219,6 +213,9 @@
 		<liveTemplateMacro implementation="com.sylvanaar.idea.Lua.lang.template.LuaFunctionMacro"/>
 
 		<internalFileTemplate name="Lua Script"/>
+
+		<projectService serviceImplementation="com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager" lazy="false"/>
+
 		<!-- control -->
 		<intentionAction>
 			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
