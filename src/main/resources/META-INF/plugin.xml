@@ -77,7 +77,7 @@
 		<!-- Script Debugging -->
 		<programRunner implementation="com.sylvanaar.idea.Lua.debugger.LuaDebugRunner"/>
 		<xdebugger.breakpointType implementation="com.sylvanaar.idea.Lua.debugger.LuaLineBreakpointType"/>
-		<xdebugger.lineBreakpointTypeResolver implementationClass="consulo.lua.debugger.breakpoint.LuaLineBreakpointTypeResolver"/>
+		<xdebugger.lineBreakpointTypeResolver filetype="Lua" implementationClass="consulo.lua.debugger.breakpoint.LuaLineBreakpointTypeResolver"/>
 
 		<!-- Editor -->
 		<codeInsight.parameterInfo language="Lua"
