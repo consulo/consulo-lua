@@ -19,11 +19,10 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.NotNullLazyValue;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.*;
 
@@ -32,7 +31,7 @@ public class LuaFunctionItemPresentation extends LuaItemPresentation {
 
     private final NotNullLazyValue<String> myPresentableText = new NotNullLazyValue<String>() {
 
-        @NotNull
+        @Nonnull
         @Override
         protected String compute() {
             return LuaElementPresentation.
@@ -41,7 +40,7 @@ public class LuaFunctionItemPresentation extends LuaItemPresentation {
     };
 
     private final NotNullLazyValue<String> myLocationText = new NotNullLazyValue<String>() {
-        @NotNull
+        @Nonnull
         @Override
         protected String compute() {
             return LuaElementPresentation.

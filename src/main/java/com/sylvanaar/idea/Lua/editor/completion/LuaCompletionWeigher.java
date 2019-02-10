@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.completion.CompletionLocation;
 import com.intellij.codeInsight.completion.CompletionWeigher;
 import com.intellij.codeInsight.lookup.LookupElement;
@@ -32,7 +34,6 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocalIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -45,7 +46,7 @@ public class LuaCompletionWeigher extends CompletionWeigher {
     private static final Logger log = Logger.getInstance("Lua.CompletionWeigher");
 
     @Override
-    public Comparable weigh(@NotNull LookupElement element, @NotNull CompletionLocation location) {
+    public Comparable weigh(@Nonnull LookupElement element, @Nonnull CompletionLocation location) {
         Object o = element.getObject();
         if (o instanceof ResolveResult) {
             o = ((ResolveResult) o).getElement();

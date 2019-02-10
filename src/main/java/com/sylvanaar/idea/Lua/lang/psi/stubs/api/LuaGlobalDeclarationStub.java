@@ -16,9 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
 
+import javax.annotation.Nullable;
+
 import com.intellij.psi.stubs.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import org.jetbrains.annotations.*;
 
 /**
 * Created by IntelliJ IDEA.
@@ -27,5 +28,6 @@ import org.jetbrains.annotations.*;
 * Time: 7:53 PM
 */
 public interface LuaGlobalDeclarationStub extends NamedStub<LuaGlobalDeclaration>, LuaTypedStub {
-    @Nullable String getModule();
+    @Nullable
+	String getModule();
 }

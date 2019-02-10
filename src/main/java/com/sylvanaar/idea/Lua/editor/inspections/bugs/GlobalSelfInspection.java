@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections.bugs;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemsHolder;
@@ -26,7 +28,6 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class GlobalSelfInspection extends AbstractInspection {
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
        return "Usage of global self";
@@ -47,21 +48,21 @@ public class GlobalSelfInspection extends AbstractInspection {
         return "Looks for usage of self as a global. This usually indicates a missing ':' in the function definition.";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             public void visitReferenceElement(LuaReferenceElement var) {
                 super.visitReferenceElement(var);

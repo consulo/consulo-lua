@@ -15,13 +15,15 @@
  */
 package com.sylvanaar.idea.Lua.refactoring.introduce;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * @author Maxim.Medvedev
@@ -32,8 +34,10 @@ public class LuaIntroduceContext {
   @Nullable public final LuaExpression expression;
   public final PsiElement[] occurrences;
   public final PsiElement scope;
-  @Nullable public final LuaSymbol var;
-  @NotNull public final PsiElement place;
+  @Nullable
+  public final LuaSymbol var;
+  @Nonnull
+  public final PsiElement place;
 
   public LuaIntroduceContext(Project project, Editor editor, LuaExpression expression, PsiElement[] occurrences,
                              PsiElement scope, @Nullable LuaSymbol var) {

@@ -6,8 +6,8 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.FakePsiElement;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.*;
 
@@ -24,13 +24,13 @@ public class BaseNavigationItem extends FakePsiElement {
 	 * @param text       Text to show for this element.
 	 * @param icon       Icon to show for this element.
 	 */
-	public BaseNavigationItem(@NotNull PsiElement psiElement, @NotNull @NonNls String text, @Nullable Icon icon) {
+	public BaseNavigationItem(@Nonnull PsiElement psiElement, @Nonnull @NonNls String text, @Nullable Icon icon) {
 		myPsiElement = psiElement;
 		myText = text;
 		myIcon = icon;
 	}
 
-	@NotNull
+	@Nonnull
 	public PsiElement getNavigationElement() {
 		return myPsiElement;
 	}
@@ -62,7 +62,7 @@ public class BaseNavigationItem extends FakePsiElement {
 		return myPsiElement.getParent();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Project getProject() {
 		return myPsiElement.getProject();

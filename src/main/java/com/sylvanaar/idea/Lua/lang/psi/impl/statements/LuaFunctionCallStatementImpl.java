@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
@@ -25,7 +27,6 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionCallStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 //import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionIdentifier;
 
@@ -47,8 +48,8 @@ public class LuaFunctionCallStatementImpl extends LuaStatementElementImpl implem
     }
 
     @Override
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state,
-                                       PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state,
+									   PsiElement lastParent, @Nonnull PsiElement place) {
         return getInvokedExpression().processDeclarations(processor, state, lastParent, place);
     }
 
@@ -63,7 +64,7 @@ public class LuaFunctionCallStatementImpl extends LuaStatementElementImpl implem
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitFunctionCallStatement(this);
         } else {

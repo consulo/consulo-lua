@@ -16,11 +16,12 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.util;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.text.StringUtil;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,12 +32,12 @@ import org.jetbrains.annotations.NotNull;
 public class LuaAssignment {
     public static final LuaAssignment[] EMPTY_ARRAY = new LuaAssignment[0];
 
-    @NotNull
+    @Nonnull
     public LuaSymbol getSymbol() {
         return mySymbol;
     }
 
-    @NotNull
+    @Nonnull
     public LuaExpression getValue() {
         return myValue;
     }

@@ -26,9 +26,10 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.util.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -45,7 +46,7 @@ public class LuaAssignmentUtil {
 
 
 
-    @NotNull
+    @Nonnull
     public static LuaAssignment[] getAssignments(LuaAssignmentStatement assignmentStatement) {
         if (PsiTreeUtil.hasErrorElements(assignmentStatement))
             return LuaAssignment.EMPTY_ARRAY;
@@ -108,7 +109,7 @@ public class LuaAssignmentUtil {
 
         public Assignments(LuaAssignmentStatement assignment) {this.assignment = assignment;}
 
-        @NotNull
+        @Nonnull
         @Override
         protected LuaAssignment[] compute() {
             return getAssignments(assignment);

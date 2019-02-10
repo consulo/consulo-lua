@@ -16,8 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
 
+import javax.annotation.Nullable;
+
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,5 +29,6 @@ import org.jetbrains.annotations.Nullable;
 public interface LuaTypedStub {
     byte[] getEncodedType();
 
-    @Nullable LuaType getLuaType();
+    @Nullable
+	LuaType getLuaType();
 }

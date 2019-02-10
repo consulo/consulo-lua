@@ -18,7 +18,8 @@ package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.diagnostic.PluginException;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
@@ -1882,7 +1883,7 @@ short primaryexp_org(ExpDesc v) {
 
 
 
-    @NotNull
+    @Nonnull
     @Override
     public ASTNode parse(IElementType root, PsiBuilder builder, LanguageVersion languageVersion) {
 

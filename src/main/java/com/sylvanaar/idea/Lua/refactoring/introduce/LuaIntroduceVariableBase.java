@@ -34,10 +34,11 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaStatementOwner;
 import com.sylvanaar.idea.Lua.refactoring.LuaRefactoringUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
+
+import javax.annotation.Nullable;
 
 /**
  * @author ilyas
@@ -50,7 +51,7 @@ public abstract class LuaIntroduceVariableBase extends LuaIntroduceHandlerBase<L
     public static final String IDLUAREFACTORTMP = "_______IDLUAREFACTORTMP";
     private PsiElement positionElement = null;
 
-  @NotNull
+  @Nonnull
   @Override
   protected PsiElement findScope(LuaExpression selectedExpr, LuaSymbol variable) {
       final PsiElement container = LuaRefactoringUtil.getEnclosingContainer(selectedExpr);
@@ -347,8 +348,8 @@ public abstract class LuaIntroduceVariableBase extends LuaIntroduceHandlerBase<L
      * Replaces an expression occurrence by appropriate variable declaration
      */
     @Nullable
-    private LuaSymbol replaceFirstAssignmentStatement(@NotNull LuaExpression expr, LuaIntroduceContext context,
-                                                      @NotNull LuaDeclarationStatement definition) throws
+    private LuaSymbol replaceFirstAssignmentStatement(@Nonnull LuaExpression expr, LuaIntroduceContext context,
+													  @Nonnull LuaDeclarationStatement definition) throws
             IncorrectOperationException {
 
 

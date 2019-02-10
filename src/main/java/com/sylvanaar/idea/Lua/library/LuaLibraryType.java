@@ -18,10 +18,10 @@ package com.sylvanaar.idea.Lua.library;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.swing.JComponent;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
@@ -49,7 +49,7 @@ import consulo.ui.image.Image;
 public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implements LuaLibrary {
     private static final PersistentLibraryKind<DummyLibraryProperties> LIBRARY_KIND =
             new PersistentLibraryKind<DummyLibraryProperties>(LUA_LIBRARY_KIND_ID) {
-                @NotNull
+                @Nonnull
                 @Override
                 public DummyLibraryProperties createDefaultProperties() {
                     return new DummyLibraryProperties();
@@ -61,15 +61,15 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public String getCreateActionName() {
         return "Lua";
     }
 
     @Override
-    public NewLibraryConfiguration createNewLibrary(@NotNull JComponent jComponent, @Nullable VirtualFile virtualFile,
-                                                    @NotNull Project project) {
+    public NewLibraryConfiguration createNewLibrary(@Nonnull JComponent jComponent, @Nullable VirtualFile virtualFile,
+													@Nonnull Project project) {
         final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
         descriptor.setTitle(LuaBundle.message("new.library.file.chooser.title"));
         descriptor.setDescription(LuaBundle.message("new.library.file.chooser.description"));
@@ -79,7 +79,7 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
         }
         return new NewLibraryConfiguration("Lua Library", this, new DummyLibraryProperties()) {
             @Override
-            public void addRoots(@NotNull LibraryEditor editor) {
+            public void addRoots(@Nonnull LibraryEditor editor) {
                 for (VirtualFile file : files) {
                     editor.addRoot(file, OrderRootType.CLASSES);
                 }
@@ -104,14 +104,14 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
 //    }
 
     @Override
-    public LibraryPropertiesEditor createPropertiesEditor(@NotNull LibraryEditorComponent<DummyLibraryProperties>
+    public LibraryPropertiesEditor createPropertiesEditor(@Nonnull LibraryEditorComponent<DummyLibraryProperties>
                                                                   libraryPropertiesLibraryEditorComponent) {
 
         return null;
     }
 
     @Override
-    public DummyLibraryProperties detect(@NotNull List<VirtualFile> classesRoots) {
+    public DummyLibraryProperties detect(@Nonnull List<VirtualFile> classesRoots) {
         for (VirtualFile vf : classesRoots) {
             if (!vf.isDirectory())
                 return null;

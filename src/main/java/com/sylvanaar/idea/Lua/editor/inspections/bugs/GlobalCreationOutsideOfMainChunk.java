@@ -28,7 +28,7 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ import java.util.List;
  */
 public class GlobalCreationOutsideOfMainChunk extends AbstractInspection {
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
        return "Suspicious global creation";
@@ -52,21 +52,21 @@ public class GlobalCreationOutsideOfMainChunk extends AbstractInspection {
         return "Looks for creation of globals in scopes other than the main chunk";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             List<String> validGlobals = new ArrayList<String>();
             public void visitDeclarationExpression(LuaDeclarationExpression var) {

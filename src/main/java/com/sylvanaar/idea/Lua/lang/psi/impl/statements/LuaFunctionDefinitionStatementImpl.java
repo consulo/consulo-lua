@@ -39,6 +39,8 @@ import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
 import org.jetbrains.annotations.*;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.*;
 
 /**
@@ -83,7 +85,7 @@ public class LuaFunctionDefinitionStatementImpl extends LuaStatementElementImpl 
         visitor.visitFunctionDef(this);
     }
 
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitFunctionDef(this);
         } else {
@@ -123,7 +125,7 @@ public class LuaFunctionDefinitionStatementImpl extends LuaStatementElementImpl 
         return LuaIcons.LUA_FUNCTION;
     }
 
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState resolveState, PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState resolveState, PsiElement lastParent, @Nonnull PsiElement place) {
 
         LuaSymbol v = getIdentifier();
         if (!processor.execute(v, resolveState)) return false;
@@ -160,7 +162,7 @@ public class LuaFunctionDefinitionStatementImpl extends LuaStatementElementImpl 
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaSymbol getIdentifier() {
         LuaReferenceElement e = findChildByClass(LuaReferenceElement.class);
@@ -196,7 +198,7 @@ public class LuaFunctionDefinitionStatementImpl extends LuaStatementElementImpl 
         throw new IllegalAccessError("cannot replace statement");
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaFunction getLuaType() {
         return type;

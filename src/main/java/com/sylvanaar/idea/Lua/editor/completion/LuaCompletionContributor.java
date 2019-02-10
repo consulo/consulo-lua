@@ -26,7 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.completion.CompletionInitializationContext;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionResultSet;
@@ -103,12 +104,12 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 			.whitespace(), AFTER_DOT);
 
 
-	private Collection<LuaDeclarationExpression> getAllGlobals(@NotNull CompletionParameters parameters, ProcessingContext context)
+	private Collection<LuaDeclarationExpression> getAllGlobals(@Nonnull CompletionParameters parameters, ProcessingContext context)
 	{
 		return LuaPsiManager.getInstance(parameters.getOriginalFile().getProject()).getFilteredGlobalsCache();
 	}
 
-	private Collection<LuaDeclarationExpression> getPrefixFilteredGlobals(String prefix, @NotNull CompletionParameters parameters, ProcessingContext context)
+	private Collection<LuaDeclarationExpression> getPrefixFilteredGlobals(String prefix, @Nonnull CompletionParameters parameters, ProcessingContext context)
 	{
 		Collection<LuaDeclarationExpression> names = context.get(PREFIX_FILTERED_GLOBALS_COLLECTION);
 		if(names != null)
@@ -140,7 +141,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		return names;
 	}
 
-	private Collection<LuaDeclarationExpression> getPrefixFilteredCompoundIds(String prefix, @NotNull CompletionParameters parameters, ProcessingContext context)
+	private Collection<LuaDeclarationExpression> getPrefixFilteredCompoundIds(String prefix, @Nonnull CompletionParameters parameters, ProcessingContext context)
 	{
 		Collection<LuaDeclarationExpression> names = context.get(PREFIX_FILTERED_COMPOUND_COLLECTION);
 		if(names != null)
@@ -177,7 +178,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, AFTER_LOCAL, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				result.addElement(LuaLookupElement.createKeywordElement(LuaKeywordsManager.FUNCTION));
 			}
@@ -185,7 +186,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, NOT_AFTER_DOT, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				for(String s : LuaKeywordsManager.getKeywords())
 				{
@@ -198,7 +199,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, REFERENCES, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				String prefix = result.getPrefixMatcher().getPrefix();
 				if(prefix.length() == 0)
@@ -221,7 +222,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, FIELDS, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				final PsiElement originalPosition = parameters.getOriginalPosition();
 				LuaCompoundIdentifier fieldOf = PsiTreeUtil.getParentOfType(ObjectUtils.chooseNotNull(originalPosition, parameters.getPosition()), LuaCompoundIdentifier.class);
@@ -319,7 +320,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, INDEXED_FIELDS, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				String prefix = result.getPrefixMatcher().getPrefix();
 
@@ -331,7 +332,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, NOT_AFTER_DOT, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				addUsedNeabyGlobals(parameters, context, result);
 			}
@@ -341,7 +342,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 		extend(CompletionType.BASIC, AFTER_COLON, new CompletionProvider()
 		{
 			@Override
-			public void addCompletions(@NotNull CompletionParameters parameters, ProcessingContext context, @NotNull CompletionResultSet result)
+			public void addCompletions(@Nonnull CompletionParameters parameters, ProcessingContext context, @Nonnull CompletionResultSet result)
 			{
 				PsiElement element = parameters.getPosition();
 				if(element instanceof LeafPsiElement)
@@ -419,7 +420,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 	public static final OffsetKey IDENTIFIER_START_OFFSET = OffsetKey.create("identifierEnd");
 
 	@Override
-	public void beforeCompletion(@NotNull CompletionInitializationContext context)
+	public void beforeCompletion(@Nonnull CompletionInitializationContext context)
 	{
 
 		context.setDummyIdentifier(CompletionInitializationContext.DUMMY_IDENTIFIER.trim() + ";");
@@ -450,7 +451,7 @@ public class LuaCompletionContributor extends DefaultCompletionContributor
 	}
 
 	@Override
-	public void duringCompletion(@NotNull CompletionInitializationContext context)
+	public void duringCompletion(@Nonnull CompletionInitializationContext context)
 	{
 		super.duringCompletion(context);
 	}

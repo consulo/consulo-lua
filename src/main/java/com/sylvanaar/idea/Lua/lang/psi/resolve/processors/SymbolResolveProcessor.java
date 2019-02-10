@@ -26,9 +26,10 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 
 /**
@@ -66,7 +67,7 @@ public class SymbolResolveProcessor extends ResolveProcessor {
     private boolean filter = true;
 
 
-    public boolean execute(@NotNull PsiElement element, ResolveState resolveState) {
+    public boolean execute(@Nonnull PsiElement element, ResolveState resolveState) {
 
         if (element instanceof LuaNamedElement && !myProcessedElements.contains(element)) {
             String resolvedName = getNameToResolve((LuaNamedElement) element);

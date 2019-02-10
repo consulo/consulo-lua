@@ -16,17 +16,19 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocReferenceElement;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 
 public abstract class LuaDocReferenceElementImpl extends LuaDocPsiElementImpl implements LuaDocReferenceElement {
 
-    public LuaDocReferenceElementImpl(@NotNull ASTNode node) {
+    public LuaDocReferenceElementImpl(@Nonnull ASTNode node) {
         super(node);
     }
 

@@ -15,10 +15,11 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.metrics;
 
+import javax.annotation.Nonnull;
+
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 
 class CyclomaticComplexityVisitor extends LuaElementVisitor {
@@ -36,17 +37,17 @@ class CyclomaticComplexityVisitor extends LuaElementVisitor {
     }
   }
 
-  public void visitNumericForStatement(@NotNull LuaNumericForStatement statement) {
+  public void visitNumericForStatement(@Nonnull LuaNumericForStatement statement) {
     super.visitNumericForStatement(statement);
     complexity++;
   }
 
-  public void visitGenericForStatement(@NotNull LuaGenericForStatement statement) {
+  public void visitGenericForStatement(@Nonnull LuaGenericForStatement statement) {
     super.visitGenericForStatement(statement);
     complexity++;
   }
     
-  public void visitIfThenStatement(@NotNull LuaIfThenStatement statement) {
+  public void visitIfThenStatement(@Nonnull LuaIfThenStatement statement) {
     super.visitIfThenStatement(statement);
     complexity++;
 
@@ -58,7 +59,7 @@ class CyclomaticComplexityVisitor extends LuaElementVisitor {
 //    complexity++;
 //  }
 
-  public void visitWhileStatement(@NotNull LuaWhileStatement statement) {
+  public void visitWhileStatement(@Nonnull LuaWhileStatement statement) {
     super.visitWhileStatement(statement);
     complexity++;
   }

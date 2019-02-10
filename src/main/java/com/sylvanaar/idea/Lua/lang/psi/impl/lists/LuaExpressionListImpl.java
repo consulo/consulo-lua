@@ -27,7 +27,7 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaList;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,7 +59,7 @@ public class LuaExpressionListImpl extends LuaExpressionImpl implements LuaExpre
         return "Expression List (Count " + count() + ")";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         final List<LuaExpression> expressions = getLuaExpressions();
@@ -83,7 +83,7 @@ public class LuaExpressionListImpl extends LuaExpressionImpl implements LuaExpre
     }
 
     @Override
-    public PsiElement addAfter(@NotNull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
+    public PsiElement addAfter(@Nonnull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
         List<LuaExpression> exprs = getLuaExpressions();
 
         if (exprs.size() == 0) {
@@ -103,7 +103,7 @@ public class LuaExpressionListImpl extends LuaExpressionImpl implements LuaExpre
     }
 
     @Override
-    public PsiElement addBefore(@NotNull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
+    public PsiElement addBefore(@Nonnull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
         List<LuaExpression> exprs = getLuaExpressions();
 
         if (exprs.size() == 0) {

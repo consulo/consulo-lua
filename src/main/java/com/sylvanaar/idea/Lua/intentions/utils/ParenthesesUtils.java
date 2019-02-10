@@ -21,8 +21,8 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionCallStatement;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -143,7 +143,7 @@ public class ParenthesesUtils {
     return -1;
   }
 
-  private static int precedenceForBinaryOperator(@NotNull IElementType sign) {
+  private static int precedenceForBinaryOperator(@Nonnull IElementType sign) {
     return s_binaryOperatorPrecedence.get(sign);
   }
 

@@ -26,7 +26,7 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.completion.CompletionProcessor;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -60,7 +60,7 @@ public abstract class ResolveUtil {
     return true;
   }
 
-    @NotNull
+    @Nonnull
     public static Object[] getVariants(LuaReferenceElement e) {
 //        return new Object[0];
         CompletionProcessor variantsProcessor = new CompletionProcessor(e);

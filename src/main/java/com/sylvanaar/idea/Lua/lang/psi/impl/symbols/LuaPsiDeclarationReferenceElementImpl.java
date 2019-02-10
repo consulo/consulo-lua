@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.*;
 import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
@@ -23,7 +25,6 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,7 +50,7 @@ public abstract class LuaPsiDeclarationReferenceElementImpl extends LuaReference
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
 //            ((LuaElementVisitor) visitor).visitReferenceElement(this);
             ((LuaElementVisitor) visitor).visitDeclarationExpression(this);
@@ -85,7 +86,7 @@ public abstract class LuaPsiDeclarationReferenceElementImpl extends LuaReference
 
     protected LuaType type = LuaPrimitiveType.ANY;
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         return type;

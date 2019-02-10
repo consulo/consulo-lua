@@ -27,8 +27,8 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocalDeclaration;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocalIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,7 +48,7 @@ public class LuaLocalDeclarationImpl extends LuaPsiDeclarationReferenceElementIm
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         final LuaExpression aliasElement = getAliasElement();
@@ -60,14 +60,14 @@ public class LuaLocalDeclarationImpl extends LuaPsiDeclarationReferenceElementIm
 
 
     @Override
-    public PsiElement setName(@NotNull String s) {
+    public PsiElement setName(@Nonnull String s) {
         LuaDeclarationExpression decl =
                 LuaPsiElementFactoryImpl.getInstance(getProject()).createLocalNameIdentifierDecl(s);
 
         return replace(decl);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Object[] getVariants() {
        return ArrayUtil.EMPTY_OBJECT_ARRAY;

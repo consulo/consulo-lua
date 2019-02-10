@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
@@ -31,7 +33,6 @@ import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiElement  {
     private static final Logger log = Logger.getInstance("Lua.LuaPsiElementImpl");
@@ -61,7 +62,7 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitElement(this);
         } else {
@@ -73,7 +74,7 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
         return getNode().getElementType().toString();
     }
 
-    @NotNull
+    @Nonnull
     public Language getLanguage() {
         return LuaFileType.LUA_LANGUAGE;
     }
@@ -94,7 +95,7 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
 //        return LuaPsiUtils.processChildDeclarations(this, processor, state, lastParent, place);
 //    }
 
-    public PsiElement replace(@NotNull PsiElement newElement) throws IncorrectOperationException {
+    public PsiElement replace(@Nonnull PsiElement newElement) throws IncorrectOperationException {
         CompositeElement treeElement = calcTreeElement();
         assert treeElement.getTreeParent() != null;
         CheckUtil.checkWritable(this);

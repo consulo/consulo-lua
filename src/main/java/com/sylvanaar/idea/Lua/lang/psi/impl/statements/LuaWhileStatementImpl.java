@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElementVisitor;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiToken;
@@ -23,7 +25,6 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaWhileStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -43,7 +44,7 @@ public class LuaWhileStatementImpl extends LuaStatementElementImpl implements Lu
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitWhileStatement(this);
         } else {

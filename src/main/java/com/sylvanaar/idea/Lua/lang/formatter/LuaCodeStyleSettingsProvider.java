@@ -19,7 +19,7 @@ package com.sylvanaar.idea.Lua.lang.formatter;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.intellij.psi.codeStyle.CodeStyleSettingsProvider;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  * Time: 12:46 PM
  */
 public class LuaCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
-  @NotNull
+  @Nonnull
   @Override
   public Configurable createSettingsPage(CodeStyleSettings settings, CodeStyleSettings originalSettings) {
     return new LuaCodeStyleConfigurable(settings, originalSettings);

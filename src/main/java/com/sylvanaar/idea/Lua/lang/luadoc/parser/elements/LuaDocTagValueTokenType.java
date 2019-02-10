@@ -22,7 +22,8 @@ import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG
 import java.util.Arrays;
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilderFactory;
@@ -58,7 +59,7 @@ public class LuaDocTagValueTokenType extends LuaDocChameleonElementType implemen
         super("LDOC_TAG_VALUE_TOKEN");
     }
 
-    public TagValueTokenType getValueType(@NotNull ASTNode node) {
+    public TagValueTokenType getValueType(@Nonnull ASTNode node) {
         return isReferenceElement(node.getTreeParent(),
                 node) ? TagValueTokenType.REFERENCE_ELEMENT : TagValueTokenType.VALUE_TOKEN;
     }

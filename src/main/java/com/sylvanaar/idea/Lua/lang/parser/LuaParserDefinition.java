@@ -22,7 +22,8 @@ import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.KEYWORDS;
 import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.STRING_LITERAL_SET;
 import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.WHITE_SPACES_SET;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.LanguageUtil;
 import com.intellij.lang.ParserDefinition;
@@ -52,7 +53,7 @@ public class LuaParserDefinition implements ParserDefinition {
     public static final IStubFileElementType LUA_FILE = new LuaStubFileElementType();
     //public static final IFileElementType LUA_FILE = new IFileElementType("Lua Script", LuaFileType.LUA_LANGUAGE);
 
-    @NotNull
+    @Nonnull
     public Lexer createLexer( LanguageVersion languageVersion) {
         return new LuaParsingLexerMergingAdapter(new LuaLexer());
     }
@@ -65,22 +66,22 @@ public class LuaParserDefinition implements ParserDefinition {
         return LUA_FILE;
     }
 
-    @NotNull
+    @Nonnull
     public TokenSet getWhitespaceTokens(LanguageVersion languageVersion) {
         return WHITE_SPACES_SET;
     }
 
-    @NotNull
+    @Nonnull
     public TokenSet getCommentTokens(LanguageVersion languageVersion) {
         return COMMENT_SET;
     }
 
-    @NotNull
+    @Nonnull
     public TokenSet getStringLiteralElements(LanguageVersion languageVersion) {
         return STRING_LITERAL_SET;
     }
 
-    @NotNull
+    @Nonnull
     public PsiElement createElement(ASTNode node) {
         final PsiElement element = LuaPsiCreator.createElement(node);
 

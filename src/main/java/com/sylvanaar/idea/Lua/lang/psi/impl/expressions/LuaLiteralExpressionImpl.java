@@ -22,9 +22,10 @@ import com.sylvanaar.idea.Lua.lang.lexer.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -73,7 +74,7 @@ public class LuaLiteralExpressionImpl extends LuaExpressionImpl implements LuaLi
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitLiteralExpression(this);
         } else {
@@ -82,7 +83,7 @@ public class LuaLiteralExpressionImpl extends LuaExpressionImpl implements LuaLi
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         PsiElement fc = getFirstChild();

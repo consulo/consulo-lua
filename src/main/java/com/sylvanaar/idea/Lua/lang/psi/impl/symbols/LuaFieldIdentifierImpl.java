@@ -41,8 +41,8 @@ import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.Collection;
 
@@ -79,7 +79,7 @@ public class LuaFieldIdentifierImpl extends LuaStubElementBase<LuaFieldStub> imp
     }
 
     @Override
-    public PsiElement setName(@NotNull @NonNls String name) throws IncorrectOperationException {
+    public PsiElement setName(@Nonnull @NonNls String name) throws IncorrectOperationException {
         LuaIdentifier node = LuaPsiElementFactoryImpl.getInstance(getProject()).createFieldNameIdentifier(name);
         replace(node);
 
@@ -93,7 +93,8 @@ public class LuaFieldIdentifierImpl extends LuaStubElementBase<LuaFieldStub> imp
 
     private LuaType type = LuaPrimitiveType.ANY;
 
-    @NotNull @Override
+    @Nonnull
+	@Override
     public LuaType getLuaType() {
         if (type instanceof StubType)
             type = ((StubType) type).get();
@@ -140,7 +141,7 @@ public class LuaFieldIdentifierImpl extends LuaStubElementBase<LuaFieldStub> imp
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitIdentifier(this);
         } else {
@@ -228,7 +229,7 @@ public class LuaFieldIdentifierImpl extends LuaStubElementBase<LuaFieldStub> imp
                 return null;
             }
 
-            @NotNull
+            @Nonnull
             public String getCanonicalText() {
                 String name = getRangeInElement().substring(getText());
                 LuaType t = LuaFieldIdentifierImpl.this.getNameSpaceIdentifier().getLuaType();
@@ -245,7 +246,7 @@ public class LuaFieldIdentifierImpl extends LuaStubElementBase<LuaFieldStub> imp
                 throw new UnsupportedOperationException();
             }
 
-            public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+            public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
                 throw new UnsupportedOperationException();
             }
 
@@ -253,7 +254,7 @@ public class LuaFieldIdentifierImpl extends LuaStubElementBase<LuaFieldStub> imp
                 return resolve() == element;
             }
 
-            @NotNull
+            @Nonnull
             public Object[] getVariants() {
                 return ArrayUtil.EMPTY_OBJECT_ARRAY;
             }

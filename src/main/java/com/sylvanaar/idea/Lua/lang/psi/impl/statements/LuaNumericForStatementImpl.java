@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
@@ -26,7 +28,6 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaNumericForStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,10 +41,10 @@ public class LuaNumericForStatementImpl extends LuaStatementElementImpl implemen
     }
 
 
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor,
-                                       @NotNull ResolveState resolveState,
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor,
+                                       @Nonnull ResolveState resolveState,
                                        PsiElement lastParent,
-                                       @NotNull PsiElement place) {
+                                       @Nonnull PsiElement place) {
 
         PsiElement parent = place.getParent();
         while (parent != null && !(parent instanceof LuaPsiFile)) {
@@ -94,7 +95,7 @@ public class LuaNumericForStatementImpl extends LuaStatementElementImpl implemen
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitNumericForStatement(this);
         } else {

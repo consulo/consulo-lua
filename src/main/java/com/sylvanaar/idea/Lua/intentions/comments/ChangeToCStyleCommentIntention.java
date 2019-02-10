@@ -23,21 +23,22 @@ import com.sylvanaar.idea.Lua.intentions.base.Intention;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 public class ChangeToCStyleCommentIntention extends Intention {
 
 
-  @NotNull
+  @Nonnull
   protected PsiElementPredicate getElementPredicate() {
     return new EndOfLineCommentPredicate();
   }
 
-  public void processIntention(@NotNull PsiElement element)
+  public void processIntention(@Nonnull PsiElement element)
       throws IncorrectOperationException {
     final PsiComment selectedComment = (PsiComment) element;
     PsiComment firstComment = selectedComment;

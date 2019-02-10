@@ -33,7 +33,7 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaLocalDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,14 +44,14 @@ import org.jetbrains.annotations.NotNull;
 public class RedundantInitializationInspection extends AbstractInspection {
 
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
         return "Redundant Initialization";
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PERFORMANCE_ISSUES;
@@ -62,16 +62,16 @@ public class RedundantInitializationInspection extends AbstractInspection {
         return "Looks for unnecessary initialization of local variables";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WEAK_WARNING;
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             @Override
             public void visitDeclarationStatement(LuaDeclarationStatement e) {
@@ -110,7 +110,7 @@ public class RedundantInitializationInspection extends AbstractInspection {
             assign.getRightExprs().delete();
         }
 
-        @NotNull
+        @Nonnull
         @Override
         public String getName() {
             return "Remove unnecessary initialization";

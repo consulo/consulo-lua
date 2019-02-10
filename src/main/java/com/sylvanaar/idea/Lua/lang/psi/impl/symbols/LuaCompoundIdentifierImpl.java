@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
@@ -50,8 +52,8 @@ import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import com.sylvanaar.idea.Lua.util.LuaAtomicNullableLazyValue;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -99,7 +101,7 @@ public class LuaCompoundIdentifierImpl extends LuaStubElementBase<LuaCompoundIde
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitCompoundIdentifier(this);
         } else {
@@ -179,8 +181,8 @@ public class LuaCompoundIdentifierImpl extends LuaStubElementBase<LuaCompoundIde
     }
 
     @Override
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state,
-                                       PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state,
+									   PsiElement lastParent, @Nonnull PsiElement place) {
         return true;
     }
 
@@ -233,7 +235,7 @@ public class LuaCompoundIdentifierImpl extends LuaStubElementBase<LuaCompoundIde
         return (PsiReference) getParent();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public PsiReference[] getReferences() {
         return PsiReference.EMPTY_ARRAY;
@@ -337,7 +339,8 @@ public class LuaCompoundIdentifierImpl extends LuaStubElementBase<LuaCompoundIde
     }
 
 
-    @NotNull @Override
+    @Nonnull
+	@Override
     public LuaType getLuaType() {
         if (myType instanceof StubType)
             myType = ((StubType) myType).get();
@@ -357,7 +360,7 @@ public class LuaCompoundIdentifierImpl extends LuaStubElementBase<LuaCompoundIde
     }
 
     @Override
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
         return LuaPsiUtils.replaceElement(this, LuaPsiElementFactory.getInstance(getProject()).createIdentifier(name));
     }
 
@@ -366,7 +369,8 @@ public class LuaCompoundIdentifierImpl extends LuaStubElementBase<LuaCompoundIde
     }
 
     private class NameLazyValue extends LuaAtomicNullableLazyValue<String> {
-        @Nullable @Override
+        @Nullable
+		@Override
         protected String compute() {
             ApplicationManager.getApplication().assertReadAccessAllowed();
 

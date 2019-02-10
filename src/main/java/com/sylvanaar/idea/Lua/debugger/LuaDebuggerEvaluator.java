@@ -16,12 +16,14 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.xdebugger.XSourcePosition;
 import com.intellij.xdebugger.evaluation.XDebuggerEvaluator;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,8 +46,8 @@ public class LuaDebuggerEvaluator extends XDebuggerEvaluator {
     }
 
     @Override
-    public void evaluate(@NotNull String expression, XEvaluationCallback callback,
-                         @Nullable XSourcePosition expressionPosition) {
+    public void evaluate(@Nonnull String expression, XEvaluationCallback callback,
+						 @Nullable XSourcePosition expressionPosition) {
 
         log.debug("evaluating: " + expression);
         myController.execute(new LuaDebuggerController.CodeExecutionRequest("return " + expression, callback));

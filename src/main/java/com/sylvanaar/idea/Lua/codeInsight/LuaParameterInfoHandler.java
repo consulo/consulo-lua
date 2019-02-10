@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.documentation.DocumentationManager;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.lang.parameterInfo.*;
@@ -24,7 +26,6 @@ import com.intellij.psi.PsiWhiteSpace;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author ven
@@ -75,7 +76,7 @@ public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiEleme
     }
 
 
-    public void showParameterInfo(@NotNull LuaPsiElement place, CreateParameterInfoContext context) {
+    public void showParameterInfo(@Nonnull LuaPsiElement place, CreateParameterInfoContext context) {
         if (!(place instanceof LuaFunctionCallExpression))
             return;
 
@@ -93,7 +94,7 @@ public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiEleme
         context.showHint(place, place.getTextRange().getStartOffset(), this);
     }
 
-    public void updateParameterInfo(@NotNull LuaPsiElement place, UpdateParameterInfoContext context) {
+    public void updateParameterInfo(@Nonnull LuaPsiElement place, UpdateParameterInfoContext context) {
     }
 
     public String getParameterCloseChars() {

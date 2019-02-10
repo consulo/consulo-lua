@@ -18,8 +18,8 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
 import java.io.IOException;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.psi.stubs.IndexSink;
 import com.intellij.psi.stubs.SerializationManagerEx;
 import com.intellij.psi.stubs.StubElement;
@@ -49,12 +49,12 @@ public class LuaTableStubType extends LuaStubElementType<LuaTableStub, LuaTableC
     }
 
     @Override
-    public LuaTableConstructor createPsi(@NotNull LuaTableStub stub) {
+    public LuaTableConstructor createPsi(@Nonnull LuaTableStub stub) {
         return new LuaTableConstructorImpl(stub);
     }
 
     @Override
-    public LuaTableStub createStub(@NotNull LuaTableConstructor psi, StubElement parentStub) {
+    public LuaTableStub createStub(@Nonnull LuaTableConstructor psi, StubElement parentStub) {
         assert psi.getLuaType() instanceof LuaTable;
 //        if (((LuaTable) psi.getLuaType()).getFieldSet().size() > 0)
             return new LuaTableStubImpl(parentStub, LuaSerializationUtils.serialize(psi.getLuaType()));

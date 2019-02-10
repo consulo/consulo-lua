@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.intentions.base;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.intention.IntentionAction;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Editor;
@@ -27,8 +29,8 @@ import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
 import com.sylvanaar.idea.Lua.intentions.utils.BoolUtils;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 
 
@@ -43,7 +45,7 @@ public abstract class Intention implements IntentionAction {
     predicate = getElementPredicate();
   }
 
-  public void invoke(@NotNull Project project, Editor editor, PsiFile file)
+  public void invoke(@Nonnull Project project, Editor editor, PsiFile file)
       throws IncorrectOperationException {
     if (!QuickfixUtil.ensureFileWritable(project, file)) {
       return;
@@ -56,16 +58,16 @@ public abstract class Intention implements IntentionAction {
     processIntention(element);
   }
 
-  protected abstract void processIntention(@NotNull PsiElement element)
+  protected abstract void processIntention(@Nonnull PsiElement element)
       throws IncorrectOperationException;
 
-  @NotNull
+  @Nonnull
   protected abstract PsiElementPredicate getElementPredicate();
 
 
   protected static void replaceExpressionWithNegatedExpressionString(
-      @NotNull String newExpression,
-      @NotNull LuaExpression expression)
+      @Nonnull String newExpression,
+      @Nonnull LuaExpression expression)
       throws IncorrectOperationException {
     final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(expression.getProject());
 
@@ -107,7 +109,7 @@ public abstract class Intention implements IntentionAction {
     return element instanceof PsiFile;
   }
 
-  public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+  public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {
     return findMatchingElement(file, editor) != null;
   }
 
@@ -132,12 +134,12 @@ public abstract class Intention implements IntentionAction {
     return buffer.toString();
   }
 
-  @NotNull
+  @Nonnull
   public String getText() {
     return LuaIntentionsBundle.message(getPrefix() + ".name");
   }
 
-  @NotNull
+  @Nonnull
   public String getFamilyName() {
     return LuaIntentionsBundle.message(getPrefix() + ".family.name");
   }

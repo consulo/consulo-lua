@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.findUsages;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.application.QueryExecutorBase;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.PsiElement;
@@ -23,8 +25,8 @@ import com.intellij.psi.PsiReference;
 import com.intellij.psi.search.*;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.util.Processor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class LuaAliasedElementSearcher extends QueryExecutorBase<PsiReference, ReferencesSearch.SearchParameters> {
 
@@ -33,7 +35,7 @@ public class LuaAliasedElementSearcher extends QueryExecutorBase<PsiReference, R
   }
 
   @Override
-  public void processQuery(@NotNull ReferencesSearch.SearchParameters parameters, @NotNull Processor<PsiReference> consumer) {
+  public void processQuery(@Nonnull ReferencesSearch.SearchParameters parameters, @Nonnull Processor<PsiReference> consumer) {
     final PsiElement target = parameters.getElementToSearch();
     if (!(target instanceof PsiNamedElement)) return;
 

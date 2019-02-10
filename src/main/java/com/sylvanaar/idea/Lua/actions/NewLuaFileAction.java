@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.actions;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
@@ -55,7 +55,7 @@ public class NewLuaFileAction extends NewLuaActionBase {
         return LuaBundle.message("newfile.menu.action.text");
     }
 
-    @NotNull
+    @Nonnull
     protected PsiElement[] doCreate(String newName, PsiDirectory directory) {
         PsiFile file = createFileFromTemplate(directory, newName, LuaTemplatesFactory.NEW_SCRIPT_FILE_NAME);
         PsiElement child = file.getLastChild();

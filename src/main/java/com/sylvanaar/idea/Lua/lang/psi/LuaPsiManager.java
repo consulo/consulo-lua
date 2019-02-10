@@ -27,8 +27,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
@@ -83,7 +84,7 @@ public class LuaPsiManager
 	private final LuaAtomicNotNullLazyValue<Future<Collection<LuaDeclarationExpression>>> filteredGlobalsCache =
 			new LuaAtomicNotNullLazyValue<Future<Collection<LuaDeclarationExpression>>>()
 			{
-				@NotNull
+				@Nonnull
 				@Override
 				protected Future<Collection<LuaDeclarationExpression>> compute()
 				{
@@ -483,7 +484,7 @@ public class LuaPsiManager
 		}
 
 		@Override
-		public void run(@NotNull final ProgressIndicator indicator)
+		public void run(@Nonnull final ProgressIndicator indicator)
 		{
 			ApplicationManager.getApplication().runReadAction(new Runnable()
 			{

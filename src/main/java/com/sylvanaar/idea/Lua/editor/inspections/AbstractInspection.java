@@ -27,8 +27,8 @@ import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.regex.Pattern;
 
@@ -56,7 +56,7 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
     
     private static Pattern SUPPRESS_IN_LINE_COMMENT_PATTERN = Pattern.compile("--" + SuppressionUtil.COMMON_SUPPRESS_REGEXP);;
 
-    @NotNull
+    @Nonnull
     @Override
     public String[] getGroupPath() {
         return new String[]{"Lua", getGroupDisplayName()};
@@ -64,7 +64,7 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
 
     private final String m_shortName = null;
 
-    @NotNull
+    @Nonnull
     public String getShortName() {
         if (m_shortName == null) {
             final Class<? extends AbstractInspection> aClass = getClass();
@@ -89,7 +89,7 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
         return true;
     }
 
-    @NotNull
+    @Nonnull
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WEAK_WARNING;
     }
@@ -114,7 +114,7 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
   }
 
   @Nullable
-  public PsiElement getElementToolSuppressedIn(@NotNull final PsiElement place, final String toolId) {
+  public PsiElement getElementToolSuppressedIn(@Nonnull final PsiElement place, final String toolId) {
     return ApplicationManager.getApplication().runReadAction(new Computable<PsiElement>() {
       @Nullable
       public PsiElement compute() {
@@ -130,7 +130,7 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
 
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return "Lua";
     }

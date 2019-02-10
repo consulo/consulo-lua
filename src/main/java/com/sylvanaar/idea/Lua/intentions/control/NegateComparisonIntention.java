@@ -24,7 +24,7 @@ import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.intentions.utils.ComparisonUtils;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 
 public class NegateComparisonIntention extends MutablyNamedIntention {
@@ -38,12 +38,12 @@ public class NegateComparisonIntention extends MutablyNamedIntention {
     return LuaIntentionsBundle.message("negate.comparison.intention.name", comparison, negatedComparison);
   }
 
-  @NotNull
+  @Nonnull
   public PsiElementPredicate getElementPredicate() {
     return new ComparisonPredicate();
   }
 
-  public void processIntention(@NotNull PsiElement element)
+  public void processIntention(@Nonnull PsiElement element)
       throws IncorrectOperationException {
     final LuaBinaryExpression exp =
         (LuaBinaryExpression) element;

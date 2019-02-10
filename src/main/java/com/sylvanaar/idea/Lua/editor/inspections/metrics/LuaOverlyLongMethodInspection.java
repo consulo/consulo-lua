@@ -15,23 +15,23 @@
 */
 package com.sylvanaar.idea.Lua.editor.inspections.metrics;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 
-import org.jetbrains.annotations.NotNull;
-
 
 public class LuaOverlyLongMethodInspection extends LuaMethodMetricInspection {
 
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return "Overly long method";
   }
 
-  @NotNull
+  @Nonnull
   public String getGroupDisplayName() {
     return METHOD_METRICS;
   }
@@ -48,7 +48,7 @@ public class LuaOverlyLongMethodInspection extends LuaMethodMetricInspection {
     return String.format("Method '#ref' is too long (statement count of %s is larger than %s)", args[0], args[1]);
   }
 
-  public LuaElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+  public LuaElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
     return new LuaElementVisitor() {
          public void visitFunctionDef(LuaFunctionDefinitionStatement func) {
               super.visitFunctionDef(func);

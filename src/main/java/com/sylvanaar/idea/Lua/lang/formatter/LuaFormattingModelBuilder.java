@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.formatting.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.TextRange;
@@ -24,7 +26,6 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,7 +35,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class LuaFormattingModelBuilder implements FormattingModelBuilder {
 
-    @NotNull
+    @Nonnull
     public FormattingModel createModel(PsiElement element, CodeStyleSettings settings) {
 
         ASTNode node = element.getNode();

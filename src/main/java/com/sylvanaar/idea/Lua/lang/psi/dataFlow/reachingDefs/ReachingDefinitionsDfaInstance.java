@@ -21,7 +21,7 @@ import com.sylvanaar.idea.Lua.lang.psi.dataFlow.DfaInstance;
 import gnu.trove.TIntHashSet;
 import gnu.trove.TIntObjectHashMap;
 import gnu.trove.TObjectIntHashMap;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * @author ven
@@ -64,7 +64,7 @@ public class ReachingDefinitionsDfaInstance implements DfaInstance<TIntObjectHas
     }
   }
 
-  @NotNull
+  @Nonnull
   public TIntObjectHashMap<TIntHashSet> initial() {
     return new TIntObjectHashMap<TIntHashSet>();
   }

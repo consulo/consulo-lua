@@ -25,8 +25,8 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
 import com.sylvanaar.idea.Lua.lang.psi.impl.PsiUtil;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.COMMA;
 
@@ -37,7 +37,7 @@ import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.COMMA;
  * Time: 6:44:09 PM
  */
 public class LuaParameterListImpl extends LuaPsiElementImpl implements LuaParameterList {
-    public LuaParameterListImpl(@NotNull ASTNode node) {
+    public LuaParameterListImpl(@Nonnull ASTNode node) {
         super(node);
     }
 
@@ -59,7 +59,7 @@ public class LuaParameterListImpl extends LuaPsiElementImpl implements LuaParame
         return "Parameter List (Count " + count() + ")";
     }
 
-    @NotNull
+    @Nonnull
     public LuaParameter[] getLuaParameters() {
         return findChildrenByClass(LuaParameter.class);
     }
@@ -135,7 +135,7 @@ public class LuaParameterListImpl extends LuaPsiElementImpl implements LuaParame
     }
 
     @Override
-    public PsiElement addAfter(@NotNull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
+    public PsiElement addAfter(@Nonnull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
         LuaParameter[] params = getLuaParameters();
         final ASTNode astNode = getNode();
 

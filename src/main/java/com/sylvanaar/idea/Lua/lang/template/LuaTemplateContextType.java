@@ -16,13 +16,14 @@
 
 package com.sylvanaar.idea.Lua.lang.template;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.template.*;
 import com.intellij.openapi.fileTypes.*;
 import com.intellij.psi.*;
 import com.intellij.psi.util.*;
 import com.sylvanaar.idea.Lua.*;
 import com.sylvanaar.idea.Lua.editor.highlighter.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,7 +36,7 @@ public class LuaTemplateContextType extends TemplateContextType {
         super("LUA", "Lua");
     }
 
-    public boolean isInContext(@NotNull PsiFile file, int offset) {
+    public boolean isInContext(@Nonnull PsiFile file, int offset) {
         if (PsiUtilBase.getLanguageAtOffset(file, offset).isKindOf(LuaFileType.LUA_LANGUAGE)) {
           PsiElement element = file.findElementAt(offset);
           return PsiTreeUtil.getParentOfType(element, PsiComment.class, false) == null;

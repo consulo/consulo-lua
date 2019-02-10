@@ -15,15 +15,18 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs;
 
+import javax.annotation.Nonnull;
+
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * @author ven
  */
 public interface VariableInfo {
-  @NotNull String getName();
+  @Nonnull
+  String getName();
 
   @Nullable
   LuaType getType();

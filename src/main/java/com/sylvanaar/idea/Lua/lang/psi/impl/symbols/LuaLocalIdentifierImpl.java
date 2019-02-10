@@ -21,12 +21,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementFactoryImpl;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.ref.SoftReference;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,7 +37,7 @@ public class LuaLocalIdentifierImpl extends LuaIdentifierImpl implements LuaLoca
     }
 
     @Override
-    public PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+    public PsiElement setName(@Nonnull String s) throws IncorrectOperationException {
         LuaIdentifier node = LuaPsiElementFactoryImpl.getInstance(getProject()).createLocalNameIdentifier(s);
         replace(node);
 
@@ -60,7 +57,7 @@ public class LuaLocalIdentifierImpl extends LuaIdentifierImpl implements LuaLoca
         return false;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public GlobalSearchScope getResolveScope() {
         return GlobalSearchScope.fileScope(this.getContainingFile());

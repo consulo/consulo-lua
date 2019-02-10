@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 
 public abstract class LuaItemPresentation implements ItemPresentation {

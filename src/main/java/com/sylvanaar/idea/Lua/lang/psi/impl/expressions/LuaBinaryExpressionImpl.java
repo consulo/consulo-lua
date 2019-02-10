@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.*;
 import com.intellij.psi.*;
 import com.intellij.psi.tree.*;
@@ -25,7 +27,6 @@ import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -63,7 +64,7 @@ public class LuaBinaryExpressionImpl extends LuaExpressionImpl implements LuaBin
         return getOperator().getNode().getFirstChildNode().getElementType();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         final IElementType type = getOperationTokenType();
@@ -120,7 +121,7 @@ public class LuaBinaryExpressionImpl extends LuaExpressionImpl implements LuaBin
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitBinaryExpression(this);
         } else {

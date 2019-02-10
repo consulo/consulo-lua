@@ -16,11 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.Key;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.ResolveState;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,14 +36,14 @@ public class NamespaceResolveProcessor extends ResolveProcessor {
     }
 
     @Override
-    public boolean execute(@NotNull PsiElement element, ResolveState state) {
+    public boolean execute(@Nonnull PsiElement element, ResolveState state) {
 
         return true;
     }
 
     @Nullable
     @Override
-    public <T> T getHint(@NotNull Key<T> hintKey) {
+    public <T> T getHint(@Nonnull Key<T> hintKey) {
         return null;
     }
 }

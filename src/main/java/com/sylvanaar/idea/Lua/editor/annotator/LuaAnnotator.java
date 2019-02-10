@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.editor.annotator;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.annotation.*;
 import com.intellij.openapi.editor.*;
 import com.intellij.openapi.editor.colors.*;
@@ -29,7 +31,6 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 
 /**
@@ -42,7 +43,7 @@ public class LuaAnnotator extends LuaElementVisitor implements Annotator {
     private AnnotationHolder myHolder = null;
 
     @Override
-    public void annotate(@NotNull PsiElement element, @NotNull AnnotationHolder holder) {
+    public void annotate(@Nonnull PsiElement element, @Nonnull AnnotationHolder holder) {
         if (element instanceof LuaPsiElement) {
             myHolder = holder;
             ((LuaPsiElement) element).accept(this);

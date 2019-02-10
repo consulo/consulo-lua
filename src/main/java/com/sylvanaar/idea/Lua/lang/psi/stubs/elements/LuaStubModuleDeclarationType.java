@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
 import java.io.IOException;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.psi.stubs.IndexSink;
@@ -55,12 +55,12 @@ public class LuaStubModuleDeclarationType extends LuaStubElementType<LuaModuleDe
     }
 
     @Override
-    public LuaModuleExpression createPsi(@NotNull LuaModuleDeclarationStub stub) {
+    public LuaModuleExpression createPsi(@Nonnull LuaModuleDeclarationStub stub) {
         return new LuaModuleExpressionImpl(stub);
     }
 
     @Override
-    public LuaModuleDeclarationStub createStub(@NotNull LuaModuleExpression psi, StubElement parentStub) {
+    public LuaModuleDeclarationStub createStub(@Nonnull LuaModuleExpression psi, StubElement parentStub) {
 
         log.debug(psi.getText());
         final String moduleName = psi.getModuleName();

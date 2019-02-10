@@ -28,10 +28,9 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaExpressionImpl;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.types.InferenceUtil;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.COMMA;
 
@@ -79,13 +78,13 @@ public class LuaIdentifierListImpl extends LuaExpressionImpl implements LuaIdent
     }
 
     @Override
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place) {
         return LuaPsiUtils.processChildDeclarations(this, processor, state, lastParent, place);
     }
 
 
     @Override
-    public PsiElement addAfter(@NotNull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
+    public PsiElement addAfter(@Nonnull PsiElement element, PsiElement anchor) throws IncorrectOperationException {
         PsiElement usingElement = element;
         if (getSymbols().length == 0) {
             add(usingElement);
@@ -104,7 +103,7 @@ public class LuaIdentifierListImpl extends LuaExpressionImpl implements LuaIdent
     }
 
     private class Symbols extends LuaAtomicNotNullLazyValue<LuaSymbol[]> {
-        @NotNull
+        @Nonnull
         @Override
         protected LuaSymbol[] compute() {
             return findChildrenByClass(LuaSymbol.class);

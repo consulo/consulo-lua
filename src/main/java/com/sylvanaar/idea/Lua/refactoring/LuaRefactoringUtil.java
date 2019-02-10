@@ -20,8 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.codeInsight.PsiEquivalenceUtil;
 import com.intellij.lexer.Lexer;
 import com.intellij.psi.PsiElement;
@@ -91,7 +91,7 @@ public class LuaRefactoringUtil {
     return element;
   }
 
-  public static PsiElement[] getExpressionOccurrences(@NotNull PsiElement expr, @NotNull PsiElement scope) {
+  public static PsiElement[] getExpressionOccurrences(@Nonnull PsiElement expr, @Nonnull PsiElement scope) {
     ArrayList<PsiElement> occurrences = new ArrayList<PsiElement>();
     Comparator<PsiElement> comparator = new Comparator<PsiElement>() {
       public int compare(PsiElement element1, PsiElement element2) {
@@ -122,7 +122,7 @@ public class LuaRefactoringUtil {
     return PsiUtilBase.toPsiElementArray(occurrences);
   }
 
-  private static void collectOccurrences(@NotNull PsiElement expr, @NotNull PsiElement scope, @NotNull ArrayList<PsiElement> acc, Comparator<PsiElement> comparator, boolean goIntoInner) {
+  private static void collectOccurrences(@Nonnull PsiElement expr, @Nonnull PsiElement scope, @Nonnull ArrayList<PsiElement> acc, Comparator<PsiElement> comparator, boolean goIntoInner) {
     if (scope.equals(expr)) {
       acc.add(expr);
       return;

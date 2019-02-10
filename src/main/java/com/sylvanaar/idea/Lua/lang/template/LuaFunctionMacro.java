@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.template;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.template.*;
 import com.intellij.psi.PsiDocumentManager;
@@ -25,7 +27,6 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaAnonymousFunctionExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,14 +45,14 @@ public class LuaFunctionMacro extends Macro {
         return "currentLuaFunction()";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getDefaultValue() {
         return "";
     }
 
     @Override
-    public Result calculateResult(@NotNull Expression[] expressions, ExpressionContext expressionContext) {
+    public Result calculateResult(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
         PsiFile file = PsiDocumentManager.getInstance(expressionContext.getProject()).getPsiFile(
                 expressionContext.getEditor().getDocument());
 
@@ -80,12 +81,12 @@ public class LuaFunctionMacro extends Macro {
     }
 
     @Override
-    public Result calculateQuickResult(@NotNull Expression[] expressions, ExpressionContext expressionContext) {
+    public Result calculateQuickResult(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
         return null;
     }
 
     @Override
-    public LookupElement[] calculateLookupItems(@NotNull Expression[] expressions,
+    public LookupElement[] calculateLookupItems(@Nonnull Expression[] expressions,
                                                 ExpressionContext expressionContext) {
         return new LookupElement[0];
     }

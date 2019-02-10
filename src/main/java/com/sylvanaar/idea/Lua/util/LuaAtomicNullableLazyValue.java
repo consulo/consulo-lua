@@ -16,8 +16,9 @@
 
 package com.sylvanaar.idea.Lua.util;
 
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.util.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.

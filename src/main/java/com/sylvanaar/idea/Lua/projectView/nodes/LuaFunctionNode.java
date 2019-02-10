@@ -23,9 +23,10 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.util.SymbolUtil;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+
+import javax.annotation.Nullable;
 
 public class LuaFunctionNode extends BasePsiMemberNode<LuaFunctionDefinition> {
     public LuaFunctionNode(Project project, LuaFunctionDefinition value, ViewSettings viewSettings) {

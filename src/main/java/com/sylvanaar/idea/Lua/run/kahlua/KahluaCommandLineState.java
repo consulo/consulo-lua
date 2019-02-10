@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.run.kahlua;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.Executor;
@@ -33,7 +35,6 @@ import com.sylvanaar.idea.Lua.kahlua.KahLuaInterpreterWindowFactory;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.LuaRunConfigurationParams;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -50,8 +51,8 @@ public class KahluaCommandLineState extends LuaCommandLineState {
         super(runConfiguration, env);
     }
 
-    public ExecutionResult execute(@NotNull final Executor executor,
-                                   @NotNull ProgramRunner runner) throws ExecutionException {
+    public ExecutionResult execute(@Nonnull final Executor executor,
+                                   @Nonnull ProgramRunner runner) throws ExecutionException {
         log.info("execute " + executor.getActionName());
 
         final ProcessHandler processHandler = startProcess();
@@ -83,7 +84,7 @@ public class KahluaCommandLineState extends LuaCommandLineState {
         return new KahluaExecutionResult(console, createActions(console, processHandler, executor));
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected ProcessHandler startProcess() throws ExecutionException {
         log.info("startProcess");

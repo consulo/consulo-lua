@@ -16,12 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
+import javax.annotation.Nullable;
+
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.source.PsiFileWithStubSupport;
 import com.sylvanaar.idea.Lua.lang.InferenceCapable;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

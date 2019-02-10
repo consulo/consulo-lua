@@ -16,14 +16,15 @@
 
 package com.sylvanaar.idea.Lua.util;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.*;
-import org.jetbrains.annotations.*;
 
 public abstract class LuaAtomicNotNullLazyValue<T> extends NotNullLazyValue<T> {
 
     private volatile T myValue;
 
-    @NotNull
+    @Nonnull
     public final T getValue() {
         T value = myValue;
         if (value != null) {

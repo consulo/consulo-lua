@@ -21,7 +21,7 @@ import com.intellij.codeInsight.template.*;
 import com.intellij.psi.PsiDocumentManager;
 import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,14 +40,14 @@ public class LuaFileMacro extends Macro {
         return "currentLuaFile()";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getDefaultValue() {
         return "";
     }
 
     @Override
-    public Result calculateResult(@NotNull Expression[] expressions, ExpressionContext expressionContext) {
+    public Result calculateResult(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
         PsiFile file = PsiDocumentManager.getInstance(
                 expressionContext.getProject()).getPsiFile(expressionContext.getEditor().getDocument());
 
@@ -58,12 +58,12 @@ public class LuaFileMacro extends Macro {
     }
 
     @Override
-    public Result calculateQuickResult(@NotNull Expression[] expressions, ExpressionContext expressionContext) {
+    public Result calculateQuickResult(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
         return null;
     }
 
     @Override
-    public LookupElement[] calculateLookupItems(@NotNull Expression[] expressions, ExpressionContext expressionContext) {
+    public LookupElement[] calculateLookupItems(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
         return new LookupElement[0];
     }
 }

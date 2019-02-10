@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.intentions.utils;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.psi.PsiElement;
 
 public class TreeUtil {

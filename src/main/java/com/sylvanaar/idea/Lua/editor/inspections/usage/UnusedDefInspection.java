@@ -44,7 +44,7 @@ import gnu.trove.TIntObjectHashMap;
 import gnu.trove.TIntProcedure;
 import gnu.trove.TObjectProcedure;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 
@@ -62,12 +62,12 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return DATA_FLOW;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
@@ -75,14 +75,14 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
 
     @Override
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Unused Assignment";
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
 //            public void visitFunctionDef(LuaFunctionDefinitionStatement e) {
 //                super.visitFunctionDef(e);

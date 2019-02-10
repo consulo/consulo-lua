@@ -16,8 +16,8 @@
 
 package consulo.lua.bundle;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
@@ -30,7 +30,7 @@ import com.sylvanaar.idea.Lua.run.luaj.LuaJExternalCommandLineState;
  */
 public class LuaJSdkType extends LuaSdkType
 {
-	@NotNull
+	@Nonnull
 	public static LuaJSdkType getInstance()
 	{
 		return EP_NAME.findExtension(LuaJSdkType.class);
@@ -66,14 +66,14 @@ public class LuaJSdkType extends LuaSdkType
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getPresentableName()
 	{
 		return "LuaJ";
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration,
 			ExecutionEnvironment env,

@@ -44,8 +44,8 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaRecursiveElementVisitor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -230,7 +230,7 @@ public final class LuaPsiUtils {
 
     @Nullable
     public static LuaPsiElement getCoveringPsiElement(
-        @NotNull
+        @Nonnull
     final PsiElement psiElement) {
         PsiElement current = psiElement;
 
@@ -383,9 +383,9 @@ public final class LuaPsiUtils {
     //    if (collection.isEmpty()) return LuaPsiElement.EMPTY_ARRAY;
     //    return collection.toArray(new LuaPsiElement[collection.size()]);
     //  }
-    @NotNull
+    @Nonnull
     public static PsiElement[] toPsiElementArray(
-        @NotNull
+        @Nonnull
     Collection<?extends PsiElement> collection) {
         if (collection.isEmpty()) {
             return PsiElement.EMPTY_ARRAY;
@@ -395,7 +395,7 @@ public final class LuaPsiUtils {
     }
 
     public static boolean hasDirectChildErrorElements(
-        @NotNull
+        @Nonnull
     final PsiElement element) {
         if (element instanceof PsiErrorElement) {
             return true;

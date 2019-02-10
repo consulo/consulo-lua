@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.*;
 import com.intellij.psi.*;
 import com.intellij.psi.scope.*;
@@ -25,7 +27,6 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -43,7 +44,7 @@ public class LuaLocalFunctionDefinitionStatementImpl extends LuaFunctionDefiniti
         return getIdentifier().getName();
     }
 
-    @NotNull
+    @Nonnull
     public LuaSymbol getIdentifier() {
         return findChildByClass(LuaSymbol.class);
     }
@@ -61,8 +62,8 @@ public class LuaLocalFunctionDefinitionStatementImpl extends LuaFunctionDefiniti
         return (Assignable) getIdentifier();
     }
 
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState resolveState,
-                                       PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState resolveState,
+									   PsiElement lastParent, @Nonnull PsiElement place) {
 
         LuaSymbol v = getIdentifier();
         if (v != null) if (!processor.execute(v, resolveState)) return false;

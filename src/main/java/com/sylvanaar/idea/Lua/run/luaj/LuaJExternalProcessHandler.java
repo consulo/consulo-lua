@@ -16,11 +16,13 @@
 
 package com.sylvanaar.idea.Lua.run.luaj;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.Key;
 import com.sylvanaar.idea.Lua.run.lua.LuaProcessHandler;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,7 +33,7 @@ import org.jetbrains.annotations.Nullable;
 public class LuaJExternalProcessHandler extends LuaProcessHandler {
     private static final Logger log = Logger.getInstance("Lua.LuaJExternalProcessHandler");
 
-    public LuaJExternalProcessHandler(@NotNull Process process, @Nullable String commandLine) {
+    public LuaJExternalProcessHandler(@Nonnull Process process, @Nullable String commandLine) {
         super(process, commandLine);
     }
 

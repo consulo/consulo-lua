@@ -22,12 +22,10 @@ import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.sylvanaar.idea.Lua.LuaBundle;
-import com.sylvanaar.idea.Lua.LuaIcons;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
-import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -125,32 +123,32 @@ public class LuaColorsPage  implements ColorSettingsPage {
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return LuaBundle.message("color.settings.name");
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public AttributesDescriptor[] getAttributeDescriptors() {
         return ATTRS;
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public ColorDescriptor[] getColorDescriptors() {
         return new ColorDescriptor[0];
     }
 
     @Override
-    @NotNull
+    @Nonnull
     public SyntaxHighlighter getHighlighter() {
         return new LuaSyntaxHighlighter();
     }
 
     @Override
     @NonNls
-    @NotNull
+    @Nonnull
     public String getDemoText() {
         return DEMO_TEXT;
     }

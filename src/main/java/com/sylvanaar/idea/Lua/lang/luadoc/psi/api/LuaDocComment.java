@@ -16,30 +16,32 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public interface LuaDocComment extends /*PsiDocComment,*/ LuaDocPsiElement {
 
     @Nullable
     LuaDocCommentOwner getOwner();
 
-    @NotNull
+    @Nonnull
     LuaDocTag[] getTags();
 
     @Nullable
     LuaDocTag findTagByName(@NonNls String name);
 
-    @NotNull
+    @Nonnull
     LuaDocTag[] findTagsByName(@NonNls String name);
 
-    @NotNull
+    @Nonnull
     public PsiElement[] getDescriptionElements();
 
     // Return the first line of the description
     // up to and including the first '.'
-    @NotNull
+    @Nonnull
     String getSummaryDescription();
 }

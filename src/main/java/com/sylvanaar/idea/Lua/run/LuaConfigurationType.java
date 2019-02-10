@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.run;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.RunConfiguration;
@@ -49,7 +49,7 @@ public class LuaConfigurationType implements ConfigurationType {
         return LuaIcons.LUA_ICON;
     }
 
-    @NotNull
+    @Nonnull
     public String getId() {
         return "#com.sylvanaar.idea.Lua.run.LuaConfigurationType";
     }

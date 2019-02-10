@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.stubs.NamedStubBase;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.util.io.StringRef;
@@ -23,8 +25,8 @@ import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,7 +41,7 @@ public class LuaModuleDeclarationStubImpl extends NamedStubBase<LuaModuleExpress
 
 
     public LuaModuleDeclarationStubImpl(StubElement parent, @Nullable StringRef name, @Nullable StringRef module,
-                                        @NotNull byte[] type) {
+										@Nonnull byte[] type) {
         super(parent, LuaElementTypes.MODULE_NAME_DECL, name);
         myModule = module;
         myType = type;
@@ -50,7 +52,7 @@ public class LuaModuleDeclarationStubImpl extends NamedStubBase<LuaModuleExpress
         return myModule != null ? myModule.getString() : null;
     }
 
-    @NotNull
+    @Nonnull
     public byte[] getEncodedType() {
         return myType;
     }

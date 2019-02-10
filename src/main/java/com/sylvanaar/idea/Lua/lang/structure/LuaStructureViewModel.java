@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.structure;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.structureView.TextEditorBasedStructureViewModel;
 import com.intellij.ide.util.treeView.smartTree.Sorter;
@@ -24,7 +26,6 @@ import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.structure.impl.LuaFileStructureViewElement;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,17 +48,17 @@ public class LuaStructureViewModel  extends TextEditorBasedStructureViewModel {
     return myRootElement;
   }
 
-  @NotNull
+  @Nonnull
   public StructureViewTreeElement getRoot() {
     return new LuaFileStructureViewElement(myRootElement);
   }
 
-  @NotNull
+  @Nonnull
   public Sorter[] getSorters() {
     return new Sorter[]{Sorter.ALPHA_SORTER};
   }
 
-  @NotNull
+  @Nonnull
   protected Class[] getSuitableClasses() {
     return SUITABLE_CLASSES;
   }

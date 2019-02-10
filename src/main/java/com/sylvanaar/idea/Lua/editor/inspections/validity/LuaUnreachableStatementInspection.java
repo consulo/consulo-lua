@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.validity;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.PsiElementVisitor;
@@ -25,20 +27,20 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 
 public class LuaUnreachableStatementInspection extends AbstractInspection {
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return VALIDITY_ISSUES;
     }
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Unreachable Statement";
     }
@@ -53,9 +55,9 @@ public class LuaUnreachableStatementInspection extends AbstractInspection {
         return true;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             public void visitFile(PsiFile file) {
                 if (!(file instanceof LuaPsiFile)) return;

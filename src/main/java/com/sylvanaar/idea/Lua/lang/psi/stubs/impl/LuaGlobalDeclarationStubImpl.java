@@ -24,7 +24,7 @@ import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobalDeclaration;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,8 +46,8 @@ public class LuaGlobalDeclarationStubImpl extends NamedStubBase<LuaGlobalDeclara
 //    }
 
     public LuaGlobalDeclarationStubImpl(@Nullable StubElement parent, IStubElementType elementType,
-                                        @Nullable StringRef name, @Nullable StringRef module, byte[] type,
-                                        LuaType luaType) {
+										@Nullable StringRef name, @Nullable StringRef module, byte[] type,
+										LuaType luaType) {
         super(parent, elementType, name);
         myModule = module;
         myType = type;
@@ -55,7 +55,7 @@ public class LuaGlobalDeclarationStubImpl extends NamedStubBase<LuaGlobalDeclara
     }
 
     public LuaGlobalDeclarationStubImpl(StubElement parent, @Nullable StringRef name, @Nullable StringRef module, byte[] type,
-                                        LuaType luaType) {
+										LuaType luaType) {
         this(parent, LuaElementTypes.GLOBAL_NAME_DECL, name, module, type, luaType);
     }
 

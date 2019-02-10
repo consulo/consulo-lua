@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections;
 
-import com.intellij.codeInsight.intention.IntentionAction;
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.openapi.diagnostic.Logger;
@@ -28,7 +29,6 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,17 +37,17 @@ import org.jetbrains.annotations.NotNull;
  * Time: 7:28:35 AM
  */
 public abstract class LuaFix implements LocalQuickFix {
-    @NotNull
+    @Nonnull
     public final String getText() {
         return getName();
     }
 
-    @NotNull
+    @Nonnull
     public String getFamilyName() {
         return "Lua";
     }
 
-    public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {
+    public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {
         return file instanceof LuaPsiFile;
     }
 
@@ -55,8 +55,8 @@ public abstract class LuaFix implements LocalQuickFix {
         return true;
     }
 
-    public void applyFix(@NotNull Project project,
-                         @NotNull ProblemDescriptor descriptor) {
+    public void applyFix(@Nonnull Project project,
+                         @Nonnull ProblemDescriptor descriptor) {
       final PsiElement problemElement = descriptor.getPsiElement();
       if (problemElement == null || !problemElement.isValid()) {
         return;

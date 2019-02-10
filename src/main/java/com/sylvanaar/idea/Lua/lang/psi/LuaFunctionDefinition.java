@@ -24,8 +24,8 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlockStatement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,6 +44,6 @@ public interface LuaFunctionDefinition extends LuaPsiElement, LuaBlockStatement,
 
     TextRange getRangeEnclosingBlock();
 
-    @NotNull
+    @Nonnull
     LuaFunction getLuaType();
 }

@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.fileTypes.FileTypeConsumer;
 import com.intellij.openapi.fileTypes.FileTypeFactory;
 
@@ -29,7 +29,7 @@ import com.intellij.openapi.fileTypes.FileTypeFactory;
 public class LuaFileTypeLoader extends FileTypeFactory
 {
 	@Override
-	public void createFileTypes(@NotNull FileTypeConsumer consumer)
+	public void createFileTypes(@Nonnull FileTypeConsumer consumer)
 	{
 		consumer.consume(LuaFileType.LUA_FILE_TYPE, LuaFileType.EXTENSION_FILE_NAME_MATCHERS);
 	}

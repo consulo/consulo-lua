@@ -16,13 +16,14 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.psi.stubs.StubSerializer;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class LuaStubElementType<S extends StubElement, T extends LuaPsiElement>
         extends IStubElementType<S, T>  implements StubSerializer<S> {
 
-    protected LuaStubElementType(@NonNls @NotNull String debugName) {
+    protected LuaStubElementType(@NonNls @Nonnull String debugName) {
         super(debugName, LuaFileType.LUA_LANGUAGE);
     }
 

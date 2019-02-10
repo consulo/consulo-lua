@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.xdebugger.frame.XNavigatable;
@@ -43,7 +44,7 @@ public class LuaDebugValue extends XValue {
     }
 
     @Override
-    public void computePresentation(@NotNull XValueNode node, @NotNull XValuePlace place) {
+    public void computePresentation(@Nonnull XValueNode node, @Nonnull XValuePlace place) {
         node.setPresentation(AllIcons.Debugger.Value, myTypeName, myValueAsString, false);
     }
 
@@ -53,7 +54,7 @@ public class LuaDebugValue extends XValue {
     }
 
     @Override
-    public void computeSourcePosition(@NotNull XNavigatable navigatable) {
+    public void computeSourcePosition(@Nonnull XNavigatable navigatable) {
         super.computeSourcePosition(
                 navigatable);
     }

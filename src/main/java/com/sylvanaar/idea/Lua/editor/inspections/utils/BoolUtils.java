@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.utils;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.ObjectUtil;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
@@ -25,7 +25,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaUnaryExpression;
 
 public class BoolUtils {
   private static Object UNKNOWN = new Object();
-  public static boolean isNegation(@NotNull LuaExpression exp) {
+  public static boolean isNegation(@Nonnull LuaExpression exp) {
     if (!(exp instanceof LuaUnaryExpression)) {
       return false;
     }

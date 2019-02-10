@@ -15,10 +15,11 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.metrics;
 
+import javax.annotation.Nonnull;
+
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 
 class StatementCountVisitor extends LuaElementVisitor {
@@ -44,7 +45,7 @@ class StatementCountVisitor extends LuaElementVisitor {
     }
 
 
-  public void visitStatement(@NotNull LuaStatementElement statement) {
+  public void visitStatement(@Nonnull LuaStatementElement statement) {
     statementCount++;
     int oldCount = 0;
 

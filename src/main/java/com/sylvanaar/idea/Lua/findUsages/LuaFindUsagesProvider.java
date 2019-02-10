@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.findUsages;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.cacheBuilder.DefaultWordsScanner;
 import com.intellij.lang.cacheBuilder.WordsScanner;
 import com.intellij.lang.findUsages.FindUsagesProvider;
@@ -28,15 +30,15 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocal;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaUpvalueIdentifier;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 
 /**
  * @author ven
  */
 public class LuaFindUsagesProvider implements FindUsagesProvider {
-        @NotNull
+        @Nonnull
         public WordsScanner getWordsScanner() {
             return  new DefaultWordsScanner(new LuaLexer(),
                 LuaTokenTypes.IDENTIFIERS_SET, LuaTokenTypes.COMMENT_SET, LuaTokenTypes.LITERALS_SET) {{
@@ -44,17 +46,17 @@ public class LuaFindUsagesProvider implements FindUsagesProvider {
             }};
         }
 
-        public boolean canFindUsagesFor(@NotNull final PsiElement psiElement) {
+        public boolean canFindUsagesFor(@Nonnull final PsiElement psiElement) {
             return psiElement instanceof LuaNamedElement;
         }
 
         @Nullable
-        public String getHelpId(@NotNull final PsiElement psiElement) {
+        public String getHelpId(@Nonnull final PsiElement psiElement) {
             return null;
         }
 
-        @NotNull
-        public String getType(@NotNull final PsiElement element) {
+        @Nonnull
+        public String getType(@Nonnull final PsiElement element) {
             if (element instanceof LuaUpvalueIdentifier) return "upvalue";
             if (element instanceof LuaParameter) return "parameter";
             if (element instanceof LuaFieldIdentifier) return "field";
@@ -63,13 +65,13 @@ public class LuaFindUsagesProvider implements FindUsagesProvider {
             return "identifier";
         }
 
-        @NotNull
-        public String getDescriptiveName(@NotNull final PsiElement element) {
+        @Nonnull
+        public String getDescriptiveName(@Nonnull final PsiElement element) {
             return getName(element);
         }
 
-        @NotNull
-        public String getNodeText(@NotNull final PsiElement element, final boolean useFullName) {
+        @Nonnull
+        public String getNodeText(@Nonnull final PsiElement element, final boolean useFullName) {
             final StringBuilder sb = new StringBuilder(getType(element));
             if (sb.length() > 0) {
                 sb.append(" ");
@@ -79,8 +81,8 @@ public class LuaFindUsagesProvider implements FindUsagesProvider {
             return sb.toString();
         }
 
-        @NotNull
-        private String getName(@NotNull final PsiElement element) {
+        @Nonnull
+        private String getName(@Nonnull final PsiElement element) {
             if (element instanceof LuaNamedElement) {
                 return StringUtil.notNullize(((LuaNamedElement) element).getName());
             }

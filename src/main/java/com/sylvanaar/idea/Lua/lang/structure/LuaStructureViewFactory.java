@@ -16,8 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.structure;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.ide.structureView.StructureViewBuilder;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
@@ -38,7 +39,7 @@ public class LuaStructureViewFactory implements PsiStructureViewFactory {
     return new TreeBasedStructureViewBuilder() {
 
       @Override
-	  @NotNull
+	  @Nonnull
       public StructureViewModel createStructureViewModel(@Nullable Editor editor) {
         return new LuaStructureViewModel((LuaPsiFile) psiFile);
       }

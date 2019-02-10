@@ -11,9 +11,10 @@ import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.*;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nullable;
 
 public class LuaResolver implements ResolveCache.PolyVariantResolver<LuaReferenceElement> {
     public static final Logger log = Logger.getInstance("Lua.LuaResolver");

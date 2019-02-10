@@ -22,7 +22,7 @@ import com.intellij.psi.*;
 import com.intellij.psi.impl.source.resolve.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,7 +36,7 @@ private PsiBuilder psiBuilder;
 
     static Logger log = Logger.getInstance("Lua.parser.LuaPsiBuilder");
 
-	public LuaPsiBuilder(@NotNull PsiBuilder builder) {
+	public LuaPsiBuilder(@Nonnull PsiBuilder builder) {
 		psiBuilder = builder;
 
        // psiBuilder.setDebugMode(true);

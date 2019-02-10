@@ -32,9 +32,10 @@ import com.sylvanaar.idea.Lua.lang.psi.types.InferenceUtil;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
 import com.sylvanaar.idea.Lua.util.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -54,7 +55,7 @@ public class LuaAssignmentStatementImpl extends LuaStatementElementImpl implemen
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitAssignment(this);
         } else {
@@ -79,7 +80,7 @@ public class LuaAssignmentStatementImpl extends LuaStatementElementImpl implemen
 
     LuaAssignmentUtil.Assignments assignments = new LuaAssignmentUtil.Assignments(this);
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaAssignment[] getAssignments() {
         return assignments.getValue();
@@ -100,7 +101,7 @@ public class LuaAssignmentStatementImpl extends LuaStatementElementImpl implemen
         return LuaAssignment.FindAssignmentForSymbol(getAssignments(), symbol);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public IElementType getOperationTokenType() {
         return LuaElementTypes.ASSIGN;
@@ -133,8 +134,8 @@ public class LuaAssignmentStatementImpl extends LuaStatementElementImpl implemen
     }
 
     @Override
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state,
-                                       PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state,
+									   PsiElement lastParent, @Nonnull PsiElement place) {
 
         if (PsiTreeUtil.isAncestor(this, place, true)) return true;
 
@@ -168,7 +169,7 @@ public class LuaAssignmentStatementImpl extends LuaStatementElementImpl implemen
     }
 
     private class DefAndAssignSymbols extends LuaAtomicNotNullLazyValue<LuaSymbol[]> {
-        @NotNull
+        @Nonnull
         @Override
         protected LuaSymbol[] compute() {
             LuaAssignment[] assignments = getAssignments();

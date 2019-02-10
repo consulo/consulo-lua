@@ -37,10 +37,11 @@ import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.SymbolResolveProcessor
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
 import java.util.Collection;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,7 +50,7 @@ import java.util.Collection;
  * Time: 5:20 PM
  */
 public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl implements LuaDocSymbolReference {
-    public LuaDocSymbolReferenceElementImpl(@NotNull ASTNode node) {
+    public LuaDocSymbolReferenceElementImpl(@Nonnull ASTNode node) {
         super(node);
     }
 
@@ -62,7 +63,7 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
         return this;
     }
 
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(final boolean incompleteCode) {
         final String refName = getName();
         if (refName == null)
@@ -109,7 +110,7 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
     }
 
     @Override
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
         throw new IncorrectOperationException("not implemented");
     }
 
@@ -120,7 +121,7 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
         return results[0].getElement();
     }
 
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         return StringUtil.notNullize(getName());
     }
@@ -135,7 +136,7 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
         return this;
     }
 
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         if (isReferenceTo(element)) return this;
         return null;
     }
@@ -145,7 +146,7 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
         return getManager().areElementsEquivalent(element, resolve());
     }
     
-    @NotNull
+    @Nonnull
     @Override
     public Object[] getVariants() {
         return new Object[0];

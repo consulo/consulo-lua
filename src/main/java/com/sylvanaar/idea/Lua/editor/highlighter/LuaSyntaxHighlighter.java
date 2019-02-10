@@ -24,7 +24,7 @@ import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaLexer;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,12 +71,12 @@ public class LuaSyntaxHighlighter extends SyntaxHighlighterBase {
         colors.put(LuaDocElementTypes.LUADOC_COMMENT, LuaHighlightingData.LUADOC);
     }
 
-    @NotNull
+    @Nonnull
     public Lexer getHighlightingLexer() {
         return new LuaLexer();
     }
 
-    @NotNull
+    @Nonnull
   public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
     return pack(colors.get(tokenType));
   }

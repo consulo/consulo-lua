@@ -43,8 +43,8 @@ import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.SymbolUtil;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -76,7 +76,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitModuleExpression(this);
         } else {
@@ -124,7 +124,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
         return SymbolUtil.getGlobalEnvironmentName(this);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public IStubElementType getElementType() {
         return LuaElementTypes.MODULE_NAME_DECL;
@@ -170,7 +170,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
     }
 
     @Override
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
         return null;
     }
 
@@ -179,10 +179,10 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
         return getGlobalEnvironmentName();
     }
 
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor,
-                                       @NotNull ResolveState resolveState,
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor,
+                                       @Nonnull ResolveState resolveState,
                                        PsiElement lastParent,
-                                       @NotNull PsiElement place) {
+                                       @Nonnull PsiElement place) {
 
         if (!processor.execute(this, resolveState)) return false;
 
@@ -208,7 +208,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
 
     LuaType type = new LuaTable();
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         if (type instanceof StubType)
@@ -266,7 +266,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
         return this;
     }
 
-    @NotNull
+    @Nonnull
     public TextRange getRangeInElement() {
         PsiElement e = getNameElement();
         if (e != null)
@@ -281,14 +281,14 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
         return results.length == 1 ? results[0].getElement() : null;
     }
 
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(final boolean incompleteCode) {
         return ResolveCache.getInstance(getProject()).resolveWithCaching(this, RESOLVER, true, incompleteCode);
     }
 
     private static final LuaResolver RESOLVER = new LuaResolver();
 
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         return StringUtil.notNullize(getGlobalEnvironmentName());
     }
@@ -304,7 +304,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
     }
 
     @Override
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -313,7 +313,7 @@ public class LuaModuleExpressionImpl extends LuaStubElementBase<LuaModuleDeclara
         return getManager().areElementsEquivalent(element, resolve());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Object[] getVariants() {
         return ResolveUtil.getVariants(this);

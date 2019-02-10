@@ -19,7 +19,7 @@ import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 
 public class BoolUtils {

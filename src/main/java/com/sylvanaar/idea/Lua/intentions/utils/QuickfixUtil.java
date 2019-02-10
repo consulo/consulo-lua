@@ -26,12 +26,8 @@ import com.intellij.openapi.vfs.ReadonlyStatusHandler;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.SuggestedNameInfo;
-import gnu.trove.THashSet;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import javax.annotation.Nonnull;
 
 /**
  * User: Dmitry.Krasilschikov
@@ -81,7 +77,7 @@ public class QuickfixUtil {
     return !operationStatus.hasReadonlyFiles();
   }
 
-  public static Editor positionCursor(@NotNull Project project, @NotNull PsiFile targetFile, @NotNull PsiElement element) {
+  public static Editor positionCursor(@Nonnull Project project, @Nonnull PsiFile targetFile, @Nonnull PsiElement element) {
     TextRange range = element.getTextRange();
     int textOffset = range.getStartOffset();
 

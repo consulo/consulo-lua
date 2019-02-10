@@ -19,15 +19,16 @@ package com.sylvanaar.idea.Lua.lang.luadoc.lexer;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.Language;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author ilyas
  */
 public abstract class LuaDocElementType extends IElementType implements ILuaDocElementType{
 
-  public LuaDocElementType(@NotNull @NonNls String debugName, @Nullable Language language) {
+  public LuaDocElementType(@Nonnull @NonNls String debugName, @Nullable Language language) {
     super(debugName, language);
   }
 }

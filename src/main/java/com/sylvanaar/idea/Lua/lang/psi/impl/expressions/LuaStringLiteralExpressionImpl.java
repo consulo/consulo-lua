@@ -21,8 +21,8 @@ import com.intellij.openapi.util.TextRange;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaLiteralExpression;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,7 +56,7 @@ public class LuaStringLiteralExpressionImpl extends LuaLiteralExpressionImpl imp
                 getTextRange().getEndOffset() - openQuote.length()  - getTextOffset());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         return LuaPrimitiveType.STRING;

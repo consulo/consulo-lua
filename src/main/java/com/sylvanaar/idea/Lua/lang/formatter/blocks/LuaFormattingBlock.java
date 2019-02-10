@@ -33,8 +33,8 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -49,7 +49,7 @@ public class LuaFormattingBlock implements Block {
 
   protected List<Block> mySubBlocks = null;
 
-  public LuaFormattingBlock(@NotNull final ASTNode node, @Nullable final Alignment alignment, @NotNull final Indent indent, @Nullable final Wrap wrap, final CodeStyleSettings settings) {
+  public LuaFormattingBlock(@Nonnull final ASTNode node, @Nullable final Alignment alignment, @Nonnull final Indent indent, @Nullable final Wrap wrap, final CodeStyleSettings settings) {
     myNode = node;
     myAlignment = alignment;
     myIndent = indent;
@@ -57,7 +57,7 @@ public class LuaFormattingBlock implements Block {
     mySettings = settings;
   }
 
-  @NotNull
+  @Nonnull
   public ASTNode getNode() {
    // LOG.info("Block <"+myNode.getText()+"> " + myNode.getElementType());
     return myNode;
@@ -68,12 +68,12 @@ public class LuaFormattingBlock implements Block {
 //    return mySettings;
 //  }
 
-  @NotNull
+  @Nonnull
   public TextRange getTextRange() {
     return myNode.getTextRange();
   }
 
-  @NotNull
+  @Nonnull
   public List<Block> getSubBlocks() {
     if (mySubBlocks == null) {
       mySubBlocks = LuaBlockGenerator.generateSubBlocks(myNode, myAlignment, myWrap, mySettings, this);
@@ -120,7 +120,7 @@ public class LuaFormattingBlock implements Block {
    * @param node Tree node
    * @return true if node is incomplete
    */
-  public boolean isIncomplete(@NotNull final ASTNode node) {
+  public boolean isIncomplete(@Nonnull final ASTNode node) {
     if (node.getElementType() instanceof ILazyParseableElementType) return false;
     ASTNode lastChild = node.getLastChildNode();
     while (lastChild != null &&
@@ -135,7 +135,7 @@ public class LuaFormattingBlock implements Block {
         return getNode().getFirstChildNode() == null;
     }
 
-  @NotNull
+  @Nonnull
   public ChildAttributes getChildAttributes(final int newChildIndex) {
     return getAttributesByParent();
   }

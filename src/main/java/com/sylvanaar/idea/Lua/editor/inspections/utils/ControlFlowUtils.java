@@ -15,13 +15,15 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.utils;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 
 @SuppressWarnings({"OverlyComplexClass"})
@@ -65,20 +67,20 @@ public class ControlFlowUtils {
     }
 
     private static boolean whileStatementMayReturnNormally(
-      @NotNull LuaWhileStatement loopStatement) {
+      @Nonnull LuaWhileStatement loopStatement) {
     final LuaConditionalExpression test = loopStatement.getCondition();
     return (!BoolUtils.isTrue(test)
         || statementIsBreakTarget(loopStatement)) ;
   }
 
   private static boolean forStatementMayReturnNormally(
-      @NotNull LuaStatementElement loopStatement) {
+      @Nonnull LuaStatementElement loopStatement) {
     return true;
   }
 
 
   private static boolean ifStatementMayReturnNormally(
-      @NotNull LuaIfThenStatement ifStatement) {
+      @Nonnull LuaIfThenStatement ifStatement) {
     final LuaBlock thenBranch = ifStatement.getIfBlock();
     if (blockMayCompleteNormally(thenBranch)) {
       return true;
@@ -105,20 +107,20 @@ public class ControlFlowUtils {
 
 
   private static boolean statementIsBreakTarget(
-      @NotNull LuaStatementElement statement) {
+      @Nonnull LuaStatementElement statement) {
     final BreakFinder breakFinder = new BreakFinder(statement);
     statement.accept(breakFinder);
     return breakFinder.breakFound();
   }
 
   public static boolean statementContainsReturn(
-      @NotNull LuaStatementElement statement) {
+      @Nonnull LuaStatementElement statement) {
     final ReturnFinder returnFinder = new ReturnFinder();
     statement.accept(returnFinder);
     return returnFinder.returnFound();
   }
 
-  public static boolean isInLoop(@NotNull LuaPsiElement element) {
+  public static boolean isInLoop(@Nonnull LuaPsiElement element) {
     final LuaConditionalLoop loop =
         PsiTreeUtil.getParentOfType(element, LuaConditionalLoop.class);
     if (loop == null) {
@@ -166,8 +168,8 @@ public class ControlFlowUtils {
 //  }
 
   public static boolean statementCompletesWithStatement(
-      @NotNull LuaStatementElement containingStatement,
-      @NotNull LuaStatementElement statement) {
+      @Nonnull LuaStatementElement containingStatement,
+      @Nonnull LuaStatementElement statement) {
     LuaPsiElement statementToCheck = statement;
     while (true) {
       if (statementToCheck.equals(containingStatement)) {
@@ -192,8 +194,8 @@ public class ControlFlowUtils {
   }
 
   public static boolean blockCompletesWithStatement(
-      @NotNull LuaBlock body,
-      @NotNull LuaStatementElement statement) {
+      @Nonnull LuaBlock body,
+      @Nonnull LuaStatementElement statement) {
     LuaStatementElement statementToCheck = statement;
     while (true) {
       if (statementToCheck == null) {
@@ -225,24 +227,24 @@ public class ControlFlowUtils {
   }
 
 
-  private static boolean isLoop(@NotNull LuaPsiElement element) {
+  private static boolean isLoop(@Nonnull LuaPsiElement element) {
     return element instanceof LuaConditionalLoop;
   }
 
   @Nullable
   private static LuaStatementElement getContainingStatement(
-      @NotNull LuaPsiElement statement) {
+      @Nonnull LuaPsiElement statement) {
     return PsiTreeUtil.getParentOfType(statement, LuaStatementElement.class);
   }
 
   @Nullable
   private static LuaPsiElement getContainingStatementOrBlock(
-      @NotNull LuaPsiElement statement) {
+      @Nonnull LuaPsiElement statement) {
     return PsiTreeUtil.getParentOfType(statement, LuaStatementElement.class, LuaBlock.class);
   }
 
-  private static boolean statementIsLastInBlock(@NotNull LuaBlock block,
-                                                @NotNull LuaStatementElement statement) {
+  private static boolean statementIsLastInBlock(@Nonnull LuaBlock block,
+                                                @Nonnull LuaStatementElement statement) {
     final LuaStatementElement[] statements = block.getStatements();
     for (int i = statements.length - 1; i >= 0; i--) {
       final LuaStatementElement childStatement = statements[i];
@@ -256,8 +258,8 @@ public class ControlFlowUtils {
     return false;
   }
 
-  private static boolean statementIsLastInCodeBlock(@NotNull LuaBlock block,
-                                                    @NotNull LuaStatementElement statement) {
+  private static boolean statementIsLastInCodeBlock(@Nonnull LuaBlock block,
+                                                    @Nonnull LuaStatementElement statement) {
     final LuaStatementElement[] statements = block.getStatements();
     for (int i = statements.length - 1; i >= 0; i--) {
       final LuaStatementElement childStatement = statements[i];
@@ -279,7 +281,7 @@ public class ControlFlowUtils {
     }
 
     public void visitReturnStatement(
-        @NotNull LuaReturnStatement returnStatement) {
+        @Nonnull LuaReturnStatement returnStatement) {
       if (m_found) {
         return;
       }
@@ -292,7 +294,7 @@ public class ControlFlowUtils {
     private boolean m_found = false;
     private final LuaStatementElement m_target;
 
-    private BreakFinder(@NotNull LuaStatementElement target) {
+    private BreakFinder(@Nonnull LuaStatementElement target) {
       super();
       m_target = target;
     }
@@ -302,7 +304,7 @@ public class ControlFlowUtils {
     }
 
     public void visitBreakStatement(
-        @NotNull LuaBreakStatement breakStatement) {
+        @Nonnull LuaBreakStatement breakStatement) {
       if (m_found) {
         return;
       }

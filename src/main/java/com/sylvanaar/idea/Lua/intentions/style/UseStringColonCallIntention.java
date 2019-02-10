@@ -28,7 +28,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
 import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class UseStringColonCallIntention extends MutablyNamedIntention {
     }
 
     @Override
-    protected void processIntention(@NotNull PsiElement element) throws IncorrectOperationException {
+    protected void processIntention(@Nonnull PsiElement element) throws IncorrectOperationException {
         final LuaFunctionCallExpression call = (LuaFunctionCallExpression) element;
 
         final LuaReferenceElement stringfunc = call.getFunctionNameElement();
@@ -88,7 +88,7 @@ public class UseStringColonCallIntention extends MutablyNamedIntention {
         doc.replaceString(element.getTextOffset(), element.getTextOffset() + element.getTextLength(), newE);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected PsiElementPredicate getElementPredicate() {
         return new StringLibraryCallPredicate();

@@ -29,7 +29,7 @@ import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +44,9 @@ import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.*;
  * Time: 2:54:53 PM
  */
 public class LuaFoldingBuilder implements FoldingBuilder, DumbAware {
-    @NotNull
+    @Nonnull
     @Override
-    public FoldingDescriptor[] buildFoldRegions(@NotNull ASTNode node, @NotNull Document document) {
+    public FoldingDescriptor[] buildFoldRegions(@Nonnull ASTNode node, @Nonnull Document document) {
         final List<FoldingDescriptor> descriptors = new ArrayList<FoldingDescriptor>();
         final ASTNode fnode = node;
         final Document fdoc = document;
@@ -119,7 +119,7 @@ public class LuaFoldingBuilder implements FoldingBuilder, DumbAware {
     }
 
     @Override
-    public String getPlaceholderText(@NotNull ASTNode node) {
+    public String getPlaceholderText(@Nonnull ASTNode node) {
         if (node.getElementType() == LONGCOMMENT)
             return "comment";
 
@@ -136,7 +136,7 @@ public class LuaFoldingBuilder implements FoldingBuilder, DumbAware {
     }
 
     @Override
-    public boolean isCollapsedByDefault(@NotNull ASTNode node) {
+    public boolean isCollapsedByDefault(@Nonnull ASTNode node) {
         if (node.getElementType() == FUNCTION_DEFINITION ||
                 node.getElementType() == LOCAL_FUNCTION ||
                 node.getElementType() == ANONYMOUS_FUNCTION_EXPRESSION)

@@ -27,7 +27,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaMaybeDeclarationAssignmentStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 
 public abstract class LuaDocCommentUtil {

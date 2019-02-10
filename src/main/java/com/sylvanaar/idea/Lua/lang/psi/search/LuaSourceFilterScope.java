@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.search;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
@@ -23,7 +25,6 @@ import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -52,7 +53,7 @@ public class LuaSourceFilterScope extends GlobalSearchScope {
         return myDelegate != null ? myDelegate.compare(file1, file2) : 0;
     }
 
-    public boolean isSearchInModuleContent(@NotNull final Module aModule) {
+    public boolean isSearchInModuleContent(@Nonnull final Module aModule) {
         return myDelegate == null || myDelegate.isSearchInModuleContent(aModule);
     }
 

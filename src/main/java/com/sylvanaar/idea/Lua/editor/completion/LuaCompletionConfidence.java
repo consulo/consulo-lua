@@ -16,11 +16,12 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeInsight.completion.CompletionConfidence;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionType;
 import com.intellij.util.ThreeState;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,9 +30,9 @@ import org.jetbrains.annotations.NotNull;
  * Time: 7:24 AM
  */
 public class LuaCompletionConfidence extends CompletionConfidence {
-    @NotNull
+    @Nonnull
     @Override
-    public ThreeState shouldFocusLookup(@NotNull CompletionParameters parameters) {
+    public ThreeState shouldFocusLookup(@Nonnull CompletionParameters parameters) {
         if (parameters.getCompletionType() == CompletionType.SMART)
             return ThreeState.YES;
 

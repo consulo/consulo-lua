@@ -16,10 +16,11 @@
 
 package com.sylvanaar.idea.Lua.run;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.filters.ConsoleFilterProvider;
 import com.intellij.execution.filters.Filter;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,9 +29,9 @@ import org.jetbrains.annotations.NotNull;
  * Time: 3:59 PM
  */
 public class LuaLineErrorFilterProvider implements ConsoleFilterProvider {
-    @NotNull
+    @Nonnull
     @Override
-    public Filter[] getDefaultFilters(@NotNull Project project) {
+    public Filter[] getDefaultFilters(@Nonnull Project project) {
         return new Filter[] { new LuaLineErrorFilter(project) };
     }
 }

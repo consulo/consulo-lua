@@ -16,12 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiToken;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,7 +39,7 @@ public class LuaPsiTokenImpl extends LeafPsiElement implements LuaPsiToken {
     return getElementType();
   }
 
-  public void accept(@NotNull PsiElementVisitor visitor) {
+  public void accept(@Nonnull PsiElementVisitor visitor) {
     if (visitor instanceof LuaElementVisitor) {
       ((LuaElementVisitor)visitor).visitLuaToken(this);
     }

@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.parser;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
 import com.intellij.lang.PsiBuilder;
@@ -42,7 +43,7 @@ public interface LuaDocElementTypes extends LuaDocTokenTypes {
    * LuaDoc comment
    */
   ILazyParseableElementType LUADOC_COMMENT = new ILazyParseableElementType("LuaDocComment") {
-    @NotNull
+    @Nonnull
     public Language getLanguage() {
       return LuaFileType.LUA_FILE_TYPE.getLanguage();
     }

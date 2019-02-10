@@ -17,7 +17,7 @@ package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
 
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;

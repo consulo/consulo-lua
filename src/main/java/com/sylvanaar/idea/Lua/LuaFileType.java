@@ -17,7 +17,7 @@
 package com.sylvanaar.idea.Lua;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.Language;
 import com.intellij.openapi.fileTypes.ExtensionFileNameMatcher;
 import com.intellij.openapi.fileTypes.LanguageFileType;
@@ -53,21 +53,21 @@ public class LuaFileType extends LanguageFileType {
      *
      * @param language The language used in the files of the type.
      */
-    protected LuaFileType(@NotNull Language language) {
+    protected LuaFileType(@Nonnull Language language) {
         super(language);
     }
 
-    @NotNull
+    @Nonnull
     public String getName() {
         return LUA;
     }
 
-    @NotNull
+    @Nonnull
     public String getDescription() {
         return LuaBundle.message("lua.filetype");
     }
 
-    @NotNull
+    @Nonnull
     public String getDefaultExtension() {
         return DEFAULT_EXTENSION;
     }

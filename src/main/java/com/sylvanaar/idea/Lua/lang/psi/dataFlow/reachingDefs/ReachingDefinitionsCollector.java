@@ -33,10 +33,11 @@ import gnu.trove.TIntHashSet;
 import gnu.trove.TIntObjectHashMap;
 import gnu.trove.TIntObjectProcedure;
 import gnu.trove.TIntProcedure;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
 import java.util.*;
+
+import javax.annotation.Nullable;
 
 /**
  * @author ven
@@ -319,19 +320,20 @@ public class ReachingDefinitionsCollector {
 
   private static class VariableInfoImpl implements VariableInfo {
     private
-    @NotNull final String myName;
+    @Nonnull
+	final String myName;
     private final PsiManager myManager;
 
     private
     @Nullable
     LuaType myType;
 
-    VariableInfoImpl(@NotNull String name, PsiManager manager) {
+    VariableInfoImpl(@Nonnull String name, PsiManager manager) {
       myName = name;
       myManager = manager;
     }
 
-    @NotNull
+    @Nonnull
     public String getName() {
       return myName;
     }

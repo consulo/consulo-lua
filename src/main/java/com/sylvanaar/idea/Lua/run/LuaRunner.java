@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.configurations.RunProfile;
@@ -35,14 +36,14 @@ import com.intellij.openapi.fileEditor.FileDocumentManager;
  * Time: 12:44:22 AM
  */
 public class LuaRunner extends DefaultProgramRunner {
-  @NotNull
+  @Nonnull
   @Override
   public String getRunnerId() {
     return "com.sylvanaar.idea.Lua.run.LuaRunner";
   }
 
   @Override
-  public boolean canRun(@NotNull String executorId, @NotNull RunProfile profile) {
+  public boolean canRun(@Nonnull String executorId, @Nonnull RunProfile profile) {
     return executorId.equals(DefaultRunExecutor.EXECUTOR_ID) && profile instanceof LuaRunConfiguration;
   }
 

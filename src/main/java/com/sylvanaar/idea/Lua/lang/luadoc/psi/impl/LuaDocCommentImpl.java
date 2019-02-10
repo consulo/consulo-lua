@@ -32,8 +32,8 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 
@@ -78,7 +78,7 @@ public class LuaDocCommentImpl extends LazyParseablePsiElement implements LuaDoc
     return LuaDocCommentUtil.findDocOwner(this);
   }
 
-  @NotNull
+  @Nonnull
   public LuaDocTag[] getTags() {
     final LuaDocTag[] tags = PsiTreeUtil.getChildrenOfType(this, LuaDocTag.class);
     return tags == null ? LuaDocTag.EMPTY_ARRAY : tags;
@@ -95,7 +95,7 @@ public class LuaDocCommentImpl extends LazyParseablePsiElement implements LuaDoc
     return null;
   }
 
-  @NotNull
+  @Nonnull
   public LuaDocTag[] findTagsByName(@NonNls String name) {
     if (!getText().contains(name)) return LuaDocTag.EMPTY_ARRAY;
     ArrayList<LuaDocTag> list = new ArrayList<LuaDocTag>();
@@ -107,7 +107,7 @@ public class LuaDocCommentImpl extends LazyParseablePsiElement implements LuaDoc
     return list.toArray(new LuaDocTag[list.size()]);
   }
 
-  @NotNull
+  @Nonnull
   public PsiElement[] getDescriptionElements() {
     ArrayList<PsiElement> array = new ArrayList<PsiElement>();
     for (PsiElement child = getFirstChild(); child != null; child = child.getNextSibling()) {
@@ -127,7 +127,7 @@ public class LuaDocCommentImpl extends LazyParseablePsiElement implements LuaDoc
 
    // Return the first line of the description
    // up to and including the first '.'
-   @NotNull
+   @Nonnull
    @Override
    public String getSummaryDescription() {
        PsiElement[] elems = getDescriptionElements();

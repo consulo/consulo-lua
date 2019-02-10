@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.lang.psi.symbols;
 
 import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

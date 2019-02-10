@@ -25,8 +25,8 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class LuaDocTagImpl extends LuaDocPsiElementImpl implements LuaDocTag {
             TokenSet.create(LDOC_TAG_VALUE, LDOC_FIELD_REF, LDOC_PARAM_REF, LDOC_REFERENCE_ELEMENT,
                     LDOC_COMMENT_DATA);
 
-    public LuaDocTagImpl(@NotNull ASTNode node) {
+    public LuaDocTagImpl(@Nonnull ASTNode node) {
         super(node);
     }
 
@@ -53,12 +53,12 @@ public class LuaDocTagImpl extends LuaDocPsiElementImpl implements LuaDocTag {
         return "LuaDocTag";
     }
 
-    @NotNull
+    @Nonnull
     public String getName() {
         return getNameElement().getText().substring(1);
     }
 
-    @NotNull
+    @Nonnull
     public PsiElement getNameElement() {
         PsiElement element = findChildByType(LDOC_TAG_NAME);
         assert element != null;
@@ -86,14 +86,14 @@ public class LuaDocTagImpl extends LuaDocPsiElementImpl implements LuaDocTag {
         return findChildByClass(LuaDocFieldReference.class);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public PsiElement[] getDescriptionElements() {
         final List<PsiElement> list = findChildrenByType(LDOC_COMMENT_DATA);
         return LuaPsiUtils.toPsiElementArray(list);
     }
 
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
         final PsiElement nameElement = getNameElement();
         final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(getProject());
         final LuaDocComment comment = factory.createDocCommentFromText("--- @" + name);

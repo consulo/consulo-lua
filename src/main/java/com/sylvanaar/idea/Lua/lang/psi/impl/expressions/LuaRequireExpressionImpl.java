@@ -16,6 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.lang.*;
 import com.intellij.openapi.util.*;
 import com.intellij.openapi.util.text.*;
@@ -58,7 +61,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
     }
 
     @Override
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
         throw new IncorrectOperationException("rename of require not implmemented");
     }
 
@@ -78,7 +81,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
 
     private static final LuaResolver RESOLVER = new LuaResolver();
 
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(final boolean incompleteCode) {
         final String refName = getName();
         if (refName == null) return LuaResolveResult.EMPTY_ARRAY;
@@ -91,7 +94,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
         return this;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         LuaSymbol e = (LuaSymbol) resolve();
@@ -124,7 +127,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
         return null;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public PsiElement getNavigationElement() {
         return getElement();
@@ -138,7 +141,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
 //        return e.getTextOffset() - getTextOffset();
 //    }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getCanonicalText() {
         return StringUtil.notNullize(getName());
@@ -150,7 +153,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
     }
 
     @Override
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
@@ -159,7 +162,7 @@ public class LuaRequireExpressionImpl extends LuaFunctionCallExpressionImpl impl
         return getManager().areElementsEquivalent(element, resolve());
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Object[] getVariants() {
         return ArrayUtil.EMPTY_OBJECT_ARRAY;

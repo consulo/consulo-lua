@@ -16,8 +16,9 @@
 
 package consulo.lua.bundle;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
@@ -30,7 +31,7 @@ import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
  */
 public class KahluaSdkType extends LuaSdkType
 {
-	@NotNull
+	@Nonnull
 	public static KahluaSdkType getInstance()
 	{
 		return EP_NAME.findExtension(KahluaSdkType.class);
@@ -66,14 +67,14 @@ public class KahluaSdkType extends LuaSdkType
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getPresentableName()
 	{
 		return "Kahlua";
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration,
 			ExecutionEnvironment env,

@@ -15,8 +15,9 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProviderDescriptor;
@@ -35,7 +36,7 @@ public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor 
 
 	@RequiredReadAction
 	@Override
-	public LineMarkerInfo getLineMarkerInfo(@NotNull final PsiElement element)
+	public LineMarkerInfo getLineMarkerInfo(@Nonnull final PsiElement element)
 	{
 		if(element instanceof LuaReturnStatement)
 		{

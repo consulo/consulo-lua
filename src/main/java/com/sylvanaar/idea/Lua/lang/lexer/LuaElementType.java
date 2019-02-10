@@ -20,7 +20,7 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,7 +46,7 @@ public class LuaElementType extends IElementType {
       super(debugName);
     }
 
-    public abstract LuaPsiElement createPsi(@NotNull ASTNode node);
+    public abstract LuaPsiElement createPsi(@Nonnull ASTNode node);
   }
 
 }

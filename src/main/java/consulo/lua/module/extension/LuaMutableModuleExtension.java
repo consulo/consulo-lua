@@ -16,13 +16,13 @@
 
 package consulo.lua.module.extension;
 
+import javax.annotation.Nonnull;
 import javax.swing.JComponent;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.util.ui.JBUI;
-import consulo.annotations.RequiredDispatchThread;
+import consulo.ui.RequiredUIAccess;
 import consulo.extension.ui.ModuleExtensionSdkBoxBuilder;
 import consulo.module.extension.MutableModuleExtensionWithSdk;
 import consulo.module.extension.MutableModuleInheritableNamedPointer;
@@ -35,19 +35,19 @@ import consulo.util.ui.components.VerticalLayoutPanel;
  */
 public class LuaMutableModuleExtension extends LuaModuleExtension implements MutableModuleExtensionWithSdk<LuaModuleExtension>
 {
-	public LuaMutableModuleExtension(@NotNull String id, @NotNull ModuleRootLayer module)
+	public LuaMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer module)
 	{
 		super(id, module);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public MutableModuleInheritableNamedPointer<Sdk> getInheritableSdk()
 	{
 		return (MutableModuleInheritableNamedPointer<Sdk>) super.getInheritableSdk();
 	}
 
-	@RequiredDispatchThread
+	@RequiredUIAccess
 	@Nullable
 	@Override
 	public JComponent createConfigurablePanel(@Nullable Runnable runnable)
@@ -64,7 +64,7 @@ public class LuaMutableModuleExtension extends LuaModuleExtension implements Mut
 	}
 
 	@Override
-	public boolean isModified(@NotNull LuaModuleExtension extension)
+	public boolean isModified(@Nonnull LuaModuleExtension extension)
 	{
 		return isModifiedImpl(extension);
 	}

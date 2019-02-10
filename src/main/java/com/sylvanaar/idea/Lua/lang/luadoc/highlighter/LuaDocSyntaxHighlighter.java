@@ -24,7 +24,7 @@ import com.intellij.psi.tree.TokenSet;
 import com.sylvanaar.idea.Lua.editor.highlighter.LuaHighlightingData;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +36,7 @@ public class LuaDocSyntaxHighlighter extends SyntaxHighlighterBase implements Lu
 
   private static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey>();
   
-  @NotNull
+  @Nonnull
   public Lexer getHighlightingLexer() {
     return new LuaDocHighlightingLexer();
   }
@@ -60,7 +60,7 @@ public class LuaDocSyntaxHighlighter extends SyntaxHighlighterBase implements Lu
   }
 
 
-  @NotNull
+  @Nonnull
   public TextAttributesKey[] getTokenHighlights(IElementType type) {
     return pack(ATTRIBUTES.get(type));
   }

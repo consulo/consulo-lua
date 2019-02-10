@@ -27,7 +27,7 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,7 +37,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ParameterSelfInspection extends AbstractInspection {
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
        return "Parameter hides implicit self";
@@ -48,21 +48,21 @@ public class ParameterSelfInspection extends AbstractInspection {
         return "Looks for declaration of a parameter self in functions with an implicit self definition";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             public void visitFunctionDef(LuaFunctionDefinitionStatement def) {
                 super.visitFunctionDef(def);

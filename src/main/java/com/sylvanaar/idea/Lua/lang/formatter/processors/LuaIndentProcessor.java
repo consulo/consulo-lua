@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter.processors;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.formatting.Indent;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiComment;
@@ -26,8 +28,8 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 
 
@@ -41,8 +43,8 @@ public abstract class LuaIndentProcessor implements LuaElementTypes {
    * @param prevChildNode previous child node
    * @return indent
    */
-  @NotNull
-  public static Indent getChildIndent(@NotNull final LuaFormattingBlock parent, @Nullable final ASTNode prevChildNode, @NotNull final ASTNode child) {
+  @Nonnull
+  public static Indent getChildIndent(@Nonnull final LuaFormattingBlock parent, @Nullable final ASTNode prevChildNode, @Nonnull final ASTNode child) {
     ASTNode astNode = parent.getNode();
     final PsiElement psiParent = astNode.getPsi();
 

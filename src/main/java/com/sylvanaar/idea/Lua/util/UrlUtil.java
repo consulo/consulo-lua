@@ -26,11 +26,12 @@ import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.io.UrlConnectionUtil;
 import com.intellij.util.net.HttpConfigurable;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

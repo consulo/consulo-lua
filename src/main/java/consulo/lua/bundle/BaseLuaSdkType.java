@@ -20,9 +20,11 @@ import java.io.File;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.execution.runners.ExecutionEnvironment;
@@ -39,7 +41,7 @@ import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
  */
 public class BaseLuaSdkType extends LuaSdkType
 {
-	@NotNull
+	@Nonnull
 	public static BaseLuaSdkType getInstance()
 	{
 		return EP_NAME.findExtension(BaseLuaSdkType.class);
@@ -50,7 +52,7 @@ public class BaseLuaSdkType extends LuaSdkType
 		super("LUA_SDK");
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Collection<String> suggestHomePaths()
 	{
@@ -73,7 +75,7 @@ public class BaseLuaSdkType extends LuaSdkType
 	}
 
 	@Override
-	public boolean isValidSdkHome(@NotNull final String path)
+	public boolean isValidSdkHome(@Nonnull final String path)
 	{
 		final File lua = getTopLevelExecutable(path);
 		// final File luac = getByteCodeCompilerExecutable(path);
@@ -81,8 +83,8 @@ public class BaseLuaSdkType extends LuaSdkType
 		return lua.canExecute();// && luac.canExecute();
 	}
 
-	@NotNull
-	public static File getTopLevelExecutable(@NotNull final String sdkHome)
+	@Nonnull
+	public static File getTopLevelExecutable(@Nonnull final String sdkHome)
 	{
 		File executable = getExecutable(sdkHome, "lua");
 		if(executable.canExecute())
@@ -107,8 +109,8 @@ public class BaseLuaSdkType extends LuaSdkType
 		return executable;
 	}
 
-	@NotNull
-	public static File getByteCodeCompilerExecutable(@NotNull final String sdkHome)
+	@Nonnull
+	public static File getByteCodeCompilerExecutable(@Nonnull final String sdkHome)
 	{
 		File executable = getExecutable(sdkHome, "luac");
 		if(executable.canExecute())
@@ -122,8 +124,8 @@ public class BaseLuaSdkType extends LuaSdkType
 	}
 
 	@Override
-	@NotNull
-	public String suggestSdkName(@Nullable final String currentSdkName, @NotNull final String sdkHome)
+	@Nonnull
+	public String suggestSdkName(@Nullable final String currentSdkName, @Nonnull final String sdkHome)
 	{
 		String[] version = getExecutableVersionOutput(sdkHome);
 		if(version == null)
@@ -135,7 +137,7 @@ public class BaseLuaSdkType extends LuaSdkType
 
 	@Override
 	@Nullable
-	public String getVersionString(@NotNull final String sdkHome)
+	public String getVersionString(@Nonnull final String sdkHome)
 	{
 		return getExecutableVersionOutput(sdkHome)[1];
 	}
@@ -165,7 +167,7 @@ public class BaseLuaSdkType extends LuaSdkType
 		return stdout.split(" ");
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	@NonNls
 	public String getPresentableName()
@@ -173,13 +175,13 @@ public class BaseLuaSdkType extends LuaSdkType
 		return "Lua SDK";
 	}
 
-	@NotNull
-	private static File getExecutable(@NotNull final String path, @NotNull final String command)
+	@Nonnull
+	private static File getExecutable(@Nonnull final String path, @Nonnull final String command)
 	{
 		return new File(path, SystemInfo.isWindows ? command + ".exe" : command);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration, ExecutionEnvironment env, boolean isDebugger)
 	{

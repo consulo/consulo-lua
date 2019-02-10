@@ -33,15 +33,15 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaKeyValueInitializer;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 
 
 public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl implements LuaDocFieldReference {
 
-    public LuaDocFieldReferenceImpl(@NotNull ASTNode node) {
+    public LuaDocFieldReferenceImpl(@Nonnull ASTNode node) {
         super(node);
     }
 
@@ -54,7 +54,7 @@ public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl impleme
         return this;
     }
 
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(boolean incompleteCode) {
         final String name = getName();
         if (name == null) return ResolveResult.EMPTY_ARRAY;
@@ -102,7 +102,7 @@ public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl impleme
         return results[0].getElement();
     }
 
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         return StringUtil.notNullize(getName());
     }
@@ -118,7 +118,7 @@ public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl impleme
         return this;
     }
 
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         if (isReferenceTo(element)) return this;
         return null;
     }
@@ -128,7 +128,7 @@ public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl impleme
         return getManager().areElementsEquivalent(element, resolve());
     }
 
-    @NotNull
+    @Nonnull
     public Object[] getVariants() {
         final PsiElement owner = LuaDocCommentUtil.findDocOwner(this);
 

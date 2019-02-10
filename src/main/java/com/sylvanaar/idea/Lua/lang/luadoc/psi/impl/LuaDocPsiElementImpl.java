@@ -19,14 +19,14 @@ package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * @author ilyas
  */
 public abstract class LuaDocPsiElementImpl extends LuaPsiElementImpl implements LuaDocPsiElement {
 
-  public LuaDocPsiElementImpl(@NotNull ASTNode node) {
+  public LuaDocPsiElementImpl(@Nonnull ASTNode node) {
     super(node);
   }
 }

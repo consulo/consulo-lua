@@ -30,9 +30,10 @@ import com.sylvanaar.idea.Lua.lang.psi.stubs.api.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -77,7 +78,7 @@ public class LuaTableConstructorImpl extends LuaStubElementBase<LuaTableStub> im
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitTableConstructor(this);
         } else {
@@ -92,7 +93,7 @@ public class LuaTableConstructorImpl extends LuaStubElementBase<LuaTableStub> im
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         if (myType instanceof StubType)

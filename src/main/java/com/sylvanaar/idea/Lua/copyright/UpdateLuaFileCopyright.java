@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.Lua.copyright;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -28,7 +29,7 @@ import consulo.copyright.config.CopyrightFileConfig;
 
 public class UpdateLuaFileCopyright extends UpdatePsiFileCopyright<CopyrightFileConfig>
 {
-	public UpdateLuaFileCopyright(@NotNull PsiFile psiFile, @NotNull CopyrightProfile copyrightProfile)
+	public UpdateLuaFileCopyright(@Nonnull PsiFile psiFile, @Nonnull CopyrightProfile copyrightProfile)
 	{
 		super(psiFile, copyrightProfile);
 	}

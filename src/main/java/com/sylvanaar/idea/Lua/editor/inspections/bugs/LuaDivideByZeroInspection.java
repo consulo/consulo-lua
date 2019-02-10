@@ -15,9 +15,10 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.bugs;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.ProblemsHolder;
 import com.intellij.psi.PsiElementVisitor;
@@ -31,13 +32,13 @@ import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 public class LuaDivideByZeroInspection extends AbstractInspection {
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
     @Nls
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "Divide by zero";
     }
@@ -47,7 +48,7 @@ public class LuaDivideByZeroInspection extends AbstractInspection {
         return "Looks for division by 0";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
@@ -57,9 +58,9 @@ public class LuaDivideByZeroInspection extends AbstractInspection {
         return true;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             @Override
             public void visitBinaryExpression(LuaBinaryExpression expression) {

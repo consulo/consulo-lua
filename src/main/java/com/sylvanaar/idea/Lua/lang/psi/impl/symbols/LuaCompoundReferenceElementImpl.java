@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.util.TextRange;
@@ -32,7 +34,6 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,7 +50,7 @@ public class LuaCompoundReferenceElementImpl extends LuaReferenceElementImpl imp
 
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Object[] getVariants() {
         final PsiElement element = getElement();
@@ -66,7 +67,7 @@ public class LuaCompoundReferenceElementImpl extends LuaReferenceElementImpl imp
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitCompoundReference(this);
         } else {
@@ -103,7 +104,7 @@ public class LuaCompoundReferenceElementImpl extends LuaReferenceElementImpl imp
         return this;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public PsiReference[] getReferences() {
         return PsiReference.EMPTY_ARRAY;
@@ -118,7 +119,7 @@ public class LuaCompoundReferenceElementImpl extends LuaReferenceElementImpl imp
 //    }
 
     @Override
-    @NotNull
+    @Nonnull
     public TextRange getRangeInElement() {
         LuaExpression e = ((LuaCompoundIdentifier)getElement()).getRightSymbol();
         if (e != null)
@@ -139,7 +140,7 @@ public class LuaCompoundReferenceElementImpl extends LuaReferenceElementImpl imp
 //        return LuaPsiUtils.processChildDeclarations(this, processor, state, lastParent, place);
 //    }
 
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         LuaCompoundIdentifier element = (LuaCompoundIdentifier) getElement();
 

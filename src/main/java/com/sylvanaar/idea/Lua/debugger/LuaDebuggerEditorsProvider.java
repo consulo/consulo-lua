@@ -16,8 +16,9 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
@@ -50,16 +51,16 @@ public class LuaDebuggerEditorsProvider extends XDebuggerEditorsProvider
 {
 	private static final Logger log = Logger.getInstance("Lua.LuaDebuggerEditorsProvider");
 
-	@NotNull
+	@Nonnull
 	@Override
 	public FileType getFileType()
 	{
 		return LuaFileType.LUA_FILE_TYPE;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
-	public Document createDocument(@NotNull Project project, @NotNull String text, @Nullable XSourcePosition sourcePosition, @NotNull EvaluationMode evaluationMode)
+	public Document createDocument(@Nonnull Project project, @Nonnull String text, @Nullable XSourcePosition sourcePosition, @Nonnull EvaluationMode evaluationMode)
 	{
 		log.debug("createDocument  " + text);
 

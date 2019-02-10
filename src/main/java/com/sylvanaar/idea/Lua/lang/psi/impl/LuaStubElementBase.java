@@ -29,7 +29,7 @@ import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * @author ilyas
@@ -45,7 +45,7 @@ public abstract class LuaStubElementBase<T extends StubElement> extends StubBase
         super(node);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Language getLanguage() {
         return LuaFileType.LUA_LANGUAGE;

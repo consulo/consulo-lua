@@ -20,14 +20,14 @@ import com.intellij.lang.Language;
 import com.intellij.psi.tree.ILazyParseableElementType;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public abstract class LuaDocChameleonElementType extends ILazyParseableElementType {
   public LuaDocChameleonElementType(@NonNls String debugName) {
     super(debugName);
   }
 
-  @NotNull
+  @Nonnull
   public Language getLanguage() {
     return LuaFileType.LUA_FILE_TYPE.getLanguage();
   }

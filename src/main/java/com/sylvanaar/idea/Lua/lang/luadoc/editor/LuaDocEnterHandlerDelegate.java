@@ -36,7 +36,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaKeyValueInitializer;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -108,7 +108,7 @@ public class LuaDocEnterHandlerDelegate implements EnterHandlerDelegate {
     }
 
     @Override
-    public Result postProcessEnter(@NotNull PsiFile file, @NotNull Editor editor, @NotNull DataContext dataContext) {
+    public Result postProcessEnter(@Nonnull PsiFile file, @Nonnull Editor editor, @Nonnull DataContext dataContext) {
         return Result.Continue;
     }
 }

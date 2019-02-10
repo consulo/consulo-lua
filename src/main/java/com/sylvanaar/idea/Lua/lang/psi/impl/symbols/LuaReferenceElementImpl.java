@@ -1,5 +1,8 @@
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.lang.*;
 import com.intellij.openapi.project.*;
 import com.intellij.openapi.util.*;
@@ -14,7 +17,6 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 
 /**
@@ -31,7 +33,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitReferenceElement(this);
         } else {
@@ -49,7 +51,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         if (!isValid()) return LuaPrimitiveType.ANY;
@@ -120,7 +122,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
         return results.length == 1 ? results[0].getElement() : null;
     }
 
-    @NotNull
+    @Nonnull
     public ResolveResult[] multiResolve(final boolean incompleteCode) {
         final Project project = getProject();
         if (project.isDisposed()) return null;
@@ -132,7 +134,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
 
     private static final LuaResolver RESOLVER = new LuaResolver();
 
-    @NotNull
+    @Nonnull
     public String getCanonicalText() {
         final PsiElement element = getElement();
         if (element instanceof LuaGlobal)
@@ -141,7 +143,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
         return StringUtil.notNullize(getName(), element.getText());
     }
 
-     public PsiElement setName(@NotNull String s) {
+     public PsiElement setName(@Nonnull String s) {
         ((PsiNamedElement)getElement()).setName(s);
 
         resolve();
@@ -155,7 +157,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
         return this;
     }
 
-    public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
         final LuaIdentifier identifier = findChildByClass(LuaIdentifier.class);
         if (identifier == null) throw new IncorrectOperationException("Cant bind to non-identifier");
         identifier.replace(element);
@@ -169,7 +171,7 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
         return element == resolve();
     }
 
-    @NotNull
+    @Nonnull
     public Object[] getVariants() {
         return ResolveUtil.getVariants(this);
     }

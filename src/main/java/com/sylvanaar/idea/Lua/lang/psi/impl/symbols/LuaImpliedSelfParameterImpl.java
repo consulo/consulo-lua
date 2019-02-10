@@ -22,7 +22,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,7 +32,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class LuaImpliedSelfParameterImpl extends LuaParameterImpl
         implements LuaParameter {
-    public LuaImpliedSelfParameterImpl(@NotNull ASTNode node) {
+    public LuaImpliedSelfParameterImpl(@Nonnull ASTNode node) {
         super(node);
     }
 

@@ -18,11 +18,10 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
@@ -56,7 +55,7 @@ public abstract class LuaSymbolImpl extends LuaPsiElementImpl implements LuaSymb
     }
 
     protected LuaType type = LuaPrimitiveType.ANY;
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         return type;

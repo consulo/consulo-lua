@@ -22,7 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configuration.EnvironmentVariablesComponent;
@@ -87,7 +87,7 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 	}
 
 	@Override
-	public RunProfileState getState(@NotNull final Executor executor, @NotNull final ExecutionEnvironment env) throws ExecutionException
+	public RunProfileState getState(@Nonnull final Executor executor, @Nonnull final ExecutionEnvironment env) throws ExecutionException
 	{
 		Sdk sdk = getSdk();
 		if(sdk == null)

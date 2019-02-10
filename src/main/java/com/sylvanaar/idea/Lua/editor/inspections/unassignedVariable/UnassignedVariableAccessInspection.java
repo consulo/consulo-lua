@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.unassignedVariable;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.codeInspection.ProblemsHolder;
@@ -32,14 +34,13 @@ import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author ven
  */
 public class UnassignedVariableAccessInspection extends AbstractInspection  implements UnfairLocalInspectionTool {
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
         return "Variable not assigned";
@@ -50,13 +51,13 @@ public class UnassignedVariableAccessInspection extends AbstractInspection  impl
         return "Variable is read from without being assigned to.";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
@@ -67,9 +68,9 @@ public class UnassignedVariableAccessInspection extends AbstractInspection  impl
         return true;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             //            @Override
             //            public void visitBlock(LuaBlock e) {

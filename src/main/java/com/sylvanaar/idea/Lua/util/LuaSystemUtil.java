@@ -23,7 +23,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.impl.ConsoleViewImpl;
@@ -54,16 +55,16 @@ public class LuaSystemUtil {
     private static final Key<ConsoleView> CONSOLE_VIEW_KEY = new Key<ConsoleView>("LuaConsoleView");
     public static final  int              STANDARD_TIMEOUT = 10 * 1000;
 
-    @NotNull
-    public static ProcessOutput getProcessOutput(@NotNull final String workDir, @NotNull final String exePath,
-                                                 @NotNull final String... arguments) throws ExecutionException {
+    @Nonnull
+    public static ProcessOutput getProcessOutput(@Nonnull final String workDir, @Nonnull final String exePath,
+												 @Nonnull final String... arguments) throws ExecutionException {
         return getProcessOutput(STANDARD_TIMEOUT, workDir, exePath, arguments);
     }
 
-    @NotNull
-    public static ProcessOutput getProcessOutput(final int timeout, @NotNull final String workDir,
-                                                 @NotNull final String exePath,
-                                                 @NotNull final String... arguments) throws ExecutionException {
+    @Nonnull
+    public static ProcessOutput getProcessOutput(final int timeout, @Nonnull final String workDir,
+                                                 @Nonnull final String exePath,
+                                                 @Nonnull final String... arguments) throws ExecutionException {
         if (!new File(workDir).isDirectory() || !new File(exePath).canExecute()) {
             return new ProcessOutput();
         }
@@ -76,19 +77,19 @@ public class LuaSystemUtil {
         return execute(cmd, timeout);
     }
 
-    @NotNull
-    public static ProcessOutput execute(@NotNull final GeneralCommandLine cmd) throws ExecutionException {
+    @Nonnull
+    public static ProcessOutput execute(@Nonnull final GeneralCommandLine cmd) throws ExecutionException {
         return execute(cmd, STANDARD_TIMEOUT);
     }
 
-    @NotNull
-    public static ProcessOutput execute(@NotNull final GeneralCommandLine cmd,
+    @Nonnull
+    public static ProcessOutput execute(@Nonnull final GeneralCommandLine cmd,
                                         final int timeout) throws ExecutionException {
         final CapturingProcessHandler processHandler = new CapturingProcessHandler(cmd);
         return timeout < 0 ? processHandler.runProcess() : processHandler.runProcess(timeout);
     }
 
-    public static void addStdPaths(@NotNull final GeneralCommandLine cmd, @NotNull final Sdk sdk) {
+    public static void addStdPaths(@Nonnull final GeneralCommandLine cmd, @Nonnull final Sdk sdk) {
         final List<VirtualFile> files = new ArrayList<VirtualFile>();
         files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(OrderRootType.SOURCES)));
         files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(OrderRootType.CLASSES)));
@@ -130,8 +131,8 @@ public class LuaSystemUtil {
     }
 
     final static String toolWindowId = "Lua Console Output";
-    public static void printMessageToConsole(@NotNull Project project, @NotNull String s,
-                                             @NotNull ConsoleViewContentType contentType) {
+    public static void printMessageToConsole(@Nonnull Project project, @Nonnull String s,
+											 @Nonnull ConsoleViewContentType contentType) {
         activateConsoleToolWindow(project);
         final ConsoleView consoleView = project.getUserData(CONSOLE_VIEW_KEY);
 
@@ -140,14 +141,14 @@ public class LuaSystemUtil {
         }
     }
 
-    public static void clearConsoleToolWindow(@NotNull Project project) {
+    public static void clearConsoleToolWindow(@Nonnull Project project) {
         final ToolWindowManager manager = ToolWindowManager.getInstance(project);
         ToolWindow toolWindow = manager.getToolWindow(toolWindowId);
         if (toolWindow == null) return;
         toolWindow.getContentManager().removeAllContents(false);
         toolWindow.hide(null);
     }
-    private static void activateConsoleToolWindow(@NotNull Project project) {
+    private static void activateConsoleToolWindow(@Nonnull Project project) {
         final ToolWindowManager manager = ToolWindowManager.getInstance(project);
 
 
@@ -163,7 +164,7 @@ public class LuaSystemUtil {
 
         final ToolWindowManagerListener listener = new ToolWindowManagerListener() {
             @Override
-            public void toolWindowRegistered(@NotNull String id) {
+            public void toolWindowRegistered(@Nonnull String id) {
             }
 
             @Override

@@ -21,9 +21,10 @@ import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author ilyas
@@ -69,7 +70,7 @@ public class CompletionProcessor extends SymbolResolveProcessor {
         return res;
     }
 
-    public boolean execute(@NotNull PsiElement element, ResolveState state) {
+    public boolean execute(@Nonnull PsiElement element, ResolveState state) {
         super.execute(element, state);
         return true;
     }

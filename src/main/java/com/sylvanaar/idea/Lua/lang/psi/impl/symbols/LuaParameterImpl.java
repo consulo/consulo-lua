@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
@@ -29,10 +31,9 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaUpvalueIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 public class LuaParameterImpl extends LuaLocalDeclarationImpl implements LuaParameter {
-    public LuaParameterImpl(@NotNull
+    public LuaParameterImpl(@Nonnull
                             ASTNode node) {
         super(node);
     }
@@ -53,7 +54,7 @@ public class LuaParameterImpl extends LuaLocalDeclarationImpl implements LuaPara
     }
 
     @Override
-    public void accept(@NotNull
+    public void accept(@Nonnull
                        PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitParameter(this);
@@ -74,7 +75,7 @@ public class LuaParameterImpl extends LuaLocalDeclarationImpl implements LuaPara
 
 
     @Override
-    public PsiElement setName(@NotNull String s) {
+    public PsiElement setName(@Nonnull String s) {
         LuaDeclarationExpression decl = LuaPsiElementFactoryImpl.getInstance(getProject()).createParameterNameIdentifier(s);
 
         return replace(decl);
@@ -82,7 +83,7 @@ public class LuaParameterImpl extends LuaLocalDeclarationImpl implements LuaPara
 
 
     @Override
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place) {
         return processor.execute(this, state);
     }
 

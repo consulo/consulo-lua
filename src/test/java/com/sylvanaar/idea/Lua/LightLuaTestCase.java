@@ -17,7 +17,7 @@
 package com.sylvanaar.idea.Lua;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.testFramework.TestModuleDescriptor;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 import com.sylvanaar.idea.Lua.util.TestUtils;
@@ -33,7 +33,7 @@ public abstract class LightLuaTestCase extends LightPlatformCodeInsightFixtureTe
     }
 
     @Override
-    @NotNull
+    @Nonnull
     protected TestModuleDescriptor getProjectDescriptor() {
         return LuaLightProjectDescriptor.INSTANCE;
     }

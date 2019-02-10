@@ -16,10 +16,11 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
+import javax.annotation.Nullable;
+
 import com.intellij.codeInsight.lookup.*;
 import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.

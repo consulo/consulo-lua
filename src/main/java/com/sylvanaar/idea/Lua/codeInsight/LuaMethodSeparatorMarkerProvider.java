@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.DaemonCodeAnalyzerSettings;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
@@ -49,7 +49,7 @@ public class LuaMethodSeparatorMarkerProvider implements LineMarkerProvider
 	@RequiredReadAction
 	@Nullable
 	@Override
-	public LineMarkerInfo getLineMarkerInfo(@NotNull PsiElement element)
+	public LineMarkerInfo getLineMarkerInfo(@Nonnull PsiElement element)
 	{
 		if(myDaemonSettings.SHOW_METHOD_SEPARATORS)
 		{

@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections.bugs;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemsHolder;
@@ -27,7 +29,6 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,7 +38,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ArrayElementZeroInspection  extends AbstractInspection {
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
         return "Use of element 0";
@@ -48,21 +49,21 @@ public class ArrayElementZeroInspection  extends AbstractInspection {
         return "Lua arrays are 1 based. This checks for array access of element 0.";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             @Override
             public void visitCompoundIdentifier(LuaCompoundIdentifier e) {

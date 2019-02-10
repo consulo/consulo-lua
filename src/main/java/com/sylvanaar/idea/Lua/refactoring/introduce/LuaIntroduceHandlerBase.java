@@ -54,8 +54,8 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.LuaWhileStatement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.refactoring.LuaRefactoringUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public abstract class LuaIntroduceHandlerBase<Settings extends LuaIntroduceSetti
 
   protected abstract String getHelpID();
 
-  @NotNull
+  @Nonnull
   protected abstract PsiElement findScope(LuaExpression expression, LuaSymbol variable);
 
   protected abstract void checkExpression(LuaExpression selectedExpr) throws LuaIntroduceRefactoringError;
@@ -138,7 +138,7 @@ public abstract class LuaIntroduceHandlerBase<Settings extends LuaIntroduceSetti
     return null;
   }
 
-  public void invoke(final @NotNull Project project, final Editor editor, final PsiFile file, final @Nullable DataContext dataContext) {
+  public void invoke(final @Nonnull Project project, final Editor editor, final PsiFile file, final @Nullable DataContext dataContext) {
     final SelectionModel selectionModel = editor.getSelectionModel();
     if (!selectionModel.hasSelection()) {
       final int offset = editor.getCaretModel().getOffset();
@@ -179,7 +179,7 @@ public abstract class LuaIntroduceHandlerBase<Settings extends LuaIntroduceSetti
   }
 
   @Override
-  public void invoke(@NotNull Project project, @NotNull PsiElement[] elements, DataContext dataContext) {
+  public void invoke(@Nonnull Project project, @Nonnull PsiElement[] elements, DataContext dataContext) {
     // Does nothing
   }
 

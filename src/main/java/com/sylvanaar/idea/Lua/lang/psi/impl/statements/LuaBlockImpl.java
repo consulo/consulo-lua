@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
@@ -36,7 +38,6 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -53,7 +54,7 @@ public class LuaBlockImpl extends LuaPsiElementImpl implements LuaBlock {
         visitor.visitBlock(this);
     }
 
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
 
             ((LuaElementVisitor) visitor).visitBlock(this);
@@ -104,7 +105,7 @@ public class LuaBlockImpl extends LuaPsiElementImpl implements LuaBlock {
 //    }
 
     @Override
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState state, PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState state, PsiElement lastParent, @Nonnull PsiElement place) {
         return LuaPsiUtils.processChildDeclarations(this, processor, state, lastParent, place);
     }
 
@@ -128,7 +129,7 @@ public class LuaBlockImpl extends LuaPsiElementImpl implements LuaBlock {
     }
 
     @Override
-    public LuaStatementElement addStatementBefore(@NotNull LuaStatementElement statement,
+    public LuaStatementElement addStatementBefore(@Nonnull LuaStatementElement statement,
                                                   LuaStatementElement anchor) throws IncorrectOperationException {
         return (LuaStatementElement) addBefore(statement, anchor);
     }

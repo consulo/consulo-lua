@@ -21,7 +21,7 @@ import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallEnvironment;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallInstruction;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Stack;

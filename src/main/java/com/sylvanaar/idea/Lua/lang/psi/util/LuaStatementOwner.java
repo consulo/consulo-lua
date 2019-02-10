@@ -19,7 +19,7 @@ package com.sylvanaar.idea.Lua.lang.psi.util;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 
 /**
@@ -27,6 +27,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface LuaStatementOwner extends LuaPsiElement {
 
-  LuaStatementElement addStatementBefore(@NotNull LuaStatementElement statement, LuaStatementElement anchor) throws IncorrectOperationException;
+  LuaStatementElement addStatementBefore(@Nonnull LuaStatementElement statement, LuaStatementElement anchor) throws IncorrectOperationException;
 
 }

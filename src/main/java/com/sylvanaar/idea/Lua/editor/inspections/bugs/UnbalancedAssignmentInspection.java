@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections.bugs;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.*;
 import com.intellij.codeInspection.*;
 import com.intellij.openapi.project.*;
@@ -39,13 +41,13 @@ import org.jetbrains.annotations.*;
  */
 public class UnbalancedAssignmentInspection extends AbstractInspection {
     @Nls
-    @NotNull
+    @Nonnull
     @Override
     public String getDisplayName() {
         return "Unbalanced Assignment";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PROBABLE_BUGS;
@@ -57,15 +59,15 @@ public class UnbalancedAssignmentInspection extends AbstractInspection {
                "different than the number of expressions on the right.";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public PsiElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public PsiElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
             public void visitAssignment(LuaAssignmentStatement assign) {
                 super.visitAssignment(assign);
@@ -165,7 +167,7 @@ public class UnbalancedAssignmentInspection extends AbstractInspection {
             }
         }
 
-        @NotNull
+        @Nonnull
         @Override
         public String getName() {
             if (tooManyExprs)

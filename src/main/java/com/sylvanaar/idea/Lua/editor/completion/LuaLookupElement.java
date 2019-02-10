@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.editor.completion;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.codeInsight.completion.InsertionContext;
 import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler;
 import com.intellij.codeInsight.lookup.LookupElement;
@@ -172,7 +172,7 @@ public class LuaLookupElement extends LookupElement {
 
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public Object getObject() {
         if (obj == null) return super.getObject();
@@ -180,7 +180,7 @@ public class LuaLookupElement extends LookupElement {
         return obj;
     }
 
-    @NotNull
+    @Nonnull
     public String getLookupString() {
         return str;
     }

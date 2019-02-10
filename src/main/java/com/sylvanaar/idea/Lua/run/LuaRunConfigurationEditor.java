@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.run;
 
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SettingsEditor;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 
@@ -45,7 +45,7 @@ public class LuaRunConfigurationEditor extends SettingsEditor<LuaRunConfiguratio
     }
 
     @Override
-    @NotNull
+    @Nonnull
     protected JComponent createEditor() {
         return myForm.getRootPanel();
     }

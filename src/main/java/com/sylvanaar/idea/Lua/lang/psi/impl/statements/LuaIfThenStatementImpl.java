@@ -24,9 +24,10 @@ import com.sylvanaar.idea.Lua.lang.parser.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -43,7 +44,7 @@ public class LuaIfThenStatementImpl extends LuaStatementElementImpl implements L
     public void accept(LuaElementVisitor visitor) {
       visitor.visitIfThenStatement(this);
     }
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitIfThenStatement(this);
         } else {

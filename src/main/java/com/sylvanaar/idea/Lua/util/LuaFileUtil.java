@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
 import com.intellij.ide.plugins.cl.PluginClassLoader;
@@ -36,7 +36,7 @@ import com.sylvanaar.idea.Lua.LuaFileType;
  */
 public class LuaFileUtil
 {
-	@NotNull
+	@Nonnull
 	public static String getPathToDisplay(final VirtualFile file)
 	{
 		if(file == null)
@@ -56,12 +56,12 @@ public class LuaFileUtil
 		return LocalFileSystem.getInstance().findFileByIoFile(plugin.getPath());
 	}
 
-	public static boolean iterateRecursively(@Nullable final VirtualFile root, @NotNull final ContentIterator processor)
+	public static boolean iterateRecursively(@Nullable final VirtualFile root, @Nonnull final ContentIterator processor)
 	{
 		return root != null && VfsUtilCore.iterateChildrenRecursively(root, VirtualFileFilter.ALL, processor);
 	}
 
-	public static boolean iterateLuaFilesRecursively(@Nullable final VirtualFile root, @NotNull final ContentIterator processor)
+	public static boolean iterateLuaFilesRecursively(@Nullable final VirtualFile root, @Nonnull final ContentIterator processor)
 	{
 		return root != null && VfsUtilCore.iterateChildrenRecursively(root, LUA_FILE_FILTER, processor);
 	}

@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.editor.highlighter;
 
 import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
 * Created by IntelliJ IDEA.
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 * Time: 1:43 PM
 */
 public class LuaSyntaxHighlighterFactory extends SingleLazyInstanceSyntaxHighlighterFactory {
-  @NotNull
+  @Nonnull
   protected SyntaxHighlighter createHighlighter() {
     return new LuaSyntaxHighlighter();
   }

@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
@@ -29,8 +31,8 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.util.SymbolUtil;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -54,7 +56,7 @@ public class LuaGlobalUsageImpl extends LuaIdentifierImpl implements LuaGlobalId
     }
 
     @Override
-    public PsiElement setName(@NotNull @NonNls String name) throws IncorrectOperationException {
+    public PsiElement setName(@Nonnull @NonNls String name) throws IncorrectOperationException {
         LuaIdentifier node = LuaPsiElementFactoryImpl.getInstance(getProject()).createGlobalNameIdentifier(name);
         replace(node);
 

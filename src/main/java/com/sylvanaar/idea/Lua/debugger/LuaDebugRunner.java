@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.configurations.RunProfile;
@@ -32,7 +32,7 @@ import com.intellij.xdebugger.XDebugProcessStarter;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebuggerManager;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import consulo.annotations.RequiredDispatchThread;
+import consulo.ui.RequiredUIAccess;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,8 +44,8 @@ public class LuaDebugRunner extends GenericProgramRunner
 {
 	@Nullable
 	@Override
-	@RequiredDispatchThread
-	protected RunContentDescriptor doExecute(@NotNull RunProfileState state, @NotNull ExecutionEnvironment env) throws ExecutionException
+	@RequiredUIAccess
+	protected RunContentDescriptor doExecute(@Nonnull RunProfileState state, @Nonnull ExecutionEnvironment env) throws ExecutionException
 	{
 		FileDocumentManager.getInstance().saveAllDocuments();
 
@@ -53,9 +53,9 @@ public class LuaDebugRunner extends GenericProgramRunner
 
 		XDebugSession session = XDebuggerManager.getInstance(env.getProject()).startSession(env, new XDebugProcessStarter()
 		{
-			@NotNull
+			@Nonnull
 			@Override
-			public XDebugProcess start(@NotNull XDebugSession session) throws ExecutionException
+			public XDebugProcess start(@Nonnull XDebugSession session) throws ExecutionException
 			{
 				return new LuaDebugProcess(session, executionResult);
 			}
@@ -64,7 +64,7 @@ public class LuaDebugRunner extends GenericProgramRunner
 		return session.getRunContentDescriptor();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getRunnerId()
 	{
@@ -72,7 +72,7 @@ public class LuaDebugRunner extends GenericProgramRunner
 	}
 
 	@Override
-	public boolean canRun(@NotNull java.lang.String executorId, @NotNull RunProfile profile)
+	public boolean canRun(@Nonnull java.lang.String executorId, @Nonnull RunProfile profile)
 	{
 		return executorId.equals(DefaultDebugExecutor.EXECUTOR_ID) && profile instanceof LuaRunConfiguration;
 	}

@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.visitor;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.progress.*;
 import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
@@ -26,7 +28,6 @@ import com.sylvanaar.idea.Lua.lang.psi.impl.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -81,7 +82,7 @@ public class LuaElementVisitor extends PsiElementVisitor {
         visitStatement(e);
     }
 
-    public void visitIfThenStatement(@NotNull LuaIfThenStatement e) {
+    public void visitIfThenStatement(@Nonnull LuaIfThenStatement e) {
         visitStatement(e);
     }
 

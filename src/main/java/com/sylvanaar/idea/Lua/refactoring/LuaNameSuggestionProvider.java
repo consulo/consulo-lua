@@ -19,9 +19,10 @@ package com.sylvanaar.idea.Lua.refactoring;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.codeStyle.SuggestedNameInfo;
 import com.intellij.refactoring.rename.NameSuggestionProvider;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

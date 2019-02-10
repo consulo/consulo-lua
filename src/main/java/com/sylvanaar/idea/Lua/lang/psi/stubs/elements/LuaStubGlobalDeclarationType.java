@@ -17,7 +17,7 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
 import java.io.IOException;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.util.text.StringUtil;
@@ -61,14 +61,14 @@ public class LuaStubGlobalDeclarationType extends LuaStubElementType<LuaGlobalDe
     }
 
     @Override
-    public LuaGlobalDeclaration createPsi(@NotNull
+    public LuaGlobalDeclaration createPsi(@Nonnull
     LuaGlobalDeclarationStub stub) {
         return new LuaGlobalDeclarationImpl(stub);
     }
 
     @Override
     public LuaGlobalDeclarationStub createStub(
-        @NotNull
+        @Nonnull
     LuaGlobalDeclaration psi, StubElement parentStub) {
         final LuaType luaType = psi.getLuaType();
         final byte[] bytes = (luaType instanceof LuaPrimitiveType) ? null

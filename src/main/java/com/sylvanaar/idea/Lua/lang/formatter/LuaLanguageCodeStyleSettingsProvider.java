@@ -19,7 +19,8 @@ package com.sylvanaar.idea.Lua.lang.formatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.application.options.IndentOptionsEditor;
 import com.intellij.application.options.SmartIndentOptionsEditor;
 import com.intellij.lang.Language;
@@ -36,7 +37,7 @@ import com.sylvanaar.idea.Lua.LuaFileType;
  */
 public class LuaLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSettingsProvider
 {
-	@NotNull
+	@Nonnull
 	@Override
 	public Language getLanguage()
 	{
@@ -44,7 +45,7 @@ public class LuaLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSetti
 	}
 
 	@Override
-	public void customizeSettings(@NotNull CodeStyleSettingsCustomizable consumer, @NotNull SettingsType settingsType)
+	public void customizeSettings(@Nonnull CodeStyleSettingsCustomizable consumer, @Nonnull SettingsType settingsType)
 	{
 		List<String> settings = new ArrayList<String>();
 		switch(settingsType)
@@ -82,7 +83,7 @@ public class LuaLanguageCodeStyleSettingsProvider extends LanguageCodeStyleSetti
 
 
 	@Override
-	public String getCodeSample(@NotNull SettingsType settingsType)
+	public String getCodeSample(@Nonnull SettingsType settingsType)
 	{
 		return "if b.state == 1 then\n" +
 				"    if b.rotation then\n" +

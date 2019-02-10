@@ -31,9 +31,10 @@ import com.sylvanaar.idea.Lua.lang.psi.types.InferenceUtil;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
 import com.sylvanaar.idea.Lua.util.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -53,7 +54,7 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitDeclarationStatement(this);
         } else {
@@ -97,8 +98,8 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     // our declarations unless we are walking from a child of ourself.
     // in our case its, (localstat) <- (expr list) <- (expression) <- (variable) <- (reference )
 
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor, @NotNull ResolveState resolveState,
-                                       PsiElement lastParent, @NotNull PsiElement place) {
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState resolveState,
+									   PsiElement lastParent, @Nonnull PsiElement place) {
         // If we weren't found as a parent of the reference
         if (!PsiTreeUtil.isAncestor(this, place, true)) {
             final LuaDeclarationExpression[] decls = getDeclarations();
@@ -123,7 +124,7 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
 
     LuaAssignmentUtil.Assignments assignments = new LuaAssignmentUtil.Assignments(this);
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaAssignment[] getAssignments() {
         return assignments.getValue();
@@ -182,7 +183,7 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     }
 
     private class Declarations extends LuaAtomicNotNullLazyValue<LuaDeclarationExpression[]> {
-        @NotNull
+        @Nonnull
         @Override
         protected LuaDeclarationExpression[] compute() {
             List<LuaDeclarationExpression> decls = new ArrayList<LuaDeclarationExpression>();

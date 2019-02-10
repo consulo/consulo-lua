@@ -16,6 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter.processors;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiWhiteSpace;
@@ -25,7 +27,6 @@ import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -42,7 +43,7 @@ public abstract class SpacingUtil {
     return child1 instanceof LeafPsiElement || child2 instanceof LeafPsiElement;
   }
 
-  static boolean shouldKeepSpace(@NotNull final PsiElement parent) {
+  static boolean shouldKeepSpace(@Nonnull final PsiElement parent) {
     ASTNode node = parent.getNode();
     if (node == null) return true;
     final IElementType type = node.getElementType();

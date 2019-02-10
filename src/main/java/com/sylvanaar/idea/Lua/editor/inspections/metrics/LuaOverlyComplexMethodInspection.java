@@ -21,11 +21,11 @@ import com.intellij.codeInspection.ProblemsHolder;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class LuaOverlyComplexMethodInspection extends LuaMethodMetricInspection {
 
-  @NotNull
+  @Nonnull
   public String getDisplayName() {
     return "Overly complex method";
   }
@@ -44,7 +44,7 @@ public class LuaOverlyComplexMethodInspection extends LuaMethodMetricInspection 
   }
 
     @Override
-  public LuaElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+  public LuaElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
     return new LuaElementVisitor() {
          public void visitFunctionDef(LuaFunctionDefinitionStatement func) {
               super.visitFunctionDef(func);

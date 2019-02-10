@@ -18,9 +18,9 @@ package com.sylvanaar.idea.Lua.debugger;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nonnull;
 import javax.swing.SwingUtilities;
 
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionResult;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ui.ConsoleView;
@@ -57,7 +57,7 @@ public class LuaDebugProcess extends XDebugProcess {
      *                .XDebugProcessStarter#start} method to this constructor
      * @param result
      */
-    protected LuaDebugProcess(@NotNull XDebugSession session, ExecutionResult result) {
+    protected LuaDebugProcess(@Nonnull XDebugSession session, ExecutionResult result) {
         super(session);
         lineBreakpointHandler = new LuaLineBreakpointHandler(this);
 
@@ -66,7 +66,7 @@ public class LuaDebugProcess extends XDebugProcess {
         executionResult = result;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public XDebuggerEditorsProvider getEditorsProvider() {
         return new LuaDebuggerEditorsProvider();
@@ -101,7 +101,7 @@ public class LuaDebugProcess extends XDebugProcess {
     }
 
     @Override
-    public void runToPosition(@NotNull XSourcePosition position) {
+    public void runToPosition(@Nonnull XSourcePosition position) {
         throw new UnsupportedOperationException();
     }
 
@@ -110,7 +110,7 @@ public class LuaDebugProcess extends XDebugProcess {
         return executionResult.getProcessHandler();
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public ExecutionConsole createConsole() {
         myExecutionConsole = (ConsoleView) executionResult.getExecutionConsole();
@@ -132,7 +132,7 @@ public class LuaDebugProcess extends XDebugProcess {
         super.sessionInitialized();
         ProgressManager.getInstance().run(new Task.Backgroundable(null, "Connecting to debugger", false) {
 
-            public void run(@NotNull ProgressIndicator indicator) {
+            public void run(@Nonnull ProgressIndicator indicator) {
                 indicator.setText("Connecting to debugger...");
                 log.debug("connecting");
                 try {

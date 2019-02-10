@@ -34,9 +34,11 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
 import com.sylvanaar.idea.Lua.util.*;
-import org.jetbrains.annotations.*;
 
 import java.util.*;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -54,7 +56,7 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
         super(viewProvider, LuaFileType.LUA_LANGUAGE);
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public FileType getFileType() {
         return LuaFileType.LUA_FILE_TYPE;
@@ -67,7 +69,7 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
-    public LuaStatementElement addStatementBefore(@NotNull LuaStatementElement statement, LuaStatementElement anchor) throws IncorrectOperationException {
+    public LuaStatementElement addStatementBefore(@Nonnull LuaStatementElement statement, LuaStatementElement anchor) throws IncorrectOperationException {
         return (LuaStatementElement) addBefore(statement, anchor);
     }
 
@@ -273,7 +275,7 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     private class LuaFunctionDefinitionNotNullLazyValue extends LuaAtomicNotNullLazyValue<LuaFunctionDefinition[]> {
-        @NotNull
+        @Nonnull
         @Override
         protected LuaFunctionDefinition[] compute() {
             final List<LuaFunctionDefinition> funcs =
@@ -319,7 +321,7 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     private class Modules extends LuaAtomicNotNullLazyValue<List<LuaModuleExpression>> {
-        @NotNull
+        @Nonnull
         @Override
         protected List<LuaModuleExpression> compute() {
             List<LuaModuleExpression> val = new ArrayList<LuaModuleExpression>();

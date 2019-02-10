@@ -28,6 +28,9 @@ import org.jetbrains.annotations.*;
 
 import java.util.*;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Jon S Akhtar
@@ -49,7 +52,7 @@ public class LuaFunctionCallExpressionImpl extends LuaExpressionImpl implements 
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitFunctionCall(this);
         } else {
@@ -75,7 +78,7 @@ public class LuaFunctionCallExpressionImpl extends LuaExpressionImpl implements 
     }
 
     LuaFunctionCallExpression guard;
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         if (guard == this) return LuaPrimitiveType.ANY;
@@ -106,7 +109,7 @@ public class LuaFunctionCallExpressionImpl extends LuaExpressionImpl implements 
     }
 
     @Override
-    public PsiElement setName(@NonNls @NotNull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
         return null;
     }
 

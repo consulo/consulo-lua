@@ -16,13 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.expressions;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.Key;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.CachedValue;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,7 +41,7 @@ public interface LuaExpression extends LuaPsiElement {
     
     PsiElement replaceWithExpression(LuaExpression newCall, boolean b);
 
-    @NotNull
+    @Nonnull
     LuaType getLuaType();
 
     void setLuaType(LuaType type);

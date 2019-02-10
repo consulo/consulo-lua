@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.parser;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
@@ -29,7 +29,7 @@ import consulo.lang.LanguageVersion;
 * @author ilyas
 */
 public class LuaDocParser implements PsiParser {
-  @NotNull
+  @Nonnull
   public ASTNode parse(IElementType root, PsiBuilder builder, LanguageVersion languageVersion) {
     PsiBuilder.Marker rootMarker = builder.mark();
     new LuaDocParsing().parse(builder);

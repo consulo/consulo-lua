@@ -31,17 +31,18 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
+
+import javax.annotation.Nullable;
 
 /**
  * @author ilyas
  */
 public class LuaDocParameterReferenceImpl extends LuaDocReferenceElementImpl implements LuaDocParameterReference {
 
-  public LuaDocParameterReferenceImpl(@NotNull ASTNode node) {
+  public LuaDocParameterReferenceImpl(@Nonnull ASTNode node) {
     super(node);
   }
 
@@ -53,7 +54,7 @@ public class LuaDocParameterReferenceImpl extends LuaDocReferenceElementImpl imp
     return this;
   }
 
-  @NotNull
+  @Nonnull
   public ResolveResult[] multiResolve(boolean incompleteCode) {
     final String name = getName();
     if (name == null) return ResolveResult.EMPTY_ARRAY;
@@ -95,7 +96,7 @@ public class LuaDocParameterReferenceImpl extends LuaDocReferenceElementImpl imp
     return results[0].getElement();
   }
 
-  @NotNull
+  @Nonnull
   public String getCanonicalText() {
     return StringUtil.notNullize(getName());
   }
@@ -109,7 +110,7 @@ public class LuaDocParameterReferenceImpl extends LuaDocReferenceElementImpl imp
     return this;
   }
 
-  public PsiElement bindToElement(@NotNull PsiElement element) throws IncorrectOperationException {
+  public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
     if (isReferenceTo(element)) return this;
     return null;
   }
@@ -119,7 +120,7 @@ public class LuaDocParameterReferenceImpl extends LuaDocReferenceElementImpl imp
     return getManager().areElementsEquivalent(element, resolve());
   }
 
-  @NotNull
+  @Nonnull
   public Object[] getVariants() {
     final PsiElement owner = LuaDocCommentUtil.findDocOwner(this);
     if (owner instanceof LuaFunctionDefinition) {

@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.editor.inspections.metrics;
 
 import com.intellij.codeInspection.ui.SingleIntegerFieldOptionsPanel;
 import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import javax.swing.*;
 
@@ -35,7 +35,7 @@ public abstract class LuaMethodMetricInspection extends AbstractInspection {
         return m_limit;
     }
 
-    @NotNull
+    @Nonnull
     public String getGroupDisplayName() {
         return METHOD_METRICS;
     }

@@ -17,7 +17,7 @@
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
 import com.intellij.lang.ASTNode;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 public class LuaChunkVarargsImpl extends LuaParameterImpl {
     public static final String ELLIPSIS = "...";
 
-    public LuaChunkVarargsImpl(@NotNull ASTNode node) {
+    public LuaChunkVarargsImpl(@Nonnull ASTNode node) {
         super(node);
     }
 

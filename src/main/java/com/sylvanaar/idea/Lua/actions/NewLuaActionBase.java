@@ -18,14 +18,13 @@ package com.sylvanaar.idea.Lua.actions;
 
 import java.util.Arrays;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.CommonBundle;
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.diagnostic.Logger;
@@ -54,7 +53,7 @@ abstract class NewLuaActionBase extends CreateElementActionBase {
         super(text, description, icon);
     }
 
-    @NotNull
+    @Nonnull
     protected final PsiElement[] invokeDialog(final Project project, final PsiDirectory directory) {
         log.debug("invokeDialog");
         final MyInputValidator validator = new MyInputValidator(project, directory);
@@ -89,13 +88,13 @@ abstract class NewLuaActionBase extends CreateElementActionBase {
         return LuaTemplatesFactory.createFromTemplate(directory, className, filename, templateName, parameters);
     }
 
-    @NotNull
+    @Nonnull
     protected PsiElement[] create(String newName, PsiDirectory directory) throws Exception {
         log.debug("create " + newName + ", dir: " + directory);
         return doCreate(newName, directory);
     }
 
-    @NotNull
+    @Nonnull
     protected abstract PsiElement[] doCreate(String newName, PsiDirectory directory);
 
     protected abstract String getDialogPrompt();
@@ -110,7 +109,7 @@ abstract class NewLuaActionBase extends CreateElementActionBase {
         checkCreateFile(directory, newName);
     }
 
-    public static void checkCreateFile(@NotNull PsiDirectory directory, String name) throws IncorrectOperationException {
+    public static void checkCreateFile(@Nonnull PsiDirectory directory, String name) throws IncorrectOperationException {
         final String fileName = name + "." + LuaFileType.DEFAULT_EXTENSION;
         directory.checkCreateFile(fileName);
     }

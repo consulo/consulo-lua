@@ -20,7 +20,7 @@ import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.lang.Language;
 import com.intellij.psi.FileViewProvider;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  * Time: 7:54:09 PM
  */
 public abstract class LuaPsiFileBaseImpl extends PsiFileBase implements LuaPsiFileBase {
-    protected LuaPsiFileBaseImpl(FileViewProvider viewProvider, @NotNull Language language) {
+    protected LuaPsiFileBaseImpl(FileViewProvider viewProvider, @Nonnull Language language) {
         super(viewProvider, language);
     }
 

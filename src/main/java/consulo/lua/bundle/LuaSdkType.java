@@ -18,10 +18,9 @@ package consulo.lua.bundle;
 
 import java.io.File;
 
-import javax.swing.Icon;
+import javax.annotation.Nonnull;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
@@ -50,7 +49,7 @@ public abstract class LuaSdkType extends SdkType
 		super(name);
 	}
 
-	@NotNull
+	@Nonnull
 	public abstract LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration, ExecutionEnvironment env,
 			boolean isDebugger) throws ExecutionException;
 
@@ -73,7 +72,7 @@ public abstract class LuaSdkType extends SdkType
 		sdkModificator.commitChanges();
 	}
 
-	@NotNull
+	@Nonnull
 	public File getStdLibraryFile()
 	{
 		PluginClassLoader classLoader = (PluginClassLoader) getClass().getClassLoader();
@@ -86,7 +85,7 @@ public abstract class LuaSdkType extends SdkType
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public Image getIcon()
 	{
 		return LuaIcons.LUA_ICON;

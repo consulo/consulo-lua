@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.run.lua;
 
 import static consulo.lua.bundle.BaseLuaSdkType.getTopLevelExecutable;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.CommandLineState;
 import com.intellij.execution.configurations.GeneralCommandLine;
@@ -46,7 +46,7 @@ public class LuaCommandLineState extends CommandLineState {
         this.executionEnvironment = env;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     protected ProcessHandler startProcess() throws ExecutionException {
         GeneralCommandLine commandLine = generateCommandLine();

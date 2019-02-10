@@ -40,8 +40,8 @@ import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import javax.swing.*;
 
@@ -57,7 +57,7 @@ import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.PARAMETER_LIST;
 public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
     implements LuaAnonymousFunctionExpression {
     LuaAtomicNotNullLazyValue<LuaFunction> myLazyType = new LuaAtomicNotNullLazyValue<LuaFunction>() {
-            @NotNull
+            @Nonnull
             @Override
             protected LuaFunction compute() {
                 LuaFunction type = new LuaFunction();
@@ -78,7 +78,7 @@ public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
     }
 
     @Override
-    public void accept(@NotNull
+    public void accept(@Nonnull
     PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitAnonymousFunction(this);
@@ -136,9 +136,9 @@ public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
         return getPresentableText();
     }
 
-    public boolean processDeclarations(@NotNull
-    PsiScopeProcessor processor, @NotNull
-    ResolveState resolveState, PsiElement lastParent, @NotNull
+    public boolean processDeclarations(@Nonnull
+    PsiScopeProcessor processor, @Nonnull
+    ResolveState resolveState, PsiElement lastParent, @Nonnull
     PsiElement place) {
         if ((lastParent != null) && (lastParent.getParent() == this)) {
             final LuaParameter[] params = getParameters().getLuaParameters();
@@ -153,7 +153,7 @@ public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
         return true;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaFunction getLuaType() {
         return myLazyType.getValue();

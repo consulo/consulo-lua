@@ -23,7 +23,7 @@ import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaTypedStub;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -47,7 +47,8 @@ public class LuaFieldStub extends NamedStubBase<LuaFieldIdentifier> implements L
         return myType;
     }
 
-    @Nullable public LuaType getLuaType() {
+    @Nullable
+	public LuaType getLuaType() {
         return myLuaType;
     }
 

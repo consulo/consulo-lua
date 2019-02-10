@@ -28,7 +28,7 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaGenericForStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,10 +42,10 @@ public class LuaGenericForStatementImpl extends LuaStatementElementImpl implemen
     }
 
 
-    public boolean processDeclarations(@NotNull PsiScopeProcessor processor,
-                                       @NotNull ResolveState resolveState,
+    public boolean processDeclarations(@Nonnull PsiScopeProcessor processor,
+                                       @Nonnull ResolveState resolveState,
                                        PsiElement lastParent,
-                                       @NotNull PsiElement place) {
+                                       @Nonnull PsiElement place) {
 
         PsiElement parent = place.getParent();
         while(parent != null && !(parent instanceof LuaPsiFile)) {
@@ -82,7 +82,7 @@ public class LuaGenericForStatementImpl extends LuaStatementElementImpl implemen
     }
 
     @Override
-    public void accept(@NotNull PsiElementVisitor visitor) {
+    public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitGenericForStatement(this);
         } else {

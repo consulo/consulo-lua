@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.types;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 import java.util.Map;
 
@@ -32,7 +32,7 @@ public class LuaPrimitiveTypeImpl implements LuaPrimitiveType {
     private final String encoding;
     private final int    id;
 
-    public LuaPrimitiveTypeImpl(@NotNull String name, @NotNull String encoding, int id) {
+    public LuaPrimitiveTypeImpl(@Nonnull String name, @Nonnull String encoding, int id) {
         this.name = name;
         this.encoding = encoding;
         this.id = id;

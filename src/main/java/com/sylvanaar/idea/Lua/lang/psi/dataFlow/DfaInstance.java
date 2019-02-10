@@ -15,8 +15,9 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.dataFlow;
 
+import javax.annotation.Nonnull;
+
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author ven
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.NotNull;
 public interface DfaInstance<E> {
   void fun(E e, Instruction instruction);
 
-  @NotNull
+  @Nonnull
   E initial();
 
   boolean isForward();

@@ -15,6 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.editor.inspections.performance;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.codeHighlighting.HighlightDisplayLevel;
 import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemsHolder;
@@ -29,7 +31,6 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.NotNull;
 
 public class StringConcatenationInLoopsInspection extends AbstractInspection {
 
@@ -39,32 +40,32 @@ public class StringConcatenationInLoopsInspection extends AbstractInspection {
     public boolean m_ignoreUnlessAssigned = true;
 
     @Override
-    @NotNull
+    @Nonnull
     public String getDisplayName() {
         return "String concatenation in a loop";
     }
 
     //    @Override
-    @NotNull
+    @Nonnull
     protected String buildErrorString(Object... infos) {
         return  "String concatenation in loop";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public String getGroupDisplayName() {
         return PERFORMANCE_ISSUES;
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public HighlightDisplayLevel getDefaultLevel() {
         return HighlightDisplayLevel.WARNING;
     }
 
-    @NotNull
+    @Nonnull
     @Override
-    public LuaElementVisitor buildVisitor(@NotNull final ProblemsHolder holder, boolean isOnTheFly) {
+    public LuaElementVisitor buildVisitor(@Nonnull final ProblemsHolder holder, boolean isOnTheFly) {
         return new LuaElementVisitor() {
 
             @Override

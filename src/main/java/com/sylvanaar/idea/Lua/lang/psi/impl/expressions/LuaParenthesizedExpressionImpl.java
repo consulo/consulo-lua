@@ -16,13 +16,14 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaParenthesizedExpression;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import org.jetbrains.annotations.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,7 +47,7 @@ public class LuaParenthesizedExpressionImpl extends LuaExpressionImpl implements
         return super.toString() + ": (" + (opr!=null?opr.getText():"null") + ")";
     }
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         LuaExpression e = getOperand();

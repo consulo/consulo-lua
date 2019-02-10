@@ -16,13 +16,14 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl;
 
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.*;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaParenthesizedExpression;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author ven

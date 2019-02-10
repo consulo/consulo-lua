@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
 
 
 import com.intellij.psi.PsiReference;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 
 public interface LuaDocReferenceElement extends LuaDocPsiElement, PsiReference {

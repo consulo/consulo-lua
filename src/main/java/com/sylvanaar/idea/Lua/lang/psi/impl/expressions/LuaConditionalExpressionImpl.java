@@ -22,7 +22,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -40,7 +40,7 @@ public class LuaConditionalExpressionImpl extends LuaExpressionImpl implements L
     }
 
 
-    @NotNull
+    @Nonnull
     @Override
     public LuaType getLuaType() {
         return LuaPrimitiveType.BOOLEAN;

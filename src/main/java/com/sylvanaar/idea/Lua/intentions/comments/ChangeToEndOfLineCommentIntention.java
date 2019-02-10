@@ -21,17 +21,17 @@ import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.intentions.base.Intention;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 
 public class ChangeToEndOfLineCommentIntention extends Intention {
 
-    @NotNull
+    @Nonnull
     protected PsiElementPredicate getElementPredicate() {
         return new CStyleCommentPredicate();
     }
 
-    public void processIntention(@NotNull PsiElement element)
+    public void processIntention(@Nonnull PsiElement element)
             throws IncorrectOperationException {
         final PsiComment comment = (PsiComment) element;
         final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(comment.getProject());

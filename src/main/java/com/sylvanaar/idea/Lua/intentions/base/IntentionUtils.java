@@ -15,13 +15,13 @@
  */
 package com.sylvanaar.idea.Lua.intentions.base;
 
-import com.intellij.psi.PsiElement;
+import javax.annotation.Nonnull;
+
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -30,15 +30,15 @@ import org.jetbrains.annotations.NotNull;
  */
 public class IntentionUtils {
 
-    public static LuaExpression replaceExpression(@NotNull String newExpression,
-                                         @NotNull LuaExpression expression) throws IncorrectOperationException {
+    public static LuaExpression replaceExpression(@Nonnull String newExpression,
+                                         @Nonnull LuaExpression expression) throws IncorrectOperationException {
         final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(expression.getProject());
         final LuaExpression newCall = factory.createExpressionFromText(newExpression);
         return (LuaExpression) expression.replaceWithExpression(newCall, true);
     }
 
-    public static LuaStatementElement replaceStatement(@NonNls @NotNull String newStatement,
-                                                       @NonNls @NotNull LuaStatementElement statement) throws
+    public static LuaStatementElement replaceStatement(@NonNls @Nonnull String newStatement,
+                                                       @NonNls @Nonnull LuaStatementElement statement) throws
             IncorrectOperationException {
         final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(statement.getProject());
         final LuaStatementElement newCall = (LuaStatementElement) factory.createStatementFromText(newStatement);

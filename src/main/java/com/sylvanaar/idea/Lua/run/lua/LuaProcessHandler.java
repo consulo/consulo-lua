@@ -16,10 +16,12 @@
 
 package com.sylvanaar.idea.Lua.run.lua;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.process.CapturingProcessHandler;
 import com.intellij.openapi.vfs.CharsetToolkit;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
  * Time: 3:51 AM
  */
 public class LuaProcessHandler extends CapturingProcessHandler {
-    public LuaProcessHandler(@NotNull Process process, @Nullable String commandLine) {
+    public LuaProcessHandler(@Nonnull Process process, @Nullable String commandLine) {
         super(process, CharsetToolkit.UTF8_CHARSET,  commandLine);
     }
 

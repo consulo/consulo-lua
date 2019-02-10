@@ -19,11 +19,11 @@ package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 
 import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 public class LuaDocTagValueTokenImpl extends LuaDocPsiElementImpl implements LuaDocTagValueToken {
 
-  public LuaDocTagValueTokenImpl(@NotNull ASTNode node) {
+  public LuaDocTagValueTokenImpl(@Nonnull ASTNode node) {
     super(node);
   }
 

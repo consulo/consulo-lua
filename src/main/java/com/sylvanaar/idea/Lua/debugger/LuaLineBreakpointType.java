@@ -16,8 +16,9 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
@@ -33,7 +34,7 @@ import consulo.lua.debugger.breakpoint.LuaLineBreakpointProperties;
  */
 public class LuaLineBreakpointType extends XLineBreakpointType<LuaLineBreakpointProperties>
 {
-	@NotNull
+	@Nonnull
 	public static LuaLineBreakpointType getInstance()
 	{
 		return EXTENSION_POINT_NAME.findExtension(LuaLineBreakpointType.class);
@@ -47,14 +48,14 @@ public class LuaLineBreakpointType extends XLineBreakpointType<LuaLineBreakpoint
 	}
 
 	@Override
-	public LuaLineBreakpointProperties createBreakpointProperties(@NotNull VirtualFile file, int line)
+	public LuaLineBreakpointProperties createBreakpointProperties(@Nonnull VirtualFile file, int line)
 	{
 		return new LuaLineBreakpointProperties();
 	}
 
 	@Nullable
 	@Override
-	public XDebuggerEditorsProvider getEditorsProvider(@NotNull XLineBreakpoint<LuaLineBreakpointProperties> breakpoint, @NotNull Project project)
+	public XDebuggerEditorsProvider getEditorsProvider(@Nonnull XLineBreakpoint<LuaLineBreakpointProperties> breakpoint, @Nonnull Project project)
 	{
 		return myEditorsProvider;
 	}

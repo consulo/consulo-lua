@@ -16,26 +16,27 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.references;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.PsiReferenceProvider;
 import com.intellij.psi.filters.ElementFilter;
 import com.intellij.util.ProcessingContext;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
-import org.jetbrains.annotations.NotNull;
 
 
 /**
  * @author ilyas
  */
 public class LuaDocReferenceProvider extends PsiReferenceProvider {
-  @NotNull
+  @Nonnull
   public PsiReference[] getReferencesByElement(PsiElement element) {
     return new PsiReference[0];
   }
 
-  @NotNull
-  public PsiReference[] getReferencesByElement(@NotNull PsiElement element, @NotNull ProcessingContext context) {
+  @Nonnull
+  public PsiReference[] getReferencesByElement(@Nonnull PsiElement element, @Nonnull ProcessingContext context) {
     //todo review
     return getReferencesByElement(element);
   }

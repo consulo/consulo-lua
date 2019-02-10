@@ -1,8 +1,9 @@
 package com.sylvanaar.idea.Lua.debugger;
 
+import javax.annotation.Nonnull;
+
 import com.intellij.xdebugger.breakpoints.XBreakpoint;
 import com.intellij.xdebugger.breakpoints.XBreakpointHandler;
-import org.jetbrains.annotations.NotNull;
 
 public class LuaLineBreakpointHandler extends XBreakpointHandler {
     protected LuaDebugProcess myDebugProcess;
@@ -14,11 +15,11 @@ public class LuaLineBreakpointHandler extends XBreakpointHandler {
         myDebugProcess = debugProcess;
     }
 
-    public void registerBreakpoint(@NotNull XBreakpoint xBreakpoint) {
+    public void registerBreakpoint(@Nonnull XBreakpoint xBreakpoint) {
         myDebugProcess.addBreakPoint(xBreakpoint);
     }
 
-    public void unregisterBreakpoint(@NotNull XBreakpoint xBreakpoint, boolean temporary) {        
+    public void unregisterBreakpoint(@Nonnull XBreakpoint xBreakpoint, boolean temporary) {
         myDebugProcess.removeBreakPoint(xBreakpoint);
     }
 

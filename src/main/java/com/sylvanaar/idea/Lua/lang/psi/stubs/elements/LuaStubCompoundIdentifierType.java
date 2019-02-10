@@ -18,7 +18,8 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
 import java.io.IOException;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.util.Pair;
 import com.intellij.psi.stubs.IndexSink;
 import com.intellij.psi.stubs.StubElement;
@@ -54,12 +55,12 @@ public class LuaStubCompoundIdentifierType
     }
 
     @Override
-    public LuaCompoundIdentifier createPsi(@NotNull LuaCompoundIdentifierStub stub) {
+    public LuaCompoundIdentifier createPsi(@Nonnull LuaCompoundIdentifierStub stub) {
         return new LuaCompoundIdentifierImpl(stub);
     }
 
     @Override
-    public LuaCompoundIdentifierStub createStub(@NotNull LuaCompoundIdentifier psi, StubElement parentStub) {
+    public LuaCompoundIdentifierStub createStub(@Nonnull LuaCompoundIdentifier psi, StubElement parentStub) {
         final LuaType luaType = psi.getLuaType();
         final byte[] bytes = luaType instanceof LuaPrimitiveType ? null : LuaSerializationUtils.serialize(luaType);
         final boolean declaration = psi.isCompoundDeclaration() && psi.getScopeIdentifier() instanceof LuaGlobal;
