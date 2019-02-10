@@ -1,21 +1,21 @@
 package com.sylvanaar.idea.Lua.editor;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.jetbrains.annotations.NonNls;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.impl.FakePsiElement;
-import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import javax.swing.*;
+import consulo.ui.image.Image;
 
 public class BaseNavigationItem extends FakePsiElement {
 
 	private final PsiElement myPsiElement;
 	private final String myText;
-	private final Icon myIcon;
+	private final Image myIcon;
 
 	/**
 	 * Creates a new display item.
@@ -24,7 +24,7 @@ public class BaseNavigationItem extends FakePsiElement {
 	 * @param text       Text to show for this element.
 	 * @param icon       Icon to show for this element.
 	 */
-	public BaseNavigationItem(@Nonnull PsiElement psiElement, @Nonnull @NonNls String text, @Nullable Icon icon) {
+	public BaseNavigationItem(@Nonnull PsiElement psiElement, @Nonnull @NonNls String text, @Nullable Image icon) {
 		myPsiElement = psiElement;
 		myText = text;
 		myIcon = icon;
@@ -35,7 +35,7 @@ public class BaseNavigationItem extends FakePsiElement {
 		return myPsiElement;
 	}
 
-	public Icon getIcon(boolean flags) {
+	public Image getIcon() {
 		return myIcon;
 	}
 
@@ -52,7 +52,7 @@ public class BaseNavigationItem extends FakePsiElement {
 			}
 
 			@Nullable
-			public Icon getIcon(boolean open) {
+			public Image getIcon() {
 				return myIcon;
 			}
 		};

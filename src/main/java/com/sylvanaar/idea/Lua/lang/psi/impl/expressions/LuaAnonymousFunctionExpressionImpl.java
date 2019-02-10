@@ -15,6 +15,12 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
 
+import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.BLOCK;
+import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.PARAMETER_LIST;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.TextRange;
@@ -40,13 +46,7 @@ import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import javax.swing.*;
-
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.BLOCK;
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.PARAMETER_LIST;
+import consulo.ui.image.Image;
 
 /**
  * Created by IntelliJ IDEA.
@@ -127,7 +127,7 @@ public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
     }
 
     @Override
-    public Icon getIcon(boolean open) {
+    public Image getIcon() {
         return LuaIcons.LUA_FUNCTION;
     }
 

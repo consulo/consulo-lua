@@ -19,7 +19,6 @@ package com.sylvanaar.idea.Lua.actions;
 import java.util.Arrays;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
 
 import org.jetbrains.annotations.NonNls;
 import com.intellij.CommonBundle;
@@ -38,6 +37,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import consulo.lua.module.extension.LuaModuleExtension;
+import consulo.ui.image.Image;
 
 
 /**
@@ -49,7 +49,7 @@ import consulo.lua.module.extension.LuaModuleExtension;
 abstract class NewLuaActionBase extends CreateElementActionBase {
     private static final Logger log = Logger.getInstance("#NewActionBase");
 
-    public NewLuaActionBase(String text, String description, Icon icon) {
+    public NewLuaActionBase(String text, String description, Image icon) {
         super(text, description, icon);
     }
 

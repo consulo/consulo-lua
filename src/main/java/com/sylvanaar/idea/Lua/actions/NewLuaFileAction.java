@@ -17,13 +17,13 @@
 package com.sylvanaar.idea.Lua.actions;
 
 import javax.annotation.Nonnull;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.LuaBundle;
 import com.sylvanaar.idea.Lua.LuaIcons;
-import consulo.awt.TargetAWT;
 
 /**
  * Date: 17.04.2009
@@ -35,7 +35,7 @@ public class NewLuaFileAction extends NewLuaActionBase {
     private static final Logger log = Logger.getInstance("#NewActionBase");
 
     public NewLuaFileAction() {
-        super(LuaBundle.message("newfile.menu.action.text"),  LuaBundle.message("newfile.menu.action.description"), TargetAWT.to(LuaIcons.LUA_ICON));
+        super(LuaBundle.message("newfile.menu.action.text"),  LuaBundle.message("newfile.menu.action.description"), LuaIcons.LUA_ICON);
     }
 
 

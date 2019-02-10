@@ -16,10 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
-import javax.swing.Icon;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.PsiElement;
@@ -34,7 +33,7 @@ import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaTypeUtil;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import consulo.awt.TargetAWT;
+import consulo.ui.image.Image;
 
 /**
  * Created by IntelliJ IDEA.
@@ -85,8 +84,8 @@ public abstract class LuaSymbolImpl extends LuaPsiElementImpl implements LuaSymb
             }
 
             @Nullable
-            public Icon getIcon(boolean open) {
-                return TargetAWT.to(LuaIcons.LUA_ICON);
+            public Image getIcon() {
+                return LuaIcons.LUA_ICON;
             }
         };
     }

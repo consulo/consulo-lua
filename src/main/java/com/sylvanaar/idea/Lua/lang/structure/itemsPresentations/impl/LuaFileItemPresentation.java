@@ -15,14 +15,13 @@
  */
 package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
 
-import javax.swing.Icon;
-
 import javax.annotation.Nullable;
+
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
-import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
+import consulo.ui.image.Image;
 
 
 public class LuaFileItemPresentation extends LuaItemPresentation {
@@ -36,7 +35,7 @@ public class LuaFileItemPresentation extends LuaItemPresentation {
 
   @Nullable
   @Override
-  public Icon getIcon(boolean b) {
-    return TargetAWT.to(IconDescriptorUpdaters.getIcon(myElement, 0));
+  public Image getIcon() {
+    return IconDescriptorUpdaters.getIcon(myElement, 0);
   }
 }

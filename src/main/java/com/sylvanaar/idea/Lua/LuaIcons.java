@@ -16,8 +16,6 @@
 
 package com.sylvanaar.idea.Lua;
 
-import javax.swing.Icon;
-
 import com.intellij.openapi.util.IconLoader;
 import consulo.ui.image.Image;
 
@@ -30,8 +28,8 @@ import consulo.ui.image.Image;
 public interface LuaIcons
 {
 	final Image LUA_ICON = IconLoader.findIcon("/icons/Lua.png");
-	final Icon LUA_FUNCTION = IconLoader.findIcon("/icons/function.png");
-	final Icon LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
+	final Image LUA_FUNCTION = IconLoader.findIcon("/icons/function.png");
+	final Image LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
 }
 
 

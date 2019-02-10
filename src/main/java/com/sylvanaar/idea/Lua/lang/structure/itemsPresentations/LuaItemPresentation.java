@@ -15,10 +15,10 @@
  */
 package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations;
 
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.psi.PsiElement;
 import javax.annotation.Nullable;
+
+import com.intellij.navigation.ItemPresentation;
+import com.intellij.psi.PsiElement;
 
 
 public abstract class LuaItemPresentation implements ItemPresentation {
@@ -30,11 +30,6 @@ public abstract class LuaItemPresentation implements ItemPresentation {
 
   @Nullable
     public String getLocationString() {
-    return null;
-  }
-
-  @Nullable
-    public TextAttributesKey getTextAttributesKey() {
     return null;
   }
 }

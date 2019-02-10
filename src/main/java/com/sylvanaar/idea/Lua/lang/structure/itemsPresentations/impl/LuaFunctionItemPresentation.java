@@ -15,16 +15,16 @@
  */
 package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.NotNullLazyValue;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import javax.swing.*;
+import consulo.ui.image.Image;
 
 
 public class LuaFunctionItemPresentation extends LuaItemPresentation {
@@ -65,12 +65,7 @@ public class LuaFunctionItemPresentation extends LuaItemPresentation {
     }
 
     @Nullable
-    public Icon getIcon(boolean open) {
+    public Image getIcon() {
         return LuaIcons.LUA_FUNCTION;
-    }
-
-    @Nullable
-    public TextAttributesKey getTextAttributesKey() {
-        return textKey;
     }
 }

@@ -15,9 +15,13 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.util;
 
+import java.util.Collection;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
@@ -44,11 +48,7 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaRecursiveElementVisitor;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import javax.swing.*;
-import java.util.Collection;
+import consulo.ui.image.Image;
 
 
 /**
@@ -72,13 +72,8 @@ public final class LuaPsiUtils {
                 }
 
                 @Nullable
-                public Icon getIcon(boolean open) {
+                public Image getIcon() {
                     return LuaIcons.LUA_FUNCTION;
-                }
-
-                @Nullable
-                public TextAttributesKey getTextAttributesKey() {
-                    return null;
                 }
             };
     }

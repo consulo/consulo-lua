@@ -16,32 +16,39 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
-import com.intellij.lang.*;
-import com.intellij.navigation.*;
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.openapi.util.*;
-import com.intellij.psi.*;
-import com.intellij.psi.scope.*;
-import com.intellij.psi.util.*;
-import com.sylvanaar.idea.Lua.*;
-import com.sylvanaar.idea.Lua.lang.*;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.*;
-import com.sylvanaar.idea.Lua.lang.parser.*;
-import com.sylvanaar.idea.Lua.lang.psi.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.lists.*;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import com.sylvanaar.idea.Lua.lang.psi.util.*;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import org.jetbrains.annotations.*;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.*;
+
+import org.jetbrains.annotations.NonNls;
+import com.intellij.lang.ASTNode;
+import com.intellij.navigation.ItemPresentation;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.util.TextRange;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiElementVisitor;
+import com.intellij.psi.ResolveState;
+import com.intellij.psi.scope.PsiScopeProcessor;
+import com.intellij.psi.util.PsiTreeUtil;
+import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.Lua.lang.InferenceCapable;
+import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.LuaDocCommentUtil;
+import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaImpliedSelfParameterImpl;
+import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.Lua.lang.psi.types.InferenceUtil;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
+import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.ui.image.Image;
 
 /**
  * Created by IntelliJ IDEA.
@@ -121,7 +128,7 @@ public class LuaFunctionDefinitionStatementImpl extends LuaStatementElementImpl 
     }
 
     @Override
-    public Icon getIcon(boolean open) {
+    public Image getIcon() {
         return LuaIcons.LUA_FUNCTION;
     }
 
