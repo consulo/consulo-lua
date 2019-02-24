@@ -19,8 +19,8 @@ package consulo.lua.module.extension;
 import javax.annotation.Nonnull;
 
 import com.intellij.openapi.projectRoots.SdkType;
-import consulo.extension.impl.ModuleExtensionWithSdkImpl;
 import consulo.lua.bundle.LuaSdkType;
+import consulo.module.extension.impl.ModuleExtensionWithSdkImpl;
 import consulo.roots.ModuleRootLayer;
 
 /**
