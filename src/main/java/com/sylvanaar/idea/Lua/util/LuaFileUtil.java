@@ -18,9 +18,8 @@ package com.sylvanaar.idea.Lua.util;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
+
 import com.intellij.ide.plugins.PluginManager;
-import com.intellij.ide.plugins.cl.PluginClassLoader;
 import com.intellij.openapi.fileTypes.ExtensionFileNameMatcher;
 import com.intellij.openapi.roots.ContentIterator;
 import com.intellij.openapi.util.io.FileUtil;
@@ -50,10 +49,7 @@ public class LuaFileUtil
 	@Nullable
 	public static VirtualFile getPluginVirtualDirectory()
 	{
-		PluginClassLoader classLoader = (PluginClassLoader) LuaFileUtil.class.getClassLoader();
-		IdeaPluginDescriptor plugin = PluginManager.getPlugin(classLoader.getPluginId());
-		assert plugin != null;
-		return LocalFileSystem.getInstance().findFileByIoFile(plugin.getPath());
+		return LocalFileSystem.getInstance().findFileByIoFile(PluginManager.getPluginPath(LuaFileUtil.class));
 	}
 
 	public static boolean iterateRecursively(@Nullable final VirtualFile root, @Nonnull final ContentIterator processor)

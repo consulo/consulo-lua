@@ -44,7 +44,7 @@ public class LuaPredefinedBundlesProvider extends PredefinedBundlesProvider
 			Sdk sdk = context.createSdkWithName(luaSdkType, entry.getKey());
 
 			SdkModificator modificator = sdk.getSdkModificator();
-			modificator.setHomePath(luaSdkType.getStdLibraryFile().getPath());
+			modificator.setHomePath(luaSdkType.getStdLibraryDirectory().getPath());
 			modificator.commitChanges();
 
 			luaSdkType.setupSdkPaths(sdk);

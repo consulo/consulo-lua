@@ -23,9 +23,7 @@ import javax.annotation.Nonnull;
 import org.jetbrains.annotations.NonNls;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
-import com.intellij.ide.plugins.cl.PluginClassLoader;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.projectRoots.SdkType;
@@ -64,7 +62,7 @@ public abstract class LuaSdkType extends SdkType
 	{
 		SdkModificator sdkModificator = sdk.getSdkModificator();
 
-		VirtualFile stdlibrary = LocalFileSystem.getInstance().findFileByIoFile(getStdLibraryFile());
+		VirtualFile stdlibrary = LocalFileSystem.getInstance().findFileByIoFile(getStdLibraryDirectory());
 		if(stdlibrary != null)
 		{
 			sdkModificator.addRoot(stdlibrary, BinariesOrderRootType.getInstance());
@@ -73,15 +71,9 @@ public abstract class LuaSdkType extends SdkType
 	}
 
 	@Nonnull
-	public File getStdLibraryFile()
+	public File getStdLibraryDirectory()
 	{
-		PluginClassLoader classLoader = (PluginClassLoader) getClass().getClassLoader();
-
-		IdeaPluginDescriptor plugin = PluginManager.getPlugin(classLoader.getPluginId());
-
-		assert plugin != null;
-
-		return new File(plugin.getPath(), "stdlibrary");
+		return new File(PluginManager.getPluginPath(LuaSdkType.class), "stdlibrary");
 	}
 
 	@Override
