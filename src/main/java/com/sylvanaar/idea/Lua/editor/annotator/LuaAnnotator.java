@@ -139,7 +139,7 @@ public class LuaAnnotator extends LuaElementVisitor implements Annotator {
                 final Annotation annotation =
                         myHolder.createInfoAnnotation(new TextRange(assignment, right.getTextRange().getEndOffset()),
                                 null);
-                annotation.setTextAttributes(SyntaxHighlighterColors.LINE_COMMENT);
+                annotation.setTextAttributes(DefaultLanguageHighlighterColors.LINE_COMMENT);
             }
         }
     }
