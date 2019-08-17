@@ -77,7 +77,7 @@ private PsiBuilder psiBuilder;
 //	}
 
     public PsiFile getFile() {
-        return psiBuilder.getUserDataUnprotected(FileContextUtil.CONTAINING_FILE_KEY);
+        return psiBuilder.getUserData(FileContextUtil.CONTAINING_FILE_KEY);
     }
 
 	public void match(final IElementType token, final String errorMessage) {
