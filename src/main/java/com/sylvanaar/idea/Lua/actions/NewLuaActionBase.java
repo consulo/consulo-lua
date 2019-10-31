@@ -17,6 +17,7 @@
 package com.sylvanaar.idea.Lua.actions;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
@@ -53,15 +54,14 @@ abstract class NewLuaActionBase extends CreateElementActionBase {
         super(text, description, icon);
     }
 
-    @Nonnull
-    protected final PsiElement[] invokeDialog(final Project project, final PsiDirectory directory) {
+    protected final void invokeDialog(final Project project, final PsiDirectory directory, Consumer<PsiElement[]> elementsConsumer) {
         log.debug("invokeDialog");
         final MyInputValidator validator = new MyInputValidator(project, directory);
         Messages.showInputDialog(project, getDialogPrompt(), getDialogTitle(), Messages.getQuestionIcon(), "", validator);
 
         final PsiElement[] elements = validator.getCreatedElements();
         log.debug("Result: " + Arrays.toString(elements));
-        return elements;
+        elementsConsumer.accept(elements);
     }
 
     public void update(final AnActionEvent event) {

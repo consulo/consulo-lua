@@ -32,7 +32,6 @@ import com.sylvanaar.idea.Lua.LuaIcons;
  * @author Joachim Ansorg
  */
 public class NewLuaFileAction extends NewLuaActionBase {
-    private static final Logger log = Logger.getInstance("#NewActionBase");
 
     public NewLuaFileAction() {
         super(LuaBundle.message("newfile.menu.action.text"),  LuaBundle.message("newfile.menu.action.description"), LuaIcons.LUA_ICON);
