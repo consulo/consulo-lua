@@ -15,18 +15,11 @@
  */
 package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 
-import java.io.IOException;
-import java.io.Reader;
-
-import javax.annotation.Nonnull;
-
-import com.intellij.diagnostic.PluginException;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.lang.WhitespaceSkippedCallback;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.extensions.PluginId;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
@@ -34,8 +27,14 @@ import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.parser.LuaPsiBuilder;
+import consulo.container.PluginException;
+import consulo.container.plugin.PluginId;
 import consulo.lang.LanguageVersion;
 import se.krka.kahlua.vm.Prototype;
+
+import javax.annotation.Nonnull;
+import java.io.IOException;
+import java.io.Reader;
 
 
 public class KahluaParser implements PsiParser, LuaElementTypes {
