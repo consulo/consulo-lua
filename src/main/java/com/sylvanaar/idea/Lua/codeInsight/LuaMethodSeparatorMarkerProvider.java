@@ -16,8 +16,6 @@
 
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.DaemonCodeAnalyzerSettings;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
@@ -33,7 +31,10 @@ import com.intellij.util.NullableFunction;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import consulo.annotations.RequiredReadAction;
+import consulo.annotation.access.RequiredReadAction;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class LuaMethodSeparatorMarkerProvider implements LineMarkerProvider
 {

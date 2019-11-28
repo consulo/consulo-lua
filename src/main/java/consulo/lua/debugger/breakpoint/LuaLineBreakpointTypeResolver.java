@@ -16,9 +16,6 @@
 
 package consulo.lua.debugger.breakpoint;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -29,8 +26,11 @@ import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
 import com.sylvanaar.idea.Lua.debugger.LuaLineBreakpointType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import consulo.annotations.RequiredReadAction;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.xdebugger.breakpoints.XLineBreakpointTypeResolver;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author VISTALL

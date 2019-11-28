@@ -15,9 +15,6 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.LineMarkerInfo;
 import com.intellij.codeInsight.daemon.LineMarkerProviderDescriptor;
@@ -27,8 +24,11 @@ import com.intellij.openapi.project.DumbAware;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.NullableFunction;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
-import consulo.annotations.RequiredReadAction;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor implements DumbAware
 {
