@@ -16,15 +16,6 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.execution.impl.ConsoleViewImpl;
@@ -35,7 +26,6 @@ import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.util.text.StringUtil;
@@ -46,13 +36,18 @@ import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.wm.ex.ToolWindowManagerEx;
 import com.intellij.openapi.wm.ex.ToolWindowManagerListener;
 import com.intellij.ui.content.impl.ContentImpl;
+import consulo.util.dataholder.Key;
+
+import javax.annotation.Nonnull;
+import java.io.File;
+import java.util.*;
 
 /**
  * @author Maxim.Manuylov
  *         Date: 03.04.2010
  */
 public class LuaSystemUtil {
-    private static final Key<ConsoleView> CONSOLE_VIEW_KEY = new Key<ConsoleView>("LuaConsoleView");
+    private static final Key<ConsoleView> CONSOLE_VIEW_KEY = Key.create("LuaConsoleView");
     public static final  int              STANDARD_TIMEOUT = 10 * 1000;
 
     @Nonnull

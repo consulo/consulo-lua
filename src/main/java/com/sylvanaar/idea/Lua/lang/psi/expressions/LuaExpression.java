@@ -16,14 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.expressions;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.util.Key;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.CachedValue;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import consulo.util.dataholder.Key;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**

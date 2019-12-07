@@ -16,12 +16,12 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.visitor;
 
-import com.intellij.openapi.util.Key;
 import com.intellij.psi.PsiElement;
 import com.intellij.util.containers.StringInterner;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaLiteralExpression;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import consulo.util.dataholder.Key;
 
 import java.util.Set;
 

@@ -14,7 +14,7 @@
   ~   limitations under the License.
   -->
 
-<idea-plugin>
+<consulo-plugin>
 	<id>consulo.lua</id>
 	<name>Lua</name>
 	<version>SNAPSHOT</version>
@@ -258,4 +258,4 @@
 			<className>com.sylvanaar.idea.Lua.intentions.comments.ChangeToEndOfLineCommentIntention</className>
 		</intentionAction>
 	</extensions>
-</idea-plugin>
+</consulo-plugin>

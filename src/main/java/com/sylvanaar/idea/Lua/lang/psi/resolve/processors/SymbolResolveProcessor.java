@@ -16,20 +16,27 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
 
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.openapi.util.*;
-import com.intellij.psi.*;
-import com.intellij.psi.util.*;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.Lua.lang.psi.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-
-import java.util.*;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiReference;
+import com.intellij.psi.ResolveState;
+import com.intellij.psi.StubBasedPsiElement;
+import com.intellij.psi.util.PsiTreeUtil;
+import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocSymbolReference;
+import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
+import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaRequireExpression;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaCompoundReferenceElementImpl;
+import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import consulo.util.dataholder.Key;
 
 import javax.annotation.Nonnull;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**

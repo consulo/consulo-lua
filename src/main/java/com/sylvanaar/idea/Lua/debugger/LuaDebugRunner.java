@@ -25,8 +25,6 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.runners.GenericProgramRunner;
 import com.intellij.execution.ui.RunContentDescriptor;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.xdebugger.XDebugProcess;
-import com.intellij.xdebugger.XDebugProcessStarter;
 import com.intellij.xdebugger.XDebugSession;
 import com.intellij.xdebugger.XDebuggerManager;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
@@ -52,15 +50,7 @@ public class LuaDebugRunner extends GenericProgramRunner
 
 		final ExecutionResult executionResult = state.execute(env.getExecutor(), this);
 
-		XDebugSession session = XDebuggerManager.getInstance(env.getProject()).startSession(env, new XDebugProcessStarter()
-		{
-			@Nonnull
-			@Override
-			public XDebugProcess start(@Nonnull XDebugSession session) throws ExecutionException
-			{
-				return new LuaDebugProcess(session, executionResult);
-			}
-		});
+		XDebugSession session = XDebuggerManager.getInstance(env.getProject()).startSession(env, it -> new LuaDebugProcess(it, executionResult));
 
 		return session.getRunContentDescriptor();
 	}

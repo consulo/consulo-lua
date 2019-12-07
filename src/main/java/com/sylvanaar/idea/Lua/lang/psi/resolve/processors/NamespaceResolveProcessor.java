@@ -16,12 +16,11 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.util.Key;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.ResolveState;
+import consulo.util.dataholder.Key;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**

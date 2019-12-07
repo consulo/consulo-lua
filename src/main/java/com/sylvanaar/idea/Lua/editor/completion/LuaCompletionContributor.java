@@ -17,25 +17,8 @@
 package com.sylvanaar.idea.Lua.editor.completion;
 
 
-import static com.intellij.patterns.PlatformPatterns.psiElement;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-
-import com.intellij.codeInsight.completion.CompletionInitializationContext;
-import com.intellij.codeInsight.completion.CompletionParameters;
-import com.intellij.codeInsight.completion.CompletionResultSet;
-import com.intellij.codeInsight.completion.CompletionType;
-import com.intellij.codeInsight.completion.DefaultCompletionContributor;
-import com.intellij.codeInsight.completion.OffsetKey;
+import com.intellij.codeInsight.completion.*;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.Key;
 import com.intellij.patterns.ElementPattern;
 import com.intellij.patterns.PlatformPatterns;
 import com.intellij.patterns.PsiElementPattern;
@@ -67,6 +50,12 @@ import com.sylvanaar.idea.Lua.lang.psi.types.LuaTable;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaRecursiveElementVisitor;
 import com.sylvanaar.idea.Lua.options.LuaApplicationSettings;
 import consulo.codeInsight.completion.CompletionProvider;
+import consulo.util.dataholder.Key;
+
+import javax.annotation.Nonnull;
+import java.util.*;
+
+import static com.intellij.patterns.PlatformPatterns.psiElement;
 
 public class LuaCompletionContributor extends DefaultCompletionContributor
 {

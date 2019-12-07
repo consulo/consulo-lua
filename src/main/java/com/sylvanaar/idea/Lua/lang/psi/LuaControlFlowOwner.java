@@ -16,10 +16,9 @@
 package com.sylvanaar.idea.Lua.lang.psi;
 
 
-import com.intellij.openapi.util.Key;
 import com.intellij.psi.util.CachedValue;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-
+import consulo.util.dataholder.Key;
 
 public interface LuaControlFlowOwner extends LuaPsiElement {
   static final Key<CachedValue<Instruction[]>> CONTROL_FLOW = Key.create("Control flow");
