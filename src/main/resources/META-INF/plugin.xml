@@ -22,13 +22,9 @@
 	<vendor>sylvanaar@mindspring.com</vendor>
 
 	<actions>
-		<action id="Lua.NewLuaScript" class="com.sylvanaar.idea.Lua.actions.NewLuaFileAction"
-				text="Lua Script" description="Create new Lua script file">
+		<action id="Lua.NewLuaScript" class="consulo.lua.action.NewLuaFileAction" require-module-extensions="lua">
 			<add-to-group group-id="NewGroup" relative-to-action="NewFile" anchor="after"/>
 		</action>
-		<!--<action id="trigger.exception" class="com.sylvanaar.idea.errorreporting.TriggerExceptionAction" text="Trigger Exception">-->
-		<!--<add-to-group group-id="NewGroup" relative-to-action="NewFile" anchor="after"/>-->
-		<!--</action>-->
 		<!--<action id="com.sylvanaar.idea.Lua.console.RunLuaConsoleAction"
 				class="com.sylvanaar.idea.Lua.console.RunLuaConsoleAction"
 				text="Run Lua Console..." description="Run the Lua console">
@@ -46,8 +42,6 @@
 		<!--<add-to-group group-id="ToolsMenu" anchor="last"/>-->
 		<!--</action>-->
 	</actions>
-
-	<helpset file="IDLuaHelp.jar" path="/Lua.hs"/>
 
 	<extensions defaultExtensionNs="com.intellij.copyright">
 		<updater filetype="Lua" implementationClass="com.sylvanaar.idea.Lua.copyright.UpdateLuaCopyrightsProvider"/>
