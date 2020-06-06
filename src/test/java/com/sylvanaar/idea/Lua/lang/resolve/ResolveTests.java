@@ -22,7 +22,7 @@ package com.sylvanaar.idea.Lua.lang.resolve;
  * Date: 3/10/13
  * Time: 3:43 PM
  */
-public class ResolveTests extends LuaResolveTestCase {
+public abstract class ResolveTests extends LuaResolveTestCase {
 
 
 

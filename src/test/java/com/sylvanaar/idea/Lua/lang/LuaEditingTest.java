@@ -21,7 +21,7 @@ import com.sylvanaar.idea.Lua.LightLuaTestCase;
 /**
  * @author peter
  */
-public class LuaEditingTest extends LightLuaTestCase {
+public abstract class LuaEditingTest extends LightLuaTestCase {
     private static final String TEST_DATA_FOLDER = "editing/";
 
     @Override

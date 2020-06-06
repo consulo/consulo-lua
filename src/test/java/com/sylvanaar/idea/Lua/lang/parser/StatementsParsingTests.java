@@ -22,7 +22,7 @@ package com.sylvanaar.idea.Lua.lang.parser;
  * Date: 3/6/11
  * Time: 5:46 AM
  */
-public class StatementsParsingTests extends LuaParsingTestCase {
+public abstract class StatementsParsingTests extends LuaParsingTestCase {
   @Override
   protected String getBasePath() {
     return super.getBasePath() + "statements";
