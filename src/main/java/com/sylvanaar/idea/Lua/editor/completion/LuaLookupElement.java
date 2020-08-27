@@ -130,14 +130,14 @@ public class LuaLookupElement extends LookupElement {
 
                 if (libraryName != null)
                     return LookupElementBuilder.create(symbol, name).withTypeText(
-                            String.format("< %s > (%s)", libraryName, file.getName()), true).withIcon(TargetAWT.to(LuaIcons.LUA_ICON))
+                            String.format("< %s > (%s)", libraryName, file.getName()), true).withIcon(LuaIcons.LUA_ICON)
                                                                     .withInsertHandler(new LuaInsertHandler());
             } else {
                 return LookupElementBuilder.create(symbol, name).withTypeText("External File", true);
             }
 
         return LookupElementBuilder.create(symbol, name).withTypeText(symbol.getContainingFile().getName(), true)
-                                   .withIcon(TargetAWT.to(LuaIcons.LUA_ICON)).withInsertHandler(new LuaInsertHandler());
+                                   .withIcon(LuaIcons.LUA_ICON).withInsertHandler(new LuaInsertHandler());
     }
 
     public static LookupElement createElement(String s) {
@@ -149,7 +149,7 @@ public class LuaLookupElement extends LookupElement {
 //    }
 
     public static LookupElement createKeywordElement(String s) {
-        return LookupElementBuilder.create(s).withBoldness(true).withIcon(TargetAWT.to(LuaIcons.LUA_ICON));
+        return LookupElementBuilder.create(s).withBoldness(true).withIcon(LuaIcons.LUA_ICON);
     }
 
     public static LookupElement createTypedElement(String s) {
@@ -163,7 +163,7 @@ public class LuaLookupElement extends LookupElement {
     @Override
     public void renderElement(LookupElementPresentation presentation) {
         super.renderElement(presentation);
-        presentation.setIcon(TargetAWT.to(LuaIcons.LUA_ICON));
+        presentation.setIcon(LuaIcons.LUA_ICON);
 
         if (typeInferred) {
             presentation.setTypeText("(inferred)");
