@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.Lua;
 
-import com.intellij.openapi.util.IconLoader;
+import consulo.lua.icon.LuaIconGroup;
+import consulo.platform.base.icon.PlatformIconGroup;
 import consulo.ui.image.Image;
 
 /**
@@ -27,9 +28,8 @@ import consulo.ui.image.Image;
  */
 public interface LuaIcons
 {
-	final Image LUA_ICON = IconLoader.findIcon("/icons/Lua.png");
-	final Image LUA_FUNCTION = IconLoader.findIcon("/icons/function.png");
-	final Image LUA_TOOLWINDOW_ICON = IconLoader.findIcon("/icons/logo_13x13.png");
+	final Image LUA_ICON = LuaIconGroup.Lua();
+	final Image LUA_FUNCTION = PlatformIconGroup.nodesFunction();
 }
 
 
