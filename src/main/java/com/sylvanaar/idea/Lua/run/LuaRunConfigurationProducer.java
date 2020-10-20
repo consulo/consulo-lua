@@ -21,6 +21,7 @@ import com.intellij.execution.actions.*;
 import com.intellij.execution.impl.*;
 import com.intellij.execution.junit.*;
 import com.intellij.openapi.module.*;
+import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.*;
 import com.intellij.openapi.util.text.*;
 import com.intellij.openapi.vfs.*;
