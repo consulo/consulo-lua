@@ -16,24 +16,21 @@
 
 package consulo.lua.bundle;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.process.ProcessOutput;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.util.SystemInfo;
-import com.intellij.util.SmartList;
 import com.sylvanaar.idea.Lua.run.LuaDebugCommandlineState;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * @author Maxim.Manuylov
@@ -44,7 +41,7 @@ public class BaseLuaSdkType extends LuaSdkType
 	@Nonnull
 	public static BaseLuaSdkType getInstance()
 	{
-		return EP_NAME.findExtension(BaseLuaSdkType.class);
+		return EP_NAME.findExtensionOrFail(BaseLuaSdkType.class);
 	}
 
 	public BaseLuaSdkType()
@@ -56,7 +53,7 @@ public class BaseLuaSdkType extends LuaSdkType
 	@Override
 	public Collection<String> suggestHomePaths()
 	{
-		List<String> list = new SmartList<String>();
+		List<String> list = new ArrayList<>();
 		if(SystemInfo.isWindows)
 		{
 			list.add("C:\\Lua");
@@ -139,7 +136,12 @@ public class BaseLuaSdkType extends LuaSdkType
 	@Nullable
 	public String getVersionString(@Nonnull final String sdkHome)
 	{
-		return getExecutableVersionOutput(sdkHome)[1];
+		String[] output = getExecutableVersionOutput(sdkHome);
+		if(output == null)
+		{
+			return null;
+		}
+		return output[1];
 	}
 
 	private String[] getExecutableVersionOutput(String sdkHome)
@@ -169,7 +171,6 @@ public class BaseLuaSdkType extends LuaSdkType
 
 	@Nonnull
 	@Override
-	@NonNls
 	public String getPresentableName()
 	{
 		return "Lua SDK";
