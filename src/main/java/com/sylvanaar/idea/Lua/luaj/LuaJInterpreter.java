@@ -16,40 +16,30 @@
 
 package com.sylvanaar.idea.Lua.luaj;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaError;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
 import com.google.common.base.Charsets;
 import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.ui.JBColor;
-import com.intellij.util.ui.UIUtil;
+import consulo.awt.TargetAWT;
+import consulo.ui.color.ColorValue;
 import jsyntaxpane.lexers.LuaLexer;
+import org.luaj.vm2.Globals;
+import org.luaj.vm2.LuaError;
+import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.lib.jse.JsePlatform;
 import se.krka.kahlua.j2se.interpreter.History;
 import se.krka.kahlua.j2se.interpreter.InputTerminal;
 import se.krka.kahlua.j2se.interpreter.OutputTerminal;
 import se.krka.kahlua.j2se.interpreter.jsyntax.JSyntaxUtil;
 import se.krka.kahlua.j2se.interpreter.jsyntax.KahluaKit;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 /**
  * Created by IntelliJ IDEA.
@@ -76,18 +66,15 @@ public class LuaJInterpreter extends JPanel
 		// create a Lua engine
 		_G = JsePlatform.debugGlobals();
 
-		Color consoleColor = JBColor.BLACK;
-		if(UIUtil.isUnderDarkBuildInLaf())
-		{
-			consoleColor = EditorColorsManager.getInstance().getGlobalScheme().getColor(ConsoleViewContentType.CONSOLE_BACKGROUND_KEY);
-		}
-		final InputTerminal input = new InputTerminal(consoleColor);
+		ColorValue consoleColor = EditorColorsManager.getInstance().getGlobalScheme().getColor(ConsoleViewContentType.CONSOLE_BACKGROUND_KEY);
+
+		final InputTerminal input = new InputTerminal(TargetAWT.to(consoleColor));
 
 		final KahluaKit kit = new KahluaKit(new LuaLexer());
 		JSyntaxUtil.installSyntax(input, true, kit);
 		//new AutoComplete(input, platform, env);
 
-		terminal = new OutputTerminal(consoleColor, input);
+		terminal = new OutputTerminal(TargetAWT.to(consoleColor), input);
 		terminal.setPreferredSize(new Dimension(800, 400));
 		terminal.addKeyListener(new KeyListener()
 		{
