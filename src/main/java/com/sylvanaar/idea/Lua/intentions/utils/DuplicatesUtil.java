@@ -17,12 +17,13 @@
 package com.sylvanaar.idea.Lua.intentions.utils;
 
 import com.intellij.psi.PsiElement;
+import consulo.util.collection.HashingStrategy;
+import consulo.util.collection.Maps;
 
-import gnu.trove.THashMap;
-import gnu.trove.TObjectHashingStrategy;
-
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author ilyas
@@ -61,10 +62,10 @@ public class DuplicatesUtil {
 //    }
 //  }
 
-  public static <D extends PsiElement> Map<D, List<D>> factorDuplicates(D[] elements, TObjectHashingStrategy<D> strategy) {
+  public static <D extends PsiElement> Map<D, List<D>> factorDuplicates(D[] elements, HashingStrategy<D> strategy) {
     if (elements == null || elements.length == 0) return Collections.emptyMap();
 
-    THashMap<D, List<D>> map = new THashMap<D, List<D>>(strategy);
+    Map<D, List<D>> map = Maps.newHashMap(strategy);
 
     for (D element : elements) {
       List<D> list = map.get(element);

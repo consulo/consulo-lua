@@ -16,8 +16,11 @@
 package com.sylvanaar.idea.Lua.lang.psi.controlFlow;
 
 import com.intellij.openapi.diagnostic.Logger;
-import gnu.trove.TIntHashSet;
-import gnu.trove.TObjectIntHashMap;
+import consulo.util.collection.primitive.ints.IntLists;
+import consulo.util.collection.primitive.ints.IntSet;
+import consulo.util.collection.primitive.ints.IntSets;
+import consulo.util.collection.primitive.objects.ObjectIntMap;
+import consulo.util.collection.primitive.objects.ObjectMaps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +57,9 @@ public class ControlFlowUtil {
 
     public static ReadWriteVariableInstruction[] getReadsWithoutPriorWrites(Instruction[] flow) {
         List<ReadWriteVariableInstruction> result = new ArrayList<ReadWriteVariableInstruction>();
-        TObjectIntHashMap<String> namesIndex = buildNamesIndex(flow);
+        ObjectIntMap<String> namesIndex = buildNamesIndex(flow);
 
-        TIntHashSet[] definitelyAssigned = new TIntHashSet[flow.length];
+        IntSet[] definitelyAssigned = new IntSet[flow.length];
 
         int[] postorder = postorder(flow);
         int[] invpostorder = invPostorder(postorder);
@@ -75,14 +78,14 @@ public class ControlFlowUtil {
         return result;
     }
 
-    private static TObjectIntHashMap<String> buildNamesIndex(Instruction[] flow) {
-        TObjectIntHashMap<String> namesIndex = new TObjectIntHashMap<String>();
+    private static ObjectIntMap<String> buildNamesIndex(Instruction[] flow) {
+        ObjectIntMap<String> namesIndex = ObjectMaps.newObjectIntHashMap();
         int idx = 0;
         for (Instruction instruction : flow) {
             if (instruction instanceof ReadWriteVariableInstruction) {
                 String name = ((ReadWriteVariableInstruction) instruction).getVariableName();
-                if (!namesIndex.contains(name)) {
-                    namesIndex.put(name, idx++);
+                if (!namesIndex.containsKey(name)) {
+                    namesIndex.putInt(name, idx++);
                 }
             }
         }
@@ -90,9 +93,9 @@ public class ControlFlowUtil {
     }
 
     private static void findReadsBeforeWrites(Instruction[] flow,
-                                              TIntHashSet[] definitelyAssigned,
+                                              IntSet[] definitelyAssigned,
                                               List<ReadWriteVariableInstruction> result,
-                                              TObjectIntHashMap<String> namesIndex,
+                                              ObjectIntMap<String> namesIndex,
                                               int[] postorder,
                                               int[] invpostorder) {
         //skip instructions that are not reachable from the start
@@ -105,8 +108,8 @@ public class ControlFlowUtil {
             Instruction curr = flow[j];
             if (curr instanceof ReadWriteVariableInstruction) {
                 ReadWriteVariableInstruction readWriteInsn = (ReadWriteVariableInstruction) curr;
-                int idx = namesIndex.get(readWriteInsn.getVariableName());
-                TIntHashSet vars = definitelyAssigned[j];
+                int idx = namesIndex.getInt(readWriteInsn.getVariableName());
+                IntSet vars = definitelyAssigned[j];
                 if (readWriteInsn.isGlobal()) {
                     if (!readWriteInsn.isWrite()) {
                         if (vars == null || !vars.contains(idx)) {
@@ -114,7 +117,7 @@ public class ControlFlowUtil {
                         }
                     } else {
                         if (vars == null) {
-                            vars = new TIntHashSet();
+                            vars = IntSets.newHashSet();
                             definitelyAssigned[j] = vars;
                         }
                         vars.add(idx);
@@ -124,22 +127,22 @@ public class ControlFlowUtil {
 
             for (Instruction succ : curr.allSucc()) {
                 if (postorder[succ.num()] > postorder[curr.num()]) {
-                    TIntHashSet currDefinitelyAssigned = definitelyAssigned[curr.num()];
-                    TIntHashSet succDefinitelyAssigned = definitelyAssigned[succ.num()];
+                    IntSet currDefinitelyAssigned = definitelyAssigned[curr.num()];
+                    IntSet succDefinitelyAssigned = definitelyAssigned[succ.num()];
                     if (currDefinitelyAssigned != null) {
                         int[] currArray = currDefinitelyAssigned.toArray();
                         if (succDefinitelyAssigned == null) {
-                            succDefinitelyAssigned = new TIntHashSet();
+                            succDefinitelyAssigned = IntSets.newHashSet();
                             succDefinitelyAssigned.addAll(currArray);
                             definitelyAssigned[succ.num()] = succDefinitelyAssigned;
                         } else {
-                            succDefinitelyAssigned.retainAll(currArray);
+                            succDefinitelyAssigned.retainAll(IntLists.newArrayList(currArray));
                         }
                     } else {
                         if (succDefinitelyAssigned != null) {
                             succDefinitelyAssigned.clear();
                         } else {
-                            succDefinitelyAssigned = new TIntHashSet();
+                            succDefinitelyAssigned = IntSets.newHashSet();
                             definitelyAssigned[succ.num()] = succDefinitelyAssigned;
                         }
                     }

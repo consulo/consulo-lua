@@ -39,14 +39,15 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocal;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
-import gnu.trove.TIntHashSet;
-import gnu.trove.TIntObjectHashMap;
-import gnu.trove.TIntProcedure;
-import gnu.trove.TObjectProcedure;
+import consulo.util.collection.primitive.ints.IntObjConsumer;
+import consulo.util.collection.primitive.ints.IntObjectMap;
+import consulo.util.collection.primitive.ints.IntSet;
+import consulo.util.collection.primitive.ints.IntSets;
 import org.jetbrains.annotations.Nls;
-import javax.annotation.Nonnull;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.function.IntConsumer;
 
 /**
  & @author ven
@@ -117,9 +118,9 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
     if (flow == null) return;
     final ReachingDefinitionsDfaInstance dfaInstance = new ReachingDefinitionsDfaInstance(flow);
     final ReachingDefinitionsSemilattice lattice = new ReachingDefinitionsSemilattice();
-    final DFAEngine<TIntObjectHashMap<TIntHashSet>> engine = new DFAEngine<TIntObjectHashMap<TIntHashSet>>(flow, dfaInstance, lattice);
-    final ArrayList<TIntObjectHashMap<TIntHashSet>> dfaResult = engine.performDFA();
-    final TIntHashSet unusedDefs = new TIntHashSet();
+    final DFAEngine<IntObjectMap<IntSet>> engine = new DFAEngine<>(flow, dfaInstance, lattice);
+    final ArrayList<IntObjectMap<IntSet>> dfaResult = engine.performDFA();
+    final IntSet unusedDefs = IntSets.newHashSet();
     for (Instruction instruction : flow) {
       if (instruction instanceof ReadWriteVariableInstruction && ((ReadWriteVariableInstruction) instruction).isWrite()) {
           if (!((ReadWriteVariableInstruction) instruction).getVariableName().equals("_"))
@@ -135,21 +136,19 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
         final ReadWriteVariableInstruction varInsn = (ReadWriteVariableInstruction) instruction;
         if (!varInsn.isWrite()) {
           final String varName = varInsn.getVariableName();
-          TIntObjectHashMap<TIntHashSet> e = dfaResult.get(i);
-          e.forEachValue(new TObjectProcedure<TIntHashSet>() {
+          IntObjectMap<IntSet> e = dfaResult.get(i);
+          e.forEach(new IntObjConsumer<IntSet>() {
             @Override
-            public boolean execute(TIntHashSet reaching) {
-              reaching.forEach(new TIntProcedure() {
+            public void accept(int key, IntSet reaching) {
+              reaching.forEach(new IntConsumer() {
                 @Override
-                public boolean execute(int defNum) {
+                public void accept(int defNum) {
                   final String defName = ((ReadWriteVariableInstruction) flow[defNum]).getVariableName();
                   if (varName != null && varName.equals(defName)) {
                     unusedDefs.remove(defNum);
                   }
-                  return true;
                 }
               });
-              return true;
             }
           });
         }
@@ -158,12 +157,12 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
 
     ProgressIndicatorProvider.checkCanceled();
 
-      unusedDefs.forEach(new TIntProcedure() {
+      unusedDefs.forEach(new IntConsumer() {
           @Override
-          public boolean execute(int num) {
+          public void accept(int num) {
               final ReadWriteVariableInstruction instruction = (ReadWriteVariableInstruction) flow[num];
               final PsiElement element = instruction.getElement();
-              if (element == null) return true;
+              if (element == null) return;
               if (isLocalAssignment(element)) {
                   PsiElement toHighlight = null;
                   if (element instanceof LuaReferenceElement) {
@@ -180,7 +179,6 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
                   problemsHolder
                           .registerProblem(toHighlight, "Unused Assignment", ProblemHighlightType.LIKE_UNUSED_SYMBOL);
               }
-              return true;
           }
       });
   }

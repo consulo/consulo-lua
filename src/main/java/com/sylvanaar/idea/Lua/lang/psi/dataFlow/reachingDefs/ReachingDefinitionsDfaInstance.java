@@ -18,19 +18,23 @@ package com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
 import com.sylvanaar.idea.Lua.lang.psi.dataFlow.DfaInstance;
-import gnu.trove.TIntHashSet;
-import gnu.trove.TIntObjectHashMap;
-import gnu.trove.TObjectIntHashMap;
+import consulo.util.collection.primitive.ints.IntMaps;
+import consulo.util.collection.primitive.ints.IntObjectMap;
+import consulo.util.collection.primitive.ints.IntSet;
+import consulo.util.collection.primitive.ints.IntSets;
+import consulo.util.collection.primitive.objects.ObjectIntMap;
+import consulo.util.collection.primitive.objects.ObjectMaps;
+
 import javax.annotation.Nonnull;
 
 /**
  * @author ven
  */
-public class ReachingDefinitionsDfaInstance implements DfaInstance<TIntObjectHashMap<TIntHashSet>> {
-  private final TObjectIntHashMap<String> myVarToIndexMap = new TObjectIntHashMap<String>();
+public class ReachingDefinitionsDfaInstance implements DfaInstance<IntObjectMap<IntSet>> {
+  private final ObjectIntMap<String> myVarToIndexMap = ObjectMaps.newObjectIntHashMap();
 
   public int getVarIndex(String varName) {
-    return myVarToIndexMap.get(varName);
+    return myVarToIndexMap.getInt(varName);
   }
 
   public ReachingDefinitionsDfaInstance(Instruction[] flow) {
@@ -39,24 +43,24 @@ public class ReachingDefinitionsDfaInstance implements DfaInstance<TIntObjectHas
       if (instruction instanceof ReadWriteVariableInstruction) {
         final String name = ((ReadWriteVariableInstruction) instruction).getVariableName();
         if (!myVarToIndexMap.containsKey(name)) {
-          myVarToIndexMap.put(name, num++);
+          myVarToIndexMap.putInt(name, num++);
         }
       }
     }
   }
 
 
-  public void fun(TIntObjectHashMap<TIntHashSet> m, Instruction instruction) {
+  public void fun(IntObjectMap<IntSet> m, Instruction instruction) {
     if (instruction instanceof ReadWriteVariableInstruction) {
       final ReadWriteVariableInstruction varInsn = (ReadWriteVariableInstruction) instruction;
       final String name = varInsn.getVariableName();
       if (name == null) return;
       assert myVarToIndexMap.containsKey(name);
-      final int num = myVarToIndexMap.get(name);
+      final int num = myVarToIndexMap.getInt(name);
       if (varInsn.isWrite()) {
-        TIntHashSet defs = m.get(num);
+        IntSet defs = m.get(num);
         if (defs == null) {
-          defs = new TIntHashSet();
+          defs = IntSets.newHashSet();
           m.put(num, defs);
         } else defs.clear();
         defs.add(varInsn.num());
@@ -65,8 +69,8 @@ public class ReachingDefinitionsDfaInstance implements DfaInstance<TIntObjectHas
   }
 
   @Nonnull
-  public TIntObjectHashMap<TIntHashSet> initial() {
-    return new TIntObjectHashMap<TIntHashSet>();
+  public IntObjectMap<IntSet> initial() {
+    return IntMaps.newIntObjectHashMap();
   }
 
   public boolean isForward() {

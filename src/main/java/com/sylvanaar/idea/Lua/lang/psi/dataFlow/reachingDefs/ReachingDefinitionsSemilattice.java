@@ -16,51 +16,70 @@
 package com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs;
 
 import com.sylvanaar.idea.Lua.lang.psi.dataFlow.Semilattice;
-import gnu.trove.TIntHashSet;
-import gnu.trove.TIntObjectHashMap;
-import gnu.trove.TIntObjectProcedure;
+import consulo.util.collection.primitive.ints.*;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * @author ven
  */
-public class ReachingDefinitionsSemilattice implements Semilattice<TIntObjectHashMap<TIntHashSet>> {
-  public TIntObjectHashMap<TIntHashSet> join(ArrayList<TIntObjectHashMap<TIntHashSet>> ins) {
-    if (ins.isEmpty()) return new TIntObjectHashMap<TIntHashSet>();
+public class ReachingDefinitionsSemilattice implements Semilattice<IntObjectMap<IntSet>>
+{
+	public IntObjectMap<IntSet> join(ArrayList<IntObjectMap<IntSet>> ins)
+	{
+		if(ins.isEmpty())
+		{
+			return IntMaps.newIntObjectHashMap();
+		}
 
-    TIntObjectHashMap<TIntHashSet> result = new TIntObjectHashMap<TIntHashSet>();
-    for (TIntObjectHashMap<TIntHashSet> map : ins) {
-      merge(result, map);
-    }
+		IntObjectMap<IntSet> result = IntMaps.newIntObjectHashMap();
+		for(IntObjectMap<IntSet> map : ins)
+		{
+			merge(result, map);
+		}
 
-    return result;
-  }
+		return result;
+	}
 
-  private void merge(final TIntObjectHashMap<TIntHashSet> result, TIntObjectHashMap<TIntHashSet> map2) {
-    map2.forEachEntry(new TIntObjectProcedure<TIntHashSet>() {
-      public boolean execute(int num, TIntHashSet defs) {
-        TIntHashSet defs2 = result.get(num);
-        if (defs2 == null) {
-          defs2 = new TIntHashSet(defs.toArray());
-          result.put(num, defs2);
-        } else {
-          defs2.addAll(defs.toArray());
-        }
+	private void merge(final IntObjectMap<IntSet> result, IntObjectMap<IntSet> map2)
+	{
+		map2.forEach(new IntObjConsumer<IntSet>()
+		{
+			public void accept(int num, IntSet defs)
+			{
+				IntSet defs2 = result.get(num);
+				if(defs2 == null)
+				{
+					defs2 = IntSets.newHashSet(defs.toArray());
+					result.put(num, defs2);
+				}
+				else
+				{
+					defs2.addAll(defs.toArray());
+				}
+			}
+		});
+	}
 
-        return true;
-      }
-    });
-  }
+	public boolean eq(final IntObjectMap<IntSet> m1, final IntObjectMap<IntSet> m2)
+	{
+		if(m1.size() != m2.size())
+		{
+			return false;
+		}
 
-  public boolean eq(final TIntObjectHashMap<TIntHashSet> m1, final TIntObjectHashMap<TIntHashSet> m2) {
-    if (m1.size() != m2.size()) return false;
+		for(IntObjectMap.IntObjectEntry<IntSet> entry : m1.entrySet())
+		{
+			int num = entry.getKey();
+			IntSet defs1 = entry.getValue();
 
-    return m1.forEachEntry(new TIntObjectProcedure<TIntHashSet>() {
-      public boolean execute(int num, TIntHashSet defs1) {
-        final TIntHashSet defs2 = m2.get(num);
-        return defs2 != null && defs2.equals(defs1);
-      }
-    });
-  }
+			final IntSet defs2 = m2.get(num);
+			if(defs2 == null || !defs2.equals(defs1))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }
