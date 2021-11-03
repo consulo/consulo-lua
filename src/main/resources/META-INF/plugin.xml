@@ -19,6 +19,9 @@
 	<name>Lua</name>
 	<version>SNAPSHOT</version>
 	<category>Custom Languages</category>
+	<tags>
+		<tag>custom.language</tag>
+	</tags>
 	<vendor>sylvanaar@mindspring.com</vendor>
 
 	<actions>
