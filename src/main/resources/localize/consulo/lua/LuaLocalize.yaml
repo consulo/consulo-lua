@@ -1,0 +1,120 @@
+color.settings.bad_character:
+  text: Unknown character
+color.settings.braces:
+  text: Curly Braces
+color.settings.brackets:
+  text: Brackets
+color.settings.comma:
+  text: Comma
+color.settings.comment:
+  text: Comments
+color.settings.constant.keywords:
+  text: Value Keywords
+color.settings.field:
+  text: Field
+color.settings.globals:
+  text: Global Variables
+color.settings.identifier:
+  text: Identifier
+color.settings.keyword:
+  text: Keywords
+color.settings.locals:
+  text: Local Variables
+color.settings.longcomment.braces:
+  text: Extended Comment Braces
+color.settings.longcomment:
+  text: Extended Comment
+color.settings.longstring.braces:
+  text: Extended String Braces
+color.settings.longstring:
+  text: Extended String
+color.settings.luadoc.tag:
+  text: LuaDoc Tag
+color.settings.luadoc.value:
+  text: LuaDoc Value
+color.settings.luadoc:
+  text: LuaDoc Comment
+color.settings.name:
+  text: Lua
+color.settings.number:
+  text: Numbers
+color.settings.operation:
+  text: Operators
+color.settings.parameter:
+  text: Parameter
+color.settings.parenths:
+  text: Parenthesis
+color.settings.string:
+  text: Strings
+color.settings.tailcall:
+  text: Tail Call Returns
+color.settings.upvalue:
+  text: Upvalue
+file.template.group.title.lua:
+  text: Lua Script File Templates
+new.menu.action.description:
+  text: menu desc
+new.menu.action.text:
+  text: menu action
+newfile.command.name:
+  text: Lua script
+newfile.dialog.prompt:
+  text: Create a new Lua script
+newfile.dialog.title:
+  text: Create Lua script
+newfile.menu.action.description:
+  text: Create a new Lua script file
+newfile.menu.action.text:
+  text: New Lua Script
+parsing.error.expr.expr_expected:
+  text: expression expected
+parsing.message.expected:
+  text: expected token
+parsing.message.unexpected:
+  text: found unexpected token
+plugin.descriptor:
+  text: Lua
+program.parameters:
+  text: program parms
+run.configuration.classpath.from.module.choose:
+  text: Create Property
+run.configuration.title:
+  text: Execute Lua Script
+run.configuration.type.description:
+  text: Execute the script using the Lua interpreter
+show.smth:
+  text: show smth
+vm.parameters:
+  text: vm parms
+moduletype.description:
+  text: Provides facilities for developing <strong>Lua</strong> applications.
+moduletype.name:
+  text: Lua Module
+sdk.chooser.luabinaries.prompt:
+  text: Specify the Lua binaries directory
+sdk.chooser.select.sdk.prompt:
+  text: 'Lua SDK version:'
+sdk.chooser.configure.button:
+  text: Configure...
+lua.filetype:
+  text: Lua source file
+color.settings.semi:
+  text: Semicolon
+lua.usages.type:
+  text: Lua Code
+luadoc.usages.type:
+  text: LuaDoc Text
+new.library.file.chooser.title:
+  text: New Library Files
+new.library.file.chooser.description:
+  text: Select jar files or directories in which library files are located
+inferrencer.first.run:
+  text: Inferring and Propagating Lua Types
+inferrencer.working:
+  text: Working...
+inferrencer.finding.files:
+  text: Scanning Files To Inference
+module.type.name:
+  text: Lua Module
+module.type.description:
+  text: Lua Module
