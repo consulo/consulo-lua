@@ -14,7 +14,7 @@
   ~   limitations under the License.
   -->
 
-<consulo-plugin>
+<consulo-plugin url="https://github.com/consulo/consulo-lua">
 	<id>consulo.lua</id>
 	<name>Lua</name>
 	<version>SNAPSHOT</version>
