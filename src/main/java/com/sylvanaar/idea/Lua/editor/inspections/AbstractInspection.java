@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.inspections;
+package com.sylvanaar.idea.lua.editor.inspections;
 
 import consulo.application.util.function.Computable;
 import consulo.language.editor.inspection.CustomSuppressableInspectionTool;
@@ -24,7 +24,7 @@ import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.editor.inspection.SuppressionUtil;
 import consulo.application.ApplicationManager;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;

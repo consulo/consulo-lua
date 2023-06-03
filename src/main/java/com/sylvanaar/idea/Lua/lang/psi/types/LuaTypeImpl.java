@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.types;
+package com.sylvanaar.idea.lua.lang.psi.types;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
+import com.sylvanaar.idea.lua.util.LuaSerializationUtils;
 
 /**
  * Created by IntelliJ IDEA.

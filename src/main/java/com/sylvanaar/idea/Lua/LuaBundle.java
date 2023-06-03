@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua;
+package com.sylvanaar.idea.lua;
 
 import consulo.application.CommonBundle;
 import org.jetbrains.annotations.NonNls;

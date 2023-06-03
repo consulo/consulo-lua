@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.lexer;
+package com.sylvanaar.idea.lua.lang.lexer;
 
 import consulo.language.ast.TokenType;
 import consulo.language.ast.IElementType;
 import consulo.language.ast.TokenSet;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
 
 
 /**

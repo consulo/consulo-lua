@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.parser.kahlua;
+package com.sylvanaar.idea.lua.lang.parser.kahlua;
 
 import consulo.component.ProcessCanceledException;
 import consulo.language.ast.ASTNode;
@@ -23,9 +23,9 @@ import consulo.language.psi.PsiFile;
 import consulo.logging.Logger;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.parser.LuaPsiBuilder;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.parser.LuaPsiBuilder;
 import consulo.container.PluginException;
 import consulo.container.plugin.PluginId;
 import consulo.language.version.LanguageVersion;

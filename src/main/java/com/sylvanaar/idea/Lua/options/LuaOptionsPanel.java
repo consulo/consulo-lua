@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.options;
+package com.sylvanaar.idea.lua.options;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -26,7 +26,7 @@ import consulo.configurable.Configurable;
 import consulo.project.Project;
 import consulo.project.ProjectManager;
 import consulo.language.psi.PsiManager;
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 
 /**
  * Created by IntelliJ IDEA.

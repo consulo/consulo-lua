@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.completion.filters;
+package com.sylvanaar.idea.lua.lang.luadoc.completion.filters;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.filter.ElementFilter;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
 import consulo.language.psi.PsiElement;
 import org.jetbrains.annotations.NonNls;
 

@@ -14,16 +14,16 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.parser;
+package com.sylvanaar.idea.lua.lang.parser;
 
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaLexer;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaParsingLexerMergingAdapter;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.parser.kahlua.KahluaParser;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiFileImpl;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.elements.LuaStubFileElementType;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.lexer.LuaLexer;
+import com.sylvanaar.idea.lua.lang.lexer.LuaParsingLexerMergingAdapter;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.parser.kahlua.KahluaParser;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiFileImpl;
+import com.sylvanaar.idea.lua.lang.psi.stubs.elements.LuaStubFileElementType;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.ast.ASTNode;
@@ -41,7 +41,7 @@ import consulo.language.version.LanguageVersion;
 
 import javax.annotation.Nonnull;
 
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.*;
+import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.*;
 
 /**
  * Created by IntelliJ IDEA.

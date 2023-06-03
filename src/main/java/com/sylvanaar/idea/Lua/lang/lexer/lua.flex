@@ -1,4 +1,4 @@
-package com.sylvanaar.idea.Lua.lang.lexer;
+package com.sylvanaar.idea.lua.lang.lexer;
 
 import consulo.language.ast.IElementType;
 import consulo.language.lexer.LexerBase;

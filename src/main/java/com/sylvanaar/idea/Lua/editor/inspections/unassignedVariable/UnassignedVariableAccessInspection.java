@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.editor.inspections.unassignedVariable;
+package com.sylvanaar.idea.lua.editor.inspections.unassignedVariable;
 
 import javax.annotation.Nonnull;
 
@@ -22,15 +22,15 @@ import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.editor.inspection.ProblemHighlightType;
 import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import com.sylvanaar.idea.Lua.lang.psi.LuaControlFlowOwner;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ControlFlowUtil;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.lang.psi.LuaControlFlowOwner;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.ControlFlowUtil;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiFile;
 import org.jetbrains.annotations.Nls;

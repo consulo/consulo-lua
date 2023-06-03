@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
 import consulo.language.ast.ASTNode;
 
 import javax.annotation.Nonnull;

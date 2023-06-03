@@ -13,14 +13,14 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.controlFlow.impl;
+package com.sylvanaar.idea.lua.lang.psi.controlFlow.impl;
 
 
 import consulo.language.psi.PsiElement;
 import consulo.logging.Logger;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallEnvironment;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.CallEnvironment;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.CallInstruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
 import javax.annotation.Nullable;
 
 import java.util.ArrayList;

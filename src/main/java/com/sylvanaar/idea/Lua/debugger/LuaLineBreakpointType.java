@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.debugger;
+package com.sylvanaar.idea.lua.debugger;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.execution.debug.breakpoint.XLineBreakpoint;

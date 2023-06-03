@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
+package com.sylvanaar.idea.lua.lang.psi.stubs.api;
 
 import javax.annotation.Nullable;
 
 import consulo.language.psi.stub.NamedStub;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaModuleExpression;
 
 /**
 * Created by IntelliJ IDEA.

@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.expressions;
+package com.sylvanaar.idea.lua.lang.psi.expressions;
 
 import consulo.document.util.TextRange;
 import consulo.language.psi.StubBasedPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
 
 /**
  * Created by IntelliJ IDEA.

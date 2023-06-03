@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.kahlua;
+package com.sylvanaar.idea.lua.kahlua;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

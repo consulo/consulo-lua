@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.util;
+package com.sylvanaar.idea.lua.util;
 
 import consulo.component.ProcessCanceledException;
 import consulo.http.HttpProxyManager;

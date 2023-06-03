@@ -14,14 +14,14 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.parser;
+package com.sylvanaar.idea.lua.lang.parser;
 
 import consulo.language.ast.IElementType;
 import consulo.language.ast.TokenSet;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaElementType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.elements.*;
+import com.sylvanaar.idea.lua.lang.lexer.LuaElementType;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.stubs.elements.*;
 
 /**
  * Created by IntelliJ IDEA.

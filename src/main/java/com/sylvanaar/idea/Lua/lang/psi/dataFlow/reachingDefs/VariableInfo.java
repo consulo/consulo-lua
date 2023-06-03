@@ -13,11 +13,11 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs;
+package com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs;
 
 import javax.annotation.Nonnull;
 
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 
 import javax.annotation.Nullable;
 

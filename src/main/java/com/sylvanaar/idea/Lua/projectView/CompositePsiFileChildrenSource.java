@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.projectView;
+package com.sylvanaar.idea.lua.projectView;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.language.psi.PsiElement;
 
 import java.util.Arrays;

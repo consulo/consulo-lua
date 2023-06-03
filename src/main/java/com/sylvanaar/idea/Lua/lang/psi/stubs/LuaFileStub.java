@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs;
+package com.sylvanaar.idea.lua.lang.psi.stubs;
 
 import consulo.language.psi.stub.IStubFileElementType;
 import consulo.language.psi.stub.PsiFileStub;
 import consulo.logging.Logger;
 import consulo.language.psi.stub.PsiFileStubImpl;
 import consulo.index.io.StringRef;
-import com.sylvanaar.idea.Lua.lang.parser.LuaParserDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.parser.LuaParserDefinition;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 
 
 public class LuaFileStub extends PsiFileStubImpl<LuaPsiFile> implements PsiFileStub<LuaPsiFile>

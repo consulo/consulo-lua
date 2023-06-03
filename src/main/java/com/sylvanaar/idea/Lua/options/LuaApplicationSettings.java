@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.options;
+package com.sylvanaar.idea.lua.options;
 
 import consulo.component.persist.PersistentStateComponent;
 import consulo.component.persist.State;

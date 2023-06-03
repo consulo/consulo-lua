@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.expressions;
+package com.sylvanaar.idea.lua.lang.psi.expressions;
 
 /**
  * Created by IntelliJ IDEA.

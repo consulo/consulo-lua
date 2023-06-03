@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.lexer;
+package com.sylvanaar.idea.lua.lang.luadoc.lexer;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import org.jetbrains.annotations.NonNls;
 
 /**

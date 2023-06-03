@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.editor.inspections.usage;
+package com.sylvanaar.idea.lua.editor.inspections.usage;
 
 import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.editor.inspection.UnfairLocalInspectionTool;
@@ -23,20 +23,20 @@ import consulo.logging.Logger;
 import consulo.application.progress.ProgressIndicatorProvider;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
-import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import com.sylvanaar.idea.Lua.lang.psi.LuaControlFlowOwner;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.dataFlow.DFAEngine;
-import com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs.ReachingDefinitionsDfaInstance;
-import com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs.ReachingDefinitionsSemilattice;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocal;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.lang.psi.LuaControlFlowOwner;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
+import com.sylvanaar.idea.lua.lang.psi.dataFlow.DFAEngine;
+import com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs.ReachingDefinitionsDfaInstance;
+import com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs.ReachingDefinitionsSemilattice;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocal;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.ProblemHighlightType;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.util.collection.primitive.ints.IntObjConsumer;

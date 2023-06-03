@@ -14,21 +14,21 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.lists;
+package com.sylvanaar.idea.lua.lang.psi.impl.lists;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.codeStyle.CodeStyleManager;
 import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
-import com.sylvanaar.idea.Lua.lang.psi.impl.PsiUtil;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.PsiUtil;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.COMMA;
+import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.COMMA;
 
 /**
  * Created by IntelliJ IDEA.

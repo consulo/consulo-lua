@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.symbols;
+package com.sylvanaar.idea.lua.lang.psi.symbols;
 
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import javax.annotation.Nullable;
 
 /**

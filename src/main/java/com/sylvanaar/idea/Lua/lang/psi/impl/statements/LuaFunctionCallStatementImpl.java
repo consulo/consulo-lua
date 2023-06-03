@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
+package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
 import javax.annotation.Nonnull;
 
@@ -23,10 +23,10 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.resolve.ResolveState;
 import consulo.language.psi.resolve.PsiScopeProcessor;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionCallStatement;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionCallStatement;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 
 //import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionIdentifier;
 

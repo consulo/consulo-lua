@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.types;
+package com.sylvanaar.idea.lua.lang.psi.types;
 
 import consulo.util.lang.StringUtil;
-import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaNamedElement;
 import consulo.logging.Logger;
 import consulo.navigation.NavigationItem;
 

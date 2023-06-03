@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
+package com.sylvanaar.idea.lua.lang.psi.resolve.processors;
 
 
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResultImpl;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.util.collection.ContainerUtil;

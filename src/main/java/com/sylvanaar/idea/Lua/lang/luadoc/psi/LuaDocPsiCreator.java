@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi;
+package com.sylvanaar.idea.lua.lang.luadoc.psi;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.impl.psi.ASTWrapperPsiElement;
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.elements.LuaDocTagValueTokenType;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.*;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.elements.LuaDocTagValueTokenType;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.*;
 import consulo.language.psi.PsiElement;
 
-import static com.sylvanaar.idea.Lua.lang.luadoc.parser.elements.LuaDocTagValueTokenType.TagValueTokenType.REFERENCE_ELEMENT;
+import static com.sylvanaar.idea.lua.lang.luadoc.parser.elements.LuaDocTagValueTokenType.TagValueTokenType.REFERENCE_ELEMENT;
 
 
 /**

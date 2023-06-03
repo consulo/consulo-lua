@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.documentor;
+package com.sylvanaar.idea.lua.lang.documentor;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
-import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaAlias;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.psi.LuaNamedElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaAlias;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.editor.documentation.LanguageDocumentationProvider;

@@ -14,11 +14,17 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.kahlua;
+package com.sylvanaar.idea.lua.kahlua;
 
-import consulo.project.ui.wm.ToolWindowFactory;
-import consulo.ui.ex.toolWindow.ToolWindow;
+import consulo.localize.LocalizeValue;
+import consulo.lua.icon.LuaIconGroup;
 import consulo.project.Project;
+import consulo.project.ui.wm.ToolWindowFactory;
+import consulo.ui.annotation.RequiredUIAccess;
+import consulo.ui.ex.toolWindow.ToolWindow;
+import consulo.ui.ex.toolWindow.ToolWindowAnchor;
+import consulo.ui.image.Image;
+import jakarta.annotation.Nonnull;
 import se.krka.kahlua.converter.KahluaConverterManager;
 import se.krka.kahlua.converter.KahluaEnumConverter;
 import se.krka.kahlua.converter.KahluaNumberConverter;
@@ -33,11 +39,18 @@ import se.krka.kahlua.vm.Platform;
  * Date: May 7, 2010
  * Time: 8:02:20 PM
  */
-public class KahLuaInterpreterWindowFactory implements ToolWindowFactory
-{
-    public static KahluaInterpreter INSTANCE = null;
-    public static ToolWindow WINDOW = null;
+public class KahLuaInterpreterWindowFactory implements ToolWindowFactory {
+    public static final String ID = "kahlua";
 
+    public static KahluaInterpreter INSTANCE = null;
+
+    @Nonnull
+    @Override
+    public String getId() {
+        return ID;
+    }
+
+    @RequiredUIAccess
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
         final Platform platform = new J2SEPlatform();
@@ -47,7 +60,7 @@ public class KahLuaInterpreterWindowFactory implements ToolWindowFactory
         KahluaNumberConverter.install(manager);
         KahluaEnumConverter.install(manager);
         new KahluaTableConverter(platform).install(manager);
-        
+
         KahluaTable staticBase = platform.newTable();
         env.rawset("Java", staticBase);
 
@@ -63,7 +76,24 @@ public class KahLuaInterpreterWindowFactory implements ToolWindowFactory
                 ""
         );
 
-        WINDOW = toolWindow;
         toolWindow.getComponent().add(shell);
+    }
+
+    @Nonnull
+    @Override
+    public ToolWindowAnchor getAnchor() {
+        return ToolWindowAnchor.RIGHT;
+    }
+
+    @Nonnull
+    @Override
+    public Image getIcon() {
+        return LuaIconGroup.logo_13x13();
+    }
+
+    @Nonnull
+    @Override
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Kahlua");
     }
 }

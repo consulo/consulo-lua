@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs;
+package com.sylvanaar.idea.lua.lang.psi.stubs;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.psi.stub.IStubElementType;
 import consulo.language.psi.stub.StubSerializer;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.language.psi.stub.StubElement;
 import org.jetbrains.annotations.NonNls;
 

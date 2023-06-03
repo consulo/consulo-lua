@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang;
+package com.sylvanaar.idea.lua.lang;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.CodeDocumentationAwareCommenterEx;
@@ -22,9 +22,9 @@ import consulo.language.Language;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
 import consulo.language.psi.PsiComment;
 import jakarta.annotation.Nonnull;
 

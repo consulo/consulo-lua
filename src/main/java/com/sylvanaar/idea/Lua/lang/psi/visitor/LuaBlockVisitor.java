@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.visitor;
+package com.sylvanaar.idea.lua.lang.psi.visitor;
 
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlockStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaIfThenStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlockStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaIfThenStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 
 /**
  * Created by IntelliJ IDEA.

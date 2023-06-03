@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.resolve;
+package com.sylvanaar.idea.lua.lang.psi.resolve;
 
 import consulo.language.psi.PsiElement;
 

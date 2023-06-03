@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
+package com.sylvanaar.idea.lua.lang.psi.stubs.elements;
 
 import java.io.IOException;
 
@@ -26,13 +26,13 @@ import consulo.util.lang.StringUtil;
 import consulo.language.psi.stub.StubElement;
 import consulo.language.psi.stub.StubOutputStream;
 import consulo.index.io.StringRef;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaModuleExpressionImpl;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaModuleDeclarationStubImpl;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
-import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaModuleExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaModuleExpressionImpl;
+import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubElementType;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
+import com.sylvanaar.idea.lua.lang.psi.stubs.impl.LuaModuleDeclarationStubImpl;
+import com.sylvanaar.idea.lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import com.sylvanaar.idea.lua.util.LuaSerializationUtils;
 import consulo.logging.Logger;
 
 /**

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
 import consulo.language.ast.ASTNode;
 import consulo.document.util.TextRange;
@@ -22,13 +22,13 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.ResolveResult;
 import consulo.util.collection.ArrayUtil;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocParameterReference;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocParameterReference;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResultImpl;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import consulo.language.psi.PsiReference;
 import consulo.util.lang.StringUtil;
 

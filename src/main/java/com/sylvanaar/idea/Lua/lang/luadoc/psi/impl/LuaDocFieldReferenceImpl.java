@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
 import consulo.language.ast.ASTNode;
 import consulo.document.util.TextRange;
@@ -24,15 +24,15 @@ import consulo.util.lang.StringUtil;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.ResolveResult;
 import consulo.util.collection.ArrayUtil;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocFieldReference;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaKeyValueInitializer;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocFieldReference;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaKeyValueInitializer;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResultImpl;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 

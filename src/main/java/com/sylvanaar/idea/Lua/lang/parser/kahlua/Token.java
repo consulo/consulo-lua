@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.parser.kahlua;
+package com.sylvanaar.idea.lua.lang.parser.kahlua;
 
 public class Token {
 	int token;

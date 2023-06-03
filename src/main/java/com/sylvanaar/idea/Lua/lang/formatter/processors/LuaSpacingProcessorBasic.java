@@ -14,15 +14,15 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.formatter.processors;
+package com.sylvanaar.idea.lua.lang.formatter.processors;
 
 import consulo.language.codeStyle.CodeStyleSettings;
 import consulo.language.codeStyle.Spacing;
 import consulo.language.ast.ASTNode;
-import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
-import com.sylvanaar.idea.Lua.lang.formatter.models.spacing.SpacingTokens;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
+import com.sylvanaar.idea.lua.lang.formatter.blocks.LuaFormattingBlock;
+import com.sylvanaar.idea.lua.lang.formatter.models.spacing.SpacingTokens;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
 
 
 /**

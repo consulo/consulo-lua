@@ -18,9 +18,9 @@
  * User: anna
  * Date: 30-Nov-2009
  */
-package com.sylvanaar.idea.Lua.copyright;
+package com.sylvanaar.idea.lua.copyright;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.copyright.UpdateCopyrightsProvider;
 import consulo.language.copyright.UpdatePsiFileCopyright;

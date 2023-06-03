@@ -14,11 +14,11 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.library;
+package com.sylvanaar.idea.lua.library;
 
-import com.sylvanaar.idea.Lua.LuaBundle;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.lua.LuaBundle;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaIcons;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.content.base.BinariesOrderRootType;
 import consulo.content.library.DummyLibraryProperties;

@@ -1,11 +1,11 @@
-package com.sylvanaar.idea.Lua.lang.psi.resolve;
+package com.sylvanaar.idea.lua.lang.psi.resolve;
 
-import com.sylvanaar.idea.Lua.lang.psi.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.index.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.util.*;
+import com.sylvanaar.idea.lua.lang.psi.*;
+import com.sylvanaar.idea.lua.lang.psi.expressions.*;
+import com.sylvanaar.idea.lua.lang.psi.resolve.processors.*;
+import com.sylvanaar.idea.lua.lang.psi.stubs.index.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.util.*;
 import consulo.language.psi.PsiManager;
 import consulo.language.psi.resolve.ResolveCache;
 import consulo.language.psi.resolve.ResolveState;

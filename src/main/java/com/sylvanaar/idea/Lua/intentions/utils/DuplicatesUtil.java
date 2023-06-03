@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.intentions.utils;
+package com.sylvanaar.idea.lua.intentions.utils;
 
 import consulo.language.psi.PsiElement;
 import consulo.util.collection.HashingStrategy;

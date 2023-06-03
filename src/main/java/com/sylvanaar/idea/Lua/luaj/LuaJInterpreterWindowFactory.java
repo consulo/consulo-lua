@@ -14,11 +14,19 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.luaj;
+package com.sylvanaar.idea.lua.luaj;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.localize.LocalizeValue;
+import consulo.lua.icon.LuaIconGroup;
+import consulo.lua.module.extension.LuaModuleExtension;
+import consulo.module.extension.ModuleExtensionHelper;
+import consulo.project.Project;
 import consulo.project.ui.wm.ToolWindowFactory;
 import consulo.ui.ex.toolWindow.ToolWindow;
-import consulo.project.Project;
+import consulo.ui.ex.toolWindow.ToolWindowAnchor;
+import consulo.ui.image.Image;
+import jakarta.annotation.Nonnull;
 
 
 /**
@@ -27,8 +35,19 @@ import consulo.project.Project;
  * Date: May 7, 2010
  * Time: 8:02:20 PM
  */
-public class LuaJInterpreterWindowFactory implements ToolWindowFactory
-{
+@ExtensionImpl
+public class LuaJInterpreterWindowFactory implements ToolWindowFactory {
+    @Nonnull
+    @Override
+    public String getId() {
+        return "LuaJ";
+    }
+
+    @Override
+    public boolean validate(@Nonnull Project project) {
+        return ModuleExtensionHelper.getInstance(project).hasModuleExtension(LuaModuleExtension.class);
+    }
+
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
 //        System.setProperty("luaj.debug", "true");
@@ -39,7 +58,7 @@ public class LuaJInterpreterWindowFactory implements ToolWindowFactory
 //                                                     f.getEngineName(), f.getEngineVersion(),  f.getLanguageName(), f.getLanguageVersion()));
 //
         shell.getTerminal().appendInfo("Useful shortcuts:\n" +
-                                       "Ctrl-enter -- execute script\n" +
+                "Ctrl-enter -- execute script\n" +
                 "Ctrl-space -- autocomplete global variables\n" +
                 "Ctrl-p -- show definition (if available)\n" +
                 "Ctrl-up/down -- browse input history\n" +
@@ -47,5 +66,23 @@ public class LuaJInterpreterWindowFactory implements ToolWindowFactory
         );
 
         toolWindow.getComponent().add(shell);
+    }
+
+    @Nonnull
+    @Override
+    public ToolWindowAnchor getAnchor() {
+        return ToolWindowAnchor.RIGHT;
+    }
+
+    @Nonnull
+    @Override
+    public Image getIcon() {
+        return LuaIconGroup.logo_13x13();
+    }
+
+    @Nonnull
+    @Override
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("LuaJ");
     }
 }

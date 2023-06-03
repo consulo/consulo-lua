@@ -14,26 +14,26 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.parser;
+package com.sylvanaar.idea.lua.lang.parser;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaElementType;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.ILuaDocElementType;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.LuaDocPsiCreator;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaLiteralExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.lists.LuaExpressionListImpl;
-import com.sylvanaar.idea.Lua.lang.psi.impl.lists.LuaFunctionArgumentsImpl;
-import com.sylvanaar.idea.Lua.lang.psi.impl.lists.LuaIdentifierListImpl;
-import com.sylvanaar.idea.Lua.lang.psi.impl.lists.LuaParameterListImpl;
-import com.sylvanaar.idea.Lua.lang.psi.impl.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.lexer.LuaElementType;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.ILuaDocElementType;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.LuaDocPsiCreator;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.expressions.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.lists.LuaExpressionListImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.lists.LuaFunctionArgumentsImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.lists.LuaIdentifierListImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.lists.LuaParameterListImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.statements.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import consulo.language.psi.PsiElement;
 
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.*;
+import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.*;
 
 /**
  * Created by IntelliJ IDEA.

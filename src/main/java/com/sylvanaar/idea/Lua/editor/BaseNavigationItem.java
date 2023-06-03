@@ -1,4 +1,4 @@
-package com.sylvanaar.idea.Lua.editor;
+package com.sylvanaar.idea.lua.editor;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

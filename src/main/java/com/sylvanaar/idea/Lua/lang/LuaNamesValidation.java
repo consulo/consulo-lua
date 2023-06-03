@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang;
+package com.sylvanaar.idea.lua.lang;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.project.Project;
-import com.sylvanaar.idea.Lua.editor.completion.LuaKeywordsManager;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.editor.completion.LuaKeywordsManager;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
 import consulo.language.editor.refactoring.NamesValidator;
 import jakarta.annotation.Nonnull;
 

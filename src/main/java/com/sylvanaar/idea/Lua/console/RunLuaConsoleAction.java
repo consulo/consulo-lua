@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.console;
+package com.sylvanaar.idea.lua.console;
 
 /**
  * Created by IntelliJ IDEA.

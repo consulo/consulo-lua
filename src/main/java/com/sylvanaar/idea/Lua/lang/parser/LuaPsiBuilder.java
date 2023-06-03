@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.parser;
+package com.sylvanaar.idea.lua.lang.parser;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;

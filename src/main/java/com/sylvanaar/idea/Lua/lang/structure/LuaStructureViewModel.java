@@ -14,16 +14,16 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.structure;
+package com.sylvanaar.idea.lua.lang.structure;
 
 import javax.annotation.Nonnull;
 
 import consulo.fileEditor.structureView.tree.Sorter;
 import consulo.language.psi.PsiFile;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
-import com.sylvanaar.idea.Lua.lang.structure.impl.LuaFileStructureViewElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import com.sylvanaar.idea.lua.lang.structure.impl.LuaFileStructureViewElement;
 import consulo.fileEditor.structureView.StructureViewTreeElement;
 import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
 

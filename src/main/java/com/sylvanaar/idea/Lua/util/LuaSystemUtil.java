@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.util;
+package com.sylvanaar.idea.lua.util;
 
 import consulo.application.util.SystemInfo;
 import consulo.content.base.BinariesOrderRootType;

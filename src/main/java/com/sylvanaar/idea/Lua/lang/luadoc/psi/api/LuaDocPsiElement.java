@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.api;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 
 /**
  * @author ilyas

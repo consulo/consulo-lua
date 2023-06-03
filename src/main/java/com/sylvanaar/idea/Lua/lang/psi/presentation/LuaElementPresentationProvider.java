@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.presentation;
+package com.sylvanaar.idea.lua.lang.psi.presentation;
 
-import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.LuaIcons;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.navigation.ItemPresentation;
 import consulo.navigation.ItemPresentationProvider;

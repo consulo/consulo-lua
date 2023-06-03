@@ -13,10 +13,10 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.editor.inspections.metrics;
+package com.sylvanaar.idea.lua.editor.inspections.metrics;
 
 
-import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 
 import javax.annotation.Nonnull;
 

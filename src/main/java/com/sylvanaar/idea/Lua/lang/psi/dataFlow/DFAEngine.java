@@ -13,12 +13,12 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.dataFlow;
+package com.sylvanaar.idea.lua.lang.psi.dataFlow;
 
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallEnvironment;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ControlFlowUtil;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.CallEnvironment;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.CallInstruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.ControlFlowUtil;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

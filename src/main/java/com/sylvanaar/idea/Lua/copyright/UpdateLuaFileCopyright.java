@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.copyright;
+package com.sylvanaar.idea.lua.copyright;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.language.copyright.UpdatePsiFileCopyright;
 import consulo.language.copyright.config.CopyrightFileConfig;
 import consulo.language.copyright.config.CopyrightProfile;

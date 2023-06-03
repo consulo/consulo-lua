@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.completion;
+package com.sylvanaar.idea.lua.editor.completion;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.completion.lookup.CharFilter;
 import consulo.language.editor.completion.lookup.Lookup;

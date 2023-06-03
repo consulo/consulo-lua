@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs;
+package com.sylvanaar.idea.lua.lang.psi.stubs;
 
 import consulo.language.psi.stub.StubInputStream;
 import consulo.language.psi.stub.StubOutputStream;
 import consulo.util.lang.Pair;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaTypedStub;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import com.sylvanaar.idea.Lua.lang.psi.types.StubType;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaTypedStub;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.types.StubType;
 
 import java.io.IOException;
 

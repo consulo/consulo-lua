@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
+package com.sylvanaar.idea.lua.lang.psi.resolve.processors;
 
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.resolve.ResolveState;

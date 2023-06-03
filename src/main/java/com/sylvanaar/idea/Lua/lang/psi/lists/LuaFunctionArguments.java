@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.lists;
+package com.sylvanaar.idea.lua.lang.psi.lists;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 
 /**
  * Created by IntelliJ IDEA.

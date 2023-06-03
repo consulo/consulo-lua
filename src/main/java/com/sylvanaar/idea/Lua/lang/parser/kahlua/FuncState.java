@@ -13,13 +13,13 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.parser.kahlua;
+package com.sylvanaar.idea.lua.lang.parser.kahlua;
 
 
 import java.util.Hashtable;
 
 import consulo.logging.Logger;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import se.krka.kahlua.vm.Prototype;
 
 

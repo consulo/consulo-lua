@@ -1,6 +1,6 @@
-package com.sylvanaar.idea.Lua.editor.annotator;
+package com.sylvanaar.idea.lua.editor.annotator;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.editor.annotation.Annotator;

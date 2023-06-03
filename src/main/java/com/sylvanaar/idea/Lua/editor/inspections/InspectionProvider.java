@@ -14,16 +14,16 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.inspections;
+package com.sylvanaar.idea.lua.editor.inspections;
 
-import com.sylvanaar.idea.Lua.editor.inspections.bugs.*;
-import com.sylvanaar.idea.Lua.editor.inspections.metrics.LuaOverlyComplexMethodInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.metrics.LuaOverlyLongMethodInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.performance.RedundantInitializationInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.performance.StringConcatenationInLoopsInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.unassignedVariable.UnassignedVariableAccessInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.usage.UnusedDefInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.validity.LuaUnreachableStatementInspection;
+import com.sylvanaar.idea.lua.editor.inspections.bugs.*;
+import com.sylvanaar.idea.lua.editor.inspections.metrics.LuaOverlyComplexMethodInspection;
+import com.sylvanaar.idea.lua.editor.inspections.metrics.LuaOverlyLongMethodInspection;
+import com.sylvanaar.idea.lua.editor.inspections.performance.RedundantInitializationInspection;
+import com.sylvanaar.idea.lua.editor.inspections.performance.StringConcatenationInLoopsInspection;
+import com.sylvanaar.idea.lua.editor.inspections.unassignedVariable.UnassignedVariableAccessInspection;
+import com.sylvanaar.idea.lua.editor.inspections.usage.UnusedDefInspection;
+import com.sylvanaar.idea.lua.editor.inspections.validity.LuaUnreachableStatementInspection;
 
 /**
  * Created by IntelliJ IDEA.

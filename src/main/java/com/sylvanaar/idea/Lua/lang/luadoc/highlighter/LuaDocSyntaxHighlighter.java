@@ -14,14 +14,14 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.highlighter;
+package com.sylvanaar.idea.lua.lang.luadoc.highlighter;
 
 import consulo.colorScheme.TextAttributesKey;
 import consulo.language.ast.IElementType;
 import consulo.language.ast.TokenSet;
-import com.sylvanaar.idea.Lua.editor.highlighter.LuaHighlightingData;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
+import com.sylvanaar.idea.lua.editor.highlighter.LuaHighlightingData;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocLexer;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes;
 import consulo.language.editor.highlight.SyntaxHighlighterBase;
 import consulo.language.lexer.Lexer;
 

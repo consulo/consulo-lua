@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
+package com.sylvanaar.idea.lua.lang.psi.stubs.api;
 
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.*;
 import consulo.language.psi.stub.NamedStub;
 
 /**

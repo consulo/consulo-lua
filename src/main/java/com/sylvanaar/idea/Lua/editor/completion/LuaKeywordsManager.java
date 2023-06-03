@@ -14,9 +14,8 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.completion;
+package com.sylvanaar.idea.lua.editor.completion;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 

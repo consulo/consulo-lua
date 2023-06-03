@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.lexer;
+package com.sylvanaar.idea.lua.lang.luadoc.lexer;
 
 /**
  * @author ilyas

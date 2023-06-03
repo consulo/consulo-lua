@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.lexer;
+package com.sylvanaar.idea.lua.lang.lexer;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;
 

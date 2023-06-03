@@ -14,18 +14,18 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.formatter.processors;
+package com.sylvanaar.idea.lua.lang.formatter.processors;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.codeStyle.Indent;
 import consulo.language.ast.ASTNode;
-import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.formatter.blocks.LuaFormattingBlock;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaFunctionArguments;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import consulo.language.psi.PsiComment;
 import consulo.language.psi.PsiElement;
 

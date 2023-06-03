@@ -13,14 +13,14 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.structure.impl;
+package com.sylvanaar.idea.lua.lang.structure.impl;
 
 import consulo.fileEditor.structureView.StructureViewTreeElement;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
-import com.sylvanaar.idea.Lua.lang.structure.LuaStructureViewTreeElement;
-import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl.LuaFileItemPresentation;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
+import com.sylvanaar.idea.lua.lang.structure.LuaStructureViewTreeElement;
+import com.sylvanaar.idea.lua.lang.structure.itemsPresentations.impl.LuaFileItemPresentation;
 import consulo.fileEditor.structureView.tree.TreeElement;
 import consulo.language.psi.PsiElement;
 import consulo.navigation.ItemPresentation;

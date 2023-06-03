@@ -13,9 +13,9 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.run;
+package com.sylvanaar.idea.lua.run;
 
-import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.lua.LuaIcons;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.execution.configuration.ConfigurationFactory;
 import consulo.execution.configuration.ConfigurationType;

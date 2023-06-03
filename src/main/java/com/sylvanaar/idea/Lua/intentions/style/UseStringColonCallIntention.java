@@ -14,18 +14,18 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.intentions.style;
+package com.sylvanaar.idea.lua.intentions.style;
 
 import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
-import com.sylvanaar.idea.Lua.intentions.base.MutablyNamedIntention;
-import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
+import com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle;
+import com.sylvanaar.idea.lua.intentions.base.MutablyNamedIntention;
+import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
 import consulo.document.Document;
 import consulo.language.psi.PsiDocumentManager;
 

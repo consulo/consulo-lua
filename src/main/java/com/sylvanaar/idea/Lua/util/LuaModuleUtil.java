@@ -14,13 +14,13 @@
 *   limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.util;
+package com.sylvanaar.idea.lua.util;
 
 import consulo.lua.module.extension.LuaModuleExtension;
 import consulo.language.util.ModuleUtilCore;
 import consulo.content.bundle.Sdk;
 import consulo.module.content.ProjectFileIndex;
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import consulo.module.Module;
 import consulo.virtualFileSystem.VirtualFile;
 

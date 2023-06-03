@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.parser.util;
+package com.sylvanaar.idea.lua.lang.parser.util;
 
 import consulo.language.parser.PsiBuilder;
 import consulo.language.parser.PsiBuilder.Marker;

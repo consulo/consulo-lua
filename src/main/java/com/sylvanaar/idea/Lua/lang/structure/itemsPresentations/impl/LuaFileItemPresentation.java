@@ -13,13 +13,13 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
+package com.sylvanaar.idea.lua.lang.structure.itemsPresentations.impl;
 
 import javax.annotation.Nullable;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
-import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.structure.LuaElementPresentation;
+import com.sylvanaar.idea.lua.lang.structure.itemsPresentations.LuaItemPresentation;
 import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.ui.image.Image;
 

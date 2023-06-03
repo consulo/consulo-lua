@@ -14,19 +14,19 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
+package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.*;
-import com.sylvanaar.idea.Lua.lang.parser.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.*;
-import com.sylvanaar.idea.Lua.lang.psi.lists.*;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.*;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import com.sylvanaar.idea.Lua.lang.psi.util.*;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.*;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.*;
+import com.sylvanaar.idea.lua.lang.parser.*;
+import com.sylvanaar.idea.lua.lang.psi.expressions.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.*;
+import com.sylvanaar.idea.lua.lang.psi.lists.*;
+import com.sylvanaar.idea.lua.lang.psi.statements.*;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.*;
+import com.sylvanaar.idea.lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.util.*;
+import com.sylvanaar.idea.lua.lang.psi.visitor.*;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
