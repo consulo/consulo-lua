@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.template;
+package com.sylvanaar.idea.lua.lang.template;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.editor.highlighter.LuaSyntaxHighlighter;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.editor.highlighter.LuaSyntaxHighlighter;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.highlight.SyntaxHighlighter;
 import consulo.language.editor.template.context.TemplateContextType;

@@ -14,11 +14,11 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang;
+package com.sylvanaar.idea.lua.lang;
 
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.application.dumb.DumbAware;
 import consulo.application.progress.ProgressManager;
@@ -36,8 +36,8 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.LONGCOMMENT;
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.*;
+import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.LONGCOMMENT;
+import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.*;
 
 /**
  * Created by IntelliJ IDEA.

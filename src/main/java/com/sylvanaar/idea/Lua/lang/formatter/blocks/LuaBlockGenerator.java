@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.formatter.blocks;
+package com.sylvanaar.idea.lua.lang.formatter.blocks;
 
 import consulo.language.codeStyle.*;
 import consulo.language.ast.ASTNode;
@@ -22,11 +22,11 @@ import consulo.document.util.TextRange;
 import consulo.language.psi.OuterLanguageElement;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.formatter.processors.LuaIndentProcessor;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.formatter.processors.LuaIndentProcessor;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
 import consulo.logging.Logger;
 
 import java.util.ArrayList;

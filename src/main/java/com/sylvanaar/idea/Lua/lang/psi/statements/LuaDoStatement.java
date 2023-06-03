@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.statements;
+package com.sylvanaar.idea.lua.lang.psi.statements;
 
 public interface LuaDoStatement extends LuaStatementElement, LuaBlockStatement {
 }

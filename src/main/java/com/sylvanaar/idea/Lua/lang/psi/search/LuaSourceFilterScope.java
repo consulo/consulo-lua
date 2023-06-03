@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.search;
+package com.sylvanaar.idea.lua.lang.psi.search;
 
 import javax.annotation.Nonnull;
 
@@ -24,7 +24,7 @@ import consulo.project.Project;
 import consulo.module.content.ProjectFileIndex;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.language.psi.scope.GlobalSearchScope;
-import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
+import com.sylvanaar.idea.lua.util.LuaModuleUtil;
 
 /**
  * Created by IntelliJ IDEA.

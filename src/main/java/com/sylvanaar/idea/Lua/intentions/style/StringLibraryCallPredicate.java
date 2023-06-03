@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.intentions.style;
+package com.sylvanaar.idea.lua.intentions.style;
 
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
+import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
 
 /**
  * Created by IntelliJ IDEA.

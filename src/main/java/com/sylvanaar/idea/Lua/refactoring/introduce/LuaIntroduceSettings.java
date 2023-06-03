@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.refactoring.introduce;
+package com.sylvanaar.idea.lua.refactoring.introduce;
 
 import javax.annotation.Nullable;
 

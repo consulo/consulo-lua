@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.completion;
+package com.sylvanaar.idea.lua.editor.completion;
 
-import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
+import com.sylvanaar.idea.lua.LuaIcons;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
 import consulo.content.bundle.Sdk;
 import consulo.language.editor.completion.lookup.*;
 import consulo.language.editor.refactoring.NamesValidator;

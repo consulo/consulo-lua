@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.lists;
+package com.sylvanaar.idea.lua.lang.psi.lists;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import consulo.language.psi.PsiElement;
 
 /**

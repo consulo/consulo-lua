@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
+package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
 import consulo.language.ast.ASTNode;
 import javax.annotation.Nonnull;

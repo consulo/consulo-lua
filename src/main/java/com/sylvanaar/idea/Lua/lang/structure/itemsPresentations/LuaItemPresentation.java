@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations;
+package com.sylvanaar.idea.lua.lang.structure.itemsPresentations;
 
 import javax.annotation.Nullable;
 

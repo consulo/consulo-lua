@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.run.lua;
+package com.sylvanaar.idea.lua.run.lua;
 
-import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
+import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
 import consulo.content.bundle.Sdk;
 import consulo.execution.configuration.CommandLineState;
 import consulo.execution.configuration.RunConfiguration;

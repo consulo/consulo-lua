@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang;
+package com.sylvanaar.idea.lua.lang;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.BracePair;
 import consulo.language.Language;
 import consulo.language.PairedBraceMatcher;
 import consulo.language.ast.IElementType;
-import consulo.language.psi.PsiFile;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.*;
+import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.*;
 
 /**
  * Created by IntelliJ IDEA.

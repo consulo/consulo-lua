@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.parser.elements;
+package com.sylvanaar.idea.lua.lang.luadoc.parser.elements;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import consulo.language.Language;
 import consulo.language.ast.ILazyParseableElementType;
 import org.jetbrains.annotations.NonNls;

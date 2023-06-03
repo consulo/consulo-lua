@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.util;
+package com.sylvanaar.idea.lua.util;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import consulo.container.plugin.PluginManager;
 import consulo.content.ContentIterator;
 import consulo.util.io.FileUtil;

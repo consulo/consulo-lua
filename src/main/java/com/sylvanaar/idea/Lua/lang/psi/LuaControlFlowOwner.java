@@ -13,10 +13,10 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi;
+package com.sylvanaar.idea.lua.lang.psi;
 
 
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
 import consulo.application.util.CachedValue;
 import consulo.util.dataholder.Key;
 

@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua;
+package com.sylvanaar.idea.lua;
 
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;
 import com.intellij.testFramework.TestModuleDescriptor;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
-import com.sylvanaar.idea.Lua.util.TestUtils;
+import com.sylvanaar.idea.lua.util.TestUtils;
 
 /**
  * @author peter

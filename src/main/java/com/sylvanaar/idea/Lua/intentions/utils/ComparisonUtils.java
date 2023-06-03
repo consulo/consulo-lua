@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.intentions.utils;
+package com.sylvanaar.idea.lua.intentions.utils;
 
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 
 import java.util.HashMap;
 import java.util.Map;

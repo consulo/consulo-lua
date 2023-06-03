@@ -14,17 +14,24 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor;
+package com.sylvanaar.idea.lua.editor;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.ResolveUtil;
-import consulo.ide.navigation.ChooseByNameContributor;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiManager;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.resolve.ResolveUtil;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.util.function.Processor;
+import consulo.content.scope.SearchScope;
 import consulo.ide.navigation.GotoSymbolContributor;
 import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.psi.search.FindSymbolParameters;
+import consulo.language.psi.stub.IdFilter;
 import consulo.navigation.NavigationItem;
 import consulo.project.Project;
+import consulo.project.content.scope.ProjectAwareFileFilter;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,36 +43,36 @@ import java.util.List;
  * Date: 11/23/10
  * Time: 3:38 PM
  */
+@ExtensionImpl
 public class LuaGotoSymbolContributor implements GotoSymbolContributor {
     @Override
-    public String[] getNames(Project project, boolean b) {
-        final Collection<String> names = new ArrayList<String>();
-        final Collection<LuaDeclarationExpression> globals = LuaPsiManager.getInstance(project).getFilteredGlobalsCache();
+    public void processNames(@Nonnull Processor<String> processor, @Nonnull SearchScope searchScope, @Nullable IdFilter idFilter) {
+        ProjectAwareFileFilter fileFilter = (ProjectAwareFileFilter) searchScope;
+
+        final Collection<LuaDeclarationExpression> globals = LuaPsiManager.getInstance(fileFilter.getProject()).getFilteredGlobalsCache();
 
         for (LuaDeclarationExpression global : globals) {
-            names.add(global.getDefinedName());
+            processor.process(global.getDefinedName());
         }
-        return names.toArray(new String[names.size()]);
     }
 
+    @Override
+    public void processElementsWithName(@Nonnull String s, @Nonnull Processor<NavigationItem> processor, @Nonnull FindSymbolParameters findSymbolParameters) {
+        boolean includeNonProjectItems = findSymbolParameters.isSearchInLibraries();
+        Project project = findSymbolParameters.getProject();
 
-    @Override 
-    public NavigationItem[] getItemsByName(String name, String pattern, Project project, boolean includeNonProjectItems) {
         GlobalSearchScope scope = includeNonProjectItems ? GlobalSearchScope.allScope(project) : GlobalSearchScope.projectScope(project);
 
         final Collection<LuaDeclarationExpression> globals = ResolveUtil.getFilteredGlobals(project, scope);
-        List<NavigationItem> symbols = new ArrayList<NavigationItem>();
 
         for (LuaDeclarationExpression global : globals) {
-            if (!includeNonProjectItems && !scope.contains(global.getContainingFile().getVirtualFile()))
+            if (!includeNonProjectItems && !scope.contains(global.getContainingFile().getVirtualFile())) {
                 continue;
+            }
 
-            if (global.getDefinedName().startsWith(pattern))
-                symbols.add(new BaseNavigationItem(global, global.getDefinedName(), IconDescriptorUpdaters.getIcon(global, 0)));
+            if (global.getDefinedName().startsWith(s)) {
+                processor.process(new BaseNavigationItem(global, global.getDefinedName(), IconDescriptorUpdaters.getIcon(global, 0)));
+            }
         }
-
-        //symbols.addAll(StubIndex.getInstance().get(LuaGlobalDeclarationIndex.KEY, name, project, scope));
-
-        return symbols.toArray(new NavigationItem[symbols.size()]);
     }
 }

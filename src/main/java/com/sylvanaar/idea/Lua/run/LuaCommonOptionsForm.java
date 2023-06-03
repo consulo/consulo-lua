@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.run;
+package com.sylvanaar.idea.lua.run;
 
 import consulo.execution.ui.awt.EnvironmentVariablesComponent;
 import consulo.execution.ui.awt.RawCommandLineEditor;

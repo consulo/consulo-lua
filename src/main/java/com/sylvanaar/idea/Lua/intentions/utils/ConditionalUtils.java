@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.intentions.utils;
+package com.sylvanaar.idea.lua.intentions.utils;
 
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaReturnStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import org.jetbrains.annotations.NonNls;
 
 

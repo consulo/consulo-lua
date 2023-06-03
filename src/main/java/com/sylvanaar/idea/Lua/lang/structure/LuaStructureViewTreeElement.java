@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.structure;
+package com.sylvanaar.idea.lua.lang.structure;
 
 import consulo.language.psi.PsiElement;
 import consulo.fileEditor.structureView.StructureViewTreeElement;

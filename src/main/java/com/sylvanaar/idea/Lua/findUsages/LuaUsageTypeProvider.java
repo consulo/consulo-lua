@@ -14,14 +14,14 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.findUsages;
+package com.sylvanaar.idea.lua.findUsages;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.usage.UsageType;
 import consulo.usage.UsageTypeProvider;
-import com.sylvanaar.idea.Lua.LuaBundle;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.LuaBundle;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.language.psi.PsiElement;
 
 /**

@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
+package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
 import consulo.document.util.TextRange;
 import consulo.language.psi.PsiElement;
@@ -28,23 +28,23 @@ import consulo.util.lang.StringUtil;
 import consulo.language.psi.resolve.ResolveCache;
 import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.language.psi.util.PsiTreeUtil;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaLiteralExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaStubElementBase;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolver;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.ResolveUtil;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import com.sylvanaar.idea.Lua.lang.psi.util.SymbolUtil;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaModuleExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaStubElementBase;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaFunctionArguments;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolver;
+import com.sylvanaar.idea.lua.lang.psi.resolve.ResolveUtil;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.util.SymbolUtil;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;

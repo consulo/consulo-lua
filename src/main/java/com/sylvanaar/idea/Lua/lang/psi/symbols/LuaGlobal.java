@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.symbols;
+package com.sylvanaar.idea.lua.lang.psi.symbols;
 
 import javax.annotation.Nullable;
 

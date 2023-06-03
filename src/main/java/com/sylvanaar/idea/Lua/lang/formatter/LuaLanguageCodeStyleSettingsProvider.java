@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.formatter;
+package com.sylvanaar.idea.lua.lang.formatter;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.lua.LuaFileType;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.codeStyle.CommonCodeStyleSettings;

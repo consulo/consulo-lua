@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.run;
+package com.sylvanaar.idea.lua.run;
 
 import consulo.execution.ui.console.Filter;
 import consulo.execution.ui.console.RegexpFilter;

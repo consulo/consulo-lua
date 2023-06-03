@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.util;
+package com.sylvanaar.idea.lua.util;
 
 import consulo.language.file.FileTypeManager;
 import consulo.language.psi.PsiFileFactory;

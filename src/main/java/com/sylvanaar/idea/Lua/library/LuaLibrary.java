@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.library;
+package com.sylvanaar.idea.lua.library;
 
 import consulo.content.library.LibraryKind;
 

@@ -14,7 +14,7 @@
 * limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.parser.elements;
+package com.sylvanaar.idea.lua.lang.luadoc.parser.elements;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.parser.PsiBuilder;
@@ -22,10 +22,10 @@ import consulo.language.parser.PsiBuilderFactory;
 import consulo.language.psi.PsiElement;
 import consulo.project.Project;
 import consulo.language.impl.psi.LeafPsiElement;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.ILuaDocElementType;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
-import com.sylvanaar.idea.Lua.lang.parser.util.ParserUtils;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.ILuaDocElementType;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocLexer;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
+import com.sylvanaar.idea.lua.lang.parser.util.ParserUtils;
 import consulo.language.version.LanguageVersionUtil;
 
 import javax.annotation.Nonnull;
@@ -33,8 +33,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_PLAIN_VALUE_TOKEN;
-import static com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_VALUE;
+import static com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_PLAIN_VALUE_TOKEN;
+import static com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes.LDOC_TAG_VALUE;
 
 /**
  * @author ilyas

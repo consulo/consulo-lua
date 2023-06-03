@@ -14,16 +14,16 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi;
+package com.sylvanaar.idea.lua.lang.psi;
 
-import com.sylvanaar.idea.Lua.LuaBundle;
-import com.sylvanaar.idea.Lua.lang.InferenceCapable;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.ResolveUtil;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import com.sylvanaar.idea.Lua.options.LuaApplicationSettings;
-import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
-import com.sylvanaar.idea.Lua.util.LuaFileUtil;
+import com.sylvanaar.idea.lua.LuaBundle;
+import com.sylvanaar.idea.lua.lang.InferenceCapable;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.resolve.ResolveUtil;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.options.LuaApplicationSettings;
+import com.sylvanaar.idea.lua.util.LuaAtomicNotNullLazyValue;
+import com.sylvanaar.idea.lua.util.LuaFileUtil;
 import consulo.application.ApplicationManager;
 import consulo.application.progress.*;
 import consulo.application.util.concurrent.QueueProcessor;

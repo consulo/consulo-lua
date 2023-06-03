@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi;
+package com.sylvanaar.idea.lua.lang.psi;
 
 import consulo.language.psi.PsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.Assignable;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaStatementOwner;
+import com.sylvanaar.idea.lua.lang.psi.expressions.Assignable;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaStatementOwner;
 
 /**
  * Created by IntelliJ IDEA.

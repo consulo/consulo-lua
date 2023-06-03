@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang;
+package com.sylvanaar.idea.lua.lang;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.codeEditor.Editor;
 import consulo.document.Document;

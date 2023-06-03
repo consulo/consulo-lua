@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.actions;
+package com.sylvanaar.idea.lua.actions;
 
 import consulo.document.FileDocumentManager;
 import consulo.execution.ui.console.ConsoleViewContentType;
@@ -39,11 +39,11 @@ import consulo.util.lang.StringUtil;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.sdk.StdLibrary;
-import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
-import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.sdk.StdLibrary;
+import com.sylvanaar.idea.lua.util.LuaModuleUtil;
+import com.sylvanaar.idea.lua.util.LuaSystemUtil;
 import consulo.util.lang.ref.Ref;
 
 /**

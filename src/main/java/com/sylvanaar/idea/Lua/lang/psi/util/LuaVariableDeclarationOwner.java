@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.util;
+package com.sylvanaar.idea.lua.lang.psi.util;
 
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaDeclarationStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 
 
 /**

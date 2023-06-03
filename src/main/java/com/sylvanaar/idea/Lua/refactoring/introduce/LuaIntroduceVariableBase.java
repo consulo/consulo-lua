@@ -14,26 +14,26 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.refactoring.introduce;
+package com.sylvanaar.idea.lua.refactoring.introduce;
 
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.logging.Logger;
 import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaConditionalLoop;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaStatementOwner;
-import com.sylvanaar.idea.Lua.refactoring.LuaRefactoringUtil;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaConditionalLoop;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaDeclarationStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaStatementOwner;
+import com.sylvanaar.idea.lua.refactoring.LuaRefactoringUtil;
 import javax.annotation.Nonnull;
 
 import java.util.ArrayList;

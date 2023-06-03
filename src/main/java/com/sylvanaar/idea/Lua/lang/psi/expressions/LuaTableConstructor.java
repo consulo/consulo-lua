@@ -14,11 +14,11 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.expressions;
+package com.sylvanaar.idea.lua.lang.psi.expressions;
 
-import com.sylvanaar.idea.Lua.lang.*;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.*;
+import com.sylvanaar.idea.lua.lang.*;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.*;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.*;
 import consulo.language.psi.StubBasedPsiElement;
 
 /**

@@ -13,15 +13,15 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.refactoring.introduce;
+package com.sylvanaar.idea.lua.refactoring.introduce;
 
 import javax.annotation.Nonnull;
 
 import consulo.codeEditor.Editor;
 import consulo.project.Project;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 
 import javax.annotation.Nullable;
 

@@ -18,11 +18,11 @@
  * User: anna
  * Date: 17-Jan-2008
  */
-package com.sylvanaar.idea.Lua.projectView.nodes;
+package com.sylvanaar.idea.lua.projectView.nodes;
 
 import consulo.project.ui.view.tree.BasePsiNode;
 import consulo.project.Project;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.project.ui.view.tree.ViewSettings;
 
 public abstract class BasePsiMemberNode<T extends LuaPsiElement> extends BasePsiNode<T>{

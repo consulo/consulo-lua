@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.inspections;
+package com.sylvanaar.idea.lua.editor.inspections;
 
 import javax.annotation.Nonnull;
 
@@ -27,7 +27,7 @@ import consulo.virtualFileSystem.ReadonlyStatusHandler;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.virtualFileSystem.VirtualFile;
 
 /**

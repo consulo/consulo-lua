@@ -16,10 +16,10 @@
 
 package consulo.lua.debugger.breakpoint;
 
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.debugger.LuaLineBreakpointType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.debugger.LuaLineBreakpointType;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.document.Document;

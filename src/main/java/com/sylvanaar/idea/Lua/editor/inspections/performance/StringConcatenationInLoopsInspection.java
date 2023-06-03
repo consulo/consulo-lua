@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.editor.inspections.performance;
+package com.sylvanaar.idea.lua.editor.inspections.performance;
 
 import javax.annotation.Nonnull;
 
@@ -22,15 +22,15 @@ import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.utils.ControlFlowUtils;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.editor.inspections.utils.ControlFlowUtils;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 
 public class StringConcatenationInLoopsInspection extends AbstractInspection {
 

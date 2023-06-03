@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.intentions.base;
+package com.sylvanaar.idea.lua.intentions.base;
 
 import javax.annotation.Nonnull;
 
@@ -23,11 +23,11 @@ import consulo.language.editor.intention.IntentionAction;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.intentions.utils.QuickfixUtil;
-import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
-import com.sylvanaar.idea.Lua.intentions.utils.BoolUtils;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.intentions.utils.QuickfixUtil;
+import com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle;
+import com.sylvanaar.idea.lua.intentions.utils.BoolUtils;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import consulo.project.Project;
 
 import javax.annotation.Nullable;

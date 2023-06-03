@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.symbols;
+package com.sylvanaar.idea.lua.lang.psi.symbols;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 
 
 /**

@@ -13,11 +13,11 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs;
+package com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs;
 
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.dataFlow.DfaInstance;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
+import com.sylvanaar.idea.lua.lang.psi.dataFlow.DfaInstance;
 import consulo.util.collection.primitive.ints.IntMaps;
 import consulo.util.collection.primitive.ints.IntObjectMap;
 import consulo.util.collection.primitive.ints.IntSet;

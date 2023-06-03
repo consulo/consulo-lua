@@ -13,12 +13,12 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
+package com.sylvanaar.idea.lua.lang.structure.itemsPresentations.impl;
 
-import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
-import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
+import com.sylvanaar.idea.lua.LuaIcons;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.structure.LuaElementPresentation;
+import com.sylvanaar.idea.lua.lang.structure.itemsPresentations.LuaItemPresentation;
 import consulo.application.util.NotNullLazyValue;
 import consulo.colorScheme.TextAttributesKey;
 import consulo.ui.image.Image;

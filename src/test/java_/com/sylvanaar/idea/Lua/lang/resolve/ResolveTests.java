@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.resolve;
+package com.sylvanaar.idea.lua.lang.resolve;
 
 /**
  * Created by IntelliJ IDEA.

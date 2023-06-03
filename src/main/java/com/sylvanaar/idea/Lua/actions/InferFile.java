@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.actions;
+package com.sylvanaar.idea.lua.actions;
 
 import consulo.language.editor.PlatformDataKeys;
-import com.sylvanaar.idea.Lua.lang.InferenceCapable;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
+import com.sylvanaar.idea.lua.lang.InferenceCapable;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiManager;
 import consulo.language.editor.LangDataKeys;
 import consulo.language.psi.PsiDocumentManager;
 import consulo.language.psi.PsiFile;

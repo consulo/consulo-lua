@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.references;
+package com.sylvanaar.idea.lua.lang.luadoc.references;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.psi.PsiReference;
 import consulo.language.psi.PsiReferenceProvider;
 import consulo.language.util.ProcessingContext;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocPsiElement;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.filter.ElementFilter;
 

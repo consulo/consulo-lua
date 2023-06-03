@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.structure;
+package com.sylvanaar.idea.lua.lang.structure;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.codeEditor.Editor;
 import consulo.fileEditor.structureView.StructureViewBuilder;

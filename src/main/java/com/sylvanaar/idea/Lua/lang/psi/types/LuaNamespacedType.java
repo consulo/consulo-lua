@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.types;
+package com.sylvanaar.idea.lua.lang.psi.types;
 
 /**
  * Created by IntelliJ IDEA.

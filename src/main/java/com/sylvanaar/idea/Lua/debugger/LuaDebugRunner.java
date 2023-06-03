@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.debugger;
+package com.sylvanaar.idea.lua.debugger;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.execution.ExecutionResult;
@@ -28,7 +28,7 @@ import consulo.execution.ui.RunContentDescriptor;
 import consulo.document.FileDocumentManager;
 import consulo.execution.debug.XDebugSession;
 import consulo.execution.debug.XDebuggerManager;
-import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
+import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
 import consulo.ui.annotation.RequiredUIAccess;
 
 import javax.annotation.Nonnull;

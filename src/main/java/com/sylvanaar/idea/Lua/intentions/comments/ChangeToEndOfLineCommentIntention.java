@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.intentions.comments;
+package com.sylvanaar.idea.lua.intentions.comments;
 
 import consulo.language.psi.PsiComment;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.intentions.base.Intention;
-import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.intentions.base.Intention;
+import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
 import consulo.language.util.IncorrectOperationException;
 
 import javax.annotation.Nonnull;

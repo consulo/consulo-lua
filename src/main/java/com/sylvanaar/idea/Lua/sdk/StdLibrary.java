@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.sdk;
+package com.sylvanaar.idea.lua.sdk;
 
 import consulo.virtualFileSystem.VirtualFile;
-import com.sylvanaar.idea.Lua.util.LuaFileUtil;
+import com.sylvanaar.idea.lua.util.LuaFileUtil;
 
 /**
  * Created by IntelliJ IDEA.

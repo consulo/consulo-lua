@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.completion;
+package com.sylvanaar.idea.lua.lang.luadoc.completion;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.editor.completion.CompletionContributor;

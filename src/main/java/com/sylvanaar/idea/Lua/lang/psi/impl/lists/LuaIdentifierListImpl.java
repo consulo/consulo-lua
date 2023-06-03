@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.lists;
+package com.sylvanaar.idea.lua.lang.psi.impl.lists;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
@@ -22,17 +22,17 @@ import consulo.language.psi.resolve.ResolveState;
 import consulo.language.codeStyle.CodeStyleManager;
 import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.Assignable;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaExpressionImpl;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.Assignable;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaExpressionImpl;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.util.LuaAtomicNotNullLazyValue;
 import javax.annotation.Nonnull;
 
-import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.COMMA;
+import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.COMMA;
 
 /**
  * Created by IntelliJ IDEA.

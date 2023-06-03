@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi;
+package com.sylvanaar.idea.lua.lang.psi;
 
 import consulo.language.ast.IElementType;
 

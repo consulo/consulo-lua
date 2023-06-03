@@ -14,19 +14,19 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.inspections.performance;
+package com.sylvanaar.idea.lua.editor.inspections.performance;
 
 import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.inspection.ProblemsHolder;
-import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import com.sylvanaar.idea.Lua.editor.inspections.LuaFix;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaLocalDefinitionStatement;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.editor.inspections.LuaFix;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaDeclarationStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaLocalDefinitionStatement;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.ProblemDescriptor;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.psi.PsiElementVisitor;

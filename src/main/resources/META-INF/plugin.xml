@@ -33,8 +33,8 @@
 				text="Run Lua Console..." description="Run the Lua console">
 			<add-to-group group-id="ToolsMenu" anchor="last"/>
 		</action> -->
-		<action id="com.sylvanaar.idea.Lua.actions.GenerateLuaListingAction"
-				class="com.sylvanaar.idea.Lua.actions.GenerateLuaListingAction"
+		<action id="com.sylvanaar.idea.lua.actions.GenerateLuaListingAction"
+				class="com.sylvanaar.idea.lua.actions.GenerateLuaListingAction"
 				text="Generate Lua Listing"
 				description="Generate a source file annotated with comments containing the Lua byte-code for each line.">
 			<add-to-group group-id="ToolsMenu" anchor="last"/>
@@ -47,22 +47,18 @@
 	</actions>
 
 	<extensions defaultExtensionNs="com.intellij">
-		<!-- Repl Window -->
-		<!--<toolWindow id="Kahlua" anchor="right" icon="/icons/logo_13x13.png"-->
-		<!--factoryClass="com.sylvanaar.idea.Lua.kahlua.KahLuaInterpreterWindowFactory"/>-->
-		<toolWindow id="LuaJ" anchor="right" icon="consulo.lua.LuaIconGroup@logo_13x13"
-					factoryClass="com.sylvanaar.idea.Lua.luaj.LuaJInterpreterWindowFactory" requireModuleExtensions="lua"/>
+
 
 		<!-- Application Configuration -->
-		<applicationConfigurable id="lua" displayName="Lua" parentId="editor" instance="com.sylvanaar.idea.Lua.options.LuaOptionsPanel"/>
-		<applicationService serviceImplementation="com.sylvanaar.idea.Lua.options.LuaApplicationSettings"/>
+		<applicationConfigurable id="lua" displayName="Lua" parentId="editor" instance="com.sylvanaar.idea.lua.options.LuaOptionsPanel"/>
+		<applicationService serviceImplementation="com.sylvanaar.idea.lua.options.LuaApplicationSettings"/>
 
 
 
 		<additionalTextAttributes scheme="Default" file="colorSchemes/LuaLangDefault.xml"/>
 
 
-		<inspectionToolProvider id="Lua" implementation="com.sylvanaar.idea.Lua.editor.inspections.InspectionProvider"/>
+		<inspectionToolProvider id="Lua" implementation="com.sylvanaar.idea.lua.editor.inspections.InspectionProvider"/>
 
 
 
@@ -76,7 +72,6 @@
 
 
 
-		<gotoSymbolContributor implementation="com.sylvanaar.idea.Lua.editor.LuaGotoSymbolContributor"/>
 
 
 
@@ -84,7 +79,7 @@
 
 
 		<!--Stubs-->
-		<stubElementTypeHolder class="com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes"/>
+		<stubElementTypeHolder class="com.sylvanaar.idea.lua.lang.parser.LuaElementTypes"/>
 
 
 
@@ -94,18 +89,18 @@
 
 		<internalFileTemplate name="Lua Script"/>
 
-		<projectService serviceImplementation="com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager" lazy="false"/>
+		<projectService serviceImplementation="com.sylvanaar.idea.lua.lang.psi.LuaPsiManager" lazy="false"/>
 
 		<!-- control -->
 		<intentionAction>
-			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
+			<bundleName>com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle</bundleName>
 			<categoryKey>intention.category.lua/intention.category.control.flow</categoryKey>
-			<className>com.sylvanaar.idea.Lua.intentions.control.FlipComparisonIntention</className>
+			<className>com.sylvanaar.idea.lua.intentions.control.FlipComparisonIntention</className>
 		</intentionAction>
 		<intentionAction>
-			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
+			<bundleName>com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle</bundleName>
 			<categoryKey>intention.category.lua/intention.category.control.flow</categoryKey>
-			<className>com.sylvanaar.idea.Lua.intentions.control.FlipConjunctionIntention</className>
+			<className>com.sylvanaar.idea.lua.intentions.control.FlipConjunctionIntention</className>
 		</intentionAction>
 		<!--<intentionAction>-->
 		<!--<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>-->
@@ -113,29 +108,29 @@
 		<!--<className>com.sylvanaar.idea.Lua.intentions.control.ExpandBooleanIntention</className>-->
 		<!--</intentionAction>-->
 		<intentionAction>
-			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
+			<bundleName>com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle</bundleName>
 			<categoryKey>intention.category.lua/intention.category.control.flow</categoryKey>
-			<className>com.sylvanaar.idea.Lua.intentions.control.NegateComparisonIntention</className>
+			<className>com.sylvanaar.idea.lua.intentions.control.NegateComparisonIntention</className>
 		</intentionAction>
 
 
 		<!-- Calls -->
 		<intentionAction>
-			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
+			<bundleName>com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle</bundleName>
 			<categoryKey>intention.category.lua/intention.category.lua.style</categoryKey>
-			<className>com.sylvanaar.idea.Lua.intentions.style.UseStringColonCallIntention</className>
+			<className>com.sylvanaar.idea.lua.intentions.style.UseStringColonCallIntention</className>
 		</intentionAction>
 
 		<!-- comments -->
 		<intentionAction>
-			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
+			<bundleName>com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle</bundleName>
 			<categoryKey>intention.category.lua/intention.category.comments</categoryKey>
-			<className>com.sylvanaar.idea.Lua.intentions.comments.ChangeToCStyleCommentIntention</className>
+			<className>com.sylvanaar.idea.lua.intentions.comments.ChangeToCStyleCommentIntention</className>
 		</intentionAction>
 		<intentionAction>
-			<bundleName>com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle</bundleName>
+			<bundleName>com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle</bundleName>
 			<categoryKey>intention.category.lua/intention.category.comments</categoryKey>
-			<className>com.sylvanaar.idea.Lua.intentions.comments.ChangeToEndOfLineCommentIntention</className>
+			<className>com.sylvanaar.idea.lua.intentions.comments.ChangeToEndOfLineCommentIntention</className>
 		</intentionAction>
 	</extensions>
 </consulo-plugin>

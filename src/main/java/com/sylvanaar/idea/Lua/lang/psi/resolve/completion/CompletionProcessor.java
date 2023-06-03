@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.resolve.completion;
+package com.sylvanaar.idea.lua.lang.psi.resolve.completion;
 
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.*;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.resolve.*;
+import com.sylvanaar.idea.lua.lang.psi.resolve.processors.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.*;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.resolve.ResolveState;
 

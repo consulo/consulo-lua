@@ -16,9 +16,9 @@
 
 package consulo.lua.bundle;
 
-import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import com.sylvanaar.idea.Lua.run.kahlua.KahluaCommandLineState;
-import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
+import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
+import com.sylvanaar.idea.lua.run.kahlua.KahluaCommandLineState;
+import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.execution.runner.ExecutionEnvironment;
 import consulo.process.ExecutionException;

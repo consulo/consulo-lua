@@ -14,25 +14,25 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.lists;
+package com.sylvanaar.idea.lua.lang.psi.impl.lists;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.codeStyle.CodeStyleManager;
 import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaExpressionImpl;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaList;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaExpressionImpl;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaList;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 import javax.annotation.Nonnull;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.COMMA;
+import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.COMMA;
 
 
 /**

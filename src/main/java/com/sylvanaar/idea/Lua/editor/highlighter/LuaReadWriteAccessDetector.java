@@ -14,19 +14,19 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.highlighter;
+package com.sylvanaar.idea.lua.editor.highlighter;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaKeyValueInitializer;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaAssignment;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaKeyValueInitializer;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaModuleExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaAssignment;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.highlight.ReadWriteAccessDetector;
 import consulo.language.psi.PsiElement;

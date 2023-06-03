@@ -101,5 +101,10 @@
 			<artifactId>interpreter</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>consulo.internal</groupId>
+			<artifactId>forms_rt</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 </project>

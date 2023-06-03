@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.run.luaj;
+package com.sylvanaar.idea.lua.run.luaj;
 
 import consulo.execution.ExecutionResult;
 import consulo.execution.ui.ExecutionConsole;

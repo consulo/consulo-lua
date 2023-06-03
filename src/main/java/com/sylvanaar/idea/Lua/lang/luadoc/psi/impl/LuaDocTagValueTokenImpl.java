@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
 
 import consulo.language.ast.ASTNode;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
 import javax.annotation.Nonnull;
 
 public class LuaDocTagValueTokenImpl extends LuaDocPsiElementImpl implements LuaDocTagValueToken {

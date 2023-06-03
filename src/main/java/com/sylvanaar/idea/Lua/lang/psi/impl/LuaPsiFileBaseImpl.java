@@ -14,12 +14,12 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl;
+package com.sylvanaar.idea.lua.lang.psi.impl;
 
 import consulo.language.file.FileViewProvider;
 import consulo.language.impl.psi.PsiFileBase;
 import consulo.language.Language;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
 import javax.annotation.Nonnull;
 
 /**

@@ -14,16 +14,16 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
+package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.ast.ASTNode;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaParenthesizedExpression;
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaParenthesizedExpression;
+import com.sylvanaar.idea.lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 
 /**
  * Created by IntelliJ IDEA.

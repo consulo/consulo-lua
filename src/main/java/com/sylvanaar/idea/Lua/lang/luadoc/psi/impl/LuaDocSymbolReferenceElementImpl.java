@@ -14,18 +14,18 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocSymbolReference;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.ResolveProcessor;
-import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.SymbolResolveProcessor;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocSymbolReference;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
+import com.sylvanaar.idea.lua.lang.psi.resolve.processors.ResolveProcessor;
+import com.sylvanaar.idea.lua.lang.psi.resolve.processors.SymbolResolveProcessor;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
 import consulo.document.util.TextRange;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;

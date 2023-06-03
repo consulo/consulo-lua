@@ -14,11 +14,11 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.refactoring.introduce;
+package com.sylvanaar.idea.lua.refactoring.introduce;
 
-import com.sylvanaar.idea.Lua.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.refactoring.*;
+import com.sylvanaar.idea.lua.*;
+import com.sylvanaar.idea.lua.lang.psi.expressions.*;
+import com.sylvanaar.idea.lua.refactoring.*;
 import consulo.document.event.DocumentEvent;
 import consulo.document.event.DocumentListener;
 import consulo.language.editor.ui.awt.EditorComboBoxEditor;

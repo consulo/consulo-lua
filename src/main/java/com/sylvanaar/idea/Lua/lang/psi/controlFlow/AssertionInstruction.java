@@ -13,10 +13,10 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.controlFlow;
+package com.sylvanaar.idea.lua.lang.psi.controlFlow;
 
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.impl.InstructionImpl;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.impl.InstructionImpl;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 
 
 public class AssertionInstruction extends InstructionImpl {

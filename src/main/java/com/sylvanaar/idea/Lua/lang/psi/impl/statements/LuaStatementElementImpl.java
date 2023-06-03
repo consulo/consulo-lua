@@ -14,14 +14,14 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
+package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElementVisitor;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import javax.annotation.Nonnull;
 
 /**

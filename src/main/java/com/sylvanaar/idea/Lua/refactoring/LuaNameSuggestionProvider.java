@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.refactoring;
+package com.sylvanaar.idea.lua.refactoring;
 
 import consulo.language.editor.refactoring.rename.SuggestedNameInfo;
 import consulo.language.editor.refactoring.rename.NameSuggestionProvider;

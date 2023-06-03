@@ -2,8 +2,8 @@ package consulo.lua.action;
 
 import consulo.project.Project;
 import consulo.language.psi.PsiDirectory;
-import com.sylvanaar.idea.Lua.LuaBundle;
-import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.lua.LuaBundle;
+import com.sylvanaar.idea.lua.LuaIcons;
 import consulo.ide.action.CreateFileFromTemplateAction;
 import consulo.ide.action.CreateFileFromTemplateDialog;
 

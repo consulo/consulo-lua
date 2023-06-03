@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.util;
+package com.sylvanaar.idea.lua.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

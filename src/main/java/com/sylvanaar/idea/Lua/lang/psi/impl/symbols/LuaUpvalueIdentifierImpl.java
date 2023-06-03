@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
+package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaUpvalueIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaUpvalueIdentifier;
 import consulo.language.ast.ASTNode;
 
 /**

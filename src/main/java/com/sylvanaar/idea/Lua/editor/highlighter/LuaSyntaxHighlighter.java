@@ -14,15 +14,15 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.highlighter;
+package com.sylvanaar.idea.lua.editor.highlighter;
 
 import consulo.codeEditor.HighlighterColors;
 import consulo.colorScheme.TextAttributesKey;
 import consulo.language.editor.highlight.SyntaxHighlighterBase;
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaLexer;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
+import com.sylvanaar.idea.lua.lang.lexer.LuaLexer;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
 import consulo.language.lexer.Lexer;
 
 import javax.annotation.Nonnull;
@@ -30,7 +30,7 @@ import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.*;
+import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.*;
 
 /**
  * Created by IntelliJ IDEA.

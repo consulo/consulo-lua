@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.controlFlow;
+package com.sylvanaar.idea.lua.lang.psi.controlFlow;
 
 import consulo.logging.Logger;
 import consulo.util.collection.primitive.ints.IntLists;

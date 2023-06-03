@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.refactoring;
+package com.sylvanaar.idea.lua.refactoring;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,11 +27,11 @@ import consulo.language.lexer.Lexer;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.language.editor.util.PsiUtilBase;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaLexer;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.lexer.LuaLexer;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import consulo.util.lang.reflect.ReflectionUtil;
 
 /**

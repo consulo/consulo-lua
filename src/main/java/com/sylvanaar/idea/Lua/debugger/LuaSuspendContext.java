@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.debugger;
+package com.sylvanaar.idea.lua.debugger;
 
 import consulo.execution.debug.XSourcePosition;
 import consulo.execution.debug.frame.XExecutionStack;

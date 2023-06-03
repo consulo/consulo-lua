@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
+package com.sylvanaar.idea.lua.lang.psi.stubs.elements;
 
 import consulo.language.psi.stub.*;
 import consulo.index.io.StringRef;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaFileStub;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaFileStubBuilder;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.stubs.LuaFileStub;
+import com.sylvanaar.idea.lua.lang.psi.stubs.LuaFileStubBuilder;
 
 import java.io.IOException;
 

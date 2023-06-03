@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.controlFlow.impl;
+package com.sylvanaar.idea.lua.lang.psi.controlFlow.impl;
 
 import consulo.project.Project;
 import consulo.util.lang.Pair;
@@ -21,22 +21,22 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiErrorElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.util.PsiTreeUtil;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.AfterCallInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallEnvironment;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallInstruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.PsiUtil;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaAssignment;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaRecursiveElementVisitor;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.AfterCallInstruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.CallEnvironment;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.CallInstruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.expressions.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.PsiUtil;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.statements.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaAssignment;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaRecursiveElementVisitor;
 import consulo.logging.Logger;
 
 import java.util.ArrayList;

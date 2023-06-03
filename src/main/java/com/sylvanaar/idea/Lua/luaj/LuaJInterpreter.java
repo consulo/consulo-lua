@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.luaj;
+package com.sylvanaar.idea.lua.luaj;
 
 import consulo.execution.ui.console.ConsoleViewContentType;
 import consulo.application.ApplicationManager;

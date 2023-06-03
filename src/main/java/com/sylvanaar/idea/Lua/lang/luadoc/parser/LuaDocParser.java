@@ -14,13 +14,13 @@
 * limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.parser;
+package com.sylvanaar.idea.lua.lang.luadoc.parser;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.ast.IElementType;
 import consulo.language.parser.PsiBuilder;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.parsing.LuaDocParsing;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.parsing.LuaDocParsing;
 import consulo.language.ast.ASTNode;
 import consulo.language.parser.PsiParser;
 import consulo.language.version.LanguageVersion;

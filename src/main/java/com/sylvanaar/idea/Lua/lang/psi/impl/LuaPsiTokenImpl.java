@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl;
+package com.sylvanaar.idea.lua.lang.psi.impl;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.ast.IElementType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiToken;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiToken;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.impl.psi.LeafPsiElement;
 import consulo.language.psi.PsiElementVisitor;
 

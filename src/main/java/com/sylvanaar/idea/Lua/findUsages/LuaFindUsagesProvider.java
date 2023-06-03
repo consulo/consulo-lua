@@ -13,17 +13,17 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.findUsages;
+package com.sylvanaar.idea.lua.findUsages;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaLexer;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocal;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaUpvalueIdentifier;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.lexer.LuaLexer;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.psi.LuaNamedElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocal;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaUpvalueIdentifier;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.cacheBuilder.DefaultWordsScanner;

@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.expressions;
+package com.sylvanaar.idea.lua.lang.psi.expressions;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 
 /**
  * Created by IntelliJ IDEA.

@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.completion;
+package com.sylvanaar.idea.lua.editor.completion;
 
 import consulo.codeEditor.Editor;
 import consulo.language.editor.AutoPopupController;

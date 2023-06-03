@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.lexer;
+package com.sylvanaar.idea.lua.lang.lexer;
 
 import consulo.language.ast.TokenSet;
 import consulo.language.lexer.MergingLexerAdapter;

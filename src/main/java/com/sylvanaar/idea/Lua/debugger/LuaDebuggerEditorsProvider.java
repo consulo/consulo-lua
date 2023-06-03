@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.debugger;
+package com.sylvanaar.idea.lua.debugger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -30,11 +30,11 @@ import consulo.virtualFileSystem.VirtualFile;
 import consulo.language.file.FileViewProvider;
 import consulo.execution.debug.XSourcePosition;
 import consulo.execution.debug.evaluation.XDebuggerEditorsProvider;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaElementType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaExpressionCodeFragment;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.lexer.LuaElementType;
+import com.sylvanaar.idea.lua.lang.psi.LuaExpressionCodeFragment;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
 
 /**
  * Created by IntelliJ IDEA.

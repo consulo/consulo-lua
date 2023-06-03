@@ -13,10 +13,10 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang;
+package com.sylvanaar.idea.lua.lang;
 
 import consulo.language.editor.CodeInsightSettings;
-import com.sylvanaar.idea.Lua.LightLuaTestCase;
+import com.sylvanaar.idea.lua.LightLuaTestCase;
 
 /**
  * @author peter

@@ -13,14 +13,14 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.parser;
+package com.sylvanaar.idea.lua.lang.parser;
 
 import java.util.List;
 
 import consulo.language.psi.PsiFile;
 import consulo.language.impl.DebugUtil;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
-import com.sylvanaar.idea.Lua.util.TestUtils;
+import com.sylvanaar.idea.lua.util.TestUtils;
 
 /**
  * @author peter

@@ -14,7 +14,7 @@
 *   limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.api;
 
 
 import consulo.language.psi.PsiReference;

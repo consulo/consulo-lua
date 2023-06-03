@@ -14,10 +14,10 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.formatter.models.spacing;
+package com.sylvanaar.idea.lua.lang.formatter.models.spacing;
 
 import consulo.language.ast.TokenSet;
-import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 
 
 public abstract class SpacingTokens implements LuaElementTypes {

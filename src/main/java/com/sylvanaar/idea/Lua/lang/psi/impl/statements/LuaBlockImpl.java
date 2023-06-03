@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
+package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
 import javax.annotation.Nonnull;
 
@@ -27,17 +27,17 @@ import consulo.language.psi.resolve.ResolveState;
 import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.application.util.CachedValue;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
-import com.sylvanaar.idea.Lua.lang.psi.controlFlow.impl.ControlFlowBuilder;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
+import com.sylvanaar.idea.lua.lang.psi.controlFlow.impl.ControlFlowBuilder;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaDeclarationStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaReturnStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 
 /**
  * Created by IntelliJ IDEA.

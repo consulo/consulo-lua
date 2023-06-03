@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.codeInsight;
+package com.sylvanaar.idea.lua.codeInsight;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.codeEditor.CodeInsightColors;
 import consulo.codeEditor.markup.GutterIconRenderer;
@@ -28,9 +28,9 @@ import consulo.colorScheme.EditorColorsManager;
 import consulo.codeEditor.markup.SeparatorPlacement;
 import consulo.document.util.TextRange;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import consulo.annotation.access.RequiredReadAction;
 import consulo.language.editor.Pass;
 import consulo.language.editor.gutter.LineMarkerProvider;

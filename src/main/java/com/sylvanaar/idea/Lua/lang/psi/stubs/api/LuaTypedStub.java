@@ -14,11 +14,11 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
+package com.sylvanaar.idea.lua.lang.psi.stubs.api;
 
 import javax.annotation.Nullable;
 
-import com.sylvanaar.idea.Lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.types.*;
 
 /**
  * Created by IntelliJ IDEA.

@@ -14,14 +14,14 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
+package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
 import consulo.language.ast.ASTNode;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import javax.annotation.Nonnull;
 
 /**

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
+package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.scope.GlobalSearchScope;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementFactoryImpl;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementFactoryImpl;
+import com.sylvanaar.idea.lua.lang.psi.symbols.*;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiReference;
 import consulo.language.util.IncorrectOperationException;

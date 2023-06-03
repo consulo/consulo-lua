@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.highlighter;
+package com.sylvanaar.idea.lua.editor.highlighter;
 
-import com.sylvanaar.idea.Lua.LuaBundle;
+import com.sylvanaar.idea.lua.LuaBundle;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.colorScheme.TextAttributesKey;
 import consulo.colorScheme.setting.AttributesDescriptor;

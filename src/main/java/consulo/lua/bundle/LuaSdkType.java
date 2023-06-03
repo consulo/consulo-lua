@@ -16,9 +16,9 @@
 
 package consulo.lua.bundle;
 
-import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
+import com.sylvanaar.idea.lua.LuaIcons;
+import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
+import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
 import consulo.container.plugin.PluginManager;
 import consulo.content.OrderRootType;
 import consulo.content.base.BinariesOrderRootType;

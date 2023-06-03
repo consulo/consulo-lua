@@ -13,15 +13,15 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.editor.inspections.utils;
+package com.sylvanaar.idea.lua.editor.inspections.utils;
 
 import javax.annotation.Nonnull;
 
 import consulo.language.psi.util.PsiTreeUtil;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaConditionalExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.*;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 
 import javax.annotation.Nullable;
 

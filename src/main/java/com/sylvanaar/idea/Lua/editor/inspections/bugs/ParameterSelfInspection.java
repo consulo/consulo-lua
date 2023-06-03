@@ -14,18 +14,18 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.inspections.bugs;
+package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
 import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.psi.PsiElementVisitor;
-import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
-import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import org.jetbrains.annotations.Nls;
 import javax.annotation.Nonnull;
 

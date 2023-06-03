@@ -13,16 +13,16 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.projectView.nodes;
+package com.sylvanaar.idea.lua.projectView.nodes;
 
 import consulo.project.Project;
 import consulo.project.ui.view.tree.AbstractTreeNode;
 import consulo.project.ui.view.tree.PsiFileNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
-import com.sylvanaar.idea.Lua.projectView.LuaPsiFileChildrenSource;
+import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import com.sylvanaar.idea.lua.projectView.LuaPsiFileChildrenSource;
 import consulo.project.ui.view.tree.ViewSettings;
 
 import java.util.ArrayList;

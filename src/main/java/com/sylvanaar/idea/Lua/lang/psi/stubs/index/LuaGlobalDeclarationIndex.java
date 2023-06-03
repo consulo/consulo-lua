@@ -14,9 +14,9 @@
 * limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.lang.psi.stubs.index;
+package com.sylvanaar.idea.lua.lang.psi.stubs.index;
 
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.psi.stub.StringStubIndexExtension;
 import consulo.language.psi.stub.StubIndexKey;

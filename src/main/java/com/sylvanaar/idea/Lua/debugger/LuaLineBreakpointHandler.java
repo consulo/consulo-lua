@@ -1,4 +1,4 @@
-package com.sylvanaar.idea.Lua.debugger;
+package com.sylvanaar.idea.lua.debugger;
 
 import javax.annotation.Nonnull;
 

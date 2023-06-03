@@ -13,7 +13,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
+package com.sylvanaar.idea.lua.lang.psi.stubs.elements;
 
 import java.io.IOException;
 
@@ -25,16 +25,16 @@ import consulo.language.psi.stub.IndexSink;
 import consulo.language.psi.stub.StubElement;
 import consulo.language.psi.stub.StubInputStream;
 import consulo.language.psi.stub.StubOutputStream;
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaGlobalDeclarationImpl;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubUtils;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaGlobalDeclarationStubImpl;
-import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobalDeclaration;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
+import com.sylvanaar.idea.lua.lang.psi.impl.symbols.LuaGlobalDeclarationImpl;
+import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubElementType;
+import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubUtils;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
+import com.sylvanaar.idea.lua.lang.psi.stubs.impl.LuaGlobalDeclarationStubImpl;
+import com.sylvanaar.idea.lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobalDeclaration;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.util.LuaSerializationUtils;
 import consulo.util.lang.Pair;
 import consulo.util.lang.StringUtil;
 

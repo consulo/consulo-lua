@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.intentions.comments;
+package com.sylvanaar.idea.lua.intentions.comments;
 
 import consulo.language.ast.IElementType;
 import consulo.language.psi.PsiComment;
-import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
-import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
 import consulo.language.psi.PsiElement;
 
 class EndOfLineCommentPredicate implements PsiElementPredicate {

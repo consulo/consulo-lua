@@ -14,24 +14,24 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
+package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import consulo.navigation.ItemPresentation;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.Lua.LuaIcons;
-import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
-import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaAlias;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
-import com.sylvanaar.idea.Lua.lang.psi.types.LuaTypeUtil;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.LuaIcons;
+import com.sylvanaar.idea.lua.lang.psi.LuaNamedElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaAlias;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaTypeUtil;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import consulo.language.ast.ASTNode;
 import consulo.ui.image.Image;
 

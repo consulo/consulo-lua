@@ -14,9 +14,9 @@
 * limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.editor.highlighter;
+package com.sylvanaar.idea.lua.editor.highlighter;
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.editor.highlight.SingleLazyInstanceSyntaxHighlighterFactory;

@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.impl;
+package com.sylvanaar.idea.lua.lang.psi.impl;
 
 import javax.annotation.Nonnull;
 
@@ -30,9 +30,9 @@ import consulo.logging.Logger;
 import consulo.language.psi.PsiElement;
 import consulo.language.impl.psi.CheckUtil;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 
 public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiElement  {
     private static final Logger log = Logger.getInstance("Lua.LuaPsiElementImpl");

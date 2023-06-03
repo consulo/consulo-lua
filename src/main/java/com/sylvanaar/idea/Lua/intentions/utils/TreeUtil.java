@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sylvanaar.idea.Lua.intentions.utils;
+package com.sylvanaar.idea.lua.intentions.utils;
 
 import javax.annotation.Nullable;
 import consulo.language.psi.PsiElement;

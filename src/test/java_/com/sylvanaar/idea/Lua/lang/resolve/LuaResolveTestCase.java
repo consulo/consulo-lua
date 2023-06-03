@@ -14,9 +14,9 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.resolve;
+package com.sylvanaar.idea.lua.lang.resolve;
 
-import com.sylvanaar.idea.Lua.LightLuaTestCase;
+import com.sylvanaar.idea.lua.LightLuaTestCase;
 import consulo.language.psi.PsiReference;
 
 /**

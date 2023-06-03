@@ -14,17 +14,17 @@
 *   limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.refactoring;
+package com.sylvanaar.idea.lua.refactoring;
 
 // Does not work with version 9 and 10 at the same time
 
 
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.Language;
 import consulo.language.editor.refactoring.action.RefactoringActionHandler;
-import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
-import com.sylvanaar.idea.Lua.refactoring.introduce.LuaIntroduceVariableHandler;
+import com.sylvanaar.idea.lua.lang.psi.LuaNamedElement;
+import com.sylvanaar.idea.lua.refactoring.introduce.LuaIntroduceVariableHandler;
 import consulo.language.editor.refactoring.RefactoringSupportProvider;
 import consulo.language.psi.PsiElement;
 import jakarta.annotation.Nonnull;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.parser;
+package com.sylvanaar.idea.lua.lang.luadoc.parser;
 
 import javax.annotation.Nonnull;
 
@@ -24,12 +24,12 @@ import consulo.language.ast.ILazyParseableElementType;
 import consulo.language.parser.PsiBuilder;
 import consulo.language.parser.PsiBuilderFactory;
 import consulo.language.parser.PsiParser;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocElementType;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocElementTypeImpl;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocLexer;
-import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.LuaDocCommentImpl;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocElementType;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocElementTypeImpl;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocLexer;
+import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.LuaDocCommentImpl;
 import consulo.language.version.LanguageVersionUtil;
 import consulo.language.psi.PsiElement;
 import consulo.project.Project;

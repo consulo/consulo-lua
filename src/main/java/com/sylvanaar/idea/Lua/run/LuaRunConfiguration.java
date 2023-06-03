@@ -13,10 +13,10 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.run;
+package com.sylvanaar.idea.lua.run;
 
-import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
-import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
+import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
+import com.sylvanaar.idea.lua.util.LuaModuleUtil;
 import consulo.content.bundle.Sdk;
 import consulo.execution.RuntimeConfigurationException;
 import consulo.execution.configuration.*;

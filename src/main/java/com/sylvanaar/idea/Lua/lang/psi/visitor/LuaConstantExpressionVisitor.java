@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.visitor;
+package com.sylvanaar.idea.lua.lang.psi.visitor;
 
 import consulo.language.psi.PsiElement;
 import consulo.util.interner.Interner;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaLiteralExpression;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import consulo.util.dataholder.Key;
 
 import java.util.Set;

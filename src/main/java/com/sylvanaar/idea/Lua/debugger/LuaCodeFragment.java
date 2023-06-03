@@ -14,15 +14,15 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.debugger;
+package com.sylvanaar.idea.lua.debugger;
 
 import consulo.language.file.light.LightVirtualFile;
 import consulo.language.impl.file.SingleRootFileViewProvider;
 import consulo.language.psi.PsiManager;
 import consulo.project.Project;
 import consulo.language.psi.scope.GlobalSearchScope;
-import com.sylvanaar.idea.Lua.LuaFileType;
-import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiFileImpl;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiFileImpl;
 
 /**
  * Created by IntelliJ IDEA.

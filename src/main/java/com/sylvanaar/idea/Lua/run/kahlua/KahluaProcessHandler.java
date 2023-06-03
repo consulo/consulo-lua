@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.run.kahlua;
+package com.sylvanaar.idea.lua.run.kahlua;
 
 import consulo.process.ProcessHandler;
 import consulo.logging.Logger;

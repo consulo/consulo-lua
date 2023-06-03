@@ -14,13 +14,13 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.psi.statements;
+package com.sylvanaar.idea.lua.lang.psi.statements;
 
-import com.sylvanaar.idea.Lua.lang.psi.LuaControlFlowOwner;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaStatementOwner;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaVariableDeclarationOwner;
+import com.sylvanaar.idea.lua.lang.psi.LuaControlFlowOwner;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaStatementOwner;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaVariableDeclarationOwner;
 
 /**
  * Created by IntelliJ IDEA.

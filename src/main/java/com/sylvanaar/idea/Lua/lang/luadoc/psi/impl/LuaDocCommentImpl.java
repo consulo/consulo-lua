@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
+package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.util.PsiTreeUtil;
@@ -23,13 +23,13 @@ import consulo.language.psi.PsiWhiteSpace;
 import consulo.language.impl.psi.LazyParseablePsiElement;
 import consulo.language.ast.IElementType;
 import consulo.util.lang.CharArrayUtil;
-import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;

@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.refactoring.introduce;
+package com.sylvanaar.idea.lua.refactoring.introduce;
 
 /**
  * @author ilyas

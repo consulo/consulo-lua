@@ -14,15 +14,15 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua;
+package com.sylvanaar.idea.lua;
 
-import consulo.virtualFileSystem.internal.matcher.ExtensionFileNameMatcher;
-import consulo.language.file.LanguageFileType;
-import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.lua.lang.LuaLanguage;
 import consulo.language.Language;
+import consulo.language.file.LanguageFileType;
 import consulo.localize.LocalizeValue;
 import consulo.lua.localize.LuaLocalize;
 import consulo.ui.image.Image;
+import consulo.virtualFileSystem.internal.matcher.ExtensionFileNameMatcher;
 import org.jetbrains.annotations.NonNls;
 
 import javax.annotation.Nonnull;
@@ -41,7 +41,6 @@ public class LuaFileType extends LanguageFileType {
     @NonNls
     public static final String DEFAULT_EXTENSION = "lua";
     public static final String LUA = "Lua";
-    public static final String LUA_PLUGIN_ID = LUA;
 
     public static final ExtensionFileNameMatcher[] EXTENSION_FILE_NAME_MATCHERS = {
         new ExtensionFileNameMatcher(LuaFileType.DEFAULT_EXTENSION), new ExtensionFileNameMatcher("doclua"), new ExtensionFileNameMatcher("wlua"),
@@ -76,7 +75,7 @@ public class LuaFileType extends LanguageFileType {
     }
 
     public Image getIcon() {
-        return LuaIcons.LUA_ICON;
+        return com.sylvanaar.idea.lua.LuaIcons.LUA_ICON;
     }
 
 }

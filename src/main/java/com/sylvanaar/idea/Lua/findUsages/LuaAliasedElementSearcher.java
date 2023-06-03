@@ -13,7 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.findUsages;
+package com.sylvanaar.idea.lua.findUsages;
 
 import consulo.application.util.function.Processor;
 import consulo.content.scope.SearchScope;

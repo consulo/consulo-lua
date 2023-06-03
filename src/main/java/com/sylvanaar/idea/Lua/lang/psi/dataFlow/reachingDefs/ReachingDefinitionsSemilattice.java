@@ -13,13 +13,12 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.sylvanaar.idea.Lua.lang.psi.dataFlow.reachingDefs;
+package com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs;
 
-import com.sylvanaar.idea.Lua.lang.psi.dataFlow.Semilattice;
+import com.sylvanaar.idea.lua.lang.psi.dataFlow.Semilattice;
 import consulo.util.collection.primitive.ints.*;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 /**
  * @author ven

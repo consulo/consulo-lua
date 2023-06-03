@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package com.sylvanaar.idea.Lua.editor.highlighter;
+package com.sylvanaar.idea.lua.editor.highlighter;
 
 import consulo.codeEditor.DefaultLanguageHighlighterColors;
 import consulo.codeEditor.HighlighterColors;

@@ -14,9 +14,9 @@
 *   limitations under the License.
 */
 
-package com.sylvanaar.idea.Lua.lang.psi.statements;
+package com.sylvanaar.idea.lua.lang.psi.statements;
 
-import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 
 /**
 * Created by IntelliJ IDEA.
