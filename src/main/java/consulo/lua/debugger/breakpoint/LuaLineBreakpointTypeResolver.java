@@ -16,18 +16,21 @@
 
 package consulo.lua.debugger.breakpoint;
 
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
+import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.debugger.LuaLineBreakpointType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import consulo.annotation.access.RequiredReadAction;
-import consulo.xdebugger.breakpoints.XLineBreakpointTypeResolver;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.document.Document;
+import consulo.execution.debug.breakpoint.XLineBreakpointType;
+import consulo.execution.debug.breakpoint.XLineBreakpointTypeResolver;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -36,36 +39,38 @@ import javax.annotation.Nullable;
  * @author VISTALL
  * @since 5/8/2016
  */
-public class LuaLineBreakpointTypeResolver implements XLineBreakpointTypeResolver
-{
-	@Nullable
-	@Override
-	@RequiredReadAction
-	public XLineBreakpointType<?> resolveBreakpointType(@Nonnull Project project, @Nonnull VirtualFile virtualFile, int line)
-	{
-		PsiFile psiFile = PsiManager.getInstance(project).findFile(virtualFile);
+@ExtensionImpl
+public class LuaLineBreakpointTypeResolver implements XLineBreakpointTypeResolver {
+    @Nullable
+    @Override
+    @RequiredReadAction
+    public XLineBreakpointType<?> resolveBreakpointType(@Nonnull Project project, @Nonnull VirtualFile virtualFile, int line) {
+        PsiFile psiFile = PsiManager.getInstance(project).findFile(virtualFile);
 
-		assert psiFile != null;
+        assert psiFile != null;
 
-		if(!(psiFile instanceof LuaPsiFile))
-		{
-			return null;
-		}
+        if (!(psiFile instanceof LuaPsiFile)) {
+            return null;
+        }
 
-		Document document = PsiDocumentManager.getInstance(project).getDocument(psiFile);
+        Document document = PsiDocumentManager.getInstance(project).getDocument(psiFile);
 
-		assert document != null;
+        assert document != null;
 
-		int start = document.getLineStartOffset(line);
-		int end = document.getLineEndOffset(line);
+        int start = document.getLineStartOffset(line);
+        int end = document.getLineEndOffset(line);
 
-		for(LuaStatementElement stat : ((LuaPsiFile) psiFile).getAllStatements())
-		{
-			if(stat.getTextOffset() >= start && stat.getTextOffset() < end)
-			{
-				return LuaLineBreakpointType.getInstance();
-			}
-		}
-		return null;
-	}
+        for (LuaStatementElement stat : ((LuaPsiFile) psiFile).getAllStatements()) {
+            if (stat.getTextOffset() >= start && stat.getTextOffset() < end) {
+                return LuaLineBreakpointType.getInstance();
+            }
+        }
+        return null;
+    }
+
+    @Nonnull
+    @Override
+    public FileType getFileType() {
+        return LuaFileType.LUA_FILE_TYPE;
+    }
 }

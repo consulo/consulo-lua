@@ -16,17 +16,18 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.ExecutionResult;
-import com.intellij.execution.configurations.RunProfile;
-import com.intellij.execution.configurations.RunProfileState;
-import com.intellij.execution.executors.DefaultDebugExecutor;
-import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.execution.runners.GenericProgramRunner;
-import com.intellij.execution.ui.RunContentDescriptor;
-import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.xdebugger.XDebugSession;
-import com.intellij.xdebugger.XDebuggerManager;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.ExecutionResult;
+import consulo.execution.configuration.RunProfileState;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.process.ExecutionException;
+import consulo.execution.configuration.RunProfile;
+import consulo.execution.debug.DefaultDebugExecutor;
+import consulo.execution.runner.GenericProgramRunner;
+import consulo.execution.ui.RunContentDescriptor;
+import consulo.document.FileDocumentManager;
+import consulo.execution.debug.XDebugSession;
+import consulo.execution.debug.XDebuggerManager;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import consulo.ui.annotation.RequiredUIAccess;
 
@@ -39,6 +40,7 @@ import javax.annotation.Nullable;
  * Date: 3/19/11
  * Time: 6:42 PM
  */
+@ExtensionImpl
 public class LuaDebugRunner extends GenericProgramRunner
 {
 	@Nullable

@@ -16,38 +16,36 @@
 
 package consulo.lua.bundle;
 
-import java.util.HashMap;
-import java.util.Map;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.content.bundle.PredefinedBundlesProvider;
+import consulo.content.bundle.Sdk;
+import consulo.content.bundle.SdkModificator;
 
 import javax.annotation.Nonnull;
-
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
-import consulo.bundle.PredefinedBundlesProvider;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author VISTALL
  * @since 10.03.2015
  */
-public class LuaPredefinedBundlesProvider extends PredefinedBundlesProvider
-{
-	@Override
-	public void createBundles(@Nonnull Context context)
-	{
-		Map<String, LuaSdkType> map = new HashMap<String, LuaSdkType>();
-		map.put("Kahlua", KahluaSdkType.getInstance());
-		map.put("LuaJ", LuaJSdkType.getInstance());
+@ExtensionImpl
+public class LuaPredefinedBundlesProvider extends PredefinedBundlesProvider {
+    @Override
+    public void createBundles(@Nonnull Context context) {
+        Map<String, LuaSdkType> map = new HashMap<String, LuaSdkType>();
+        map.put("Kahlua", KahluaSdkType.getInstance());
+        map.put("LuaJ", LuaJSdkType.getInstance());
 
-		for(Map.Entry<String, LuaSdkType> entry : map.entrySet())
-		{
-			LuaSdkType luaSdkType = entry.getValue();
-			Sdk sdk = context.createSdkWithName(luaSdkType, entry.getKey());
+        for (Map.Entry<String, LuaSdkType> entry : map.entrySet()) {
+            LuaSdkType luaSdkType = entry.getValue();
+            Sdk sdk = context.createSdkWithName(luaSdkType, entry.getKey());
 
-			SdkModificator modificator = sdk.getSdkModificator();
-			modificator.setHomePath(luaSdkType.getStdLibraryDirectory().getPath());
-			modificator.commitChanges();
+            SdkModificator modificator = sdk.getSdkModificator();
+            modificator.setHomePath(luaSdkType.getStdLibraryDirectory().getPath());
+            modificator.commitChanges();
 
-			luaSdkType.setupSdkPaths(sdk);
-		}
-	}
+            luaSdkType.setupSdkPaths(sdk);
+        }
+    }
 }

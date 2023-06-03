@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.intentions.utils;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 import consulo.util.collection.HashingStrategy;
 import consulo.util.collection.Maps;
 

@@ -16,14 +16,16 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
 
-import com.intellij.lang.*;
-import com.intellij.psi.*;
-import com.intellij.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.lists.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiNamedElement;
+import consulo.language.util.IncorrectOperationException;
 import org.jetbrains.annotations.*;
 
 import java.util.*;
@@ -37,7 +39,8 @@ import javax.annotation.Nullable;
  * Date: Aug 28, 2010
  * Time: 10:04:11 AM
  */
-public class LuaFunctionCallExpressionImpl extends LuaExpressionImpl implements LuaFunctionCallExpression, PsiNamedElement {
+public class LuaFunctionCallExpressionImpl extends LuaExpressionImpl implements LuaFunctionCallExpression, PsiNamedElement
+{
     public LuaFunctionCallExpressionImpl(ASTNode node) {
         super(node);
     }
@@ -109,7 +112,8 @@ public class LuaFunctionCallExpressionImpl extends LuaExpressionImpl implements 
     }
 
     @Override
-    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException
+	{
         return null;
     }
 

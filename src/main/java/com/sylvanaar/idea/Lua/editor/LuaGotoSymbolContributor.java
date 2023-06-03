@@ -16,18 +16,19 @@
 
 package com.sylvanaar.idea.Lua.editor;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import com.intellij.navigation.ChooseByNameContributor;
-import com.intellij.navigation.NavigationItem;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.search.GlobalSearchScope;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.ResolveUtil;
-import consulo.ide.IconDescriptorUpdaters;
+import consulo.ide.navigation.ChooseByNameContributor;
+import consulo.ide.navigation.GotoSymbolContributor;
+import consulo.language.icon.IconDescriptorUpdaters;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.navigation.NavigationItem;
+import consulo.project.Project;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,7 +36,7 @@ import consulo.ide.IconDescriptorUpdaters;
  * Date: 11/23/10
  * Time: 3:38 PM
  */
-public class LuaGotoSymbolContributor implements ChooseByNameContributor {
+public class LuaGotoSymbolContributor implements GotoSymbolContributor {
     @Override
     public String[] getNames(Project project, boolean b) {
         final Collection<String> names = new ArrayList<String>();

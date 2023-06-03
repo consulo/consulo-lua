@@ -16,10 +16,9 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import com.intellij.execution.filters.Filter;
-import com.intellij.execution.filters.RegexpFilter;
-import com.intellij.openapi.project.Project;
-
+import consulo.execution.ui.console.Filter;
+import consulo.execution.ui.console.RegexpFilter;
+import consulo.project.Project;
 
 public class LuaLineErrorFilter extends RegexpFilter implements Filter {
     //e.g. E:/IdeaProjects/IDLua/src/test.lua:17:

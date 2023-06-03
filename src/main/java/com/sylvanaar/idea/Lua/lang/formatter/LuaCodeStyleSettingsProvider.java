@@ -16,9 +16,11 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter;
 
-import com.intellij.openapi.options.Configurable;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.codeStyle.CodeStyleSettingsProvider;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.configurable.Configurable;
+import consulo.language.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.setting.CodeStyleSettingsProvider;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -27,15 +29,16 @@ import javax.annotation.Nonnull;
  * Date: 10/1/11
  * Time: 12:46 PM
  */
+@ExtensionImpl
 public class LuaCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
-  @Nonnull
-  @Override
-  public Configurable createSettingsPage(CodeStyleSettings settings, CodeStyleSettings originalSettings) {
-    return new LuaCodeStyleConfigurable(settings, originalSettings);
-  }
+    @Nonnull
+    @Override
+    public Configurable createSettingsPage(CodeStyleSettings settings, CodeStyleSettings originalSettings) {
+        return new LuaCodeStyleConfigurable(settings, originalSettings);
+    }
 
-  @Override
-  public String getConfigurableDisplayName() {
-    return "Lua";
-  }
+    @Override
+    public String getConfigurableDisplayName() {
+        return "Lua";
+    }
 }

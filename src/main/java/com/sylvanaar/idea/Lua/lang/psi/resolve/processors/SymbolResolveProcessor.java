@@ -16,12 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.StubBasedPsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.StubBasedPsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocSymbolReference;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
@@ -32,6 +30,8 @@ import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import consulo.language.psi.PsiReference;
+import consulo.logging.Logger;
 import consulo.util.dataholder.Key;
 
 import javax.annotation.Nonnull;

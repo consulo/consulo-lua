@@ -16,14 +16,17 @@
 
 package com.sylvanaar.idea.Lua.lang;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.CodeDocumentationAwareCommenterEx;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.CodeDocumentationAwareCommenterEx;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
+import consulo.language.psi.PsiComment;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,7 +34,9 @@ import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
  * Date: 04.07.2009
  * Time: 14:12:45
  */
-public class LuaCommenter implements CodeDocumentationAwareCommenterEx {
+@ExtensionImpl
+public class LuaCommenter implements CodeDocumentationAwareCommenterEx
+{
 
     public String getLineCommentPrefix() {
         return "--";
@@ -99,4 +104,9 @@ public class LuaCommenter implements CodeDocumentationAwareCommenterEx {
     }
 
 
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
 }

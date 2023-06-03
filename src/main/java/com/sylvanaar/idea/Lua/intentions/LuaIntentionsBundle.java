@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.intentions;
 
-import com.intellij.CommonBundle;
+import consulo.application.CommonBundle;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.PropertyKey;
 

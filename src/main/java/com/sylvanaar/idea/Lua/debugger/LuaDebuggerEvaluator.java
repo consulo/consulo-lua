@@ -18,10 +18,10 @@ package com.sylvanaar.idea.Lua.debugger;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.project.Project;
-import com.intellij.xdebugger.XSourcePosition;
-import com.intellij.xdebugger.evaluation.XDebuggerEvaluator;
+import consulo.execution.debug.XSourcePosition;
+import consulo.logging.Logger;
+import consulo.execution.debug.evaluation.XDebuggerEvaluator;
+import consulo.project.Project;
 
 import javax.annotation.Nullable;
 

@@ -16,13 +16,15 @@
 
 package com.sylvanaar.idea.Lua.projectView;
 
-import com.intellij.ide.projectView.TreeStructureProvider;
-import com.intellij.ide.projectView.ViewSettings;
-import com.intellij.ide.util.treeView.AbstractTreeNode;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.openapi.project.Project;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.projectView.nodes.LuaFileTreeNode;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.dumb.DumbAware;
+import consulo.project.Project;
+import consulo.project.ui.view.tree.AbstractTreeNode;
+import consulo.project.ui.view.tree.TreeStructureProvider;
+import consulo.project.ui.view.tree.ViewSettings;
+import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,11 +35,13 @@ import java.util.Collection;
  * Date: 12/22/11
  * Time: 12:58 PM
  */
+@ExtensionImpl
 public class LuaProjectTreeSubElementProvider implements TreeStructureProvider, DumbAware {
     private final Project myProject;
 
+    @Inject
     public LuaProjectTreeSubElementProvider(Project project) {
-      myProject = project;
+        myProject = project;
     }
 
     @Override

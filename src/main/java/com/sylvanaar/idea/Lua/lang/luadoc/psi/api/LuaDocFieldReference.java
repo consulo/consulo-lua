@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
 
-import com.intellij.psi.PsiPolyVariantReference;
+import consulo.language.psi.PsiPolyVariantReference;
 
 /**
  * @author ilyas

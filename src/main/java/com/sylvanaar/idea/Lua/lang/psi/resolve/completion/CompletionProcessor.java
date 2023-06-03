@@ -16,11 +16,12 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve.completion;
 
-import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.ResolveState;
 
 import java.util.*;
 

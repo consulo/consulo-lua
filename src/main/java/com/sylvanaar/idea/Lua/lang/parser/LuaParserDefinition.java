@@ -17,31 +17,31 @@
 package com.sylvanaar.idea.Lua.lang.parser;
 
 
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.COMMENT_SET;
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.KEYWORDS;
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.STRING_LITERAL_SET;
-import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.WHITE_SPACES_SET;
-
-import javax.annotation.Nonnull;
-
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.LanguageUtil;
-import com.intellij.lang.ParserDefinition;
-import com.intellij.lang.PsiParser;
-import com.intellij.lexer.Lexer;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IFileElementType;
-import com.intellij.psi.tree.IStubFileElementType;
-import com.intellij.psi.tree.TokenSet;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaLexer;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaParsingLexerMergingAdapter;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.parser.kahlua.KahluaParser;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiFileImpl;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.elements.LuaStubFileElementType;
-import consulo.lang.LanguageVersion;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IFileElementType;
+import consulo.language.ast.TokenSet;
+import consulo.language.file.FileViewProvider;
+import consulo.language.lexer.Lexer;
+import consulo.language.parser.ParserDefinition;
+import consulo.language.parser.PsiParser;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.IStubFileElementType;
+import consulo.language.util.LanguageUtil;
+import consulo.language.version.LanguageVersion;
+
+import javax.annotation.Nonnull;
+
+import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -49,9 +49,17 @@ import consulo.lang.LanguageVersion;
  * Date: 04.07.2009
  * Time: 14:39:39
  */
-public class LuaParserDefinition implements ParserDefinition {
+@ExtensionImpl
+public class LuaParserDefinition implements ParserDefinition
+{
     public static final IStubFileElementType LUA_FILE = new LuaStubFileElementType();
     //public static final IFileElementType LUA_FILE = new IFileElementType("Lua Script", LuaFileType.LUA_LANGUAGE);
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
 
     @Nonnull
     public Lexer createLexer( LanguageVersion languageVersion) {

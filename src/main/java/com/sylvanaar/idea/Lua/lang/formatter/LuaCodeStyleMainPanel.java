@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter;
 
-import com.intellij.application.options.TabbedLanguageCodeStylePanel;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.CodeStyleSettings;
 import com.sylvanaar.idea.Lua.LuaFileType;
+import consulo.language.codeStyle.ui.setting.TabbedLanguageCodeStylePanel;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,7 +26,8 @@ import com.sylvanaar.idea.Lua.LuaFileType;
  * Date: 10/1/11
  * Time: 12:51 PM
  */
-public class LuaCodeStyleMainPanel extends TabbedLanguageCodeStylePanel {
+public class LuaCodeStyleMainPanel extends TabbedLanguageCodeStylePanel
+{
   protected LuaCodeStyleMainPanel(CodeStyleSettings currentSettings, CodeStyleSettings settings) {
     super(LuaFileType.LUA_LANGUAGE, currentSettings, settings);
   }

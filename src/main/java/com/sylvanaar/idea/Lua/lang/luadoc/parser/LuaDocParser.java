@@ -17,18 +17,20 @@
 package com.sylvanaar.idea.Lua.lang.luadoc.parser;
 
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiParser;
-import com.intellij.psi.tree.IElementType;
+
+import consulo.language.ast.IElementType;
+import consulo.language.parser.PsiBuilder;
 import com.sylvanaar.idea.Lua.lang.luadoc.parser.parsing.LuaDocParsing;
-import consulo.lang.LanguageVersion;
+import consulo.language.ast.ASTNode;
+import consulo.language.parser.PsiParser;
+import consulo.language.version.LanguageVersion;
 
 
 /**
 * @author ilyas
 */
-public class LuaDocParser implements PsiParser {
+public class LuaDocParser implements PsiParser
+{
   @Nonnull
   public ASTNode parse(IElementType root, PsiBuilder builder, LanguageVersion languageVersion) {
     PsiBuilder.Marker rootMarker = builder.mark();

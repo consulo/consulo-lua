@@ -18,11 +18,11 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubSerializer;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubSerializer;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import consulo.language.psi.stub.StubElement;
 import org.jetbrains.annotations.NonNls;
 
 /**

@@ -15,18 +15,20 @@
  */
 package com.sylvanaar.idea.Lua.run;
 
-import javax.annotation.Nonnull;
-import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.ConfigurationType;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.configurations.RunConfigurationModule;
-import com.intellij.openapi.extensions.Extensions;
-import com.intellij.openapi.project.Project;
-import com.intellij.util.containers.ContainerUtil;
 import com.sylvanaar.idea.Lua.LuaIcons;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.configuration.ConfigurationFactory;
+import consulo.execution.configuration.ConfigurationType;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.configuration.RunConfigurationModule;
+import consulo.project.Project;
 import consulo.ui.image.Image;
 
-public class LuaConfigurationType implements ConfigurationType {
+import javax.annotation.Nonnull;
+
+@ExtensionImpl
+public class LuaConfigurationType implements ConfigurationType
+{
   private final ConfigurationFactory myFactory;
   
   public LuaConfigurationType() {
@@ -55,7 +57,7 @@ public class LuaConfigurationType implements ConfigurationType {
     }
 
     public static LuaConfigurationType getInstance() {
-        return ContainerUtil.findInstance(Extensions.getExtensions(CONFIGURATION_TYPE_EP), LuaConfigurationType.class);
+        return EP_NAME.findExtensionOrFail(LuaConfigurationType.class);
     }
 
     public ConfigurationFactory[] getConfigurationFactories() {

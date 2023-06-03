@@ -18,14 +18,14 @@ package com.sylvanaar.idea.Lua.lang.structure;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.structureView.TextEditorBasedStructureViewModel;
-import com.intellij.ide.util.treeView.smartTree.Sorter;
-import com.intellij.psi.PsiFile;
+import consulo.fileEditor.structureView.tree.Sorter;
+import consulo.language.psi.PsiFile;
 
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.structure.impl.LuaFileStructureViewElement;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,7 +33,8 @@ import com.sylvanaar.idea.Lua.lang.structure.impl.LuaFileStructureViewElement;
  * Date: Apr 10, 2010
  * Time: 3:25:48 PM
  */
-public class LuaStructureViewModel  extends TextEditorBasedStructureViewModel {
+public class LuaStructureViewModel  extends TextEditorBasedStructureViewModel
+{
   private final LuaPsiFile myRootElement;
 
   private static final Class[] SUITABLE_CLASSES =

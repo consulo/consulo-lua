@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.types;
 
-import com.intellij.navigation.NavigationItem;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.text.StringUtil;
+import consulo.util.lang.StringUtil;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
+import consulo.logging.Logger;
+import consulo.navigation.NavigationItem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,7 @@ import java.util.Map;
  * Time: 3:08 AM
  */
 public class LuaTable extends LuaTypeImpl implements LuaNamespacedType {
-    static final         Logger log              = Logger.getInstance("Lua.LuaTable");
+    static final Logger log              = Logger.getInstance("Lua.LuaTable");
     private static final long   serialVersionUID = 1827449546740623111L;
 
     final private Map<String, LuaType> hash = new HashMap<String, LuaType>();

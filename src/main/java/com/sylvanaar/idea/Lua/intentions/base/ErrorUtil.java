@@ -15,9 +15,9 @@
  */
 package com.sylvanaar.idea.Lua.intentions.base;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiRecursiveElementVisitor;
-import com.intellij.psi.PsiErrorElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.PsiRecursiveElementVisitor;
 
 public class ErrorUtil {
 
@@ -31,7 +31,8 @@ public class ErrorUtil {
     return visitor.containsErrorElement();
   }
 
-  private static class ErrorElementVisitor extends PsiRecursiveElementVisitor {
+  private static class ErrorElementVisitor extends PsiRecursiveElementVisitor
+  {
     private boolean containsErrorElement = false;
 
     public void visitErrorElement(PsiErrorElement element) {

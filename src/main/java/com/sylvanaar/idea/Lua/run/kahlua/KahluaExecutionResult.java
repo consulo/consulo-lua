@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.run.kahlua;
 
-import com.intellij.execution.ExecutionResult;
-import com.intellij.execution.process.ProcessHandler;
-import com.intellij.execution.ui.ExecutionConsole;
-import com.intellij.openapi.actionSystem.AnAction;
+import consulo.execution.ExecutionResult;
+import consulo.execution.ui.ExecutionConsole;
+import consulo.process.ProcessHandler;
+import consulo.ui.ex.action.AnAction;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,7 +27,8 @@ import com.intellij.openapi.actionSystem.AnAction;
  * Date: Sep 6, 2010
  * Time: 8:51:55 AM
  */
-public class KahluaExecutionResult  implements ExecutionResult {
+public class KahluaExecutionResult  implements ExecutionResult
+{
     private final ExecutionConsole myConsole;
     private final AnAction[] myActions;
 

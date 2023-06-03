@@ -20,12 +20,12 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import consulo.configurable.BaseConfigurable;
 import org.jetbrains.annotations.Nls;
-import com.intellij.openapi.options.BaseConfigurable;
-import com.intellij.openapi.options.Configurable;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
-import com.intellij.psi.PsiManager;
+import consulo.configurable.Configurable;
+import consulo.project.Project;
+import consulo.project.ProjectManager;
+import consulo.language.psi.PsiManager;
 import com.sylvanaar.idea.Lua.LuaFileType;
 
 /**

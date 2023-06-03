@@ -17,8 +17,8 @@ package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations;
 
 import javax.annotation.Nullable;
 
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
+import consulo.language.psi.PsiElement;
 
 
 public abstract class LuaItemPresentation implements ItemPresentation {

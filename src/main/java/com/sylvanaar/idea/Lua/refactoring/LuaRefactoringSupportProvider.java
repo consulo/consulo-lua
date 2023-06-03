@@ -19,11 +19,15 @@ package com.sylvanaar.idea.Lua.refactoring;
 // Does not work with version 9 and 10 at the same time
 
 
-import com.intellij.lang.refactoring.RefactoringSupportProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.refactoring.RefactoringActionHandler;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.refactoring.action.RefactoringActionHandler;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
 import com.sylvanaar.idea.Lua.refactoring.introduce.LuaIntroduceVariableHandler;
+import consulo.language.editor.refactoring.RefactoringSupportProvider;
+import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nonnull;
 
 /**
 * Created by IntelliJ IDEA.
@@ -31,6 +35,7 @@ import com.sylvanaar.idea.Lua.refactoring.introduce.LuaIntroduceVariableHandler;
 * Date: Jun 12, 2010
 * Time: 4:38:09 AM
 */
+@ExtensionImpl
 public class LuaRefactoringSupportProvider extends RefactoringSupportProvider {
     @Override
     public boolean isSafeDeleteAvailable(PsiElement element) {
@@ -40,5 +45,11 @@ public class LuaRefactoringSupportProvider extends RefactoringSupportProvider {
     @Override
     public RefactoringActionHandler getIntroduceVariableHandler() {
         return new LuaIntroduceVariableHandler();
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
     }
 }

@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs;
 
-import com.intellij.openapi.util.Pair;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
+import consulo.language.psi.stub.StubInputStream;
+import consulo.language.psi.stub.StubOutputStream;
+import consulo.util.lang.Pair;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaTypedStub;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;

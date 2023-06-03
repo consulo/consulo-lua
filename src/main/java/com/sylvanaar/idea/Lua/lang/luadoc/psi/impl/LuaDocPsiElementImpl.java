@@ -16,9 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 
-import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
+import consulo.language.ast.ASTNode;
+
 import javax.annotation.Nonnull;
 
 /**

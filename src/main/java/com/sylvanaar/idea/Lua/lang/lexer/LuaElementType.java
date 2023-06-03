@@ -16,10 +16,11 @@
 
 package com.sylvanaar.idea.Lua.lang.lexer;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -28,7 +29,8 @@ import javax.annotation.Nonnull;
  * Date: 06.07.2009
  * Time: 15:51:05
  */
-public class LuaElementType extends IElementType {
+public class LuaElementType extends IElementType
+{
 
   private String debugName = null;
 

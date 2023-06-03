@@ -16,10 +16,11 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
-import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
+import consulo.annotation.component.ComponentScope;
+import consulo.annotation.component.ServiceAPI;
+import consulo.language.psi.PsiComment;
+import consulo.project.Project;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocParameterReference;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocReferenceElement;
@@ -28,6 +29,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import consulo.ide.ServiceManager;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,6 +37,7 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
  * Date: Apr 14, 2010
  * Time: 7:12:06 PM
  */
+@ServiceAPI(ComponentScope.PROJECT)
 public abstract class LuaPsiElementFactory {
     public static LuaPsiElementFactory getInstance(Project project) {
         return ServiceManager.getService(project, LuaPsiElementFactory.class);

@@ -18,12 +18,12 @@ package com.sylvanaar.idea.Lua.lang.luadoc.references;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.PsiReferenceProvider;
-import com.intellij.psi.filters.ElementFilter;
-import com.intellij.util.ProcessingContext;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.PsiReferenceProvider;
+import consulo.language.util.ProcessingContext;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.filter.ElementFilter;
 
 
 /**
@@ -41,7 +41,8 @@ public class LuaDocReferenceProvider extends PsiReferenceProvider {
     return getReferencesByElement(element);
   }
 
-  public static class LuaDocReferenceFilter implements ElementFilter {
+  public static class LuaDocReferenceFilter implements ElementFilter
+  {
     public boolean isAcceptable(Object element, PsiElement context) {
       return context instanceof LuaDocPsiElement;
     }

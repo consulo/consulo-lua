@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.lexer;
 
-import com.intellij.psi.tree.IElementType;
-import com.intellij.lang.Language;
+import consulo.language.ast.IElementType;
+import consulo.language.Language;
 import org.jetbrains.annotations.NonNls;
 
 import javax.annotation.Nonnull;

@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.expressions;
 
-import com.intellij.psi.tree.IElementType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import consulo.language.ast.IElementType;
 
 /**
  * Created by IntelliJ IDEA.

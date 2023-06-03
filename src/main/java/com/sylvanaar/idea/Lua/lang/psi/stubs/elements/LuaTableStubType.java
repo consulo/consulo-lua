@@ -20,12 +20,7 @@ import java.io.IOException;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.SerializationManagerEx;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.psi.stubs.StubSerializer;
+
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaTableConstructorImpl;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
@@ -33,6 +28,7 @@ import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaTableStub;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaTableStubImpl;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaTable;
 import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
+import consulo.language.psi.stub.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -41,8 +37,8 @@ import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
  * Time: 6:41 AM
  */
 
-public class LuaTableStubType extends LuaStubElementType<LuaTableStub, LuaTableConstructor> implements
-        StubSerializer<LuaTableStub> {
+public class LuaTableStubType extends LuaStubElementType<LuaTableStub, LuaTableConstructor> implements StubSerializer<LuaTableStub>
+{
 
     public LuaTableStubType() {
         super("TABLE");
@@ -82,7 +78,6 @@ public class LuaTableStubType extends LuaStubElementType<LuaTableStub, LuaTableC
         if (hasType)
         {
             int len = dataStream.readVarInt();
-            if (len < 0) ((SerializationManagerEx) SerializationManagerEx.getInstance()).repairNameStorage();
 
             if (len <= 0) {
                 return new LuaTableStubImpl(parentStub);

@@ -17,7 +17,7 @@
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 
 
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
 import javax.annotation.Nonnull;
 

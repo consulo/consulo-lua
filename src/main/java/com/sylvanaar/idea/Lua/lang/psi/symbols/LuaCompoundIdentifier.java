@@ -16,12 +16,12 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.symbols;
 
-import com.intellij.navigation.NavigationItem;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.StubBasedPsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.StubBasedPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaCompoundIdentifierStub;
+import consulo.navigation.NavigationItem;
 
 /**
  * Created by IntelliJ IDEA.

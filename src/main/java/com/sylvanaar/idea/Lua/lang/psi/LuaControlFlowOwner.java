@@ -16,8 +16,8 @@
 package com.sylvanaar.idea.Lua.lang.psi;
 
 
-import com.intellij.psi.util.CachedValue;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
+import consulo.application.util.CachedValue;
 import consulo.util.dataholder.Key;
 
 public interface LuaControlFlowOwner extends LuaPsiElement {

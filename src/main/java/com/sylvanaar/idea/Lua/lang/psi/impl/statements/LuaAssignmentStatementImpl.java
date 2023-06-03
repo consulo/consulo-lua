@@ -16,12 +16,6 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
-import com.intellij.lang.*;
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.psi.*;
-import com.intellij.psi.scope.*;
-import com.intellij.psi.tree.*;
-import com.intellij.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.parser.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
@@ -32,6 +26,14 @@ import com.sylvanaar.idea.Lua.lang.psi.types.InferenceUtil;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
 import com.sylvanaar.idea.Lua.util.*;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.logging.Logger;
 
 import java.util.*;
 

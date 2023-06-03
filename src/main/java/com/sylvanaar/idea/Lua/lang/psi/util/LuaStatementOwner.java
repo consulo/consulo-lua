@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.util;
 
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import javax.annotation.Nonnull;

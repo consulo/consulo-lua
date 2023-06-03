@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 
 import java.util.Hashtable;
 
-import com.intellij.openapi.diagnostic.Logger;
+import consulo.logging.Logger;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import se.krka.kahlua.vm.Prototype;
 

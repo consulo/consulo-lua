@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter;
 
-import com.intellij.application.options.CodeStyleAbstractConfigurable;
-import com.intellij.application.options.CodeStyleAbstractPanel;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.ui.setting.CodeStyleAbstractConfigurable;
+import consulo.language.codeStyle.ui.setting.CodeStyleAbstractPanel;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,7 +26,8 @@ import com.intellij.psi.codeStyle.CodeStyleSettings;
  * Date: 10/1/11
  * Time: 12:47 PM
  */
-public class LuaCodeStyleConfigurable extends CodeStyleAbstractConfigurable {
+public class LuaCodeStyleConfigurable extends CodeStyleAbstractConfigurable
+{
     public LuaCodeStyleConfigurable(CodeStyleSettings settings, CodeStyleSettings originalSettings) {
         super(settings, originalSettings, "Lua");
     }

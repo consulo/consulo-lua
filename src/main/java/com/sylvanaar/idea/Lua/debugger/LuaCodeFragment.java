@@ -16,10 +16,11 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.*;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.testFramework.LightVirtualFile;
+import consulo.language.file.light.LightVirtualFile;
+import consulo.language.impl.file.SingleRootFileViewProvider;
+import consulo.language.psi.PsiManager;
+import consulo.project.Project;
+import consulo.language.psi.scope.GlobalSearchScope;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiFileImpl;
 

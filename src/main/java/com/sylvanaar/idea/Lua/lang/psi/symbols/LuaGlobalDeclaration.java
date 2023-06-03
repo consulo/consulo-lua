@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.symbols;
 
-import com.intellij.psi.StubBasedPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
+import consulo.language.psi.StubBasedPsiElement;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,6 +26,7 @@ import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
  * Date: 1/23/11
  * Time: 7:56 PM
  */
-public interface LuaGlobalDeclaration extends LuaGlobal, LuaDeclarationExpression, StubBasedPsiElement<LuaGlobalDeclarationStub> {
+public interface LuaGlobalDeclaration extends LuaGlobal, LuaDeclarationExpression, StubBasedPsiElement<LuaGlobalDeclarationStub>
+{
 
 }

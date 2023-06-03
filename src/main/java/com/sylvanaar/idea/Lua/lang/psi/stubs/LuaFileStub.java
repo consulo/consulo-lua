@@ -16,16 +16,17 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.stubs.PsiFileStub;
-import com.intellij.psi.stubs.PsiFileStubImpl;
-import com.intellij.psi.tree.IStubFileElementType;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.IStubFileElementType;
+import consulo.language.psi.stub.PsiFileStub;
+import consulo.logging.Logger;
+import consulo.language.psi.stub.PsiFileStubImpl;
+import consulo.index.io.StringRef;
 import com.sylvanaar.idea.Lua.lang.parser.LuaParserDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 
 
-public class LuaFileStub extends PsiFileStubImpl<LuaPsiFile> implements PsiFileStub<LuaPsiFile> {
+public class LuaFileStub extends PsiFileStubImpl<LuaPsiFile> implements PsiFileStub<LuaPsiFile>
+{
     private static final Logger log = Logger.getInstance("Lua.StubFile");
     private StringRef myName;
 

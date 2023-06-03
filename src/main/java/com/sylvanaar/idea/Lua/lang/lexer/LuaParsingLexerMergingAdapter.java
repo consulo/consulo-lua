@@ -16,11 +16,11 @@
 
 package com.sylvanaar.idea.Lua.lang.lexer;
 
-import com.intellij.lexer.Lexer;
-import com.intellij.lexer.MergeFunction;
-import com.intellij.lexer.MergingLexerAdapterBase;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.lexer.Lexer;
+import consulo.language.lexer.MergeFunction;
+import consulo.language.lexer.MergingLexerAdapterBase;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
 
 /**
  * Created by IntelliJ IDEA.

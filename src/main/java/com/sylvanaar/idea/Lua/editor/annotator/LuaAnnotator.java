@@ -15,22 +15,33 @@
  */
 package com.sylvanaar.idea.Lua.editor.annotator;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.lang.annotation.*;
-import com.intellij.openapi.editor.*;
-import com.intellij.openapi.editor.colors.*;
-import com.intellij.openapi.util.*;
-import com.intellij.psi.*;
-import com.sylvanaar.idea.Lua.editor.highlighter.*;
-import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.Lua.lang.psi.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.lists.*;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
+import com.sylvanaar.idea.Lua.editor.highlighter.LuaHighlightingData;
+import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocReferenceElement;
+import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaGlobalDeclarationImpl;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaGlobalUsageImpl;
+import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaLocalDeclarationImpl;
+import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaLocalDefinitionStatement;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.codeEditor.DefaultLanguageHighlighterColors;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.document.util.TextRange;
+import consulo.language.editor.annotation.Annotation;
+import consulo.language.editor.annotation.AnnotationHolder;
+import consulo.language.editor.annotation.Annotator;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiReference;
+
+import javax.annotation.Nonnull;
 
 
 /**
@@ -59,6 +70,7 @@ public class LuaAnnotator extends LuaElementVisitor implements Annotator {
             a.setTextAttributes(LuaHighlightingData.TAIL_CALL);
         }
     }
+
     @Override
     public void visitDocReference(LuaDocReferenceElement ref) {
         super.visitDocReference(ref);
@@ -86,21 +98,24 @@ public class LuaAnnotator extends LuaElementVisitor implements Annotator {
 
     private void hilightReference(PsiReference ref, PsiElement e) {
         if (e instanceof LuaParameter) {
-            final Annotation a = myHolder.createInfoAnnotation((PsiElement)ref, null);
+            final Annotation a = myHolder.createInfoAnnotation((PsiElement) ref, null);
             a.setTextAttributes(LuaHighlightingData.PARAMETER);
 //        }
 //        else if (ref.getElement() instanceof LuaUpvalueIdentifier) {
 //            final Annotation a = myHolder.createInfoAnnotation((PsiElement)ref, null);
 //            a.setTextAttributes(LuaHighlightingData.UPVAL);
-        } else if (e instanceof LuaIdentifier) {
+        }
+        else if (e instanceof LuaIdentifier) {
             LuaIdentifier id = (LuaIdentifier) e;
             TextAttributesKey attributesKey = null;
 
             if (id instanceof LuaGlobal) {
                 attributesKey = LuaHighlightingData.GLOBAL_VAR;
-            } else if (id instanceof LuaLocal && !id.getText().equals("...")) {
+            }
+            else if (id instanceof LuaLocal && !id.getText().equals("...")) {
                 attributesKey = LuaHighlightingData.LOCAL_VAR;
-            } else if (id instanceof LuaFieldIdentifier) {
+            }
+            else if (id instanceof LuaFieldIdentifier) {
                 attributesKey = LuaHighlightingData.FIELD;
             }
 
@@ -125,7 +140,9 @@ public class LuaAnnotator extends LuaElementVisitor implements Annotator {
             LuaIdentifierList left = ((LuaLocalDefinitionStatement) e).getLeftExprs();
             LuaExpressionList right = ((LuaLocalDefinitionStatement) e).getRightExprs();
 
-            if (right == null || right.count() == 0) return;
+            if (right == null || right.count() == 0) {
+                return;
+            }
 
             boolean allNil = true;
             for (LuaExpression expr : right.getLuaExpressions())
@@ -145,19 +162,23 @@ public class LuaAnnotator extends LuaElementVisitor implements Annotator {
     }
 
 
-
-
     public void visitDeclarationExpression(LuaDeclarationExpression dec) {
         if (!(dec.getContext() instanceof LuaParameter)) {
             final Annotation a = myHolder.createInfoAnnotation(dec, null);
 
-            if (dec instanceof LuaLocalDeclarationImpl) a.setTextAttributes(LuaHighlightingData.LOCAL_VAR);
-            else if (dec instanceof LuaGlobalDeclarationImpl) a.setTextAttributes(LuaHighlightingData.GLOBAL_VAR);
+            if (dec instanceof LuaLocalDeclarationImpl) {
+                a.setTextAttributes(LuaHighlightingData.LOCAL_VAR);
+            }
+            else if (dec instanceof LuaGlobalDeclarationImpl) {
+                a.setTextAttributes(LuaHighlightingData.GLOBAL_VAR);
+            }
         }
     }
 
     public void visitParameter(LuaParameter id) {
-        if (id.getTextLength() == 0) return;
+        if (id.getTextLength() == 0) {
+            return;
+        }
 
         addSemanticHighlight(id, LuaHighlightingData.PARAMETER);
     }

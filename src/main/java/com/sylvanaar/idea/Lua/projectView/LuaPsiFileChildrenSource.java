@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.projectView;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.util.containers.ContainerUtil;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import consulo.language.psi.PsiElement;
+import consulo.util.collection.ContainerUtil;
 
 import java.util.List;
 

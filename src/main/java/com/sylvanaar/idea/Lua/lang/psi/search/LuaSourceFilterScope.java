@@ -18,12 +18,12 @@ package com.sylvanaar.idea.Lua.lang.psi.search;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.search.GlobalSearchScope;
+import consulo.module.Module;
+import consulo.module.content.ProjectRootManager;
+import consulo.project.Project;
+import consulo.module.content.ProjectFileIndex;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.psi.scope.GlobalSearchScope;
 import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
 
 /**
@@ -32,7 +32,8 @@ import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
  * Date: 1/15/11
  * Time: 10:01 AM
  */
-public class LuaSourceFilterScope extends GlobalSearchScope {
+public class LuaSourceFilterScope extends GlobalSearchScope
+{
     private final GlobalSearchScope myDelegate;
     private final ProjectFileIndex myIndex;
 

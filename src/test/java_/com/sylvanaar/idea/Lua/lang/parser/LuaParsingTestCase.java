@@ -17,8 +17,8 @@ package com.sylvanaar.idea.Lua.lang.parser;
 
 import java.util.List;
 
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.impl.DebugUtil;
+import consulo.language.psi.PsiFile;
+import consulo.language.impl.DebugUtil;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 import com.sylvanaar.idea.Lua.util.TestUtils;
 

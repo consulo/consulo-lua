@@ -16,16 +16,17 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.completion.CompletionProcessor;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import consulo.project.Project;
+
 import javax.annotation.Nonnull;
 
 import java.util.Collection;
@@ -50,7 +51,7 @@ public abstract class ResolveUtil {
   }
 
   public static boolean processChildren(PsiElement element, PsiScopeProcessor processor,
-                                        ResolveState substitutor, PsiElement lastParent, PsiElement place) {
+										ResolveState substitutor, PsiElement lastParent, PsiElement place) {
     PsiElement run = lastParent == null ? element.getLastChild() : lastParent.getPrevSibling();
     while (run != null) {
       if (PsiTreeUtil.findCommonParent(place, run) != run && !run.processDeclarations(processor, substitutor, lastParent, place)) return false;

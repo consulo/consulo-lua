@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.expressions;
 
-import com.intellij.navigation.NavigationItem;
+import consulo.navigation.NavigationItem;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 
 /**

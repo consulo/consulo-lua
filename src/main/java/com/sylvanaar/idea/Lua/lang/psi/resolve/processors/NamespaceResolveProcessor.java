@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveState;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.ResolveState;
 import consulo.util.dataholder.Key;
 
 import javax.annotation.Nonnull;

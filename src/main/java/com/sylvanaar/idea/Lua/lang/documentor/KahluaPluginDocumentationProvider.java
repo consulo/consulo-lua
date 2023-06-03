@@ -16,30 +16,26 @@
 
 package com.sylvanaar.idea.Lua.lang.documentor;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Nullable;
-import com.intellij.lang.documentation.DocumentationProvider;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.vfs.CharsetToolkit;
-import com.intellij.openapi.vfs.VfsUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.util.PathUtil;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaAlias;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.util.UrlUtil;
-import consulo.vfs.util.ArchiveVfsUtil;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.documentation.LanguageDocumentationProvider;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.logging.Logger;
+import consulo.util.io.CharsetToolkit;
+import consulo.util.io.ClassPathUtil;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.VirtualFileManager;
+import consulo.virtualFileSystem.archive.ArchiveVfsUtil;
+import consulo.virtualFileSystem.util.VirtualFileUtil;
 import se.krka.kahlua.converter.KahluaConverterManager;
 import se.krka.kahlua.integration.LuaCaller;
 import se.krka.kahlua.integration.LuaReturn;
@@ -51,6 +47,14 @@ import se.krka.kahlua.vm.KahluaTable;
 import se.krka.kahlua.vm.KahluaThread;
 import se.krka.kahlua.vm.LuaClosure;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * Created by IntelliJ IDEA.
@@ -58,7 +62,8 @@ import se.krka.kahlua.vm.LuaClosure;
  * Date: 2/20/11
  * Time: 3:06 PM
  */
-public class KahluaPluginDocumentationProvider implements DocumentationProvider {
+@ExtensionImpl(id = "lua.kahlua", order = "before lua.doc")
+public class KahluaPluginDocumentationProvider implements LanguageDocumentationProvider {
     private static final KahluaConverterManager converterManager = new KahluaConverterManager();
     private static final J2SEPlatform platform = new J2SEPlatform();
 
@@ -73,6 +78,12 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
     private static final Map<VirtualFile, ScriptEnvironment> scriptEnvironmentMap =
             new HashMap<VirtualFile, ScriptEnvironment>();
 
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
+
 
     private class ScriptEnvironment {
         KahluaTable env = platform.newEnvironment();
@@ -81,32 +92,33 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
     }
 
 
-    @LuaMethod(name="log", global = true)
+    @LuaMethod(name = "log", global = true)
     public void luaLog(String msg) {
         log.info(msg);
     }
 
-    @LuaMethod(name="disableCache", global = true)
+    @LuaMethod(name = "disableCache", global = true)
     public void clearCaches() {
         scriptEnvironmentMap.clear();
     }
 
-    @LuaMethod(name="fetchURL", global = true)
+    @LuaMethod(name = "fetchURL", global = true)
     public String fetchURL(String url) {
         UrlUtil.UrlFetcher fetcher = new UrlUtil.UrlFetcher(url);
         fetcher.run();
         return fetcher.getData();
     }
 
-    @LuaMethod(name="getBaseJarUrl", global = true)
+    @LuaMethod(name = "getBaseJarUrl", global = true)
     public String getBaseJarUrl() {
-        String url = VfsUtil.pathToUrl(PathUtil.getJarPathForClass(LuaPsiFile.class));
+        String url = VirtualFileUtil.pathToUrl(ClassPathUtil.getJarPathForClass(LuaPsiFile.class));
         VirtualFile sdkFile = VirtualFileManager.getInstance().findFileByUrl(url);
         if (sdkFile != null) {
             VirtualFile jarFile = ArchiveVfsUtil.getJarRootForLocalFile(sdkFile);
             if (jarFile != null) {
                 return jarFile.getUrl();
-            } else {
+            }
+            else {
                 return sdkFile.getUrl();
             }
         }
@@ -116,22 +128,25 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
 
     @Override
     public String getQuickNavigateInfo(PsiElement element, PsiElement originalElement) {
-        if (element instanceof LuaNamedElement)
+        if (element instanceof LuaNamedElement) {
             return runLuaQuickNavigateDocGenerator(getVirtualFileForElement(element), getElementName(element));
+        }
 
         return null;
     }
 
     @Override
     public List<String> getUrlFor(PsiElement element, PsiElement originalElement) {
-       String s =  runLuaDocumentationUrlGenerator(getVirtualFileForElement(element), getElementName(element));
+        String s = runLuaDocumentationUrlGenerator(getVirtualFileForElement(element), getElementName(element));
 
-       if (s == null) return null;
+        if (s == null) {
+            return null;
+        }
 
-       List<String> rc =  new ArrayList<String>();
-       rc.add(s);
+        List<String> rc = new ArrayList<String>();
+        rc.add(s);
 
-       return rc;
+        return rc;
     }
 
     @Override
@@ -149,25 +164,30 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
         List<PsiElement> processed = new ArrayList<PsiElement>();
 
         while (!processed.contains(element)) {
-           processed.add(element);
-           if (element instanceof LuaAlias) {
-               PsiElement alias = ((LuaAlias) element).getAliasElement();
-               if (alias == null) break;
-               element = alias;
-           }
+            processed.add(element);
+            if (element instanceof LuaAlias) {
+                PsiElement alias = ((LuaAlias) element).getAliasElement();
+                if (alias == null) {
+                    break;
+                }
+                element = alias;
+            }
 
-           if (element instanceof LuaReferenceElement) {
-               PsiElement result = ((LuaReferenceElement) element).resolve();
-               if (result == null) break;
-               element = result;
-           }
-       }
+            if (element instanceof LuaReferenceElement) {
+                PsiElement result = ((LuaReferenceElement) element).resolve();
+                if (result == null) {
+                    break;
+                }
+                element = result;
+            }
+        }
         return element;
     }
 
     private String getElementName(PsiElement element) {
-        if (element instanceof LuaGlobal)
+        if (element instanceof LuaGlobal) {
             return ((LuaGlobal) element).getGlobalEnvironmentName();
+        }
 
         return element.getText();
     }
@@ -213,7 +233,9 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
 
         if (e != null) {
             final PsiFile containingFile = e.getContainingFile();
-            if (containingFile == null) return null;
+            if (containingFile == null) {
+                return null;
+            }
 
             VirtualFile vf = containingFile.getVirtualFile();
 
@@ -231,7 +253,9 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
 
         log.debug("trying file " + docFileName);
         VirtualFile result = vf.getParent().findChild(docFileName);
-        if (result != null) return result;
+        if (result != null) {
+            return result;
+        }
 
         docFileName = vf.getParent().getNameWithoutExtension() + DOC_FILE_SUFFIX;
 
@@ -245,23 +269,25 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
     private ScriptEnvironment getScriptEnvironmentForFile(VirtualFile vf) throws IOException {
         synchronized (VMLock) {
 
-        if (scriptEnvironmentMap.containsKey(vf))
-            return scriptEnvironmentMap.get(vf);
+            if (scriptEnvironmentMap.containsKey(vf)) {
+                return scriptEnvironmentMap.get(vf);
+            }
 
-        ScriptEnvironment scriptEnvironment = new ScriptEnvironment();
-        scriptEnvironment.exposer.exposeGlobalFunctions(this);
+            ScriptEnvironment scriptEnvironment = new ScriptEnvironment();
+            scriptEnvironment.exposer.exposeGlobalFunctions(this);
 
-        // Cache the environment
-        scriptEnvironmentMap.put(vf, scriptEnvironment);
+            // Cache the environment
+            scriptEnvironmentMap.put(vf, scriptEnvironment);
 
-        // Run the initial script
-        LuaClosure closure = LuaCompiler.loadis(vf.getInputStream(), vf.getName(), scriptEnvironment.env);
-        LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
+            // Run the initial script
+            LuaClosure closure = LuaCompiler.loadis(vf.getInputStream(), vf.getName(), scriptEnvironment.env);
+            LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
 
-        if (!rc.isSuccess())
-            log.info("Error during initial lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
+            if (!rc.isSuccess()) {
+                log.info("Error during initial lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
+            }
 
-        return scriptEnvironment;
+            return scriptEnvironment;
         }
     }
 
@@ -278,7 +304,6 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
     }
 
 
-
     @Nullable
     private String runLuaDocumentationGenerator(@Nullable VirtualFile luaFile, String nameToDocument) {
         return runLua("getDocumentation", luaFile, nameToDocument);
@@ -287,23 +312,28 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
 
     @Nullable
     private String runLua(String function, @Nullable VirtualFile luaFile, String nameToDocument) {
-        if (luaFile == null) return null;
+        if (luaFile == null) {
+            return null;
+        }
 
-       String docLuaFileUrl = luaFile.getParent().getUrl();
+        String docLuaFileUrl = luaFile.getParent().getUrl();
 
         synchronized (VMLock) {
             try {
                 ScriptEnvironment scriptEnvironment = getScriptEnvironmentForFile(luaFile);
 
-                if (scriptEnvironment == null) return null;
+                if (scriptEnvironment == null) {
+                    return null;
+                }
 
                 LuaClosure closure = LuaCompiler.loadstring(
                         "return " + function + "('" + nameToDocument + "', '" + docLuaFileUrl + "')", "", scriptEnvironment.env
-                                                           );
+                );
                 LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
 
-                if (!rc.isSuccess())
+                if (!rc.isSuccess()) {
                     log.info("Error during lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
+                }
 
                 if (!rc.isEmpty()) {
                     String unencoded = (String) rc.getFirst();
@@ -313,7 +343,8 @@ public class KahluaPluginDocumentationProvider implements DocumentationProvider 
                     return new String(bytes, CharsetToolkit.UTF8);
                 }
 
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 log.info("Error in lua documenter", e);
             }
         }

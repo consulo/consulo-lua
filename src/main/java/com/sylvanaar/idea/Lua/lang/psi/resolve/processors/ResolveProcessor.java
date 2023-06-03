@@ -17,12 +17,11 @@
 package com.sylvanaar.idea.Lua.lang.psi.resolve.processors;
 
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.scope.PsiScopeProcessor;
-import com.intellij.util.Function;
-import com.intellij.util.containers.ContainerUtil;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResult;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.LuaResolveResultImpl;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.util.collection.ContainerUtil;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,33 +31,30 @@ import java.util.Set;
  * @author ilyas
  */
 public abstract class ResolveProcessor implements PsiScopeProcessor/*, NameHint, ElementClassHint*/ {
-  protected static final LuaResolveResult[] EMPTY_SET = new LuaResolveResultImpl[0];
-  protected Set<LuaResolveResult> myCandidates = new HashSet<LuaResolveResult>();
-  protected final String myName;
+    protected static final LuaResolveResult[] EMPTY_SET = new LuaResolveResultImpl[0];
+    protected Set<LuaResolveResult> myCandidates = new HashSet<LuaResolveResult>();
+    protected final String myName;
 
-  public ResolveProcessor(String myName) {
-    this.myName = myName;
-  }
+    public ResolveProcessor(String myName) {
+        this.myName = myName;
+    }
 
 
-  public List<PsiElement> getElements() {
-    return ContainerUtil.map(myCandidates, new Function<LuaResolveResult, PsiElement>() {
-        @Override
-        public PsiElement fun(LuaResolveResult luaResolveResult) {
-            return luaResolveResult.getElement();
+    public List<PsiElement> getElements() {
+        return ContainerUtil.map(myCandidates, luaResolveResult -> luaResolveResult.getElement());
+    }
+
+    public LuaResolveResult[] getCandidates() {
+        if (!hasCandidates()) {
+            return EMPTY_SET;
         }
-    });
-  }
-  public LuaResolveResult[] getCandidates() {
-    if (!hasCandidates())
-        return EMPTY_SET;
 
-    return myCandidates.toArray(new LuaResolveResult[myCandidates.size()]);
-  }
+        return myCandidates.toArray(new LuaResolveResult[myCandidates.size()]);
+    }
 
-  public void addCandidate(LuaResolveResult candidate) {
-      myCandidates.add(candidate);
-  }
+    public void addCandidate(LuaResolveResult candidate) {
+        myCandidates.add(candidate);
+    }
 //  public <T> T getHint(Class<T> hintClass) {
 //    if (NameHint.class == hintClass && myName != null) {
 //      return (T) this;
@@ -69,11 +65,11 @@ public abstract class ResolveProcessor implements PsiScopeProcessor/*, NameHint,
 //    return null;
 //  }
 
-  public void handleEvent(Event event, Object o) {
-  }
+    public void handleEvent(Event event, Object o) {
+    }
 
-  public boolean hasCandidates() {
-    return myCandidates.size() > 0;
-  }
+    public boolean hasCandidates() {
+        return myCandidates.size() > 0;
+    }
 
 }

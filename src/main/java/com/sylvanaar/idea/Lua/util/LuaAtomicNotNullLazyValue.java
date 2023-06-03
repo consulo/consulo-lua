@@ -17,10 +17,10 @@
 package com.sylvanaar.idea.Lua.util;
 
 import javax.annotation.Nonnull;
+import java.util.function.Supplier;
 
-import com.intellij.openapi.util.*;
-
-public abstract class LuaAtomicNotNullLazyValue<T> extends NotNullLazyValue<T> {
+@Deprecated
+public abstract class LuaAtomicNotNullLazyValue<T> implements Supplier<T> {
 
     private volatile T myValue;
 
@@ -45,4 +45,11 @@ public abstract class LuaAtomicNotNullLazyValue<T> extends NotNullLazyValue<T> {
             myValue = null;
         }
     }
+
+    @Override
+    public T get() {
+        return getValue();
+    }
+
+    protected abstract T compute();
 }

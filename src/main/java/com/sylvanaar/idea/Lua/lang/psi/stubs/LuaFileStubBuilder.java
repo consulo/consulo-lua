@@ -18,13 +18,15 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.psi.*;
-import com.intellij.psi.stubs.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.DefaultStubBuilder;
+import consulo.language.psi.stub.StubElement;
+import consulo.logging.Logger;
 
 
-public class LuaFileStubBuilder extends DefaultStubBuilder {
+public class LuaFileStubBuilder extends DefaultStubBuilder
+{
     private static final Logger log = Logger.getInstance("Lua.FileStubBuilder");
 
     protected StubElement createStubForFile(@Nonnull PsiFile file) {

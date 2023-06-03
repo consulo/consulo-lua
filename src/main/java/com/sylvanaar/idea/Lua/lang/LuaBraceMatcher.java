@@ -16,10 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang;
 
-import com.intellij.lang.BracePair;
-import com.intellij.lang.PairedBraceMatcher;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IElementType;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.BracePair;
+import consulo.language.Language;
+import consulo.language.PairedBraceMatcher;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiFile;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
@@ -31,37 +34,35 @@ import static com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes.*;
  * Date: 13.07.2009
  * Time: 20:37:13
  */
+@ExtensionImpl
 public class LuaBraceMatcher implements PairedBraceMatcher {
     public static final BracePair[] BRACES =
             {
-            new BracePair(LONGSTRING_BEGIN, LONGSTRING_END, true),
-            new BracePair(LONGCOMMENT_BEGIN, LONGCOMMENT_END, true),
-            new BracePair(LPAREN, RPAREN, false),
-            new BracePair(LBRACK, RBRACK, false),
-            new BracePair(LCURLY, RCURLY, false),
-            new BracePair(REPEAT, UNTIL, true),
-            new BracePair(DO, END, true),
-            new BracePair(IF, END, true),
-            new BracePair(FUNCTION, END, true),            
-           };
-
-    /**
-     *
-     * @param file
-     * @param openingBraceOffset
-     * @return
-     */
-    public int getCodeConstructStart(PsiFile file, int openingBraceOffset) {
-        return openingBraceOffset;
-    }
+                    new BracePair(LONGSTRING_BEGIN, LONGSTRING_END, true),
+                    new BracePair(LONGCOMMENT_BEGIN, LONGCOMMENT_END, true),
+                    new BracePair(LPAREN, RPAREN, false),
+                    new BracePair(LBRACK, RBRACK, false),
+                    new BracePair(LCURLY, RCURLY, false),
+                    new BracePair(REPEAT, UNTIL, true),
+                    new BracePair(DO, END, true),
+                    new BracePair(IF, END, true),
+                    new BracePair(FUNCTION, END, true),
+            };
 
     public BracePair[] getPairs() {
         return BRACES;
     }
 
     public boolean isPairedBracesAllowedBeforeType(@Nonnull IElementType lbraceType, @Nullable IElementType contextType) {
-        if (lbraceType == LBRACK || lbraceType == LONGCOMMENT_BEGIN || lbraceType == LONGSTRING_BEGIN)
+        if (lbraceType == LBRACK || lbraceType == LONGCOMMENT_BEGIN || lbraceType == LONGSTRING_BEGIN) {
             return false;
+        }
         return true;
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
     }
 }

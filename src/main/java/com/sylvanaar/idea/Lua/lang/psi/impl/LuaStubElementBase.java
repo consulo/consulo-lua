@@ -15,20 +15,21 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.impl;
 
-import com.intellij.extapi.psi.StubBasedPsiElementBase;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.Language;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.navigation.ItemPresentationProviders;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.impl.source.tree.CompositeElement;
-import com.intellij.psi.impl.source.tree.SharedImplUtil;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.ast.CompositeElement;
+import consulo.language.impl.ast.SharedImplUtil;
+import consulo.language.impl.psi.stub.StubBasedPsiElementBase;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
+import consulo.navigation.ItemPresentation;
+import consulo.navigation.ItemPresentationProvider;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -89,7 +90,7 @@ public abstract class LuaStubElementBase<T extends StubElement> extends StubBase
 
     @Override
     public ItemPresentation getPresentation() {
-        return ItemPresentationProviders.getItemPresentation(this);
+        return ItemPresentationProvider.getItemPresentation(this);
     }
 
 }

@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
-import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaUpvalueIdentifier;
+import consulo.language.ast.ASTNode;
 
 /**
  * Created by IntelliJ IDEA.

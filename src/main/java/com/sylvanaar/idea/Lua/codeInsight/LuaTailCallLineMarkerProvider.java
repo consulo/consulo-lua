@@ -15,52 +15,56 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import com.intellij.codeHighlighting.Pass;
-import com.intellij.codeInsight.daemon.LineMarkerInfo;
-import com.intellij.codeInsight.daemon.LineMarkerProviderDescriptor;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.editor.markup.GutterIconRenderer;
-import com.intellij.openapi.project.DumbAware;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.NullableFunction;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaReturnStatement;
 import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.AllIcons;
+import consulo.application.dumb.DumbAware;
+import consulo.codeEditor.markup.GutterIconRenderer;
+import consulo.language.Language;
+import consulo.language.editor.Pass;
+import consulo.language.editor.gutter.LineMarkerInfo;
+import consulo.language.editor.gutter.LineMarkerProviderDescriptor;
+import consulo.language.psi.PsiElement;
 import consulo.ui.image.Image;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor implements DumbAware
-{
-	private final NullableFunction<PsiElement, String> tailCallTooltip = psiElement -> "Tail Call: " + psiElement.getText();
+@ExtensionImpl
+public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor implements DumbAware {
+    private final Function<PsiElement, String> tailCallTooltip = psiElement -> "Tail Call: " + psiElement.getText();
 
-	@RequiredReadAction
-	@Override
-	public LineMarkerInfo getLineMarkerInfo(@Nonnull final PsiElement element)
-	{
-		if(element instanceof LuaReturnStatement)
-		{
-			LuaReturnStatement e = (LuaReturnStatement) element;
+    @RequiredReadAction
+    @Override
+    public LineMarkerInfo getLineMarkerInfo(@Nonnull final PsiElement element) {
+        if (element instanceof LuaReturnStatement) {
+            LuaReturnStatement e = (LuaReturnStatement) element;
 
-			if(e.isTailCall())
-			{
-				return new LineMarkerInfo<>(element, element.getTextRange(), AllIcons.Gutter.RecursiveMethod, Pass.LINE_MARKERS, tailCallTooltip, null, GutterIconRenderer.Alignment.LEFT);
-			}
-		}
-		return null;
-	}
+            if (e.isTailCall()) {
+                return new LineMarkerInfo<>(element, element.getTextRange(), AllIcons.Gutter.RecursiveMethod, Pass.LINE_MARKERS, tailCallTooltip, null, GutterIconRenderer.Alignment.LEFT);
+            }
+        }
+        return null;
+    }
 
-	@Nullable
-	@Override
-	public Image getIcon()
-	{
-		return AllIcons.Gutter.RecursiveMethod;
-	}
+    @Nullable
+    @Override
+    public Image getIcon() {
+        return AllIcons.Gutter.RecursiveMethod;
+    }
 
-	@Nullable
-	@Override
-	public String getName()
-	{
-		return "Tail call";
-	}
+    @Nullable
+    @Override
+    public String getName() {
+        return "Tail call";
+    }
+
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
 }

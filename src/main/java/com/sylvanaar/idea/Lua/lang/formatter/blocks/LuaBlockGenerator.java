@@ -16,22 +16,18 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter.blocks;
 
-import com.intellij.formatting.Alignment;
-import com.intellij.formatting.Block;
-import com.intellij.formatting.Indent;
-import com.intellij.formatting.Wrap;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.templateLanguages.OuterLanguageElement;
+import consulo.language.codeStyle.*;
+import consulo.language.ast.ASTNode;
+import consulo.document.util.TextRange;
+import consulo.language.psi.OuterLanguageElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.formatter.processors.LuaIndentProcessor;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
+import consulo.logging.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,9 +148,9 @@ public class LuaBlockGenerator implements LuaElementTypes {
      * @param alignment
      */
     private static void addBinaryChildrenRecursively(PsiElement elem,
-                                                     List<Block> list,
-                                                     Indent indent,
-                                                     Alignment alignment, Wrap myWrap, CodeStyleSettings mySettings) {
+													 List<Block> list,
+													 Indent indent,
+													 Alignment alignment, Wrap myWrap, CodeStyleSettings mySettings) {
         if (elem == null) return;
         ASTNode[] children = elem.getNode().getChildren(null);
         // For binary expressions
@@ -210,7 +206,7 @@ public class LuaBlockGenerator implements LuaElementTypes {
      * @param mySettings
      */
     private static void addNestedChildrenRecursively(PsiElement elem,
-                                                     List<Block> list, Alignment myAlignment, Wrap myWrap, CodeStyleSettings mySettings) {
+													 List<Block> list, Alignment myAlignment, Wrap myWrap, CodeStyleSettings mySettings) {
         ASTNode[] children = elem.getNode().getChildren(null);
         // For path expressions
         if (children.length > 0) {

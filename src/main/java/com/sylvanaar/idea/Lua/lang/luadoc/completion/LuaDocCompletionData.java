@@ -16,57 +16,35 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.completion;
 
-import com.intellij.codeInsight.TailType;
-import com.intellij.codeInsight.completion.CompletionData;
-import com.intellij.codeInsight.completion.CompletionVariant;
-import com.intellij.psi.filters.*;
-import com.intellij.psi.filters.position.LeftNeighbour;
-import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.sylvanaar.idea.Lua.lang.luadoc.completion.filters.SimpleTagNameFilter;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.completion.CompletionContributor;
+import consulo.language.editor.completion.CompletionType;
+import consulo.language.editor.completion.lookup.AddSpaceInsertHandler;
+import consulo.language.editor.completion.lookup.LookupElementBuilder;
+import consulo.language.pattern.StandardPatterns;
+import jakarta.annotation.Nonnull;
 
-public class LuaDocCompletionData extends CompletionData {
+@ExtensionImpl
+public class LuaDocCompletionData extends CompletionContributor {
     private static final String[] DOC_TAGS =
             {"author", "copyright", "field", "param", "release", "return", "see", "usage", "class",
-                    "description", "name"};
+                    "description", "name"
+            };
 
     public LuaDocCompletionData() {
-        registerAllCompletions();
+        extend(CompletionType.BASIC, StandardPatterns.psiElement().withParent(LuaDocTag.class), (completionParameters, processingContext, completionResultSet) -> {
+            for (String docTag : DOC_TAGS) {
+                completionResultSet.accept(LookupElementBuilder.create(docTag).withInsertHandler(AddSpaceInsertHandler.INSTANCE));
+            }
+        });
     }
 
-    private void registerAllCompletions() {
-        registerTagNameCompletion();
-    }
-
-    private void registerTagNameCompletion() {
-        registerStandardCompletion(new SimpleTagNameFilter(), DOC_TAGS);
-    }
-
-
-    /**
-     * Template to add all standard keywords completions
-     *
-     * @param filter   - Semantic filter for given keywords
-     * @param keywords - Keywords to be completed
-     */
-    private void registerStandardCompletion(ElementFilter filter, String... keywords) {
-        LeftNeighbour afterDotFilter = new LeftNeighbour(new PlainTextFilter("."));
-        CompletionVariant variant = new CompletionVariant(new AndFilter(new NotFilter(afterDotFilter), filter));
-        variant.includeScopeClass(LeafPsiElement.class);
-        variant.addCompletionFilter(TrueFilter.INSTANCE);
-        addCompletions(variant, keywords);
-        registerVariant(variant);
-    }
-
-
-    /**
-     * Adds all completion variants in sequence
-     *
-     * @param comps   Given completions
-     * @param variant Variant for completions
-     */
-    private void addCompletions(CompletionVariant variant, String... comps) {
-        for (String completion : comps) {
-            variant.addCompletion(completion, TailType.SPACE);
-        }
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
     }
 }

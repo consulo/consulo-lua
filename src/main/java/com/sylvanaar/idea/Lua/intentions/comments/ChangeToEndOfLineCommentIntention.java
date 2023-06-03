@@ -15,12 +15,13 @@
  */
 package com.sylvanaar.idea.Lua.intentions.comments;
 
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.intentions.base.Intention;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
+import consulo.language.util.IncorrectOperationException;
+
 import javax.annotation.Nonnull;
 
 
@@ -32,7 +33,8 @@ public class ChangeToEndOfLineCommentIntention extends Intention {
     }
 
     public void processIntention(@Nonnull PsiElement element)
-            throws IncorrectOperationException {
+            throws IncorrectOperationException
+	{
         final PsiComment comment = (PsiComment) element;
         final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(comment.getProject());
         final PsiElement parent = comment.getParent();

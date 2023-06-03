@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.intentions.control;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.intentions.base.ErrorUtil;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;

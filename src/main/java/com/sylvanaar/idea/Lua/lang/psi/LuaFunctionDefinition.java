@@ -16,14 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.util.TextRange;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlockStatement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
+import consulo.document.util.TextRange;
+import consulo.navigation.ItemPresentation;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 

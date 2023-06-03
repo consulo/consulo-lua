@@ -16,8 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
-import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiPolyVariantReference;
+import consulo.language.psi.PsiReference;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,8 +27,8 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
  * Date: Apr 14, 2010
  * Time: 6:30:30 PM
  */
-public interface LuaReferenceElement  extends LuaPsiElement, PsiReference, 
-        PsiPolyVariantReference, LuaNamedElement, LuaExpression {
+public interface LuaReferenceElement  extends LuaPsiElement, PsiReference,
+		PsiPolyVariantReference, LuaNamedElement, LuaExpression {
 
 //    PsiElement resolveWithoutCaching(boolean ingnoreAlias);
 

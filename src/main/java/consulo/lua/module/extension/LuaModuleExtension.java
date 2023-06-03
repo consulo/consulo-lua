@@ -16,28 +16,25 @@
 
 package consulo.lua.module.extension;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.openapi.projectRoots.SdkType;
+import consulo.content.bundle.SdkType;
 import consulo.lua.bundle.LuaSdkType;
-import consulo.module.extension.impl.ModuleExtensionWithSdkImpl;
-import consulo.roots.ModuleRootLayer;
+import consulo.module.content.layer.ModuleRootLayer;
+import consulo.module.content.layer.extension.ModuleExtensionWithSdkBase;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 12.07.13.
  */
-public class LuaModuleExtension extends ModuleExtensionWithSdkImpl<LuaModuleExtension>
-{
-	public LuaModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer module)
-	{
-		super(id, module);
-	}
+public class LuaModuleExtension extends ModuleExtensionWithSdkBase<LuaModuleExtension> {
+    public LuaModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer module) {
+        super(id, module);
+    }
 
-	@Nonnull
-	@Override
-	public Class<? extends SdkType> getSdkTypeClass()
-	{
-		return LuaSdkType.class;
-	}
+    @Nonnull
+    @Override
+    public Class<? extends SdkType> getSdkTypeClass() {
+        return LuaSdkType.class;
+    }
 }

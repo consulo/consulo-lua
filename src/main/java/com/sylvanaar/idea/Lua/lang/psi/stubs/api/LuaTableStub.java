@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
 
-import com.intellij.psi.stubs.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
+import consulo.language.psi.stub.StubElement;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,6 +25,7 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
  * Date: 3/25/12
  * Time: 6:49 AM
  */
-public interface LuaTableStub extends StubElement<LuaTableConstructor> {
+public interface LuaTableStub extends StubElement<LuaTableConstructor>
+{
     public byte[] getEncodedType();
 }

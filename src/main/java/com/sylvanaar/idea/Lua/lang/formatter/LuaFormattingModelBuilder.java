@@ -16,16 +16,17 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.formatting.*;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
 import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.codeStyle.*;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,10 +34,12 @@ import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
  * Date: 13.07.2009
  * Time: 22:51:23
  */
+@ExtensionImpl
 public class LuaFormattingModelBuilder implements FormattingModelBuilder {
-
     @Nonnull
-    public FormattingModel createModel(PsiElement element, CodeStyleSettings settings) {
+    public FormattingModel createModel(FormattingContext formattingContext) {
+        PsiElement element = formattingContext.getPsiElement();
+        CodeStyleSettings settings = formattingContext.getCodeStyleSettings();
 
         ASTNode node = element.getNode();
         assert node != null;
@@ -49,8 +52,9 @@ public class LuaFormattingModelBuilder implements FormattingModelBuilder {
 
     }
 
-    public TextRange getRangeAffectingIndent(PsiFile file, int offset, ASTNode elementAtOffset) {
-        return null;
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
     }
-
 }

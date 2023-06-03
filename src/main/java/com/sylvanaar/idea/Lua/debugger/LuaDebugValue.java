@@ -18,13 +18,13 @@ package com.sylvanaar.idea.Lua.debugger;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.xdebugger.frame.XNavigatable;
-import com.intellij.xdebugger.frame.XValue;
-import com.intellij.xdebugger.frame.XValueModifier;
-import com.intellij.xdebugger.frame.XValueNode;
-import com.intellij.xdebugger.frame.XValuePlace;
+import consulo.application.AllIcons;
+import consulo.execution.debug.frame.*;
+import consulo.execution.debug.frame.XValueNode;
+import consulo.execution.debug.frame.XValuePlace;
+import consulo.execution.debug.frame.XNavigatable;
+import consulo.execution.debug.frame.XValueModifier;
+import consulo.logging.Logger;
 
 /**
  * Created by IntelliJ IDEA.

@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.xdebugger.XSourcePosition;
-import com.intellij.xdebugger.impl.XSourcePositionImpl;
+import consulo.execution.debug.XDebuggerUtil;
+import consulo.execution.debug.XSourcePosition;
+import consulo.virtualFileSystem.LocalFileSystem;
+import consulo.virtualFileSystem.VirtualFile;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,6 +46,6 @@ public class LuaPositionConverter {
 
         VirtualFile file = LocalFileSystem.getInstance().findFileByPath(luaPosition.getPath());
 
-        return XSourcePositionImpl.create(file, luaPosition.getLine() - 1);
+        return XDebuggerUtil.getInstance().createPosition(file, luaPosition.getLine() - 1);
     }
 }

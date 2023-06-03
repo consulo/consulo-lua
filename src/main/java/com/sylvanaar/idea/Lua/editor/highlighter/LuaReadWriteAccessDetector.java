@@ -16,14 +16,22 @@
 
 package com.sylvanaar.idea.Lua.editor.highlighter;
 
-import com.intellij.codeInsight.highlighting.*;
-import com.intellij.psi.*;
-import com.intellij.psi.util.*;
-import com.sylvanaar.idea.Lua.lang.psi.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
+import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaKeyValueInitializer;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.Lua.lang.psi.util.*;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.Lua.lang.psi.util.LuaAssignment;
+import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.highlight.ReadWriteAccessDetector;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.util.PsiTreeUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,6 +39,7 @@ import com.sylvanaar.idea.Lua.lang.psi.util.*;
  * Date: 4/17/11
  * Time: 1:37 AM
  */
+@ExtensionImpl
 public class LuaReadWriteAccessDetector extends ReadWriteAccessDetector {
     @Override
     public boolean isReadWriteAccessible(PsiElement element) {
@@ -39,66 +48,85 @@ public class LuaReadWriteAccessDetector extends ReadWriteAccessDetector {
 
     @Override
     public boolean isDeclarationWriteAccess(PsiElement element) {
-        if (! (element instanceof LuaSymbol))
+        if (!(element instanceof LuaSymbol)) {
             return false;
+        }
 
         if (element instanceof LuaFieldIdentifier) {
             final LuaSymbol enclosing = ((LuaFieldIdentifier) element).getCompositeIdentifier();
-            if (enclosing != null && enclosing.equals(element.getParent()))
+            if (enclosing != null && enclosing.equals(element.getParent())) {
                 return enclosing.isAssignedTo();
-            else if (element.getParent() instanceof LuaKeyValueInitializer)
+            }
+            else if (element.getParent() instanceof LuaKeyValueInitializer) {
                 return true;
+            }
         }
 
         if (element instanceof LuaParameter) {
             return true;
         }
 
-        if (element instanceof LuaModuleExpression)
+        if (element instanceof LuaModuleExpression) {
             return true;
+        }
 
         LuaStatementElement stmt = PsiTreeUtil.getParentOfType(element, LuaStatementElement.class);
-        if (stmt == null) return false;
-        
-        if (stmt instanceof LuaGenericForStatement)
-            return true;
+        if (stmt == null) {
+            return false;
+        }
 
-        if (stmt instanceof LuaNumericForStatement)
+        if (stmt instanceof LuaGenericForStatement) {
             return true;
+        }
 
-        if (stmt instanceof LuaFunctionDefinitionStatement)
+        if (stmt instanceof LuaNumericForStatement) {
+            return true;
+        }
+
+        if (stmt instanceof LuaFunctionDefinitionStatement) {
             return ((LuaFunctionDefinitionStatement) stmt).getIdentifier().equals(element);
+        }
 
         if (stmt instanceof LuaAssignmentStatement) {
-            if (((LuaAssignmentStatement) stmt).getRightExprs() == null)
+            if (((LuaAssignmentStatement) stmt).getRightExprs() == null) {
                 return false;
+            }
 
-            for(LuaAssignment a : ((LuaAssignmentStatement) stmt).getAssignments())
-                if (a.getSymbol() == element) return true;
+            for (LuaAssignment a : ((LuaAssignmentStatement) stmt).getAssignments())
+                if (a.getSymbol() == element) {
+                    return true;
+                }
         }
-                
+
         return false;
     }
 
-  public Access getReferenceAccess(final PsiElement referencedElement, final PsiReference reference) {
-      final PsiElement element = reference.getElement();
-      if (element.getParent().getParent() instanceof LuaFunctionDefinitionStatement)
-          return Access.Write;
-      
-      if (element instanceof LuaCompoundIdentifier) {
-          if (((LuaCompoundIdentifier) element).isCompoundDeclaration()) return Access.Write;
-      } else {
-          if (element instanceof LuaFieldIdentifier)
-              return ((LuaFieldIdentifier) element).isAssignedTo() ? Access.Write : Access.Read;
-          if (element instanceof LuaDeclarationExpression) return Access.Write;
-      }
-      
-      return LuaPsiUtils.isLValue((LuaPsiElement) reference) ? Access.Write : Access.Read;
-  }
+    public Access getReferenceAccess(final PsiElement referencedElement, final PsiReference reference) {
+        final PsiElement element = reference.getElement();
+        if (element.getParent().getParent() instanceof LuaFunctionDefinitionStatement) {
+            return Access.Write;
+        }
 
-  public Access getExpressionAccess(final PsiElement expression) {
+        if (element instanceof LuaCompoundIdentifier) {
+            if (((LuaCompoundIdentifier) element).isCompoundDeclaration()) {
+                return Access.Write;
+            }
+        }
+        else {
+            if (element instanceof LuaFieldIdentifier) {
+                return ((LuaFieldIdentifier) element).isAssignedTo() ? Access.Write : Access.Read;
+            }
+            if (element instanceof LuaDeclarationExpression) {
+                return Access.Write;
+            }
+        }
+
+        return LuaPsiUtils.isLValue((LuaPsiElement) reference) ? Access.Write : Access.Read;
+    }
+
+    public Access getExpressionAccess(final PsiElement expression) {
 
 
-    return LuaPsiUtils.isLValue((LuaPsiElement) expression) ? Access.Write : Access.Read;
-  }
+        return LuaPsiUtils.isLValue((LuaPsiElement) expression) ? Access.Write : Access.Read;
+    }
 }

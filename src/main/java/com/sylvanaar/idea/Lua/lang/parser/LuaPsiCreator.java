@@ -16,9 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.parser;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.ILuaDocElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.LuaDocPsiCreator;
@@ -32,6 +31,7 @@ import com.sylvanaar.idea.Lua.lang.psi.impl.lists.LuaParameterListImpl;
 import com.sylvanaar.idea.Lua.lang.psi.impl.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
+import consulo.language.psi.PsiElement;
 
 import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.*;
 

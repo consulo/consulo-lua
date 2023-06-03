@@ -18,11 +18,11 @@ package com.sylvanaar.idea.Lua.lang.psi.impl;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiToken;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.impl.psi.LeafPsiElement;
+import consulo.language.psi.PsiElementVisitor;
 
 /**
  * Created by IntelliJ IDEA.

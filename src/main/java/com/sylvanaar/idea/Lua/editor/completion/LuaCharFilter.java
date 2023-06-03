@@ -16,11 +16,13 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
-import javax.annotation.Nullable;
+import com.sylvanaar.idea.Lua.LuaFileType;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.completion.lookup.CharFilter;
+import consulo.language.editor.completion.lookup.Lookup;
+import consulo.language.psi.PsiFile;
 
-import com.intellij.codeInsight.lookup.*;
-import com.intellij.psi.*;
-import com.sylvanaar.idea.Lua.*;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,20 +30,26 @@ import com.sylvanaar.idea.Lua.*;
  * Date: Nov 21, 2010
  * Time: 6:53:07 PM
  */
+@ExtensionImpl
 public class LuaCharFilter extends CharFilter {
     @Nullable
     public Result acceptChar(char c, int prefixLength, Lookup lookup) {
-        if (!lookup.isCompletion()) return null;
+        if (!lookup.isCompletion()) {
+            return null;
+        }
 
         final PsiFile psiFile = lookup.getPsiFile();
 
-        if (psiFile != null && !psiFile.getViewProvider().getLanguages().contains(LuaFileType.LUA_LANGUAGE))
+        if (psiFile != null && !psiFile.getViewProvider().getLanguages().contains(LuaFileType.LUA_LANGUAGE)) {
             return null;
+        }
 
 //        LookupElement item = lookup.getCurrentItem();
 //        if (item == null) return null;
 
-        if (Character.isJavaIdentifierPart(c)) return Result.ADD_TO_PREFIX;
+        if (Character.isJavaIdentifierPart(c)) {
+            return Result.ADD_TO_PREFIX;
+        }
 
         switch (c) {
             case ',':

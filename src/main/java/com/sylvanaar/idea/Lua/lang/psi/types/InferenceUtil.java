@@ -16,15 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.types;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.impl.PsiFileEx;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.ObjectUtils;
 import com.sylvanaar.idea.Lua.lang.InferenceCapable;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaAssignment;
+import consulo.language.psi.PsiFileEx;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
+import consulo.util.lang.ObjectUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,17 +39,19 @@ public class InferenceUtil {
         for (LuaAssignment a : statement.getAssignments()) {
             final LuaExpression value = a.getValue();
 
-            if (value instanceof InferenceCapable)
+            if (value instanceof InferenceCapable) {
                 ((InferenceCapable) value).inferTypes();
-        }        
+            }
+        }
     }
 
     public static void requeueIfPossible(InferenceCapable element) {
-        final Boolean userData = ObjectUtils.notNull(element.getContainingFile().getUserData(PsiFileEx.BATCH_REFERENCE_PROCESSING), false);
+        final Boolean userData = ObjectUtil.notNull(element.getContainingFile().getUserData(PsiFileEx.BATCH_REFERENCE_PROCESSING), false);
         if (!userData && !PsiTreeUtil.hasErrorElements(element)) {
             final Project project = element.getProject();
-            if (project != null)
+            if (project != null) {
                 LuaPsiManager.getInstance(project).queueInferences(element);
+            }
         }
     }
 }

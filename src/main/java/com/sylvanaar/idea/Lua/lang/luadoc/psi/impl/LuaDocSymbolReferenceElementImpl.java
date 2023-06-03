@@ -16,16 +16,6 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.ResolveResult;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.search.ProjectAndLibrariesScope;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocSymbolReference;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
@@ -36,12 +26,21 @@ import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.ResolveProcessor;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.SymbolResolveProcessor;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.ResolveResult;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
+import consulo.project.content.scope.ProjectScopes;
+import consulo.util.lang.StringUtil;
 import org.jetbrains.annotations.NonNls;
+
 import javax.annotation.Nonnull;
-
-import java.util.Collection;
-
 import javax.annotation.Nullable;
+import java.util.Collection;
 
 /**
  * Created by IntelliJ IDEA.
@@ -84,7 +83,7 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
         
         LuaGlobalDeclarationIndex index = LuaGlobalDeclarationIndex.getInstance();
         Collection<LuaDeclarationExpression> names = index.get(refName, getProject(),
-                new ProjectAndLibrariesScope(getProject()));
+                ProjectScopes.getAllScope(getProject()));
         for (LuaDeclarationExpression name : names) {
             name.processDeclarations(processor, ResolveState.initial(), this, this);
         }
@@ -110,7 +109,8 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
     }
 
     @Override
-    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls @Nonnull String name) throws IncorrectOperationException
+	{
         throw new IncorrectOperationException("not implemented");
     }
 
@@ -127,7 +127,8 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
     }
 
     @Override
-    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
+    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException
+	{
         throw new IncorrectOperationException("not implemented");
     }
 
@@ -136,7 +137,8 @@ public class LuaDocSymbolReferenceElementImpl extends LuaDocReferenceElementImpl
         return this;
     }
 
-    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException
+	{
         if (isReferenceTo(element)) return this;
         return null;
     }

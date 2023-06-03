@@ -16,17 +16,22 @@
 
 package com.sylvanaar.idea.Lua.lang.template;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.codeInsight.template.*;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaAnonymousFunctionExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.template.Expression;
+import consulo.language.editor.template.ExpressionContext;
+import consulo.language.editor.template.Result;
+import consulo.language.editor.template.TextResult;
+import consulo.language.editor.template.macro.Macro;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,6 +39,7 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement
  * Date: 2/25/11
  * Time: 1:35 PM
  */
+@ExtensionImpl
 public class LuaFunctionMacro extends Macro {
     @Override
     public String getName() {
@@ -60,21 +66,29 @@ public class LuaFunctionMacro extends Macro {
             PsiElement e = file.findElementAt(expressionContext.getTemplateStartOffset());
 
             while (e != null) {
-                if (e instanceof LuaFunctionDefinition) break;
+                if (e instanceof LuaFunctionDefinition) {
+                    break;
+                }
 
                 e = e.getContext();
 
             }
 
-            if (e == null) return null;
+            if (e == null) {
+                return null;
+            }
 
             if (e instanceof LuaFunctionDefinitionStatement) {
                 String name = ((LuaFunctionDefinitionStatement) e).getIdentifier().getName();
 
-                if (name != null) return new TextResult(name);
+                if (name != null) {
+                    return new TextResult(name);
+                }
             }
 
-            if (e instanceof LuaAnonymousFunctionExpression) return new TextResult("anon");
+            if (e instanceof LuaAnonymousFunctionExpression) {
+                return new TextResult("anon");
+            }
         }
 
         return null;

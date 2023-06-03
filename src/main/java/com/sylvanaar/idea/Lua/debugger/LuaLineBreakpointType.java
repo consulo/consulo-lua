@@ -16,15 +16,16 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.debug.breakpoint.XLineBreakpoint;
+import consulo.execution.debug.breakpoint.XLineBreakpointType;
+import consulo.execution.debug.evaluation.XDebuggerEditorsProvider;
+import consulo.lua.debugger.breakpoint.LuaLineBreakpointProperties;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.xdebugger.breakpoints.XLineBreakpoint;
-import com.intellij.xdebugger.breakpoints.XLineBreakpointType;
-import com.intellij.xdebugger.evaluation.XDebuggerEditorsProvider;
-import consulo.lua.debugger.breakpoint.LuaLineBreakpointProperties;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,6 +33,7 @@ import consulo.lua.debugger.breakpoint.LuaLineBreakpointProperties;
  * Date: 3/26/11
  * Time: 3:04 PM
  */
+@ExtensionImpl
 public class LuaLineBreakpointType extends XLineBreakpointType<LuaLineBreakpointProperties>
 {
 	@Nonnull

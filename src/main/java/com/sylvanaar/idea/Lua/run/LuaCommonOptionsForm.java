@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import com.intellij.execution.configuration.EnvironmentVariablesComponent;
-import com.intellij.ide.util.BrowseFilesListener;
-import com.intellij.openapi.ui.TextFieldWithBrowseButton;
-import com.intellij.ui.RawCommandLineEditor;
+import consulo.execution.ui.awt.EnvironmentVariablesComponent;
+import consulo.execution.ui.awt.RawCommandLineEditor;
+import consulo.ui.ex.awt.TextFieldWithBrowseButton;
+import consulo.ui.ex.awt.util.BrowseFilesListener;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

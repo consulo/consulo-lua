@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.luaj;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.ToolWindow;
-import com.intellij.openapi.wm.ToolWindowFactory;
+import consulo.project.ui.wm.ToolWindowFactory;
+import consulo.ui.ex.toolWindow.ToolWindow;
+import consulo.project.Project;
 
 
 /**
@@ -27,7 +27,8 @@ import com.intellij.openapi.wm.ToolWindowFactory;
  * Date: May 7, 2010
  * Time: 8:02:20 PM
  */
-public class LuaJInterpreterWindowFactory implements ToolWindowFactory {
+public class LuaJInterpreterWindowFactory implements ToolWindowFactory
+{
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
 //        System.setProperty("luaj.debug", "true");

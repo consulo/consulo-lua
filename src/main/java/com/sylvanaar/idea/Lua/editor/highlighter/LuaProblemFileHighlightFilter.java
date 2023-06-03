@@ -16,9 +16,10 @@
 
 package com.sylvanaar.idea.Lua.editor.highlighter;
 
-import com.intellij.openapi.util.Condition;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.LuaFileType;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.wolfAnalyzer.WolfFileProblemFilter;
+import consulo.virtualFileSystem.VirtualFile;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,8 +27,10 @@ import com.sylvanaar.idea.Lua.LuaFileType;
  * Date: 11/7/12
  * Time: 12:58 AM
  */
-public class LuaProblemFileHighlightFilter implements Condition<VirtualFile> {
-    @Override public boolean value(VirtualFile virtualFile) {
+@ExtensionImpl
+public class LuaProblemFileHighlightFilter implements WolfFileProblemFilter {
+    @Override
+    public boolean isToBeHighlighted(VirtualFile virtualFile) {
         return virtualFile.getFileType() == LuaFileType.LUA_FILE_TYPE;
     }
 }

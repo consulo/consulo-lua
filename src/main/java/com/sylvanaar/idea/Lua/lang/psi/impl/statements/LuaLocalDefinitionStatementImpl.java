@@ -16,25 +16,34 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
-import com.intellij.lang.*;
-import com.intellij.psi.*;
-import com.intellij.psi.scope.*;
-import com.intellij.psi.tree.*;
-import com.intellij.psi.util.*;
-import com.sylvanaar.idea.Lua.lang.lexer.*;
-import com.sylvanaar.idea.Lua.lang.psi.*;
-import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.Lua.lang.psi.lists.*;
-import com.sylvanaar.idea.Lua.lang.psi.statements.*;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
+import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.Assignable;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaLocalDefinitionStatement;
+import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocalDeclaration;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.types.InferenceUtil;
-import com.sylvanaar.idea.Lua.lang.psi.util.*;
-import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
-import com.sylvanaar.idea.Lua.util.*;
-
-import java.util.*;
+import com.sylvanaar.idea.Lua.lang.psi.util.LuaAssignment;
+import com.sylvanaar.idea.Lua.lang.psi.util.LuaAssignmentUtil;
+import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -57,7 +66,8 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     public void accept(@Nonnull PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitDeclarationStatement(this);
-        } else {
+        }
+        else {
             visitor.visitElement(this);
         }
     }
@@ -86,11 +96,12 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     @Override
     public LuaExpression[] getExprs() {
         LuaExpressionList list = findChildByClass(LuaExpressionList.class);
-        if (list == null) return new LuaExpression[0];
+        if (list == null) {
+            return new LuaExpression[0];
+        }
 
         return list.getLuaExpressions().toArray(new LuaExpression[list.count()]);
     }
-
 
 
     // locals are undefined within the statement, so  local a,b = b,a
@@ -99,13 +110,15 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     // in our case its, (localstat) <- (expr list) <- (expression) <- (variable) <- (reference )
 
     public boolean processDeclarations(@Nonnull PsiScopeProcessor processor, @Nonnull ResolveState resolveState,
-									   PsiElement lastParent, @Nonnull PsiElement place) {
+                                       PsiElement lastParent, @Nonnull PsiElement place) {
         // If we weren't found as a parent of the reference
         if (!PsiTreeUtil.isAncestor(this, place, true)) {
             final LuaDeclarationExpression[] decls = getDeclarations();
             for (int i = decls.length - 1; i >= 0; i--) {
                 LuaDeclarationExpression decl = decls[i];
-                if (!processor.execute(decl, resolveState)) return false;
+                if (!processor.execute(decl, resolveState)) {
+                    return false;
+                }
             }
         }
 
@@ -161,7 +174,9 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     public LuaLocalDeclaration[] getDefinedAndAssignedSymbols() {
         LuaAssignment[] assignments = getAssignments();
 
-        if (assignments.length == 0) return LuaLocalDeclaration.EMPTY_ARRAY;
+        if (assignments.length == 0) {
+            return LuaLocalDeclaration.EMPTY_ARRAY;
+        }
 
         LuaLocalDeclaration[] syms = new LuaLocalDeclaration[assignments.length];
         for (int i = 0, assignmentsLength = assignments.length; i < assignmentsLength; i++) {
@@ -175,7 +190,9 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
     public LuaExpression[] getDefinedSymbolValues() {
         LuaExpressionList exprs = getRightExprs();
 
-        if (exprs == null) return LuaExpression.EMPTY_ARRAY;
+        if (exprs == null) {
+            return LuaExpression.EMPTY_ARRAY;
+        }
 
         List<LuaExpression> vals = exprs.getLuaExpressions();
 
@@ -190,14 +207,16 @@ public class LuaLocalDefinitionStatementImpl extends LuaStatementElementImpl imp
             LuaIdentifierList list = findChildByClass(LuaIdentifierList.class);
 
             assert list != null;
-            for(LuaSymbol sym : list.getSymbols()) {
-                if (sym instanceof LuaDeclarationExpression)
+            for (LuaSymbol sym : list.getSymbols()) {
+                if (sym instanceof LuaDeclarationExpression) {
                     decls.add((LuaDeclarationExpression) sym);
+                }
                 else if (sym instanceof LuaReferenceElement) {
                     PsiElement e = ((LuaReferenceElement) sym).getElement();
 
-                    if (e instanceof Assignable)
+                    if (e instanceof Assignable) {
                         decls.add((LuaDeclarationExpression) e);
+                    }
                 }
             }
 

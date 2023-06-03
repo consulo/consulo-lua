@@ -17,12 +17,12 @@
 package com.sylvanaar.idea.Lua.util;
 
 import consulo.lua.module.extension.LuaModuleExtension;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.openapi.vfs.VirtualFile;
+import consulo.language.util.ModuleUtilCore;
+import consulo.content.bundle.Sdk;
+import consulo.module.content.ProjectFileIndex;
 import com.sylvanaar.idea.Lua.LuaFileType;
+import consulo.module.Module;
+import consulo.virtualFileSystem.VirtualFile;
 
 /**
  * @author Maxim.Manuylov

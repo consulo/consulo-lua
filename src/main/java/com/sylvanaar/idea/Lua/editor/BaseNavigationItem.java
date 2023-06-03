@@ -3,15 +3,16 @@ package com.sylvanaar.idea.Lua.editor;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import consulo.language.impl.psi.FakePsiElement;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.impl.FakePsiElement;
+import consulo.navigation.ItemPresentation;
+import consulo.project.Project;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import consulo.ui.image.Image;
 
-public class BaseNavigationItem extends FakePsiElement {
+public class BaseNavigationItem extends FakePsiElement
+{
 
 	private final PsiElement myPsiElement;
 	private final String myText;

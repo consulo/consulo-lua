@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import com.intellij.ide.util.BrowseFilesListener;
-import com.intellij.openapi.ui.TextFieldWithBrowseButton;
-import com.intellij.ui.RawCommandLineEditor;
+import consulo.ui.ex.awt.TextFieldWithBrowseButton;
+import consulo.ui.ex.awt.util.BrowseFilesListener;
+import consulo.execution.ui.awt.RawCommandLineEditor;
 
 import javax.swing.*;
 import java.awt.*;

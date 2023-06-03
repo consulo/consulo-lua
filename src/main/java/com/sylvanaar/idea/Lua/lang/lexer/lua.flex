@@ -1,9 +1,7 @@
 package com.sylvanaar.idea.Lua.lang.lexer;
 
-import com.intellij.lexer.LexerBase;
-import com.intellij.psi.tree.IElementType;
-import java.util.*;
-import org.jetbrains.annotations.NotNull;
+import consulo.language.ast.IElementType;
+import consulo.language.lexer.LexerBase;
 
 %%
 

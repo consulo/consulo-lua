@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.intentions.style;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;

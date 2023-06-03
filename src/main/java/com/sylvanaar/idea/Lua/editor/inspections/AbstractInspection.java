@@ -16,14 +16,14 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections;
 
-import com.intellij.codeHighlighting.HighlightDisplayLevel;
-import com.intellij.codeInspection.CustomSuppressableInspectionTool;
-import com.intellij.codeInspection.LocalInspectionTool;
-import com.intellij.codeInspection.SuppressIntentionAction;
-import com.intellij.codeInspection.SuppressionUtil;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.util.Computable;
-import com.intellij.psi.PsiElement;
+import consulo.application.util.function.Computable;
+import consulo.language.editor.inspection.CustomSuppressableInspectionTool;
+import consulo.language.editor.inspection.LocalInspectionTool;
+import consulo.language.editor.intention.SuppressIntentionAction;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.editor.inspection.SuppressionUtil;
+import consulo.application.ApplicationManager;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
@@ -38,7 +38,8 @@ import java.util.regex.Pattern;
  * Date: Jun 12, 2010
  * Time: 7:28:23 AM
  */
-public abstract class AbstractInspection extends LocalInspectionTool implements CustomSuppressableInspectionTool {
+public abstract class AbstractInspection extends LocalInspectionTool implements CustomSuppressableInspectionTool
+{
     private static final SuppressIntentionAction[] EMPTY_ARRAY = new SuppressIntentionAction[0];
 
 
@@ -99,7 +100,7 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
     }
 
     public SuppressIntentionAction[] getSuppressActions(@Nullable PsiElement element) {
-       return new  SuppressIntentionAction[]
+       return new SuppressIntentionAction[]
        {
           //TODO [VISTALL] new SuppressByCommentFix(HighlightDisplayKey.find(getShortName()), LuaStatementElement.class)
        };

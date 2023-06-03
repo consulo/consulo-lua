@@ -16,14 +16,12 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.index;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.stubs.StringStubIndexExtension;
-import com.intellij.psi.stubs.StubIndexKey;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.psi.stub.StringStubIndexExtension;
+import consulo.language.psi.stub.StubIndexKey;
 
-import java.util.Collection;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,7 +29,9 @@ import java.util.Collection;
  * Date: 1/23/11
  * Time: 8:27 PM
  */
-public class LuaGlobalDeclarationIndex extends StringStubIndexExtension<LuaDeclarationExpression> {
+@ExtensionImpl
+public class LuaGlobalDeclarationIndex extends StringStubIndexExtension<LuaDeclarationExpression>
+{
     public static final StubIndexKey<String, LuaDeclarationExpression> KEY =
             StubIndexKey.createIndexKey("lua.global.name");
 
@@ -39,13 +39,6 @@ public class LuaGlobalDeclarationIndex extends StringStubIndexExtension<LuaDecla
 
     public static LuaGlobalDeclarationIndex getInstance() {
         return ourInstance;
-    }
-
-    @Override
-    public Collection<LuaDeclarationExpression> get(final String s, final Project project, @Nonnull final GlobalSearchScope scope) {
-        //return StubIndexImpl.safeGet(KEY, s, project, scope, LuaDeclarationExpression.class);
-         return super.get(s, project, scope);
-//         return super.get(s, project, new LuaSourceFilterScope(scope));
     }
 
     @Nonnull

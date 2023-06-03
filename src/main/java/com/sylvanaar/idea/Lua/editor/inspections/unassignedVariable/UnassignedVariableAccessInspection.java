@@ -17,13 +17,11 @@ package com.sylvanaar.idea.Lua.editor.inspections.unassignedVariable;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.codeHighlighting.HighlightDisplayLevel;
-import com.intellij.codeInspection.ProblemHighlightType;
-import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.codeInspection.ex.*;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiFile;
+import consulo.language.editor.inspection.UnfairLocalInspectionTool;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.Lua.lang.psi.LuaControlFlowOwner;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
@@ -33,12 +31,15 @@ import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiFile;
 import org.jetbrains.annotations.Nls;
 
 /**
  * @author ven
  */
-public class UnassignedVariableAccessInspection extends AbstractInspection  implements UnfairLocalInspectionTool {
+public class UnassignedVariableAccessInspection extends AbstractInspection  implements UnfairLocalInspectionTool
+{
     @Nls
     @Nonnull
     @Override

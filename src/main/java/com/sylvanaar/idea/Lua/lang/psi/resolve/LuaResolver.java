@@ -1,16 +1,17 @@
 package com.sylvanaar.idea.Lua.lang.psi.resolve;
 
-import com.intellij.openapi.diagnostic.*;
-import com.intellij.openapi.project.*;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.source.resolve.*;
-import com.intellij.psi.search.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.processors.*;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.index.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
+import consulo.language.psi.PsiManager;
+import consulo.language.psi.resolve.ResolveCache;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.logging.Logger;
+import consulo.project.Project;
 
 import java.util.*;
 
@@ -36,7 +37,7 @@ public class LuaResolver implements ResolveCache.PolyVariantResolver<LuaReferenc
     }
 
     private static LuaResolveResult[] _resolve(LuaReferenceElement ref,
-                                               PsiManager manager, boolean incompleteCode) {
+											   PsiManager manager, boolean incompleteCode) {
 
         if (ref.getName() == null) {
             return LuaResolveResult.EMPTY_ARRAY;

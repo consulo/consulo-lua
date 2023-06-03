@@ -18,10 +18,8 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiReference;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementFactoryImpl;
@@ -30,6 +28,8 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobalIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.util.SymbolUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
 import org.jetbrains.annotations.NonNls;
 
 import javax.annotation.Nullable;
@@ -56,7 +56,8 @@ public class LuaGlobalUsageImpl extends LuaIdentifierImpl implements LuaGlobalId
     }
 
     @Override
-    public PsiElement setName(@Nonnull @NonNls String name) throws IncorrectOperationException {
+    public PsiElement setName(@Nonnull @NonNls String name) throws IncorrectOperationException
+	{
         LuaIdentifier node = LuaPsiElementFactoryImpl.getInstance(getProject()).createGlobalNameIdentifier(name);
         replace(node);
 

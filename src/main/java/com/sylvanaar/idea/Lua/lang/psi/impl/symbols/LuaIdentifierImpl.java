@@ -18,10 +18,9 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
@@ -30,6 +29,7 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.util.IncorrectOperationException;
 import org.jetbrains.annotations.NonNls;
 
 import javax.annotation.Nullable;
@@ -79,7 +79,8 @@ public abstract class LuaIdentifierImpl extends LuaSymbolImpl implements LuaIden
     }
 
     @Override
-    public PsiElement setName(@NonNls String name) throws IncorrectOperationException {
+    public PsiElement setName(@NonNls String name) throws IncorrectOperationException
+	{
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 

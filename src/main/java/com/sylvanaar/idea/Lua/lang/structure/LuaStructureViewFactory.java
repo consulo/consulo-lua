@@ -16,16 +16,19 @@
 
 package com.sylvanaar.idea.Lua.lang.structure;
 
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.fileEditor.structureView.StructureViewBuilder;
+import consulo.fileEditor.structureView.StructureViewModel;
+import consulo.fileEditor.structureView.TreeBasedStructureViewBuilder;
+import consulo.language.Language;
+import consulo.language.editor.structureView.PsiStructureViewFactory;
+import consulo.language.psi.PsiFile;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.ide.structureView.StructureViewModel;
-import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
-import com.intellij.lang.PsiStructureViewFactory;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.psi.PsiFile;
-import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,16 +36,23 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
  * Date: Apr 14, 2010
  * Time: 2:04:03 AM
  */
+@ExtensionImpl
 public class LuaStructureViewFactory implements PsiStructureViewFactory {
-  @Override
-  public StructureViewBuilder getStructureViewBuilder(final PsiFile psiFile) {
-    return new TreeBasedStructureViewBuilder() {
+    @Override
+    public StructureViewBuilder getStructureViewBuilder(final PsiFile psiFile) {
+        return new TreeBasedStructureViewBuilder() {
 
-      @Override
-	  @Nonnull
-      public StructureViewModel createStructureViewModel(@Nullable Editor editor) {
-        return new LuaStructureViewModel((LuaPsiFile) psiFile);
-      }
-    };
-  }
+            @Override
+            @Nonnull
+            public StructureViewModel createStructureViewModel(@Nullable Editor editor) {
+                return new LuaStructureViewModel((LuaPsiFile) psiFile);
+            }
+        };
+    }
+
+    @jakarta.annotation.Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
 }

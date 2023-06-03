@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.visitor;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.util.containers.Interner;
+import consulo.language.psi.PsiElement;
+import consulo.util.interner.Interner;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaLiteralExpression;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;

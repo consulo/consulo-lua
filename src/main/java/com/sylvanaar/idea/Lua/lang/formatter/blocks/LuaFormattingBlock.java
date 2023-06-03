@@ -16,16 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter.blocks;
 
-import com.intellij.formatting.*;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiErrorElement;
-import com.intellij.psi.PsiWhiteSpace;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.tree.ILazyParseableElementType;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.codeStyle.*;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.PsiWhiteSpace;
+import consulo.logging.Logger;
+import consulo.language.psi.PsiComment;
+import consulo.language.ast.ILazyParseableElementType;
 import com.sylvanaar.idea.Lua.lang.formatter.processors.LuaSpacingProcessorBasic;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
@@ -33,13 +32,15 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import java.util.List;
 
 
-public class LuaFormattingBlock implements Block {
+public class LuaFormattingBlock implements Block
+{
     public static final Logger LOG = Logger.getInstance("Lua.LuaBlock");
   final protected ASTNode myNode;
   final protected Alignment myAlignment;

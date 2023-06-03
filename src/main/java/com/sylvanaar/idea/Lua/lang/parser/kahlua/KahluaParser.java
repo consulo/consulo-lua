@@ -15,21 +15,21 @@
  */
 package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiParser;
-import com.intellij.lang.WhitespaceSkippedCallback;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.progress.ProcessCanceledException;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IElementType;
+import consulo.component.ProcessCanceledException;
+import consulo.language.ast.ASTNode;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.WhitespaceSkippedCallback;
+import consulo.language.psi.PsiFile;
+import consulo.logging.Logger;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.parser.LuaPsiBuilder;
 import consulo.container.PluginException;
 import consulo.container.plugin.PluginId;
-import consulo.lang.LanguageVersion;
+import consulo.language.version.LanguageVersion;
+import consulo.language.parser.PsiParser;
 import se.krka.kahlua.vm.Prototype;
 
 import javax.annotation.Nonnull;

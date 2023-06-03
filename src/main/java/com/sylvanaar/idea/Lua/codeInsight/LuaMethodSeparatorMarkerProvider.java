@@ -16,31 +16,36 @@
 
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import com.intellij.codeHighlighting.Pass;
-import com.intellij.codeInsight.daemon.DaemonCodeAnalyzerSettings;
-import com.intellij.codeInsight.daemon.LineMarkerInfo;
-import com.intellij.codeInsight.daemon.LineMarkerProvider;
-import com.intellij.openapi.editor.colors.CodeInsightColors;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.editor.markup.GutterIconRenderer;
-import com.intellij.openapi.editor.markup.SeparatorPlacement;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.NullableFunction;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.CodeInsightColors;
+import consulo.codeEditor.markup.GutterIconRenderer;
+import consulo.colorScheme.EditorColorsScheme;
+import consulo.language.Language;
+import consulo.language.editor.DaemonCodeAnalyzerSettings;
+import consulo.language.editor.gutter.LineMarkerInfo;
+import consulo.colorScheme.EditorColorsManager;
+import consulo.codeEditor.markup.SeparatorPlacement;
+import consulo.document.util.TextRange;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import consulo.annotation.access.RequiredReadAction;
+import consulo.language.editor.Pass;
+import consulo.language.editor.gutter.LineMarkerProvider;
+import jakarta.inject.Inject;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@ExtensionImpl
 public class LuaMethodSeparatorMarkerProvider implements LineMarkerProvider
 {
 	private final DaemonCodeAnalyzerSettings myDaemonSettings;
 	private final EditorColorsManager myColorsManager;
 
+	@Inject
 	public LuaMethodSeparatorMarkerProvider(DaemonCodeAnalyzerSettings daemonSettings, EditorColorsManager colorsManager)
 	{
 		myDaemonSettings = daemonSettings;
@@ -61,7 +66,7 @@ public class LuaMethodSeparatorMarkerProvider implements LineMarkerProvider
 				if(owner instanceof LuaFunctionDefinition)
 				{
 					TextRange range = new TextRange(element.getTextOffset(), owner.getTextRange().getEndOffset());
-					LineMarkerInfo<PsiElement> info = new LineMarkerInfo<>(element, range, null, Pass.UPDATE_ALL, NullableFunction.NULL, null, GutterIconRenderer.Alignment.RIGHT);
+					LineMarkerInfo<PsiElement> info = new LineMarkerInfo<>(element, range, null, Pass.UPDATE_ALL, element1 -> null, null, GutterIconRenderer.Alignment.RIGHT);
 					EditorColorsScheme scheme = myColorsManager.getGlobalScheme();
 					info.separatorColor = scheme.getColor(CodeInsightColors.METHOD_SEPARATORS_COLOR);
 					info.separatorPlacement = SeparatorPlacement.TOP;
@@ -70,5 +75,12 @@ public class LuaMethodSeparatorMarkerProvider implements LineMarkerProvider
 			}
 		}
 		return null;
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return LuaLanguage.INSTANCE;
 	}
 }

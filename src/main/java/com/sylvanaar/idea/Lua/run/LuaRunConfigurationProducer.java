@@ -16,23 +16,26 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import com.intellij.execution.*;
-import com.intellij.execution.actions.*;
-import com.intellij.execution.impl.*;
-import com.intellij.execution.junit.*;
-import com.intellij.openapi.module.*;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.*;
-import com.intellij.openapi.util.text.*;
-import com.intellij.openapi.vfs.*;
-import com.intellij.psi.*;
-import com.sylvanaar.idea.Lua.*;
+import com.sylvanaar.idea.Lua.LuaFileType;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.RunnerAndConfigurationSettings;
+import consulo.execution.action.ConfigurationContext;
+import consulo.execution.action.Location;
+import consulo.execution.action.RuntimeConfigurationProducer;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.project.Project;
+import consulo.util.lang.StringUtil;
+import consulo.virtualFileSystem.VirtualFile;
 
 /**
  * This class is based on code of the intellij-batch plugin.
  *
  * @author wibotwi, jansorg, sylvanaar
  */
+@ExtensionImpl
 public class LuaRunConfigurationProducer extends RuntimeConfigurationProducer implements Cloneable {
     private PsiFile sourceFile = null;
 
@@ -46,7 +49,7 @@ public class LuaRunConfigurationProducer extends RuntimeConfigurationProducer im
     }
 
     @Override
-    protected RunnerAndConfigurationSettingsImpl createConfigurationByElement(Location location, ConfigurationContext configurationContext) {
+    protected RunnerAndConfigurationSettings createConfigurationByElement(Location location, ConfigurationContext configurationContext) {
         sourceFile = location.getPsiElement().getContainingFile();
 
         if (sourceFile != null && sourceFile.getFileType().equals(LuaFileType.LUA_FILE_TYPE)) {
@@ -65,7 +68,7 @@ public class LuaRunConfigurationProducer extends RuntimeConfigurationProducer im
                     runConfiguration.setWorkingDirectory(dir.getPath());
             }
 
-            Module module = ModuleUtil.findModuleForPsiElement(location.getPsiElement());
+            Module module = ModuleUtilCore.findModuleForPsiElement(location.getPsiElement());
             if (module != null) {
                 runConfiguration.setModule(module);
             }
@@ -74,7 +77,7 @@ public class LuaRunConfigurationProducer extends RuntimeConfigurationProducer im
                 runConfiguration.setOverrideSDKInterpreter(false);
             }
 
-            return (RunnerAndConfigurationSettingsImpl) settings;
+            return settings;
         }
 
         return null;

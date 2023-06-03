@@ -15,12 +15,12 @@
  */
 package com.sylvanaar.idea.Lua.intentions.control;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.intentions.base.ErrorUtil;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
+import consulo.language.psi.PsiElement;
 
 
 class ConjunctionPredicate implements PsiElementPredicate {

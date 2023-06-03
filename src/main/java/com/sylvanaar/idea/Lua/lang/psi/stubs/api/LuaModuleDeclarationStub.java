@@ -18,7 +18,7 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs.api;
 
 import javax.annotation.Nullable;
 
-import com.intellij.psi.stubs.NamedStub;
+import consulo.language.psi.stub.NamedStub;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
 
 /**

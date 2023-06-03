@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.intentions.base;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 public interface PsiElementPredicate {
   boolean satisfiedBy(PsiElement element);

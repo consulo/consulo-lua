@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.expressions;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.CachedValue;
+import consulo.application.util.CachedValue;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
 import consulo.util.dataholder.Key;

@@ -16,11 +16,12 @@
 package com.sylvanaar.idea.Lua.editor.inspections.metrics;
 
 
-import com.intellij.codeInspection.LocalQuickFix;
-import com.intellij.codeInspection.ProblemsHolder;
+import consulo.language.editor.inspection.ProblemsHolder;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.LocalQuickFix;
+
 import javax.annotation.Nonnull;
 
 public class LuaOverlyComplexMethodInspection extends LuaMethodMetricInspection {

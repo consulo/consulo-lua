@@ -16,33 +16,35 @@
 
 package com.sylvanaar.idea.Lua.actions;
 
+import consulo.document.FileDocumentManager;
+import consulo.execution.ui.console.ConsoleViewContentType;
+import consulo.fileEditor.FileEditorManager;
+import consulo.ide.IdeView;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiFileFactory;
 import consulo.lua.bundle.BaseLuaSdkType;
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.process.ProcessOutput;
-import com.intellij.execution.ui.ConsoleViewContentType;
-import com.intellij.ide.IdeView;
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.fileEditor.FileDocumentManager;
-import com.intellij.openapi.fileEditor.FileEditorManager;
-import com.intellij.openapi.fileEditor.OpenFileDescriptor;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileFactory;
+import consulo.module.ModuleManager;
+import consulo.navigation.OpenFileDescriptor;
+import consulo.navigation.OpenFileDescriptorFactory;
+import consulo.process.ExecutionException;
+import consulo.process.local.ProcessOutput;
+import consulo.ui.ex.action.AnAction;
+import consulo.ui.ex.action.AnActionEvent;
+import consulo.language.editor.LangDataKeys;
+import consulo.application.ApplicationManager;
+import consulo.module.Module;
+import consulo.project.Project;
+import consulo.content.bundle.Sdk;
+import consulo.util.lang.StringUtil;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.sdk.StdLibrary;
 import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
 import com.sylvanaar.idea.Lua.util.LuaSystemUtil;
+import consulo.util.lang.ref.Ref;
 
 /**
  * Created by IntelliJ IDEA.
@@ -73,7 +75,6 @@ public class GenerateLuaListingAction extends AnAction {
         }
     }
 
-    PsiElement created;
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(LangDataKeys.PROJECT);
         assert project != null;
@@ -118,7 +119,7 @@ public class GenerateLuaListingAction extends AnAction {
         }
         String listing = processOutput.getStdout();
 
-        final IdeView view = e.getData(LangDataKeys.IDE_VIEW);
+        final IdeView view = e.getData(IdeView.KEY);
         if (view == null) return;
 
         final PsiDirectory dir = view.getOrChooseDirectory();
@@ -138,25 +139,25 @@ public class GenerateLuaListingAction extends AnAction {
 
         final PsiFile file = factory.createFileFromText(listingFileName, LuaFileType.LUA_FILE_TYPE, listing);
 
+		Ref<PsiElement> elementRef = consulo.util.lang.ref.Ref.create();
         ApplicationManager.getApplication().runWriteAction(new Runnable() {
             @Override
             public void run() {
-               created = dir.add(file);
+				elementRef.set(dir.add(file));
             }
         });
 
-        if (created == null) return;
+		PsiElement created = elementRef.get();
+		if (created == null) return;
         final PsiFile containingFile = created.getContainingFile();
         if (containingFile == null) return;
         final VirtualFile virtualFile1 = containingFile.getVirtualFile();
         if (virtualFile1 == null) return;
         
-        OpenFileDescriptor fileDesc = new OpenFileDescriptor(project, virtualFile1);
+        OpenFileDescriptor fileDesc = OpenFileDescriptorFactory.getInstance(project).builder(virtualFile1).build();
 
         FileEditorManager.getInstance(project).openTextEditor(fileDesc, false);
 
         view.selectElement(created);
-
-        created = null;
     }
 }

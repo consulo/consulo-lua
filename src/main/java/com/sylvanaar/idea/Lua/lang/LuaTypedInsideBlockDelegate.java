@@ -16,17 +16,18 @@
 
 package com.sylvanaar.idea.Lua.lang;
 
-import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.document.Document;
+import consulo.language.editor.action.TypedHandlerDelegate;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import consulo.virtualFileSystem.fileType.FileType;
 
 /**
  * Created by IntelliJ IDEA.
@@ -34,15 +35,18 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
  * Date: 1/30/11
  * Time: 6:45 AM
  */
+@ExtensionImpl
 public class LuaTypedInsideBlockDelegate extends TypedHandlerDelegate {
     boolean preserveParen = false;
 
     @Override
     public Result beforeCharTyped(char c, Project project, Editor editor, PsiFile file, FileType fileType) {
-        if (! (file instanceof LuaPsiFile))
+        if (!(file instanceof LuaPsiFile)) {
             return Result.CONTINUE;
-        if (c != ')' && c != '(')
+        }
+        if (c != ')' && c != '(') {
             return Result.CONTINUE;
+        }
 
         int caretOffset = editor.getCaretModel().getOffset();
         PsiElement e1 = file.findElementAt(caretOffset);
@@ -50,22 +54,24 @@ public class LuaTypedInsideBlockDelegate extends TypedHandlerDelegate {
         preserveParen = (e1 != null && e1.getText().equals(")"));
 
         return super.beforeCharTyped(c, project, editor, file,
-                fileType);   
+                fileType);
     }
 
     @Override
     public Result charTyped(char c, final Project project, final Editor editor, final PsiFile file) {
-        if (! (file instanceof LuaPsiFile))
+        if (!(file instanceof LuaPsiFile)) {
             return Result.CONTINUE;
-        if (c != ')' && c != '(')
+        }
+        if (c != ')' && c != '(') {
             return Result.CONTINUE;
+        }
 
         Document document = editor.getDocument();
         int caretOffset = editor.getCaretModel().getOffset();
 
         PsiDocumentManager.getInstance(file.getProject()).commitDocument(document);
 
-        PsiElement e = file.findElementAt(caretOffset-1);
+        PsiElement e = file.findElementAt(caretOffset - 1);
 
         if (!(e instanceof PsiComment)) {
 

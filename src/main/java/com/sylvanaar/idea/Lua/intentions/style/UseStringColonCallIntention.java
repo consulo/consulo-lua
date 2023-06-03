@@ -16,10 +16,8 @@
 
 package com.sylvanaar.idea.Lua.intentions.style;
 
-import com.intellij.openapi.editor.Document;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
 import com.sylvanaar.idea.Lua.intentions.base.MutablyNamedIntention;
 import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
@@ -28,6 +26,9 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
 import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
+import consulo.document.Document;
+import consulo.language.psi.PsiDocumentManager;
+
 import javax.annotation.Nonnull;
 
 import java.util.List;

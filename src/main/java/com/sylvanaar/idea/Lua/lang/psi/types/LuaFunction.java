@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.types;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.text.StringUtil;
+import consulo.logging.Logger;
+import consulo.util.lang.StringUtil;
 
 import java.util.HashSet;
 import java.util.Map;

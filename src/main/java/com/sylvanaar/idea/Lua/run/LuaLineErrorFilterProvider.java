@@ -16,11 +16,12 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.ui.console.ConsoleFilterProvider;
+import consulo.execution.ui.console.Filter;
+import consulo.project.Project;
 
-import com.intellij.execution.filters.ConsoleFilterProvider;
-import com.intellij.execution.filters.Filter;
-import com.intellij.openapi.project.Project;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,10 +29,11 @@ import com.intellij.openapi.project.Project;
  * Date: 8/5/11
  * Time: 3:59 PM
  */
+@ExtensionImpl
 public class LuaLineErrorFilterProvider implements ConsoleFilterProvider {
     @Nonnull
     @Override
     public Filter[] getDefaultFilters(@Nonnull Project project) {
-        return new Filter[] { new LuaLineErrorFilter(project) };
+        return new Filter[]{new LuaLineErrorFilter(project)};
     }
 }

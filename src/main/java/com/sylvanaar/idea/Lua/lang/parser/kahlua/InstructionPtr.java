@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.lang.parser.kahlua;
 
-import com.google.common.base.MoreObjects;
+import java.util.Arrays;
 
 class InstructionPtr
 {
@@ -53,11 +53,10 @@ class InstructionPtr
 	}
 
 	@Override
-	public String toString()
-	{
-		MoreObjects.ToStringHelper sb = MoreObjects.toStringHelper(this);
-		sb.add("code", code);
-		sb.add("idx", idx);
-		return sb.toString();
+	public String toString() {
+		return "InstructionPtr{" +
+				"code=" + Arrays.toString(code) +
+				", idx=" + idx +
+				'}';
 	}
 }

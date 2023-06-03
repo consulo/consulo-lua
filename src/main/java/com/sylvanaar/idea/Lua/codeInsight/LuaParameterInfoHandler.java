@@ -15,31 +15,33 @@
  */
 package com.sylvanaar.idea.Lua.codeInsight;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.codeInsight.documentation.DocumentationManager;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.lang.parameterInfo.*;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiWhiteSpace;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionCallExpression;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.documentation.LanguageDocumentationProvider;
+import consulo.language.editor.parameterInfo.*;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiWhiteSpace;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 /**
  * @author ven
  */
+@ExtensionImpl
 public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiElement, Object> {
     public boolean couldShowInLookup() {
         return true;
     }
 
     public Object[] getParametersForLookup(LookupElement item, ParameterInfoContext context) {
-        return null;
-    }
-
-    public Object[] getParametersForDocumentation(Object resolveResult, ParameterInfoContext context) {
         return null;
     }
 
@@ -58,36 +60,55 @@ public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiEleme
         try {
             do {
                 func = file.findElementAt(offset - delta++);
-            } while (func instanceof PsiWhiteSpace);
+            }
+            while (func instanceof PsiWhiteSpace);
 
             // System.out.println("Element at pos:" + func);
 
             do {
-                if (func instanceof LuaFunctionCallExpression)
+                if (func instanceof LuaFunctionCallExpression) {
                     return (LuaPsiElement) func;
+                }
 
                 func = func.getContext();
-            } while (func != null);
+            }
+            while (func != null);
 
-        } catch (Throwable ignored) {
+        }
+        catch (Throwable ignored) {
         }
 
         return null;
     }
 
-
+    @RequiredReadAction
     public void showParameterInfo(@Nonnull LuaPsiElement place, CreateParameterInfoContext context) {
-        if (!(place instanceof LuaFunctionCallExpression))
+        if (!(place instanceof LuaFunctionCallExpression)) {
             return;
+        }
+
 
         final LuaReferenceElement functionNameElement = ((LuaFunctionCallExpression) place).getFunctionNameElement();
-        if (functionNameElement == null) return;
+        if (functionNameElement == null) {
+            return;
+        }
 
+        String text = null;
+        PsiElement resolvedElement = functionNameElement.resolve();
+        if (resolvedElement != null) {
+            List<LanguageDocumentationProvider> list = LanguageDocumentationProvider.forLanguage(LuaLanguage.INSTANCE);
+            for (LanguageDocumentationProvider provider : list) {
+                String quickNavigateInfo = provider.getQuickNavigateInfo(functionNameElement.resolve(), place);
+                if (quickNavigateInfo != null) {
+                    text = quickNavigateInfo;
+                    break;
+                }
+            }
+        }
 
-        String text = DocumentationManager.getProviderFromElement(place).
-                getQuickNavigateInfo(functionNameElement.resolve(), place);
-        
-        if (text == null) return;
+        if (text == null) {
+            return;
+        }
 
         Object[] o = {text};
         context.setItemsToShow(o);
@@ -95,14 +116,6 @@ public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiEleme
     }
 
     public void updateParameterInfo(@Nonnull LuaPsiElement place, UpdateParameterInfoContext context) {
-    }
-
-    public String getParameterCloseChars() {
-        return ",){}\t";
-    }
-
-    public boolean tracksParameterIndex() {
-        return false;
     }
 
     public void updateUI(Object o, ParameterInfoUIContext context) {
@@ -114,11 +127,13 @@ public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiEleme
 
         PsiElement owningElement = context.getParameterOwner();
 
-        if (o instanceof LuaPsiElement)
+        if (o instanceof LuaPsiElement) {
             buffer.append(((LuaPsiElement) o).getText());
+        }
 
-        if (o instanceof String)
+        if (o instanceof String) {
             buffer.append(o);
+        }
 
         context.setupUIComponentPresentation(
                 buffer.toString(),
@@ -132,4 +147,9 @@ public class LuaParameterInfoHandler implements ParameterInfoHandler<LuaPsiEleme
     }
 
 
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
 }

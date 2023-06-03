@@ -16,15 +16,17 @@
 
 package com.sylvanaar.idea.Lua.lang.documentor;
 
-import com.intellij.lang.documentation.DocumentationProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiManager;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
-import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
-
-import java.util.List;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaAlias;
+import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaGlobal;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.documentation.LanguageDocumentationProvider;
+import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,7 +34,8 @@ import java.util.List;
  * Date: 1/29/11
  * Time: 8:26 AM
  */
-public class ContextualDocumentationProvider implements DocumentationProvider {
+@ExtensionImpl(id = "lua.context")
+public class ContextualDocumentationProvider implements LanguageDocumentationProvider {
     @Override
     public String getQuickNavigateInfo(PsiElement element, PsiElement originalElement) {
         // only time we see the two eleements equal is when we call for documentation
@@ -50,11 +53,6 @@ public class ContextualDocumentationProvider implements DocumentationProvider {
         String label = "[" + element.getContainingFile().getName() + "] \r\n";
 
         return label + s2.split("[\n\r]")[0];
-    }
-
-    @Override
-    public List<String> getUrlFor(PsiElement element, PsiElement originalElement) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
@@ -87,13 +85,9 @@ public class ContextualDocumentationProvider implements DocumentationProvider {
         return null;
     }
 
+    @Nonnull
     @Override
-    public PsiElement getDocumentationElementForLookupItem(PsiManager psiManager, Object object, PsiElement element) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public PsiElement getDocumentationElementForLink(PsiManager psiManager, String link, PsiElement context) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
     }
 }

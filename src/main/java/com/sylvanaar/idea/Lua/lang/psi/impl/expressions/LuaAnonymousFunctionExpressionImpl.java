@@ -21,14 +21,13 @@ import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.PARAMETER_LIST;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.document.util.TextRange;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.navigation.ItemPresentation;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.LuaDocCommentUtil;
@@ -46,6 +45,7 @@ import com.sylvanaar.idea.Lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
 import com.sylvanaar.idea.Lua.util.LuaAtomicNotNullLazyValue;
+import consulo.language.ast.ASTNode;
 import consulo.ui.image.Image;
 
 /**
@@ -79,7 +79,7 @@ public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
 
     @Override
     public void accept(@Nonnull
-    PsiElementVisitor visitor) {
+							   PsiElementVisitor visitor) {
         if (visitor instanceof LuaElementVisitor) {
             ((LuaElementVisitor) visitor).visitAnonymousFunction(this);
         } else {
@@ -137,8 +137,8 @@ public class LuaAnonymousFunctionExpressionImpl extends LuaExpressionImpl
     }
 
     public boolean processDeclarations(@Nonnull
-    PsiScopeProcessor processor, @Nonnull
-    ResolveState resolveState, PsiElement lastParent, @Nonnull
+											   PsiScopeProcessor processor, @Nonnull
+											   ResolveState resolveState, PsiElement lastParent, @Nonnull
     PsiElement place) {
         if ((lastParent != null) && (lastParent.getParent() == this)) {
             final LuaParameter[] params = getParameters().getLuaParameters();

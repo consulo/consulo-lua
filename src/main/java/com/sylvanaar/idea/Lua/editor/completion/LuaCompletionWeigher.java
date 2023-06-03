@@ -16,24 +16,25 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.codeInsight.completion.CompletionLocation;
-import com.intellij.codeInsight.completion.CompletionWeigher;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.ResolveResult;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaModuleExpression;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaLocalIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.completion.CompletionLocation;
+import consulo.language.editor.completion.CompletionWeigher;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.ResolveResult;
+import consulo.logging.Logger;
+import consulo.module.content.ProjectFileIndex;
+import consulo.module.content.ProjectRootManager;
+import consulo.util.lang.StringUtil;
+import consulo.virtualFileSystem.VirtualFile;
+
+import javax.annotation.Nonnull;
 
 
 /**
@@ -42,6 +43,7 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
  * Date: 9/3/11
  * Time: 7:41 AM
  */
+@ExtensionImpl
 public class LuaCompletionWeigher extends CompletionWeigher {
     private static final Logger log = Logger.getInstance("Lua.CompletionWeigher");
 
@@ -61,10 +63,14 @@ public class LuaCompletionWeigher extends CompletionWeigher {
 
             boolean isFromTypeInference = ((LuaLookupElement) element).isTypeInferred();
             log.debug("weigh " + o + " typed=" + isFromTypeInference);
-            if (isFromTypeInference) return SymbolWeight.aTypeInferedSymbol;
+            if (isFromTypeInference) {
+                return SymbolWeight.aTypeInferedSymbol;
+            }
         }
 
-        if (o instanceof String) return SymbolWeight.anyGlobalFromCache;
+        if (o instanceof String) {
+            return SymbolWeight.anyGlobalFromCache;
+        }
 
         final PsiElement position = location.getCompletionParameters().getPosition();
         final String text = position.getText();
@@ -75,34 +81,53 @@ public class LuaCompletionWeigher extends CompletionWeigher {
 
         log.debug("weigh " + o + " " + position);
 
-        if (!(o instanceof LuaSymbol)) return null;
+        if (!(o instanceof LuaSymbol)) {
+            return null;
+        }
 
-        if (position instanceof LuaModuleExpression) return SymbolWeight.aModule;
+        if (position instanceof LuaModuleExpression) {
+            return SymbolWeight.aModule;
+        }
 
         if (position instanceof LuaCompoundIdentifier || StringUtil.containsAnyChar(".:[]", text)) {
 
-        } else {
+        }
+        else {
             if (o instanceof LuaCompoundIdentifier) {
 
             }
-            if (o instanceof LuaLocalIdentifier) return SymbolWeight.aLocal;
+            if (o instanceof LuaLocalIdentifier) {
+                return SymbolWeight.aLocal;
+            }
 
-            if (!((LuaSymbol) o).isValid()) return null;
+            if (!((LuaSymbol) o).isValid()) {
+                return null;
+            }
             final PsiFile completionFile = ((LuaSymbol) o).getContainingFile();
-            if (containingFile.equals(completionFile)) return SymbolWeight.aGlobalInFile;
+            if (containingFile.equals(completionFile)) {
+                return SymbolWeight.aGlobalInFile;
+            }
 
             final VirtualFile completionFileVirtualFile = completionFile.getVirtualFile();
             final VirtualFile containingFileVirutalFile =
                     location.getCompletionParameters().getOriginalFile().getVirtualFile();
 
-            if (completionFileVirtualFile == null) return null;
-            if (containingFileVirutalFile == null) return null;
+            if (completionFileVirtualFile == null) {
+                return null;
+            }
+            if (containingFileVirutalFile == null) {
+                return null;
+            }
 
             ProjectFileIndex index = ProjectRootManager.getInstance(location.getProject()).getFileIndex();
 
-            if (index.isInContent(completionFileVirtualFile)) return SymbolWeight.aProjectGlobal;
+            if (index.isInContent(completionFileVirtualFile)) {
+                return SymbolWeight.aProjectGlobal;
+            }
 
-            if ((index.isInLibraryClasses(completionFileVirtualFile))) return SymbolWeight.aLibraryGlobal;
+            if ((index.isInLibraryClasses(completionFileVirtualFile))) {
+                return SymbolWeight.aLibraryGlobal;
+            }
         }
 
 
@@ -110,12 +135,22 @@ public class LuaCompletionWeigher extends CompletionWeigher {
     }
 
     private static enum SymbolWeight {
-        anOnlyReadGlobal, anyGlobalFromCache, aLibraryGlobal, anSDKGlobal, aProjectGlobal, aModule, aGlobalInFile,
+        anOnlyReadGlobal,
+        anyGlobalFromCache,
+        aLibraryGlobal,
+        anSDKGlobal,
+        aProjectGlobal,
+        aModule,
+        aGlobalInFile,
         aLocal,
         aTypeInferedSymbol
     }
 
     private static enum CompoundSymbolWeight {
-        anOnlyReadGlobal, aLibraryGlobal, anSDKGlobal, aProjectGlobal, aGlobalInFile
+        anOnlyReadGlobal,
+        aLibraryGlobal,
+        anSDKGlobal,
+        aProjectGlobal,
+        aGlobalInFile
     }
 }

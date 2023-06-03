@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.library;
 
-import com.intellij.openapi.roots.libraries.*;
+import consulo.content.library.LibraryKind;
 
 /**
  * Created by IntelliJ IDEA.

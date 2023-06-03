@@ -1,16 +1,16 @@
 package com.sylvanaar.idea.Lua.lang.formatter.processors;
 
-import com.intellij.formatting.Spacing;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
-import com.intellij.psi.impl.source.SourceTreeToPsiMap;
-import com.intellij.psi.impl.source.tree.CompositeElement;
+import consulo.language.ast.ASTNode;
+import consulo.language.codeStyle.CodeStyleSettings;
+import consulo.language.impl.ast.CompositeElement;
+import consulo.logging.Logger;
+import consulo.language.psi.PsiElement;
+import consulo.language.impl.psi.SourceTreeToPsiMap;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.codeStyle.Spacing;
 
 import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.NEWLINE;
 import static com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes.SHORTCOMMENT;

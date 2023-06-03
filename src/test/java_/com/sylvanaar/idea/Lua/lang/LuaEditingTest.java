@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.Lua.lang;
 
-import com.intellij.codeInsight.CodeInsightSettings;
+import consulo.language.editor.CodeInsightSettings;
 import com.sylvanaar.idea.Lua.LightLuaTestCase;
 
 /**

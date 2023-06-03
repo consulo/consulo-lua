@@ -16,13 +16,8 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections.performance;
 
-import com.intellij.codeHighlighting.HighlightDisplayLevel;
-import com.intellij.codeInspection.LocalQuickFix;
-import com.intellij.codeInspection.ProblemDescriptor;
-import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemsHolder;
 import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.Lua.editor.inspections.LuaFix;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
@@ -32,6 +27,11 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaLocalDefinitionStatement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.ProblemDescriptor;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.util.IncorrectOperationException;
+import consulo.project.Project;
 import org.jetbrains.annotations.Nls;
 import javax.annotation.Nonnull;
 
@@ -103,7 +103,8 @@ public class RedundantInitializationInspection extends AbstractInspection {
     private class RedundantInitializationFix extends LuaFix {
 
         @Override
-        protected void doFix(Project project, ProblemDescriptor descriptor) throws IncorrectOperationException {
+        protected void doFix(Project project, ProblemDescriptor descriptor) throws IncorrectOperationException
+		{
             final LuaAssignmentStatement assign = (LuaAssignmentStatement) descriptor.getPsiElement();
 
             assign.getOperatorElement().delete();

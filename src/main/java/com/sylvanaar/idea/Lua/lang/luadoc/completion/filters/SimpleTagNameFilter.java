@@ -16,11 +16,11 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.completion.filters;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.filters.ElementFilter;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.filter.ElementFilter;
 import com.sylvanaar.idea.Lua.lang.luadoc.lexer.LuaDocTokenTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
+import consulo.language.psi.PsiElement;
 import org.jetbrains.annotations.NonNls;
 
 public class SimpleTagNameFilter implements ElementFilter {

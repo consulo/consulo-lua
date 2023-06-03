@@ -16,12 +16,13 @@
 package com.sylvanaar.idea.Lua.editor.inspections.utils;
 
 import javax.annotation.Nonnull;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.ObjectUtil;
+
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaUnaryExpression;
+import consulo.language.ast.IElementType;
+import consulo.util.lang.ObjectUtil;
 
 public class BoolUtils {
   private static Object UNKNOWN = new Object();

@@ -16,7 +16,6 @@
 
 package com.sylvanaar.idea.Lua.editor.inspections;
 
-import com.intellij.codeInspection.InspectionToolProvider;
 import com.sylvanaar.idea.Lua.editor.inspections.bugs.*;
 import com.sylvanaar.idea.Lua.editor.inspections.metrics.LuaOverlyComplexMethodInspection;
 import com.sylvanaar.idea.Lua.editor.inspections.metrics.LuaOverlyLongMethodInspection;
@@ -32,9 +31,9 @@ import com.sylvanaar.idea.Lua.editor.inspections.validity.LuaUnreachableStatemen
  * Date: Jun 12, 2010
  * Time: 7:25:47 AM
  */
-public class InspectionProvider implements InspectionToolProvider {
+public class InspectionProvider {
     public Class[] getInspectionClasses() {
-        return new Class[] {
+        return new Class[]{
                 ParameterSelfInspection.class,
                 GlobalSelfInspection.class,
                 UnbalancedAssignmentInspection.class,

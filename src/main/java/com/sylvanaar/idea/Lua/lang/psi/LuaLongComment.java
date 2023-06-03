@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
-import com.intellij.psi.PsiComment;
+import consulo.language.psi.PsiComment;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,7 +24,8 @@ import com.intellij.psi.PsiComment;
  * Date: Jun 28, 2010
  * Time: 5:06:40 AM
  */
-public interface LuaLongComment extends PsiComment {
+public interface LuaLongComment extends PsiComment
+{
     PsiComment getOpen();
     PsiComment getBody();
     PsiComment getClose();

@@ -18,16 +18,16 @@ package com.sylvanaar.idea.Lua.lang.formatter.processors;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.formatting.Indent;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
+import consulo.language.codeStyle.Indent;
+import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
 
 import javax.annotation.Nullable;
 

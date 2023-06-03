@@ -3,13 +3,6 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.intellij.lang.*;
-import com.intellij.openapi.project.*;
-import com.intellij.openapi.util.*;
-import com.intellij.openapi.util.text.*;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.source.resolve.*;
-import com.intellij.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.resolve.*;
@@ -17,6 +10,13 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.*;
+import consulo.language.psi.resolve.ResolveCache;
+import consulo.language.util.IncorrectOperationException;
+import consulo.project.Project;
+import consulo.util.lang.StringUtil;
 
 
 /**
@@ -151,13 +151,15 @@ public abstract class LuaReferenceElementImpl extends LuaSymbolImpl implements L
         return this;
      }
 
-    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
+    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException
+	{
         ((PsiNamedElement)getElement()).setName(newElementName);
         resolve();
         return this;
     }
 
-    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException
+	{
         final LuaIdentifier identifier = findChildByClass(LuaIdentifier.class);
         if (identifier == null) throw new IncorrectOperationException("Cant bind to non-identifier");
         identifier.replace(element);

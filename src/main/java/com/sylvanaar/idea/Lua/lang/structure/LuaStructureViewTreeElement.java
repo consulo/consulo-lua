@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.structure;
 
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.pom.Navigatable;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.navigation.Navigatable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,7 +26,8 @@ import com.intellij.psi.PsiElement;
  * Date: Apr 14, 2010
  * Time: 2:06:02 AM
  */
-public abstract class LuaStructureViewTreeElement implements StructureViewTreeElement {
+public abstract class LuaStructureViewTreeElement implements StructureViewTreeElement
+{
   final protected PsiElement myElement;
 
   public LuaStructureViewTreeElement(PsiElement element) {

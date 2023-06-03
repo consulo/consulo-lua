@@ -16,11 +16,11 @@
 
 package com.sylvanaar.idea.Lua.options;
 
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.util.xmlb.XmlSerializerUtil;
+import consulo.component.persist.PersistentStateComponent;
+import consulo.component.persist.State;
+import consulo.component.persist.Storage;
+import consulo.ide.ServiceManager;
+import consulo.util.xml.serializer.XmlSerializerUtil;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,7 +30,8 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
  */
 
 @State(name = "LuaApplicationSettings", storages = @Storage("lua.xml"))
-public class LuaApplicationSettings implements PersistentStateComponent<LuaApplicationSettings> {
+public class LuaApplicationSettings implements PersistentStateComponent<LuaApplicationSettings>
+{
     public boolean INCLUDE_ALL_FIELDS_IN_COMPLETIONS = false;
     public boolean ENABLE_TYPE_INFERENCE = true;
 

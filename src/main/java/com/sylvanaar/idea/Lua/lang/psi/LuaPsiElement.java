@@ -18,13 +18,14 @@ package com.sylvanaar.idea.Lua.lang.psi;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.navigation.NavigationItem;
-import com.intellij.psi.PsiElement;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.navigation.NavigationItem;
 
 
-public interface LuaPsiElement extends PsiElement, NavigationItem {
+public interface LuaPsiElement extends PsiElement, NavigationItem
+{
     LuaPsiElement[] EMPTY_ARRAY = new LuaPsiElement[0];
     
     @Nonnull

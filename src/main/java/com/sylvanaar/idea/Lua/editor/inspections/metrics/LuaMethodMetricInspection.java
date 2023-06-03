@@ -16,11 +16,9 @@
 package com.sylvanaar.idea.Lua.editor.inspections.metrics;
 
 
-import com.intellij.codeInspection.ui.SingleIntegerFieldOptionsPanel;
 import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
-import javax.annotation.Nonnull;
 
-import javax.swing.*;
+import javax.annotation.Nonnull;
 
 public abstract class LuaMethodMetricInspection extends AbstractInspection {
 
@@ -40,8 +38,8 @@ public abstract class LuaMethodMetricInspection extends AbstractInspection {
         return METHOD_METRICS;
     }
 
-    public JComponent createOptionsPanel() {
-        final String configurationLabel = getConfigurationLabel();
-        return new SingleIntegerFieldOptionsPanel(configurationLabel, this, "m_limit");
-    }
+//    public JComponent createOptionsPanel() {
+//        final String configurationLabel = getConfigurationLabel();
+//        return new consulo.ide.impl.idea.codeInspection.ui.SingleIntegerFieldOptionsPanel(configurationLabel, this, "m_limit");
+//    }
 }

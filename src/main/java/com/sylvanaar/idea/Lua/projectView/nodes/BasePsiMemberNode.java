@@ -20,10 +20,10 @@
  */
 package com.sylvanaar.idea.Lua.projectView.nodes;
 
-import com.intellij.ide.projectView.ViewSettings;
-import com.intellij.ide.projectView.impl.nodes.BasePsiNode;
-import com.intellij.openapi.project.Project;
+import consulo.project.ui.view.tree.BasePsiNode;
+import consulo.project.Project;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import consulo.project.ui.view.tree.ViewSettings;
 
 public abstract class BasePsiMemberNode<T extends LuaPsiElement> extends BasePsiNode<T>{
   protected BasePsiMemberNode(Project project, T value, ViewSettings viewSettings) {

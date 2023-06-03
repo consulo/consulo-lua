@@ -16,28 +16,29 @@
 
 package com.sylvanaar.idea.Lua.run.lua;
 
-import static consulo.lua.bundle.BaseLuaSdkType.getTopLevelExecutable;
+import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
+import consulo.content.bundle.Sdk;
+import consulo.execution.configuration.CommandLineState;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.process.ProcessTerminatedListener;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.lua.bundle.BaseLuaSdkType;
+import consulo.process.ExecutionException;
+import consulo.process.ProcessHandler;
+import consulo.process.ProcessHandlerBuilder;
+import consulo.process.cmd.GeneralCommandLine;
+import consulo.util.lang.StringUtil;
 
 import javax.annotation.Nonnull;
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.configurations.CommandLineState;
-import com.intellij.execution.configurations.GeneralCommandLine;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.process.OSProcessHandler;
-import com.intellij.execution.process.ProcessHandler;
-import com.intellij.execution.process.ProcessTerminatedListener;
-import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.util.text.StringUtil;
-import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
-import consulo.lua.bundle.BaseLuaSdkType;
+
+import static consulo.lua.bundle.BaseLuaSdkType.getTopLevelExecutable;
 
 public class LuaCommandLineState extends CommandLineState {
     public ExecutionEnvironment getExecutionEnvironment() {
         return executionEnvironment;
     }
 
-    private final RunConfiguration     runConfiguration;
+    private final RunConfiguration runConfiguration;
     private final ExecutionEnvironment executionEnvironment;
 
     public LuaCommandLineState(RunConfiguration runConfiguration, ExecutionEnvironment env) {
@@ -51,8 +52,7 @@ public class LuaCommandLineState extends CommandLineState {
     protected ProcessHandler startProcess() throws ExecutionException {
         GeneralCommandLine commandLine = generateCommandLine();
 
-        OSProcessHandler osProcessHandler =
-                new LuaProcessHandler(commandLine.createProcess(), commandLine.getCommandLineString());
+        ProcessHandler osProcessHandler = ProcessHandlerBuilder.create(commandLine).shouldDestroyProcessRecursively(true).build();
         ProcessTerminatedListener.attach(osProcessHandler, runConfiguration.getProject());
 
         return osProcessHandler;
@@ -63,9 +63,11 @@ public class LuaCommandLineState extends CommandLineState {
         final LuaRunConfiguration cfg = (LuaRunConfiguration) runConfiguration;
 
         if (cfg.isOverrideSDKInterpreter()) {
-            if (!StringUtil.isEmptyOrSpaces(cfg.getInterpreterPath()))
+            if (!StringUtil.isEmptyOrSpaces(cfg.getInterpreterPath())) {
                 commandLine.setExePath(cfg.getInterpreterPath());
-        } else {
+            }
+        }
+        else {
             final Sdk sdk = cfg.getSdk();
 
             if (sdk != null && sdk.getSdkType() instanceof BaseLuaSdkType) {

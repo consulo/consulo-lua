@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Jon S Akhtar (Sylvanaar)
- *  
+ *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
  *   You may obtain a copy of the License at
- *  
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  *   Unless required by applicable law or agreed to in writing, software
  *   distributed under the License is distributed on an "AS IS" BASIS,
  *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,17 +15,18 @@
  */
 package com.sylvanaar.idea.Lua.intentions.utils;
 
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileEditor.FileEditorManager;
-import com.intellij.openapi.fileEditor.OpenFileDescriptor;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.openapi.vfs.ReadonlyStatusHandler;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+import consulo.codeEditor.Editor;
+import consulo.document.util.TextRange;
+import consulo.fileEditor.FileEditorManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.module.Module;
+import consulo.module.content.ProjectRootManager;
+import consulo.navigation.OpenFileDescriptor;
+import consulo.navigation.OpenFileDescriptorFactory;
+import consulo.project.Project;
+import consulo.virtualFileSystem.ReadonlyStatusHandler;
+import consulo.virtualFileSystem.VirtualFile;
 
 import javax.annotation.Nonnull;
 
@@ -70,22 +71,22 @@ public class QuickfixUtil {
 //  }
 
 
-  public static boolean ensureFileWritable(Project project, PsiFile file) {
-    final VirtualFile virtualFile = file.getVirtualFile();
-    final ReadonlyStatusHandler readonlyStatusHandler = ReadonlyStatusHandler.getInstance(project);
-    final ReadonlyStatusHandler.OperationStatus operationStatus = readonlyStatusHandler.ensureFilesWritable(virtualFile);
-    return !operationStatus.hasReadonlyFiles();
-  }
+    public static boolean ensureFileWritable(Project project, PsiFile file) {
+        final VirtualFile virtualFile = file.getVirtualFile();
+        final ReadonlyStatusHandler readonlyStatusHandler = ReadonlyStatusHandler.getInstance(project);
+        final ReadonlyStatusHandler.OperationStatus operationStatus = readonlyStatusHandler.ensureFilesWritable(virtualFile);
+        return !operationStatus.hasReadonlyFiles();
+    }
 
-  public static Editor positionCursor(@Nonnull Project project, @Nonnull PsiFile targetFile, @Nonnull PsiElement element) {
-    TextRange range = element.getTextRange();
-    int textOffset = range.getStartOffset();
+    public static Editor positionCursor(@Nonnull Project project, @Nonnull PsiFile targetFile, @Nonnull PsiElement element) {
+        TextRange range = element.getTextRange();
+        int textOffset = range.getStartOffset();
 
-    VirtualFile vFile = targetFile.getVirtualFile();
-    assert vFile != null;
-    OpenFileDescriptor descriptor = new OpenFileDescriptor(project, vFile, textOffset);
-    return FileEditorManager.getInstance(project).openTextEditor(descriptor, true);
-  }
+        VirtualFile vFile = targetFile.getVirtualFile();
+        assert vFile != null;
+        OpenFileDescriptor descriptor = OpenFileDescriptorFactory.getInstance(project).builder(vFile).offset(textOffset).build();
+        return FileEditorManager.getInstance(project).openTextEditor(descriptor, true);
+    }
 
 //  public static String[] getMethodArgumentsNames(Project project, PsiType[] types) {
 //    Set<String> uniqNames = new LinkedHashSet<String>();
@@ -155,26 +156,31 @@ public class QuickfixUtil {
 //    return ArrayUtil.toStringArray(result);
 //  }
 
-  public static String shortenType(String typeText) {
-    if (typeText == null) return "";
-    final int i = typeText.lastIndexOf(".");
-    if (i != -1) {
-      return typeText.substring(i + 1);
-    }
-    return typeText;
-  }
-
-  public static Module getModuleByPsiFile(PsiFile containingFile) {
-    VirtualFile file;
-    if (containingFile != null) {
-      file = containingFile.getVirtualFile();
-      if (file == null) return null;
-    } else {
-      return null;
+    public static String shortenType(String typeText) {
+      if (typeText == null) {
+        return "";
+      }
+        final int i = typeText.lastIndexOf(".");
+        if (i != -1) {
+            return typeText.substring(i + 1);
+        }
+        return typeText;
     }
 
-    return ProjectRootManager.getInstance(containingFile.getProject()).getFileIndex().getModuleForFile(file);
-  }
+    public static Module getModuleByPsiFile(PsiFile containingFile) {
+        VirtualFile file;
+        if (containingFile != null) {
+            file = containingFile.getVirtualFile();
+          if (file == null) {
+            return null;
+          }
+        }
+        else {
+            return null;
+        }
+
+        return ProjectRootManager.getInstance(containingFile.getProject()).getFileIndex().getModuleForFile(file);
+    }
 
 
 //  public static DynamicElementSettings createSettings(LuaReferenceExpression referenceExpression) {

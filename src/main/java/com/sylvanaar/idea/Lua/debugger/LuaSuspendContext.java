@@ -16,11 +16,11 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.xdebugger.XSourcePosition;
-import com.intellij.xdebugger.breakpoints.XBreakpoint;
-import com.intellij.xdebugger.frame.XExecutionStack;
-import com.intellij.xdebugger.frame.XSuspendContext;
+import consulo.execution.debug.XSourcePosition;
+import consulo.execution.debug.frame.XExecutionStack;
+import consulo.execution.debug.frame.XSuspendContext;
+import consulo.project.Project;
+import consulo.execution.debug.breakpoint.XBreakpoint;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +28,8 @@ import com.intellij.xdebugger.frame.XSuspendContext;
  * Date: 4/28/11
  * Time: 11:18 AM
  */
-public class LuaSuspendContext extends XSuspendContext {
+public class LuaSuspendContext extends XSuspendContext
+{
     private LuaDebuggerController myController;
     XBreakpoint     myBreakpoint = null;
     XSourcePosition myPosition   = null;

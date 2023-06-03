@@ -18,8 +18,6 @@ package com.sylvanaar.idea.Lua.lang.psi.visitor;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.openapi.progress.*;
-import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
@@ -28,6 +26,8 @@ import com.sylvanaar.idea.Lua.lang.psi.impl.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
+import consulo.application.progress.ProgressIndicatorProvider;
+import consulo.language.psi.PsiElementVisitor;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,7 +36,8 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
  * Time: 7:39:03 AM
  */
 
-public class LuaElementVisitor extends PsiElementVisitor {
+public class LuaElementVisitor extends PsiElementVisitor
+{
     public void visitElement(LuaPsiElement element) {
         ProgressIndicatorProvider.checkCanceled();
     }

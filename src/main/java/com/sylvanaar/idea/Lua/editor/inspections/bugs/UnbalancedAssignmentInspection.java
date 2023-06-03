@@ -18,11 +18,6 @@ package com.sylvanaar.idea.Lua.editor.inspections.bugs;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.codeHighlighting.*;
-import com.intellij.codeInspection.*;
-import com.intellij.openapi.project.*;
-import com.intellij.psi.*;
-import com.intellij.util.*;
 import com.sylvanaar.idea.Lua.editor.inspections.*;
 import com.sylvanaar.idea.Lua.editor.inspections.utils.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
@@ -31,6 +26,14 @@ import com.sylvanaar.idea.Lua.lang.psi.lists.*;
 import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemDescriptor;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.util.IncorrectOperationException;
+import consulo.project.Project;
 import org.jetbrains.annotations.*;
 
 /**
@@ -101,9 +104,9 @@ public class UnbalancedAssignmentInspection extends AbstractInspection {
     }
 
     private void checkAssignment(PsiElement element,
-                                 LuaIdentifierList left,
-                                 LuaExpressionList right,
-                                 ProblemsHolder holder) {
+								 LuaIdentifierList left,
+								 LuaExpressionList right,
+								 ProblemsHolder holder) {
         if (left != null && right != null && left.count() != right.count()) {
 
             boolean tooManyExprs = left.count() < right.count();
@@ -148,7 +151,8 @@ public class UnbalancedAssignmentInspection extends AbstractInspection {
 
 
         @Override
-        protected void doFix(Project project, ProblemDescriptor descriptor) throws IncorrectOperationException {
+        protected void doFix(Project project, ProblemDescriptor descriptor) throws IncorrectOperationException
+		{
             final LuaAssignmentStatement assign = (LuaAssignmentStatement) descriptor.getPsiElement();
             final LuaIdentifierList identifierList = assign.getLeftExprs();
             final LuaExpressionList expressionList = assign.getRightExprs();

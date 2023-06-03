@@ -16,10 +16,12 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import com.intellij.execution.configurations.*;
-import com.intellij.execution.runners.*;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.sdk.*;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.process.cmd.GeneralCommandLine;
+import consulo.process.cmd.ParametersList;
 
 /**
  * Created by IntelliJ IDEA.

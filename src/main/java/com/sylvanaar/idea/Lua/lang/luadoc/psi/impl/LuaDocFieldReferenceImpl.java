@@ -16,14 +16,14 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.impl;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.ResolveResult;
-import com.intellij.util.ArrayUtil;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.ASTNode;
+import consulo.document.util.TextRange;
+import consulo.language.psi.PsiReference;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.lang.StringUtil;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.ResolveResult;
+import consulo.util.collection.ArrayUtil;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocFieldReference;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
@@ -107,7 +107,8 @@ public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl impleme
         return StringUtil.notNullize(getName());
     }
 
-    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException {
+    public PsiElement handleElementRename(String newElementName) throws IncorrectOperationException
+	{
         PsiElement nameElement = getReferenceNameElement();
         ASTNode node = nameElement.getNode();
         ASTNode newNameNode =
@@ -118,7 +119,8 @@ public class LuaDocFieldReferenceImpl extends LuaDocReferenceElementImpl impleme
         return this;
     }
 
-    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException {
+    public PsiElement bindToElement(@Nonnull PsiElement element) throws IncorrectOperationException
+	{
         if (isReferenceTo(element)) return this;
         return null;
     }

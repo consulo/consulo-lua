@@ -16,7 +16,7 @@
 package com.sylvanaar.idea.Lua.intentions.utils;
 
 import javax.annotation.Nullable;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 public class TreeUtil {
   private TreeUtil() {

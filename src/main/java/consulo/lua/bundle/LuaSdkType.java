@@ -16,70 +16,62 @@
 
 package consulo.lua.bundle;
 
-import java.io.File;
-
-import javax.annotation.Nonnull;
-
-import org.jetbrains.annotations.NonNls;
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.ide.plugins.PluginManager;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
-import com.intellij.openapi.projectRoots.SdkType;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
-import consulo.roots.types.BinariesOrderRootType;
+import consulo.container.plugin.PluginManager;
+import consulo.content.OrderRootType;
+import consulo.content.base.BinariesOrderRootType;
+import consulo.content.bundle.Sdk;
+import consulo.content.bundle.SdkModificator;
+import consulo.content.bundle.SdkType;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.process.ExecutionException;
 import consulo.ui.image.Image;
+import consulo.virtualFileSystem.LocalFileSystem;
+import consulo.virtualFileSystem.VirtualFile;
+import org.jetbrains.annotations.NonNls;
+
+import javax.annotation.Nonnull;
+import java.io.File;
 
 /**
  * @author VISTALL
  * @since 10.03.2015
  */
-public abstract class LuaSdkType extends SdkType
-{
-	public LuaSdkType(@NonNls String name)
-	{
-		super(name);
-	}
+public abstract class LuaSdkType extends SdkType {
+    public LuaSdkType(@NonNls String name) {
+        super(name);
+    }
 
-	@Nonnull
-	public abstract LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration, ExecutionEnvironment env,
-			boolean isDebugger) throws ExecutionException;
+    @Nonnull
+    public abstract LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration, ExecutionEnvironment env,
+                                                              boolean isDebugger) throws ExecutionException;
 
-	@Override
-	public boolean isRootTypeApplicable(OrderRootType type)
-	{
-		return type == BinariesOrderRootType.getInstance();
-	}
+    @Override
+    public boolean isRootTypeApplicable(OrderRootType type) {
+        return type == BinariesOrderRootType.getInstance();
+    }
 
-	@Override
-	public void setupSdkPaths(Sdk sdk)
-	{
-		SdkModificator sdkModificator = sdk.getSdkModificator();
+    @Override
+    public void setupSdkPaths(Sdk sdk) {
+        SdkModificator sdkModificator = sdk.getSdkModificator();
 
-		VirtualFile stdlibrary = LocalFileSystem.getInstance().findFileByIoFile(getStdLibraryDirectory());
-		if(stdlibrary != null)
-		{
-			sdkModificator.addRoot(stdlibrary, BinariesOrderRootType.getInstance());
-		}
-		sdkModificator.commitChanges();
-	}
+        VirtualFile stdlibrary = LocalFileSystem.getInstance().findFileByIoFile(getStdLibraryDirectory());
+        if (stdlibrary != null) {
+            sdkModificator.addRoot(stdlibrary, BinariesOrderRootType.getInstance());
+        }
+        sdkModificator.commitChanges();
+    }
 
-	@Nonnull
-	public File getStdLibraryDirectory()
-	{
-		return new File(PluginManager.getPluginPath(LuaSdkType.class), "stdlibrary");
-	}
+    @Nonnull
+    public File getStdLibraryDirectory() {
+        return new File(PluginManager.getPluginPath(LuaSdkType.class), "stdlibrary");
+    }
 
-	@Override
-	@Nonnull
-	public Image getIcon()
-	{
-		return LuaIcons.LUA_ICON;
-	}
+    @Override
+    @Nonnull
+    public Image getIcon() {
+        return LuaIcons.LUA_ICON;
+    }
 }

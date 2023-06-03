@@ -16,12 +16,13 @@
 
 package com.sylvanaar.idea.Lua.findUsages;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.usages.impl.rules.UsageType;
-import com.intellij.usages.impl.rules.UsageTypeProvider;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.usage.UsageType;
+import consulo.usage.UsageTypeProvider;
 import com.sylvanaar.idea.Lua.LuaBundle;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import consulo.language.psi.PsiElement;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,7 +30,9 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
  * Date: 1/8/12
  * Time: 8:37 AM
  */
-public class LuaUsageTypeProvider implements UsageTypeProvider {
+@ExtensionImpl
+public class LuaUsageTypeProvider implements UsageTypeProvider
+{
     private static final UsageType LUA_USAGE_TYPE = new UsageType(LuaBundle.message("lua.usages.type"));
     private static final UsageType LUADOC_USAGE_TYPE = new UsageType(LuaBundle.message("luadoc.usages.type"));
 

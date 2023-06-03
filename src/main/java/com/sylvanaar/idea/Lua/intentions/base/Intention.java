@@ -17,18 +17,18 @@ package com.sylvanaar.idea.Lua.intentions.base;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.codeInsight.intention.IntentionAction;
-import com.intellij.openapi.editor.CaretModel;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.IncorrectOperationException;
+import consulo.codeEditor.CaretModel;
+import consulo.codeEditor.Editor;
+import consulo.language.editor.intention.IntentionAction;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.intentions.utils.QuickfixUtil;
 import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
 import com.sylvanaar.idea.Lua.intentions.utils.BoolUtils;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import consulo.project.Project;
 
 import javax.annotation.Nullable;
 
@@ -68,7 +68,8 @@ public abstract class Intention implements IntentionAction {
   protected static void replaceExpressionWithNegatedExpressionString(
       @Nonnull String newExpression,
       @Nonnull LuaExpression expression)
-      throws IncorrectOperationException {
+      throws IncorrectOperationException
+  {
     final LuaPsiElementFactory factory = LuaPsiElementFactory.getInstance(expression.getProject());
 
     LuaExpression expressionToReplace = expression;
@@ -88,7 +89,7 @@ public abstract class Intention implements IntentionAction {
 
   @Nullable
   PsiElement findMatchingElement(PsiFile file,
-                                 Editor editor) {
+													  Editor editor) {
     final CaretModel caretModel = editor.getCaretModel();
     final int position = caretModel.getOffset();
     PsiElement element = file.findElementAt(position);

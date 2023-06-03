@@ -16,15 +16,15 @@
 
 package com.sylvanaar.idea.Lua.run.luaj;
 
-import javax.annotation.Nullable;
-
-import com.intellij.execution.configurations.GeneralCommandLine;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.Lua.util.LuaFileUtil;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.process.cmd.GeneralCommandLine;
+import consulo.virtualFileSystem.VirtualFile;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,8 +32,6 @@ import com.sylvanaar.idea.Lua.util.LuaFileUtil;
  * Date: Aug 28, 2010
  * Time: 6:35:19 PM
  */
-
-
 public class LuaJExternalCommandLineState extends LuaCommandLineState
 {
 	public LuaJExternalCommandLineState(RunConfiguration runConfiguration, ExecutionEnvironment env)

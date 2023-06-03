@@ -17,15 +17,15 @@ package com.sylvanaar.idea.Lua.editor.inspections.validity;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.codeInspection.ProblemHighlightType;
-import com.intellij.codeInspection.ProblemsHolder;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.PsiFile;
+import consulo.language.editor.inspection.ProblemsHolder;
 import com.sylvanaar.idea.Lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.Lua.editor.inspections.utils.ControlFlowUtils;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiFile;
 import org.jetbrains.annotations.Nls;
 
 import javax.annotation.Nullable;

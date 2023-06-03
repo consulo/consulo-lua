@@ -17,9 +17,7 @@ package com.sylvanaar.idea.Lua.intentions.control;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
 import com.sylvanaar.idea.Lua.intentions.base.IntentionUtils;
 import com.sylvanaar.idea.Lua.intentions.base.MutablyNamedIntention;
@@ -27,6 +25,8 @@ import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
 
 
 public class FlipConjunctionIntention extends MutablyNamedIntention {
@@ -50,7 +50,8 @@ public class FlipConjunctionIntention extends MutablyNamedIntention {
   }
 
   public void processIntention(@Nonnull PsiElement element)
-      throws IncorrectOperationException {
+      throws IncorrectOperationException
+  {
     final LuaBinaryExpression exp =
         (LuaBinaryExpression) element;
     final IElementType tokenType = exp.getOperationTokenType();

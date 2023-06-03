@@ -16,16 +16,16 @@
 
 package com.sylvanaar.idea.Lua.actions;
 
-import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.LangDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiFile;
+import consulo.language.editor.PlatformDataKeys;
 import com.sylvanaar.idea.Lua.lang.InferenceCapable;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
+import consulo.language.editor.LangDataKeys;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import consulo.ui.ex.action.AnAction;
+import consulo.ui.ex.action.AnActionEvent;
 
 /**
  * Created by IntelliJ IDEA.
@@ -33,7 +33,8 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiManager;
  * Date: 1/27/12
  * Time: 2:44 PM
  */
-public class InferFile extends AnAction {
+public class InferFile extends AnAction
+{
     @Override
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(LangDataKeys.PROJECT);

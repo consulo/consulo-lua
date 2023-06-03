@@ -16,9 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang;
 
-import com.intellij.lang.Language;
+import consulo.language.Language;
 
 public class LuaLanguage extends Language {
+    public static final LuaLanguage INSTANCE = new LuaLanguage();
 
     public LuaLanguage() {
         super("Lua");
@@ -28,7 +29,5 @@ public class LuaLanguage extends Language {
     public boolean isCaseSensitive() {
         return true;
     }
-
-    
 }
   

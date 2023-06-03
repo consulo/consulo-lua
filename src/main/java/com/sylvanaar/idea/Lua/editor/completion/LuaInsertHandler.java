@@ -16,11 +16,13 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
-import com.intellij.codeInsight.*;
-import com.intellij.codeInsight.completion.*;
-import com.intellij.codeInsight.lookup.*;
-import com.intellij.openapi.editor.*;
-import com.intellij.openapi.project.*;
+import consulo.codeEditor.Editor;
+import consulo.language.editor.AutoPopupController;
+import consulo.language.editor.completion.lookup.InsertHandler;
+import consulo.language.editor.completion.lookup.InsertionContext;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.completion.lookup.LookupItem;
+import consulo.project.Project;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,7 +30,8 @@ import com.intellij.openapi.project.*;
  * Date: 4/13/12
  * Time: 10:15 PM
  */
-public class LuaInsertHandler implements InsertHandler<LookupElement> {
+public class LuaInsertHandler implements InsertHandler<LookupElement>
+{
     @Override
     public void handleInsert(InsertionContext context, LookupElement item) {
         if (item instanceof LookupItem) {

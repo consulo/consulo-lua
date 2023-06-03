@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.lexer;
 
-import com.intellij.lexer.MergingLexerAdapter;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
+import consulo.language.lexer.MergingLexerAdapter;
 
 /**
  * Created by IntelliJ IDEA.

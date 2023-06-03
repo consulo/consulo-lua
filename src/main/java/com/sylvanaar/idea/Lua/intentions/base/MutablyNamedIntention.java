@@ -17,10 +17,10 @@ package com.sylvanaar.idea.Lua.intentions.base;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.editor.Editor;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiElement;
+import consulo.project.Project;
+import consulo.codeEditor.Editor;
 
 public abstract class MutablyNamedIntention extends Intention {
   private String text = null;

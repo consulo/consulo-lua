@@ -16,29 +16,29 @@
 
 package com.sylvanaar.idea.Lua.library;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.swing.JComponent;
-
-import javax.annotation.Nullable;
-import com.intellij.openapi.fileChooser.FileChooser;
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.roots.libraries.DummyLibraryProperties;
-import com.intellij.openapi.roots.libraries.LibraryType;
-import com.intellij.openapi.roots.libraries.NewLibraryConfiguration;
-import com.intellij.openapi.roots.libraries.PersistentLibraryKind;
-import com.intellij.openapi.roots.libraries.ui.LibraryEditorComponent;
-import com.intellij.openapi.roots.libraries.ui.LibraryPropertiesEditor;
-import com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditor;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.sylvanaar.idea.Lua.LuaBundle;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.LuaIcons;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.content.base.BinariesOrderRootType;
+import consulo.content.library.DummyLibraryProperties;
+import consulo.content.library.LibraryType;
+import consulo.content.library.NewLibraryConfiguration;
+import consulo.content.library.PersistentLibraryKind;
+import consulo.content.library.ui.LibraryEditor;
+import consulo.content.library.ui.LibraryEditorComponent;
+import consulo.content.library.ui.LibraryPropertiesEditor;
+import consulo.fileChooser.FileChooserDescriptor;
+import consulo.fileChooser.FileChooserDescriptorFactory;
+import consulo.fileChooser.IdeaFileChooser;
+import consulo.project.Project;
 import consulo.ui.image.Image;
+import consulo.virtualFileSystem.VirtualFile;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.*;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,6 +46,7 @@ import consulo.ui.image.Image;
  * Date: 4/21/11
  * Time: 8:54 PM
  */
+@ExtensionImpl
 public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implements LuaLibrary {
     private static final PersistentLibraryKind<DummyLibraryProperties> LIBRARY_KIND =
             new PersistentLibraryKind<DummyLibraryProperties>(LUA_LIBRARY_KIND_ID) {
@@ -56,7 +57,7 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
                 }
             };
 
-    protected LuaLibraryType() {
+    public LuaLibraryType() {
         super(LIBRARY_KIND);
     }
 
@@ -69,11 +70,11 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
 
     @Override
     public NewLibraryConfiguration createNewLibrary(@Nonnull JComponent jComponent, @Nullable VirtualFile virtualFile,
-													@Nonnull Project project) {
+                                                    @Nonnull Project project) {
         final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
         descriptor.setTitle(LuaBundle.message("new.library.file.chooser.title"));
         descriptor.setDescription(LuaBundle.message("new.library.file.chooser.description"));
-        final VirtualFile[] files = FileChooser.chooseFiles(descriptor, jComponent, project, virtualFile);
+        final VirtualFile[] files = IdeaFileChooser.chooseFiles(descriptor, jComponent, project, virtualFile);
         if (files.length == 0) {
             return null;
         }
@@ -81,7 +82,7 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
             @Override
             public void addRoots(@Nonnull LibraryEditor editor) {
                 for (VirtualFile file : files) {
-                    editor.addRoot(file, OrderRootType.CLASSES);
+                    editor.addRoot(file, BinariesOrderRootType.getInstance());
                 }
             }
         };
@@ -113,14 +114,17 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
     @Override
     public DummyLibraryProperties detect(@Nonnull List<VirtualFile> classesRoots) {
         for (VirtualFile vf : classesRoots) {
-            if (!vf.isDirectory())
+            if (!vf.isDirectory()) {
                 return null;
+            }
 
-            for(VirtualFile file : vf.getChildren()) {
+            for (VirtualFile file : vf.getChildren()) {
                 String fileExtension = file.getExtension();
-                if (fileExtension != null)
-                    if (fileExtension.equals(LuaFileType.DEFAULT_EXTENSION))
+                if (fileExtension != null) {
+                    if (fileExtension.equals(LuaFileType.DEFAULT_EXTENSION)) {
                         return new DummyLibraryProperties();
+                    }
+                }
             }
         }
 

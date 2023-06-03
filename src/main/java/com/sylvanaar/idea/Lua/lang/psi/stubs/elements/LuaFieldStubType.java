@@ -19,13 +19,9 @@ package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 import java.io.IOException;
 
 import javax.annotation.Nonnull;
-import com.intellij.openapi.util.Pair;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.psi.stubs.StubSerializer;
-import com.intellij.util.io.StringRef;
+
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.impl.symbols.LuaFieldIdentifierImpl;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaStubElementType;
@@ -34,6 +30,7 @@ import com.sylvanaar.idea.Lua.lang.psi.stubs.impl.LuaFieldStub;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
+import consulo.util.lang.Pair;
 
 /**
 * Created by IntelliJ IDEA.
@@ -42,7 +39,8 @@ import com.sylvanaar.idea.Lua.util.LuaSerializationUtils;
 * Time: 8:01 PM
 */
 public class LuaFieldStubType
-        extends LuaStubElementType<LuaFieldStub, LuaFieldIdentifier>  implements StubSerializer<LuaFieldStub>  {
+        extends LuaStubElementType<LuaFieldStub, LuaFieldIdentifier>  implements StubSerializer<LuaFieldStub>
+{
 
     public LuaFieldStubType() {
         super("FIELD");

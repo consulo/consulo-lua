@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl.lists;
 
-import com.intellij.lang.ASTNode;
 import com.sylvanaar.idea.Lua.lang.psi.impl.LuaPsiElementImpl;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaExpressionList;
 import com.sylvanaar.idea.Lua.lang.psi.lists.LuaFunctionArguments;
+import consulo.language.ast.ASTNode;
 
 /**
  * Created by IntelliJ IDEA.

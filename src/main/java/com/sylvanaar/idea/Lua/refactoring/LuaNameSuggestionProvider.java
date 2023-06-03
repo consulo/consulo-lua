@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.refactoring;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.codeStyle.SuggestedNameInfo;
-import com.intellij.refactoring.rename.NameSuggestionProvider;
+import consulo.language.editor.refactoring.rename.SuggestedNameInfo;
+import consulo.language.editor.refactoring.rename.NameSuggestionProvider;
+import consulo.language.psi.PsiElement;
 
 import java.util.Set;
 
@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
 public class LuaNameSuggestionProvider implements NameSuggestionProvider {
     @Override
     public SuggestedNameInfo getSuggestedNames(final PsiElement element, @Nullable PsiElement nameSuggestionContext,
-                                               Set<String> result) {
+											   Set<String> result) {
         if (nameSuggestionContext == null) nameSuggestionContext = element;
 
         

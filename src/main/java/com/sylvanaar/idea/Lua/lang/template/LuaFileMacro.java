@@ -16,11 +16,17 @@
 
 package com.sylvanaar.idea.Lua.lang.template;
 
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.codeInsight.template.*;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.template.Expression;
+import consulo.language.editor.template.ExpressionContext;
+import consulo.language.editor.template.Result;
+import consulo.language.editor.template.TextResult;
+import consulo.language.editor.template.macro.Macro;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiFile;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -29,6 +35,7 @@ import javax.annotation.Nonnull;
  * Date: 2/25/11
  * Time: 1:35 PM
  */
+@ExtensionImpl
 public class LuaFileMacro extends Macro {
     @Override
     public String getName() {
@@ -51,8 +58,9 @@ public class LuaFileMacro extends Macro {
         PsiFile file = PsiDocumentManager.getInstance(
                 expressionContext.getProject()).getPsiFile(expressionContext.getEditor().getDocument());
 
-        if (file instanceof LuaPsiFile)
+        if (file instanceof LuaPsiFile) {
             return new TextResult(file.getName());
+        }
 
         return null;
     }

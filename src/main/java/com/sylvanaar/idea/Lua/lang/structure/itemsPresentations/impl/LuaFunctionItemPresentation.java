@@ -15,16 +15,16 @@
  */
 package com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.util.NotNullLazyValue;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.LuaItemPresentation;
+import consulo.application.util.NotNullLazyValue;
+import consulo.colorScheme.TextAttributesKey;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 
 public class LuaFunctionItemPresentation extends LuaItemPresentation {

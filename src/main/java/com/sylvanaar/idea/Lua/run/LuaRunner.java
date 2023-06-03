@@ -16,18 +16,19 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.document.FileDocumentManager;
+import consulo.execution.ExecutionResult;
+import consulo.execution.configuration.RunProfile;
+import consulo.execution.configuration.RunProfileState;
+import consulo.execution.executor.DefaultRunExecutor;
+import consulo.execution.runner.DefaultProgramRunner;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.execution.runner.RunContentBuilder;
+import consulo.execution.ui.RunContentDescriptor;
+import consulo.process.ExecutionException;
 
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.ExecutionResult;
-import com.intellij.execution.configurations.RunProfile;
-import com.intellij.execution.configurations.RunProfileState;
-import com.intellij.execution.executors.DefaultRunExecutor;
-import com.intellij.execution.runners.DefaultProgramRunner;
-import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.execution.runners.RunContentBuilder;
-import com.intellij.execution.ui.RunContentDescriptor;
-import com.intellij.openapi.fileEditor.FileDocumentManager;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -35,7 +36,9 @@ import com.intellij.openapi.fileEditor.FileDocumentManager;
  * Date: Apr 21, 2010
  * Time: 12:44:22 AM
  */
-public class LuaRunner extends DefaultProgramRunner {
+@ExtensionImpl
+public class LuaRunner extends DefaultProgramRunner
+{
   @Nonnull
   @Override
   public String getRunnerId() {

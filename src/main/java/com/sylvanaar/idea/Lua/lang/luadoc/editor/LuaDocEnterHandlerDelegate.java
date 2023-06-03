@@ -16,16 +16,6 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.editor;
 
-import com.intellij.codeInsight.editorActions.enter.EnterHandlerDelegate;
-import com.intellij.openapi.actionSystem.DataContext;
-import com.intellij.openapi.editor.Document;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
-import com.intellij.openapi.util.Ref;
-import com.intellij.psi.PsiDocumentManager;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
@@ -36,6 +26,18 @@ import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFieldIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaKeyValueInitializer;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.codeEditor.action.EditorActionHandler;
+import consulo.dataContext.DataContext;
+import consulo.document.Document;
+import consulo.language.codeStyle.CodeStyleManager;
+import consulo.language.editor.action.EnterHandlerDelegate;
+import consulo.language.psi.PsiDocumentManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.util.lang.ref.Ref;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -44,13 +46,15 @@ import javax.annotation.Nonnull;
  * Date: 4/2/11
  * Time: 6:54 PM
  */
+@ExtensionImpl
 public class LuaDocEnterHandlerDelegate implements EnterHandlerDelegate {
     @Override
-    public Result preprocessEnter(PsiFile file, Editor editor, Ref<Integer> caretOffset, Ref<Integer> caretAdvance,
+    public Result preprocessEnter(PsiFile file, Editor editor, Ref<Integer> caretOffset, consulo.util.lang.ref.Ref<Integer> caretAdvance,
                                   DataContext dataContext, EditorActionHandler originalHandler) {
-        if (! (file instanceof LuaPsiFile))
+        if (!(file instanceof LuaPsiFile)) {
             return Result.Continue;
-        
+        }
+
         Document document = editor.getDocument();
         int caret = caretOffset.get();
 
@@ -82,16 +86,18 @@ public class LuaDocEnterHandlerDelegate implements EnterHandlerDelegate {
                             luadoc.append(indent).append("-- @param ").append(p.getName()).append(" \n");
 
                         luadoc.append(indent).append("--");
-                    } else if (owner instanceof LuaTableConstructor) {
+                    }
+                    else if (owner instanceof LuaTableConstructor) {
                         LuaExpression[] initalizers = ((LuaTableConstructor) owner).getInitializers();
 
                         for (LuaExpression expression : initalizers)
                             if (expression instanceof LuaKeyValueInitializer) {
                                 LuaExpression key = ((LuaKeyValueInitializer) expression).getFieldKey();
-                                if (key instanceof LuaFieldIdentifier)
+                                if (key instanceof LuaFieldIdentifier) {
                                     luadoc.append(indent).append("-- @field ").append(((LuaFieldIdentifier) key).getName()).append(" \n");
+                                }
                             }
-                            
+
                         luadoc.append(indent).append("--");
                     }
 

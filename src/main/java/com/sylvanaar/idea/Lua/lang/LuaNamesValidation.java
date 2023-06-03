@@ -16,10 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang;
 
-import com.intellij.lang.refactoring.NamesValidator;
-import com.intellij.openapi.project.Project;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.project.Project;
 import com.sylvanaar.idea.Lua.editor.completion.LuaKeywordsManager;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
+import consulo.language.editor.refactoring.NamesValidator;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,7 +30,9 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElementFactory;
  * Date: Aug 1, 2010
  * Time: 10:43:40 PM
  */
-public class LuaNamesValidation implements NamesValidator {  
+@ExtensionImpl
+public class LuaNamesValidation implements NamesValidator
+{
     public boolean isIdentifier(final String name, final Project project) {
         return LuaPsiElementFactory.getInstance(project).createReferenceNameFromText(name) != null;
     }
@@ -36,5 +41,9 @@ public class LuaNamesValidation implements NamesValidator {
         return LuaKeywordsManager.isKeywordName(name);
     }
 
-
+    @Nonnull
+    @Override
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
+    }
 }

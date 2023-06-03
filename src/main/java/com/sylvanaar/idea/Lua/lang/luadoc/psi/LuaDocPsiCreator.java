@@ -16,13 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi;
 
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.Lua.lang.luadoc.parser.LuaDocElementTypes;
 import com.sylvanaar.idea.Lua.lang.luadoc.parser.elements.LuaDocTagValueTokenType;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.impl.*;
+import consulo.language.psi.PsiElement;
 
 import static com.sylvanaar.idea.Lua.lang.luadoc.parser.elements.LuaDocTagValueTokenType.TagValueTokenType.REFERENCE_ELEMENT;
 

@@ -16,8 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNamedElement;
+import consulo.language.psi.PsiNamedElement;
 
 
 public interface LuaNamedElement extends LuaPsiElement, PsiNamedElement {

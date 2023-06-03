@@ -15,15 +15,15 @@
  */
 package com.sylvanaar.idea.Lua.lang.structure.impl;
 
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
 import com.sylvanaar.idea.Lua.lang.structure.LuaStructureViewTreeElement;
 import com.sylvanaar.idea.Lua.lang.structure.itemsPresentations.impl.LuaFileItemPresentation;
+import consulo.fileEditor.structureView.tree.TreeElement;
+import consulo.language.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -15,11 +15,8 @@
  */
 package com.sylvanaar.idea.Lua.lang.psi.impl;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFileFactory;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.annotation.component.ServiceImpl;
+import consulo.language.psi.PsiComment;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.debugger.LuaCodeFragment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
@@ -36,6 +33,13 @@ import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFileFactory;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
+
 import javax.annotation.Nullable;
 
 
@@ -45,9 +49,12 @@ import javax.annotation.Nullable;
  * Date: Apr 14, 2010
  * Time: 7:16:01 PM
  */
+@ServiceImpl
+@Singleton
 public class LuaPsiElementFactoryImpl extends LuaPsiElementFactory {
     Project myProject;
 
+    @Inject
     public LuaPsiElementFactoryImpl(Project project) {
         myProject = project;
     }

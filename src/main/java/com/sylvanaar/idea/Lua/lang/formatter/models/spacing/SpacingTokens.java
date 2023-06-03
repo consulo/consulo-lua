@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter.models.spacing;
 
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 
 

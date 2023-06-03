@@ -18,13 +18,15 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.*;
-import com.intellij.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiReference;
 
 /**
  * Created by IntelliJ IDEA.

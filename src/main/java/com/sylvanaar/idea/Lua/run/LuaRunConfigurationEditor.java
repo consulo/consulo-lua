@@ -16,8 +16,9 @@
 
 package com.sylvanaar.idea.Lua.run;
 
-import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.options.SettingsEditor;
+import consulo.configurable.ConfigurationException;
+import consulo.execution.configuration.ui.SettingsEditor;
+
 import javax.annotation.Nonnull;
 
 import javax.swing.*;
@@ -40,7 +41,8 @@ public class LuaRunConfigurationEditor extends SettingsEditor<LuaRunConfiguratio
     }
 
     @Override
-    protected void applyEditorTo(LuaRunConfiguration runConfiguration) throws ConfigurationException {
+    protected void applyEditorTo(LuaRunConfiguration runConfiguration) throws ConfigurationException
+	{
         LuaRunConfiguration.copyParams(myForm, runConfiguration);
     }
 

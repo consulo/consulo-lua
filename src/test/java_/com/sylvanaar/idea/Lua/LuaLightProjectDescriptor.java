@@ -18,12 +18,13 @@ package com.sylvanaar.idea.Lua;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ContentEntry;
-import com.intellij.openapi.roots.ModifiableRootModel;
+import consulo.content.bundle.Sdk;
+import consulo.module.Module;
+import consulo.module.content.layer.ModifiableRootModel;
 import com.intellij.testFramework.TestModuleDescriptor;
-import com.intellij.util.Consumer;
+import consulo.module.content.layer.ContentEntry;
+
+import java.util.function.Consumer;
 
 class LuaLightProjectDescriptor implements TestModuleDescriptor
 {

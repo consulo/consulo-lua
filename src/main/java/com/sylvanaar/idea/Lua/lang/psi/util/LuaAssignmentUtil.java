@@ -16,8 +16,6 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.util;
 
-import com.intellij.openapi.project.*;
-import com.intellij.psi.util.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.impl.statements.*;
@@ -26,6 +24,8 @@ import com.sylvanaar.idea.Lua.lang.psi.statements.*;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.util.*;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
 
 import java.util.*;
 

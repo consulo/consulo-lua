@@ -16,19 +16,21 @@
 
 package consulo.lua.bundle;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.runners.ExecutionEnvironment;
 import com.sylvanaar.idea.Lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.Lua.run.kahlua.KahluaCommandLineState;
 import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.process.ExecutionException;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author VISTALL
  * @since 10.03.2015
  */
+@ExtensionImpl
 public class KahluaSdkType extends LuaSdkType
 {
 	@Nonnull

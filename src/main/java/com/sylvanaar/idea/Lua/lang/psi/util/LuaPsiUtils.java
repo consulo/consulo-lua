@@ -20,17 +20,17 @@ import java.util.Collection;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiErrorElement;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.navigation.ItemPresentation;
+import consulo.document.util.TextRange;
+import consulo.language.file.FileViewProvider;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
@@ -165,8 +165,8 @@ public final class LuaPsiUtils {
     }
 
     public static boolean processChildDeclarationsS(
-        PsiElement parentContainer, PsiScopeProcessor processor,
-        ResolveState resolveState, PsiElement parent, PsiElement place) {
+			PsiElement parentContainer, PsiScopeProcessor processor,
+			ResolveState resolveState, PsiElement parent, PsiElement place) {
         PsiElement child = parentContainer.getFirstChild();
 
         while (child != null) {
@@ -182,8 +182,8 @@ public final class LuaPsiUtils {
     }
 
     public static boolean processChildDeclarations(PsiElement element,
-        PsiScopeProcessor processor, ResolveState substitutor,
-        PsiElement lastParent, PsiElement place) {
+												   PsiScopeProcessor processor, ResolveState substitutor,
+												   PsiElement lastParent, PsiElement place) {
         PsiElement run = (lastParent == null) ? element.getLastChild()
                                               : lastParent.getPrevSibling();
 
@@ -255,7 +255,7 @@ public final class LuaPsiUtils {
     }
 
     public static PsiElement findNextSibling(PsiElement start,
-        IElementType ignoreType) {
+																  IElementType ignoreType) {
         PsiElement current = start.getNextSibling();
 
         while (current != null) {
@@ -270,7 +270,7 @@ public final class LuaPsiUtils {
     }
 
     public static PsiElement findPreviousSibling(PsiElement start,
-        IElementType ignoreType) {
+																	  IElementType ignoreType) {
         PsiElement current = start.getPrevSibling();
 
         while (current != null) {
@@ -291,11 +291,11 @@ public final class LuaPsiUtils {
      * @param replacement The new element
      * @return The replaces element. Depending on the context of the original element it either the original element
      * or the replacement element.
-     * @throws com.intellij.util.IncorrectOperationException
+     * @throws IncorrectOperationException
      *          cant do it
      */
     public static PsiElement replaceElement(PsiElement original,
-        PsiElement replacement) throws IncorrectOperationException {
+											PsiElement replacement) throws IncorrectOperationException {
         try {
             try {
                 return original.replace(replacement);

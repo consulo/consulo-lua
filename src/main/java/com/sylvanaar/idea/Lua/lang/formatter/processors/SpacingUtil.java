@@ -18,15 +18,15 @@ package com.sylvanaar.idea.Lua.lang.formatter.processors;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiWhiteSpace;
-import com.intellij.psi.formatter.FormatterUtil;
-import com.intellij.psi.impl.source.tree.LeafElement;
-import com.intellij.psi.impl.source.tree.LeafPsiElement;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
+import consulo.language.codeStyle.FormatterUtil;
+import consulo.language.impl.ast.LeafElement;
+import consulo.language.impl.psi.LeafPsiElement;
 import com.sylvanaar.idea.Lua.lang.lexer.LuaTokenTypes;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiWhiteSpace;
 
 
 /**

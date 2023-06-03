@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.util;
 
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.statements.LuaDeclarationStatement;
@@ -32,7 +32,7 @@ public interface LuaVariableDeclarationOwner extends LuaPsiElement {
    * Removes variable from its declaration. In case of alone variablein declaration,
    * it also will be removed.
    * @param variable to remove
-   * @throws com.intellij.util.IncorrectOperationException in case the operation cannot be performed
+   * @throws IncorrectOperationException in case the operation cannot be performed
    */
   void removeVariable(LuaIdentifier variable);
 
@@ -41,7 +41,7 @@ public interface LuaVariableDeclarationOwner extends LuaPsiElement {
    * @param declaration declaration to insert
    * @param anchor Anchor after which new variabler declaration will be placed
    * @return inserted variable declaration
-   * @throws com.intellij.util.IncorrectOperationException in case the operation cannot be performed
+   * @throws IncorrectOperationException in case the operation cannot be performed
    */
   LuaDeclarationStatement addVariableDeclarationBefore(LuaDeclarationStatement declaration, LuaStatementElement anchor) throws IncorrectOperationException;
 

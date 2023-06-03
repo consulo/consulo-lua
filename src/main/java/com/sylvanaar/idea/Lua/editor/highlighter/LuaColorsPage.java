@@ -16,16 +16,17 @@
 
 package com.sylvanaar.idea.Lua.editor.highlighter;
 
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
-import com.intellij.openapi.options.colors.AttributesDescriptor;
-import com.intellij.openapi.options.colors.ColorDescriptor;
-import com.intellij.openapi.options.colors.ColorSettingsPage;
 import com.sylvanaar.idea.Lua.LuaBundle;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.colorScheme.setting.AttributesDescriptor;
+import consulo.colorScheme.setting.ColorDescriptor;
+import consulo.language.editor.colorScheme.setting.ColorSettingsPage;
+import consulo.language.editor.highlight.SyntaxHighlighter;
 import org.jetbrains.annotations.NonNls;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,49 +36,50 @@ import java.util.Map;
  * Date: Apr 3, 2010
  * Time: 1:52:31 AM
  */
-public class LuaColorsPage  implements ColorSettingsPage {
+@ExtensionImpl
+public class LuaColorsPage implements ColorSettingsPage {
     final String DEMO_TEXT =
             "<global>a</global> = { <global>foo</global>.<field>bar</field>,  <global>foo</global>.<field>bar</field>" +
-            "(), <global>fx</global>(), <field>f</field> = <global>a</global>, 1,  " +
-            "<global>FOO</global> } -- url http://www.url.com \n" +
-            "local <local>x</local>,<local>y</local> = 20,nil\n" +
-            "for <local>i</local>=1,10 do\n" +
-            "  local <local>y</local> = 0\n" +
-            "  <global>a</global>[<local>i</local>] = function() " +
-            "<local><upval>y</upval></local>=<local><upval>y</upval></local>+1; return " +
-            "<local><upval>x</upval></local>+<local>y</local>; end\n" +
-            "end\n" +
-            "\n" +
-            "--[[ " +
-            "  Multiline\n" +
-            "  Comment\n" +
-            "]]\n" +
-            "\n" +
-            "<luadoc>--- External Documentation URL (shift-F1)</luadoc>\n" +
-            "<luadoc>-- This is called by shift-F1 on the symbol, or by the</luadoc>\n" +
-            "<luadoc>-- external documentation button on the quick help panel</luadoc>\n" +
-            "<luadoc>-- <luadoc-tag>@class</luadoc-tag> <luadoc-value>tag-name</luadoc-value> The name to get " +
-            "documentation for.</luadoc>\n" +
-            "<luadoc>-- <luadoc-tag>@param</luadoc-tag> <parameter>name</parameter> The name to get documentation for" +
-            ".</luadoc>\n" +
-            "<luadoc>-- <luadoc-tag>@return</luadoc-tag> the URL of the external documentation</luadoc>\n" +
-            "function <global>getDocumentationUrl</global>(<parameter>name</parameter>) \n" +
-            "  local <local>p1</local>, <local>p2</local> = <global>string</global>.<field>match</field>" +
-            "(<parameter>name</parameter>, \"(%a+)\\.?(%a*)\")\n" +
-            "  local <local>url</local> = <global>BASE_URL</global> .. \"/docs/api/\" .. <local>p1</local> .. [[long " +
-            "string]]\n" +
-            "\n" +
-            "  if <local>p2</local> and true then <local>url</local> = <local>url</local> .. <local>p2</local>; end\n" +
-            "\n" +
-            "  function() local <local>upval_parameter</local> = <parameter><upval>name</upval></parameter> end\n" +
-            "\n" +
-            "  <local><upval>x</upval></local>, <local><upval>y</upval></local> = <local>p1</local>, " +
-            "<local>p2</local>\n" +
-            "\n" +
-            "  return <local>url</local>\n" +
-            "end\n" +
-            "\n" +
-            "<global>a</global> = \"BAD\n";
+                    "(), <global>fx</global>(), <field>f</field> = <global>a</global>, 1,  " +
+                    "<global>FOO</global> } -- url http://www.url.com \n" +
+                    "local <local>x</local>,<local>y</local> = 20,nil\n" +
+                    "for <local>i</local>=1,10 do\n" +
+                    "  local <local>y</local> = 0\n" +
+                    "  <global>a</global>[<local>i</local>] = function() " +
+                    "<local><upval>y</upval></local>=<local><upval>y</upval></local>+1; return " +
+                    "<local><upval>x</upval></local>+<local>y</local>; end\n" +
+                    "end\n" +
+                    "\n" +
+                    "--[[ " +
+                    "  Multiline\n" +
+                    "  Comment\n" +
+                    "]]\n" +
+                    "\n" +
+                    "<luadoc>--- External Documentation URL (shift-F1)</luadoc>\n" +
+                    "<luadoc>-- This is called by shift-F1 on the symbol, or by the</luadoc>\n" +
+                    "<luadoc>-- external documentation button on the quick help panel</luadoc>\n" +
+                    "<luadoc>-- <luadoc-tag>@class</luadoc-tag> <luadoc-value>tag-name</luadoc-value> The name to get " +
+                    "documentation for.</luadoc>\n" +
+                    "<luadoc>-- <luadoc-tag>@param</luadoc-tag> <parameter>name</parameter> The name to get documentation for" +
+                    ".</luadoc>\n" +
+                    "<luadoc>-- <luadoc-tag>@return</luadoc-tag> the URL of the external documentation</luadoc>\n" +
+                    "function <global>getDocumentationUrl</global>(<parameter>name</parameter>) \n" +
+                    "  local <local>p1</local>, <local>p2</local> = <global>string</global>.<field>match</field>" +
+                    "(<parameter>name</parameter>, \"(%a+)\\.?(%a*)\")\n" +
+                    "  local <local>url</local> = <global>BASE_URL</global> .. \"/docs/api/\" .. <local>p1</local> .. [[long " +
+                    "string]]\n" +
+                    "\n" +
+                    "  if <local>p2</local> and true then <local>url</local> = <local>url</local> .. <local>p2</local>; end\n" +
+                    "\n" +
+                    "  function() local <local>upval_parameter</local> = <parameter><upval>name</upval></parameter> end\n" +
+                    "\n" +
+                    "  <local><upval>x</upval></local>, <local><upval>y</upval></local> = <local>p1</local>, " +
+                    "<local>p2</local>\n" +
+                    "\n" +
+                    "  return <local>url</local>\n" +
+                    "end\n" +
+                    "\n" +
+                    "<global>a</global> = \"BAD\n";
 
 
     private static final AttributesDescriptor[] ATTRS = new AttributesDescriptor[]{new AttributesDescriptor(

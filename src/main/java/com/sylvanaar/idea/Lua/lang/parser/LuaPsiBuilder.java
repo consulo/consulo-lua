@@ -16,12 +16,14 @@
 
 package com.sylvanaar.idea.Lua.lang.parser;
 
-import com.intellij.lang.*;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.source.resolve.*;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.WhitespaceSkippedCallback;
+import consulo.language.psi.PsiFile;
+import consulo.logging.Logger;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -77,7 +79,7 @@ private PsiBuilder psiBuilder;
 //	}
 
     public PsiFile getFile() {
-        return psiBuilder.getUserData(FileContextUtil.CONTAINING_FILE_KEY);
+        return psiBuilder.getContainingFile();
     }
 
 	public void match(final IElementType token, final String errorMessage) {

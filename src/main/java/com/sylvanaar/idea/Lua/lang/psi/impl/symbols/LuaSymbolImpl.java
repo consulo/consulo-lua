@@ -19,9 +19,8 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.symbols;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaReferenceElement;
@@ -33,6 +32,7 @@ import com.sylvanaar.idea.Lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaTypeUtil;
 import com.sylvanaar.idea.Lua.lang.psi.util.LuaPsiUtils;
+import consulo.language.ast.ASTNode;
 import consulo.ui.image.Image;
 
 /**

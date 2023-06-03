@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Jon S Akhtar (Sylvanaar)
- *  
+ *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
  *   You may obtain a copy of the License at
- *  
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  *   Unless required by applicable law or agreed to in writing, software
  *   distributed under the License is distributed on an "AS IS" BASIS,
  *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,27 +16,28 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.configurations.GeneralCommandLine;
-import com.intellij.execution.impl.ConsoleViewImpl;
-import com.intellij.execution.process.CapturingProcessHandler;
-import com.intellij.execution.process.ProcessOutput;
-import com.intellij.execution.ui.ConsoleView;
-import com.intellij.execution.ui.ConsoleViewContentType;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.wm.ToolWindow;
-import com.intellij.openapi.wm.ToolWindowAnchor;
-import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.openapi.wm.ex.ToolWindowManagerEx;
-import com.intellij.openapi.wm.ex.ToolWindowManagerListener;
-import com.intellij.ui.content.impl.ContentImpl;
+import consulo.application.util.SystemInfo;
+import consulo.content.base.BinariesOrderRootType;
+import consulo.content.base.SourcesOrderRootType;
+import consulo.content.bundle.Sdk;
+import consulo.execution.ui.console.ConsoleView;
+import consulo.execution.ui.console.ConsoleViewContentType;
+import consulo.execution.ui.console.TextConsoleBuilderFactory;
+import consulo.process.ExecutionException;
+import consulo.process.cmd.GeneralCommandLine;
+import consulo.process.local.ExecUtil;
+import consulo.process.local.ProcessOutput;
+import consulo.project.Project;
+import consulo.project.ui.wm.ToolWindowManager;
+import consulo.ui.ex.content.Content;
+import consulo.ui.ex.content.ContentManager;
+import consulo.ui.ex.toolWindow.ContentManagerWatcher;
+import consulo.ui.ex.toolWindow.ToolWindow;
+import consulo.ui.ex.toolWindow.ToolWindowAnchor;
 import consulo.util.dataholder.Key;
+import consulo.util.io.FileUtil;
+import consulo.util.lang.StringUtil;
+import consulo.virtualFileSystem.VirtualFile;
 
 import javax.annotation.Nonnull;
 import java.io.File;
@@ -44,15 +45,15 @@ import java.util.*;
 
 /**
  * @author Maxim.Manuylov
- *         Date: 03.04.2010
+ * Date: 03.04.2010
  */
 public class LuaSystemUtil {
     private static final Key<ConsoleView> CONSOLE_VIEW_KEY = Key.create("LuaConsoleView");
-    public static final  int              STANDARD_TIMEOUT = 10 * 1000;
+    public static final int STANDARD_TIMEOUT = 10 * 1000;
 
     @Nonnull
     public static ProcessOutput getProcessOutput(@Nonnull final String workDir, @Nonnull final String exePath,
-												 @Nonnull final String... arguments) throws ExecutionException {
+                                                 @Nonnull final String... arguments) throws ExecutionException {
         return getProcessOutput(STANDARD_TIMEOUT, workDir, exePath, arguments);
     }
 
@@ -80,14 +81,13 @@ public class LuaSystemUtil {
     @Nonnull
     public static ProcessOutput execute(@Nonnull final GeneralCommandLine cmd,
                                         final int timeout) throws ExecutionException {
-        final CapturingProcessHandler processHandler = new CapturingProcessHandler(cmd);
-        return timeout < 0 ? processHandler.runProcess() : processHandler.runProcess(timeout);
+        return ExecUtil.execAndGetOutput(cmd, timeout);
     }
 
     public static void addStdPaths(@Nonnull final GeneralCommandLine cmd, @Nonnull final Sdk sdk) {
         final List<VirtualFile> files = new ArrayList<VirtualFile>();
-        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(OrderRootType.SOURCES)));
-        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(OrderRootType.CLASSES)));
+        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(SourcesOrderRootType.getInstance())));
+        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(BinariesOrderRootType.getInstance())));
         final Set<String> paths = new HashSet<String>();
         for (final VirtualFile file : files) {
             paths.add(LuaFileUtil.getPathToDisplay(file));
@@ -99,10 +99,13 @@ public class LuaSystemUtil {
     }
 
     public static String getPATHenvVariableName() {
-        if (SystemInfo.isWindows) return "Path";
+        if (SystemInfo.isWindows) {
+            return "Path";
+        }
         if (SystemInfo.isUnix) {
             return "PATH";
-        } else {
+        }
+        else {
             return null;
         }
     }
@@ -110,24 +113,33 @@ public class LuaSystemUtil {
     public static String appendToPATHenvVariable(String path, String additionalPath) {
         assert additionalPath != null;
         String pathValue;
-        if (StringUtil.isEmpty(path)) pathValue = additionalPath;
-        else pathValue =
-                (new StringBuilder()).append(path).append(File.pathSeparatorChar).append(additionalPath).toString();
+        if (StringUtil.isEmpty(path)) {
+            pathValue = additionalPath;
+        }
+        else {
+            pathValue =
+                    (new StringBuilder()).append(path).append(File.pathSeparatorChar).append(additionalPath).toString();
+        }
         return FileUtil.toSystemDependentName(pathValue);
     }
 
     public static String prependToPATHenvVariable(String path, String additionalPath) {
         assert additionalPath != null;
         String pathValue;
-        if (StringUtil.isEmpty(path)) pathValue = additionalPath;
-        else pathValue =
-                (new StringBuilder()).append(additionalPath).append(File.pathSeparatorChar).append(path).toString();
+        if (StringUtil.isEmpty(path)) {
+            pathValue = additionalPath;
+        }
+        else {
+            pathValue =
+                    (new StringBuilder()).append(additionalPath).append(File.pathSeparatorChar).append(path).toString();
+        }
         return FileUtil.toSystemDependentName(pathValue);
     }
 
     final static String toolWindowId = "Lua Console Output";
+
     public static void printMessageToConsole(@Nonnull Project project, @Nonnull String s,
-											 @Nonnull ConsoleViewContentType contentType) {
+                                             @Nonnull ConsoleViewContentType contentType) {
         activateConsoleToolWindow(project);
         final ConsoleView consoleView = project.getUserData(CONSOLE_VIEW_KEY);
 
@@ -139,44 +151,33 @@ public class LuaSystemUtil {
     public static void clearConsoleToolWindow(@Nonnull Project project) {
         final ToolWindowManager manager = ToolWindowManager.getInstance(project);
         ToolWindow toolWindow = manager.getToolWindow(toolWindowId);
-        if (toolWindow == null) return;
+        if (toolWindow == null) {
+            return;
+        }
         toolWindow.getContentManager().removeAllContents(false);
         toolWindow.hide(null);
     }
+
     private static void activateConsoleToolWindow(@Nonnull Project project) {
         final ToolWindowManager manager = ToolWindowManager.getInstance(project);
 
 
         ToolWindow toolWindow = manager.getToolWindow(toolWindowId);
-        if (toolWindow != null) {
-            return;
+        if (toolWindow == null) {
+            toolWindow = manager.registerToolWindow(toolWindowId, true, ToolWindowAnchor.BOTTOM);
+            ContentManagerWatcher.watchContentManager(toolWindow, toolWindow.getContentManager());
         }
 
-        toolWindow = manager.registerToolWindow(toolWindowId, true, ToolWindowAnchor.BOTTOM);
-        final ConsoleView console = new ConsoleViewImpl(project, false);
-        project.putUserData(CONSOLE_VIEW_KEY, console);
-        toolWindow.getContentManager().addContent(new ContentImpl(console.getComponent(), "", false));
+        Content[] contents = toolWindow.getContentManager().getContents();
+        if (contents.length == 0) {
+            final ConsoleView console = TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
+            
+            project.putUserData(CONSOLE_VIEW_KEY, console);
+            ContentManager contentManager = toolWindow.getContentManager();
+            contentManager.addContent(contentManager.getFactory().createContent(console.getComponent(), "", false));
+        }
 
-        final ToolWindowManagerListener listener = new ToolWindowManagerListener() {
-            @Override
-            public void toolWindowRegistered(@Nonnull String id) {
-            }
 
-            @Override
-            public void stateChanged() {
-                ToolWindow window = manager.getToolWindow(toolWindowId);
-                if (window != null && !window.isVisible()) {
-                    manager.unregisterToolWindow(toolWindowId);
-                    ((ToolWindowManagerEx) manager).removeToolWindowManagerListener(this);
-                }
-            }
-        };
-
-        toolWindow.show(new Runnable() {
-            @Override
-            public void run() {
-                ((ToolWindowManagerEx) manager).addToolWindowManagerListener(listener);
-            }
-        });
+        toolWindow.show(null);
     }
 }

@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
 
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.psi.PsiPolyVariantReference;
+import consulo.language.psi.PsiNamedElement;
+import consulo.language.psi.PsiPolyVariantReference;
 
 /**
  * @author ilyas

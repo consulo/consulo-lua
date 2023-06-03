@@ -16,13 +16,15 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.presentation;
 
-import javax.annotation.Nullable;
-
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.navigation.ItemPresentationProvider;
 import com.sylvanaar.idea.Lua.LuaIcons;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.navigation.ItemPresentation;
+import consulo.navigation.ItemPresentationProvider;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,7 +32,14 @@ import consulo.ui.image.Image;
  * Date: 2/17/12
  * Time: 6:20 AM
  */
+@ExtensionImpl
 public class LuaElementPresentationProvider implements ItemPresentationProvider<LuaPsiElement> {
+    @Nonnull
+    @Override
+    public Class<LuaPsiElement> getItemClass() {
+        return LuaPsiElement.class;
+    }
+
     @Override
     public ItemPresentation getPresentation(final LuaPsiElement item) {
         return new ItemPresentation() {

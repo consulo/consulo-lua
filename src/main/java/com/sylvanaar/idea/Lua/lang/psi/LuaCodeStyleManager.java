@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi;
 
-import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.project.Project;
+import consulo.ide.ServiceManager;
+import consulo.project.Project;
 
 /**
  * Created by IntelliJ IDEA.

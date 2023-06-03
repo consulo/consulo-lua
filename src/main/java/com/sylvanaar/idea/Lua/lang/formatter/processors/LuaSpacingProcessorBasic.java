@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.formatter.processors;
 
-import com.intellij.formatting.Spacing;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.CodeStyleSettings;
+import consulo.language.codeStyle.Spacing;
+import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.Lua.lang.formatter.blocks.LuaFormattingBlock;
 import com.sylvanaar.idea.Lua.lang.formatter.models.spacing.SpacingTokens;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;

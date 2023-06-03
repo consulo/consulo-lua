@@ -16,56 +16,50 @@
 
 package consulo.lua.module.extension;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.intellij.openapi.projectRoots.Sdk;
+import consulo.content.bundle.Sdk;
 import consulo.disposer.Disposable;
-import consulo.extension.ui.ModuleExtensionBundleBoxBuilder;
+import consulo.module.content.layer.ModuleRootLayer;
 import consulo.module.extension.MutableModuleExtensionWithSdk;
 import consulo.module.extension.MutableModuleInheritableNamedPointer;
-import consulo.roots.ModuleRootLayer;
+import consulo.module.ui.extension.ModuleExtensionBundleBoxBuilder;
 import consulo.ui.Component;
 import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.layout.VerticalLayout;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * @author VISTALL
  * @since 12.07.13.
  */
-public class LuaMutableModuleExtension extends LuaModuleExtension implements MutableModuleExtensionWithSdk<LuaModuleExtension>
-{
-	public LuaMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer module)
-	{
-		super(id, module);
-	}
+public class LuaMutableModuleExtension extends LuaModuleExtension implements MutableModuleExtensionWithSdk<LuaModuleExtension> {
+    public LuaMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer module) {
+        super(id, module);
+    }
 
-	@Nonnull
-	@Override
-	public MutableModuleInheritableNamedPointer<Sdk> getInheritableSdk()
-	{
-		return (MutableModuleInheritableNamedPointer<Sdk>) super.getInheritableSdk();
-	}
+    @Nonnull
+    @Override
+    public MutableModuleInheritableNamedPointer<Sdk> getInheritableSdk() {
+        return (MutableModuleInheritableNamedPointer<Sdk>) super.getInheritableSdk();
+    }
 
-	@RequiredUIAccess
-	@Nullable
-	@Override
-	public Component createConfigurationComponent(@Nonnull Disposable disposable, @Nonnull Runnable runnable)
-	{
-		VerticalLayout layout = VerticalLayout.create();
-		layout.add(ModuleExtensionBundleBoxBuilder.createAndDefine(this, disposable, runnable).build());
-		return layout;
-	}
+    @RequiredUIAccess
+    @Nullable
+    @Override
+    public Component createConfigurationComponent(@Nonnull Disposable disposable, @Nonnull Runnable runnable) {
+        VerticalLayout layout = VerticalLayout.create();
+        layout.add(ModuleExtensionBundleBoxBuilder.createAndDefine(this, disposable, runnable).build());
+        return layout;
+    }
 
-	@Override
-	public void setEnabled(boolean b)
-	{
-		myIsEnabled = b;
-	}
+    @Override
+    public void setEnabled(boolean b) {
+        myIsEnabled = b;
+    }
 
-	@Override
-	public boolean isModified(@Nonnull LuaModuleExtension extension)
-	{
-		return isModifiedImpl(extension);
-	}
+    @Override
+    public boolean isModified(@Nonnull LuaModuleExtension extension) {
+        return isModifiedImpl(extension);
+    }
 }

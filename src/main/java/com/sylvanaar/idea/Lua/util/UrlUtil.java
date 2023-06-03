@@ -16,22 +16,20 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import com.intellij.ide.BrowserUtil;
-import com.intellij.openapi.progress.ProcessCanceledException;
-import com.intellij.openapi.progress.ProgressIndicator;
-import com.intellij.openapi.progress.util.ProgressIndicatorBase;
-import com.intellij.openapi.vfs.VfsUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
-import com.intellij.util.io.UrlConnectionUtil;
-import com.intellij.util.net.HttpConfigurable;
+import consulo.component.ProcessCanceledException;
+import consulo.http.HttpProxyManager;
+import consulo.language.editor.documentation.PlatformDocumentationUtil;
+import consulo.util.io.URLUtil;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.VirtualFileManager;
+import consulo.virtualFileSystem.util.VirtualFileUtil;
 import org.jetbrains.annotations.NonNls;
 
+import javax.annotation.Nullable;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-
-import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,26 +46,25 @@ public final class UrlUtil {
     final String JAR_PROTOCOL = "jar:";
 
     @Nullable
-    public static Reader getReaderByUrl(final String surl, final HttpConfigurable httpConfigurable, final ProgressIndicator pi) throws IOException {
+    public static Reader getReaderByUrl(final String surl, final HttpProxyManager httpConfigurable) throws IOException {
         if (surl.startsWith(JAR_PROTOCOL)) {
-            VirtualFile file = VirtualFileManager.getInstance().findFileByUrl(BrowserUtil.getDocURL(surl));
+            VirtualFile file = VirtualFileManager.getInstance().findFileByUrl(PlatformDocumentationUtil.getDocURL(surl));
 
             if (file == null) {
                 return null;
             }
 
-            return new StringReader(VfsUtil.loadText(file));
+            return new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8);
         }
 
-        URL url = BrowserUtil.getURL(surl);
+        URL url = URLUtil.isAbsoluteURL(surl) ? VirtualFileUtil.convertToURL(surl) : new URL("file", "", surl);
         if (url == null) {
             return null;
         }
         httpConfigurable.prepareURL(url.toString());
         final URLConnection urlConnection = url.openConnection();
         final String contentEncoding = urlConnection.getContentEncoding();
-        final InputStream inputStream =
-                pi != null ? UrlConnectionUtil.getConnectionInputStreamWithException(urlConnection, pi) : urlConnection.getInputStream();
+        final InputStream inputStream = urlConnection.getInputStream();
         //noinspection IOResourceOpenedButNotSafelyClosed
         return contentEncoding != null ? new InputStreamReader(inputStream, contentEncoding) : new InputStreamReader(inputStream);
     }
@@ -97,13 +94,13 @@ public final class UrlUtil {
         private final String surl;
         private final UrlUtil.FetchedUrlBuilder myBuilder;
         private final Exception[] myExceptions = new Exception[1];
-        private final HttpConfigurable myHttpConfigurable;
+        private final HttpProxyManager myHttpConfigurable;
 
         public UrlFetcher(final String surl, FetchedUrlBuilder builder) {
             this.surl = surl;
             myBuilder = builder;
             ourFree = false;
-            myHttpConfigurable = HttpConfigurable.getInstance();
+            myHttpConfigurable = HttpProxyManager.getInstance();
         }
 
         public UrlFetcher(final String surl) {
@@ -126,7 +123,7 @@ public final class UrlUtil {
 
                 Reader stream = null;
                 try {
-                    stream = getReaderByUrl(surl, myHttpConfigurable, new ProgressIndicatorBase());
+                    stream = getReaderByUrl(surl, myHttpConfigurable);
                 } catch (ProcessCanceledException e) {
                     return;
                 } catch (IOException e) {

@@ -16,11 +16,10 @@
 
 package com.sylvanaar.idea.Lua.luaj;
 
-import com.google.common.base.Charsets;
-import com.intellij.execution.ui.ConsoleViewContentType;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import consulo.awt.TargetAWT;
+import consulo.execution.ui.console.ConsoleViewContentType;
+import consulo.application.ApplicationManager;
+import consulo.colorScheme.EditorColorsManager;
+import consulo.ui.ex.awtUnsafe.TargetAWT;
 import consulo.ui.color.ColorValue;
 import jsyntaxpane.lexers.LuaLexer;
 import org.luaj.vm2.Globals;
@@ -38,6 +37,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
@@ -208,7 +208,7 @@ public class LuaJInterpreter extends JPanel
 					_G.STDOUT = new PrintStream(outputStream);
 					_G.get("load").call(LuaValue.valueOf(text)).call();
 
-					print(new String(outputStream.toByteArray(), Charsets.UTF_8));
+					print(new String(outputStream.toByteArray(), StandardCharsets.UTF_8));
 					_G.STDOUT = stdout;
 				}
 				catch(LuaError e)

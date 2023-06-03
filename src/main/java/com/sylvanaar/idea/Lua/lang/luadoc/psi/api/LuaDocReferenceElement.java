@@ -17,7 +17,7 @@
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
 
 
-import com.intellij.psi.PsiReference;
+import consulo.language.psi.PsiReference;
 import javax.annotation.Nullable;
 
 

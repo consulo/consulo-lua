@@ -18,15 +18,15 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.expressions;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.*;
-import com.intellij.psi.*;
-import com.intellij.psi.tree.*;
 import com.sylvanaar.idea.Lua.lang.lexer.*;
 import com.sylvanaar.idea.Lua.lang.parser.*;
 import com.sylvanaar.idea.Lua.lang.psi.*;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.Lua.lang.psi.types.*;
 import com.sylvanaar.idea.Lua.lang.psi.visitor.*;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElementVisitor;
 
 /**
  * Created by IntelliJ IDEA.

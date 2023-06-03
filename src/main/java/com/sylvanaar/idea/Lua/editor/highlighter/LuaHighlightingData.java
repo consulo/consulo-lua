@@ -16,12 +16,12 @@
 
 package com.sylvanaar.idea.Lua.editor.highlighter;
 
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.HighlighterColors;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
+import consulo.codeEditor.DefaultLanguageHighlighterColors;
+import consulo.codeEditor.HighlighterColors;
+import consulo.colorScheme.TextAttributesKey;
 import org.jetbrains.annotations.NonNls;
 
-import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.*;
+import static consulo.codeEditor.DefaultLanguageHighlighterColors.*;
 
 
 /**
@@ -85,9 +85,9 @@ public class LuaHighlightingData {
 
     public static final TextAttributesKey LUADOC       =
             TextAttributesKey.createTextAttributesKey(LUADOC_ID, DOC_COMMENT);
-    public static       TextAttributesKey LUADOC_TAG   =
+    public static TextAttributesKey LUADOC_TAG   =
             TextAttributesKey.createTextAttributesKey(LUADOC_TAG_ID, DOC_COMMENT_TAG);
-    public static       TextAttributesKey LUADOC_VALUE =
+    public static TextAttributesKey LUADOC_VALUE =
             TextAttributesKey.createTextAttributesKey(LUADOC_VALUE_ID, DOC_COMMENT);
 
     public static final TextAttributesKey LOCAL_VAR  =

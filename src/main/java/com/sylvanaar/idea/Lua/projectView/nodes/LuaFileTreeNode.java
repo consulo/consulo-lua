@@ -15,15 +15,15 @@
  */
 package com.sylvanaar.idea.Lua.projectView.nodes;
 
-import com.intellij.ide.projectView.ViewSettings;
-import com.intellij.ide.projectView.impl.nodes.PsiFileNode;
-import com.intellij.ide.util.treeView.AbstractTreeNode;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+import consulo.project.Project;
+import consulo.project.ui.view.tree.AbstractTreeNode;
+import consulo.project.ui.view.tree.PsiFileNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.Lua.projectView.LuaPsiFileChildrenSource;
+import consulo.project.ui.view.tree.ViewSettings;
 
 import java.util.ArrayList;
 import java.util.Collection;

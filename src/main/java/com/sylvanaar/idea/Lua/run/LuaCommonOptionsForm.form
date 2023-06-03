@@ -21,7 +21,7 @@
           <text value="Interpreter options:"/>
         </properties>
       </component>
-      <component id="b281" class="com.intellij.ui.RawCommandLineEditor" binding="interpreterOptions">
+      <component id="b281" class="consulo.execution.ui.awt.RawCommandLineEditor" binding="interpreterOptions">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -35,7 +35,7 @@
           <text value="Lua interpreter:"/>
         </properties>
       </component>
-      <component id="94124" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="workingDirEdit">
+      <component id="94124" class="consulo.ui.ex.awt.TextFieldWithBrowseButton" binding="workingDirEdit">
         <constraints>
           <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -56,7 +56,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="175a7" class="com.intellij.execution.configuration.EnvironmentVariablesComponent" binding="environmentVariablesEdit">
+          <component id="175a7" class="consulo.execution.ui.awt.EnvironmentVariablesComponent" binding="environmentVariablesEdit">
             <constraints border-constraint="Center"/>
             <properties/>
           </component>
@@ -70,7 +70,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="43da4" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="luaInterpreterEdit">
+          <component id="43da4" class="consulo.ui.ex.awt.TextFieldWithBrowseButton" binding="luaInterpreterEdit">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

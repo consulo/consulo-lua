@@ -16,12 +16,13 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
-import com.intellij.codeInsight.AutoPopupController;
-import com.intellij.codeInsight.editorActions.TypedHandlerDelegate;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiFile;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.language.editor.AutoPopupController;
+import consulo.language.editor.action.TypedHandlerDelegate;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,14 +30,17 @@ import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFile;
  * Date: 1/15/12
  * Time: 4:49 PM
  */
+@ExtensionImpl
 public class LuaAutoPopupHandler extends TypedHandlerDelegate {
     @Override
     public Result checkAutoPopup(char charTyped, Project project, Editor editor, PsiFile file) {
-        if (!(file instanceof LuaPsiFile)) return Result.CONTINUE;
+        if (!(file instanceof LuaPsiFile)) {
+            return Result.CONTINUE;
+        }
 
         if (charTyped == ':' || charTyped == '.') {
-          AutoPopupController.getInstance(project).autoPopupMemberLookup(editor, null);
-          return Result.STOP;
+            AutoPopupController.getInstance(project).autoPopupMemberLookup(editor, null);
+            return Result.STOP;
         }
 
         return Result.CONTINUE;

@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.resolve;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author ilyas

@@ -17,9 +17,8 @@ package com.sylvanaar.idea.Lua.intentions.control;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.IElementType;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.intentions.LuaIntentionsBundle;
 import com.sylvanaar.idea.Lua.intentions.base.IntentionUtils;
 import com.sylvanaar.idea.Lua.intentions.base.MutablyNamedIntention;
@@ -27,6 +26,7 @@ import com.sylvanaar.idea.Lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.Lua.intentions.utils.ComparisonUtils;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
+import consulo.language.psi.PsiElement;
 
 
 public class FlipComparisonIntention extends MutablyNamedIntention {

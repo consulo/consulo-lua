@@ -16,14 +16,18 @@
 
 package com.sylvanaar.idea.Lua.lang.template;
 
-import javax.annotation.Nonnull;
+import com.sylvanaar.idea.Lua.LuaFileType;
+import com.sylvanaar.idea.Lua.editor.highlighter.LuaSyntaxHighlighter;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.editor.highlight.SyntaxHighlighter;
+import consulo.language.editor.template.context.TemplateContextType;
+import consulo.language.editor.util.PsiUtilBase;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.util.PsiTreeUtil;
 
-import com.intellij.codeInsight.template.*;
-import com.intellij.openapi.fileTypes.*;
-import com.intellij.psi.*;
-import com.intellij.psi.util.*;
-import com.sylvanaar.idea.Lua.*;
-import com.sylvanaar.idea.Lua.editor.highlighter.*;
+import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,15 +35,16 @@ import com.sylvanaar.idea.Lua.editor.highlighter.*;
  * Date: 2/22/11
  * Time: 10:45 PM
  */
+@ExtensionImpl
 public class LuaTemplateContextType extends TemplateContextType {
-    protected LuaTemplateContextType() {
+    public LuaTemplateContextType() {
         super("LUA", "Lua");
     }
 
     public boolean isInContext(@Nonnull PsiFile file, int offset) {
         if (PsiUtilBase.getLanguageAtOffset(file, offset).isKindOf(LuaFileType.LUA_LANGUAGE)) {
-          PsiElement element = file.findElementAt(offset);
-          return PsiTreeUtil.getParentOfType(element, PsiComment.class, false) == null;
+            PsiElement element = file.findElementAt(offset);
+            return PsiTreeUtil.getParentOfType(element, PsiComment.class, false) == null;
         }
 
         return false;

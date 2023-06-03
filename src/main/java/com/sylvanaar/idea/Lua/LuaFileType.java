@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua;
 
-import com.intellij.lang.Language;
-import com.intellij.openapi.fileTypes.ExtensionFileNameMatcher;
-import com.intellij.openapi.fileTypes.LanguageFileType;
+import consulo.virtualFileSystem.internal.matcher.ExtensionFileNameMatcher;
+import consulo.language.file.LanguageFileType;
 import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import consulo.language.Language;
 import consulo.localize.LocalizeValue;
 import consulo.lua.localize.LuaLocalize;
 import consulo.ui.image.Image;
@@ -36,7 +36,7 @@ import javax.annotation.Nonnull;
 public class LuaFileType extends LanguageFileType {
     public static final LuaFileType LUA_FILE_TYPE = new LuaFileType();
 
-    public static final Language LUA_LANGUAGE = LUA_FILE_TYPE.getLanguage();
+    public static final Language LUA_LANGUAGE = LuaLanguage.INSTANCE;
     // public static final Icon LUA_FILE_TYPE = LuaIcons.LUA_ICON_16x16;
     @NonNls
     public static final String DEFAULT_EXTENSION = "lua";
@@ -48,7 +48,7 @@ public class LuaFileType extends LanguageFileType {
     };
 
     private LuaFileType() {
-        super(new LuaLanguage());
+        super(LuaLanguage.INSTANCE);
     }
 
     /**

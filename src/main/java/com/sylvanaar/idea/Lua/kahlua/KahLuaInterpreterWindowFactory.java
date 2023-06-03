@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.kahlua;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.ToolWindow;
-import com.intellij.openapi.wm.ToolWindowFactory;
+import consulo.project.ui.wm.ToolWindowFactory;
+import consulo.ui.ex.toolWindow.ToolWindow;
+import consulo.project.Project;
 import se.krka.kahlua.converter.KahluaConverterManager;
 import se.krka.kahlua.converter.KahluaEnumConverter;
 import se.krka.kahlua.converter.KahluaNumberConverter;
@@ -33,7 +33,8 @@ import se.krka.kahlua.vm.Platform;
  * Date: May 7, 2010
  * Time: 8:02:20 PM
  */
-public class KahLuaInterpreterWindowFactory implements ToolWindowFactory {
+public class KahLuaInterpreterWindowFactory implements ToolWindowFactory
+{
     public static KahluaInterpreter INSTANCE = null;
     public static ToolWindow WINDOW = null;
 

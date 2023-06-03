@@ -21,7 +21,7 @@
           <text value="Script name:"/>
         </properties>
       </component>
-      <component id="d6aaf" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="scriptNameEdit">
+      <component id="d6aaf" class="consulo.ui.ex.awt.TextFieldWithBrowseButton" binding="scriptNameEdit">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -35,7 +35,7 @@
           <text value="Script parameters:"/>
         </properties>
       </component>
-      <component id="bafe" class="com.intellij.ui.RawCommandLineEditor" binding="commandLineEdit">
+      <component id="bafe" class="consulo.execution.ui.awt.RawCommandLineEditor" binding="commandLineEdit">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

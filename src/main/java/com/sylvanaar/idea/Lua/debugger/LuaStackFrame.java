@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.debugger;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.xdebugger.XSourcePosition;
-import com.intellij.xdebugger.evaluation.XDebuggerEvaluator;
-import com.intellij.xdebugger.frame.XStackFrame;
+import consulo.execution.debug.frame.XStackFrame;
+import consulo.project.Project;
+import consulo.execution.debug.XSourcePosition;
+import consulo.execution.debug.evaluation.XDebuggerEvaluator;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,7 +27,8 @@ import com.intellij.xdebugger.frame.XStackFrame;
  * Date: 4/28/11
  * Time: 11:07 AM
  */
-public class LuaStackFrame extends XStackFrame {
+public class LuaStackFrame extends XStackFrame
+{
     XSourcePosition mySourcePosition = null;
     private Project myProject;
     LuaDebuggerController myController = null;

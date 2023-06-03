@@ -18,15 +18,15 @@ package com.sylvanaar.idea.Lua.lang.psi.impl.statements;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiElementVisitor;
-import com.intellij.psi.ResolveState;
-import com.intellij.psi.scope.PsiScopeProcessor;
-import com.intellij.psi.util.CachedValue;
-import com.intellij.psi.util.CachedValueProvider;
-import com.intellij.psi.util.CachedValuesManager;
-import com.intellij.util.IncorrectOperationException;
+import consulo.application.util.CachedValueProvider;
+import consulo.application.util.CachedValuesManager;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.application.util.CachedValue;
+import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.impl.ControlFlowBuilder;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
@@ -130,7 +130,8 @@ public class LuaBlockImpl extends LuaPsiElementImpl implements LuaBlock {
 
     @Override
     public LuaStatementElement addStatementBefore(@Nonnull LuaStatementElement statement,
-                                                  LuaStatementElement anchor) throws IncorrectOperationException {
+                                                  LuaStatementElement anchor) throws IncorrectOperationException
+	{
         return (LuaStatementElement) addBefore(statement, anchor);
     }
 

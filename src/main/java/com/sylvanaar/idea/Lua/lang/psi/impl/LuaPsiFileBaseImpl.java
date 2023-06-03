@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.impl;
 
-import com.intellij.extapi.psi.PsiFileBase;
-import com.intellij.lang.Language;
-import com.intellij.psi.FileViewProvider;
+import consulo.language.file.FileViewProvider;
+import consulo.language.impl.psi.PsiFileBase;
+import consulo.language.Language;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiFileBase;
 import javax.annotation.Nonnull;
 

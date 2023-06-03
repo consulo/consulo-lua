@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.lang.luadoc.psi.api;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaNamedElement;
 import org.jetbrains.annotations.NonNls;
 import javax.annotation.Nonnull;

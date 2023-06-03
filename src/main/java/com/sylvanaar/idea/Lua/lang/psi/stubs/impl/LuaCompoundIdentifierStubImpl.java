@@ -16,13 +16,13 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.impl;
 
-import com.intellij.psi.stubs.NamedStubBase;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.io.StringRef;
 import com.sylvanaar.idea.Lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.api.LuaCompoundIdentifierStub;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.Lua.lang.psi.types.LuaType;
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.NamedStubBase;
+import consulo.language.psi.stub.StubElement;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,7 +39,7 @@ public class LuaCompoundIdentifierStubImpl extends NamedStubBase<LuaCompoundIden
     private LuaType luaType;
 
     public LuaCompoundIdentifierStubImpl(StubElement parent, StringRef name, boolean isDeclaration, byte[] type,
-                                         LuaType luaType) {
+										 LuaType luaType) {
         super(parent, LuaElementTypes.GETTABLE, name);
         this.isGlobalDeclaration = isDeclaration;
         myType = type;

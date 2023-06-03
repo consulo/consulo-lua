@@ -16,14 +16,14 @@
 
 package com.sylvanaar.idea.Lua.util;
 
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileFactory;
-import com.intellij.util.IncorrectOperationException;
-import com.intellij.util.LocalTimeCounter;
+import consulo.language.file.FileTypeManager;
+import consulo.language.psi.PsiFileFactory;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.lang.LocalTimeCounter;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import consulo.util.io.FileUtil;
+import consulo.util.lang.StringUtil;
 import org.junit.Assert;
 
 import java.io.File;
@@ -49,8 +49,8 @@ public abstract class TestUtils {
 
 
   public static PsiFile createPseudoPhysicalFile(final Project project,
-                                                 final String fileName,
-                                                 final String text) throws IncorrectOperationException {
+												 final String fileName,
+												 final String text) throws IncorrectOperationException {
     return PsiFileFactory.getInstance(project)
         .createFileFromText(fileName, FileTypeManager.getInstance().getFileTypeByFileName(fileName), text,
             LocalTimeCounter.currentTime(), true);

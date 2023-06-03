@@ -16,15 +16,16 @@
 
 package com.sylvanaar.idea.Lua.lang.documentor;
 
-import com.intellij.lang.documentation.DocumentationProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiManager;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTag;
 import com.sylvanaar.idea.Lua.lang.luadoc.psi.api.LuaDocTagValueToken;
-
-import java.util.List;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.documentation.LanguageDocumentationProvider;
+import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,47 +33,40 @@ import java.util.List;
  * Date: 4/1/11
  * Time: 12:28 AM
  */
-public class LuaDocDocumentationProvider implements DocumentationProvider {
-    @Override
-    public String getQuickNavigateInfo(PsiElement element, PsiElement originalElement) {
-        return null;
-    }
-
-    @Override
-    public List<String> getUrlFor(PsiElement element, PsiElement originalElement) {
-        return null;
-    }
+@ExtensionImpl(id = "lua.doc", order = "before lua.context")
+public class LuaDocDocumentationProvider implements LanguageDocumentationProvider {
 
     @Override
     public String generateDoc(PsiElement element, PsiElement originalElement) {
         element = element.getParent().getParent();
         if (element instanceof LuaDocCommentOwner) {
             LuaDocComment docComment = ((LuaDocCommentOwner) element).getDocComment();
-            if (docComment!=null) {
+            if (docComment != null) {
                 StringBuilder sb = new StringBuilder();
 
-                sb.append(    "<html><head>" +
-                              "    <style type=\"text/css\">" +
-                              "        #error {" +
-                              "            background-color: #eeeeee;" +
-                              "            margin-bottom: 10px;" +
-                              "        }" +
-                              "        p {" +
-                              "            margin: 5px 0;" +
-                              "        }" +
-                              "    </style>" +
-                              "</head><body>");
+                sb.append("<html><head>" +
+                        "    <style type=\"text/css\">" +
+                        "        #error {" +
+                        "            background-color: #eeeeee;" +
+                        "            margin-bottom: 10px;" +
+                        "        }" +
+                        "        p {" +
+                        "            margin: 5px 0;" +
+                        "        }" +
+                        "    </style>" +
+                        "</head><body>");
 
                 LuaDocCommentOwner owner = docComment.getOwner();
                 if (owner != null) {
                     String name = owner.getName();
 
-                    if (name != null)
+                    if (name != null) {
                         sb.append("<h2>").append(name).append("</h2>");
+                    }
                 }
                 sb.append("<p class=description>");
-                  for(PsiElement e : docComment.getDescriptionElements())
-                      sb.append(e.getText()).append(' ');
+                for (PsiElement e : docComment.getDescriptionElements())
+                    sb.append(e.getText()).append(' ');
                 sb.append("</p>");
 
                 buildTagListSection("param", docComment, sb);
@@ -83,7 +77,7 @@ public class LuaDocDocumentationProvider implements DocumentationProvider {
                 return sb.toString();
             }
         }
-                
+
         return null;
     }
 
@@ -91,9 +85,11 @@ public class LuaDocDocumentationProvider implements DocumentationProvider {
         sb.append("<p class=").append(section).append('>');
 
         for (LuaDocTag tag : docComment.getTags()) {
-            if (!tag.getName().equals(section)) continue;
+            if (!tag.getName().equals(section)) {
+                continue;
+            }
 
-            for(PsiElement desc : tag.getDescriptionElements())
+            for (PsiElement desc : tag.getDescriptionElements())
                 sb.append(desc.getText());
         }
 
@@ -104,26 +100,27 @@ public class LuaDocDocumentationProvider implements DocumentationProvider {
         sb.append("<dl class=").append(section).append('>');
 
         for (LuaDocTag tag : docComment.getTags()) {
-            if (!tag.getName().equals(section)) continue;
+            if (!tag.getName().equals(section)) {
+                continue;
+            }
 
             LuaDocTagValueToken value = tag.getValueElement();
-            if (value == null) continue;
+            if (value == null) {
+                continue;
+            }
             sb.append("<dt>").append(value.getText()).append("</dt>");
 
-            for(PsiElement desc : tag.getDescriptionElements())
+            for (PsiElement desc : tag.getDescriptionElements())
                 sb.append("<dd>").append(desc.getText()).append("</dd>");
         }
 
         sb.append("</dl>");
     }
 
-    @Override
-    public PsiElement getDocumentationElementForLookupItem(PsiManager psiManager, Object object, PsiElement element) {
-        return null;
-    }
 
+    @Nonnull
     @Override
-    public PsiElement getDocumentationElementForLink(PsiManager psiManager, String link, PsiElement context) {
-        return null;
+    public Language getLanguage() {
+        return LuaLanguage.INSTANCE;
     }
 }

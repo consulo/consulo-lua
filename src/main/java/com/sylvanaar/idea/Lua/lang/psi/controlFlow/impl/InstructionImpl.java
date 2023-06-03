@@ -16,8 +16,8 @@
 package com.sylvanaar.idea.Lua.lang.psi.controlFlow.impl;
 
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.logging.Logger;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallEnvironment;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.CallInstruction;
 import com.sylvanaar.idea.Lua.lang.psi.controlFlow.Instruction;

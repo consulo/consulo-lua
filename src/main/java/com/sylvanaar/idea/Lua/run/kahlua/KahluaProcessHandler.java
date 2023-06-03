@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.run.kahlua;
 
-import com.intellij.execution.process.ProcessHandler;
-import com.intellij.openapi.diagnostic.Logger;
+import consulo.process.ProcessHandler;
+import consulo.logging.Logger;
 
 import java.io.OutputStream;
 

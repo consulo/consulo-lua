@@ -16,9 +16,11 @@
 
 package com.sylvanaar.idea.Lua;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.virtualFileSystem.fileType.FileTypeConsumer;
+import consulo.virtualFileSystem.fileType.FileTypeFactory;
+
 import javax.annotation.Nonnull;
-import com.intellij.openapi.fileTypes.FileTypeConsumer;
-import com.intellij.openapi.fileTypes.FileTypeFactory;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,11 +28,10 @@ import com.intellij.openapi.fileTypes.FileTypeFactory;
  * Date: Apr 26, 2010
  * Time: 3:39:01 PM
  */
-public class LuaFileTypeLoader extends FileTypeFactory
-{
-	@Override
-	public void createFileTypes(@Nonnull FileTypeConsumer consumer)
-	{
-		consumer.consume(LuaFileType.LUA_FILE_TYPE, LuaFileType.EXTENSION_FILE_NAME_MATCHERS);
-	}
+@ExtensionImpl
+public class LuaFileTypeLoader extends FileTypeFactory {
+    @Override
+    public void createFileTypes(@Nonnull FileTypeConsumer consumer) {
+        consumer.consume(LuaFileType.LUA_FILE_TYPE, LuaFileType.EXTENSION_FILE_NAME_MATCHERS);
+    }
 }

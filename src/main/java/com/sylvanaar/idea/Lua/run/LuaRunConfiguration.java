@@ -15,41 +15,38 @@
  */
 package com.sylvanaar.idea.Lua.run;
 
+import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
+import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
+import consulo.content.bundle.Sdk;
+import consulo.execution.RuntimeConfigurationException;
+import consulo.execution.configuration.*;
+import consulo.execution.configuration.ui.SettingsEditor;
+import consulo.execution.debug.DefaultDebugExecutor;
+import consulo.execution.executor.Executor;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.execution.ui.awt.EnvironmentVariablesComponent;
+import consulo.execution.ui.console.TextConsoleBuilder;
+import consulo.execution.ui.console.TextConsoleBuilderFactory;
+import consulo.lua.bundle.BaseLuaSdkType;
+import consulo.lua.bundle.LuaSdkType;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
+import consulo.module.content.ProjectRootManager;
+import consulo.process.ExecutionException;
+import consulo.util.lang.StringUtil;
+import consulo.util.xml.serializer.InvalidDataException;
+import consulo.util.xml.serializer.JDOMExternalizerUtil;
+import consulo.util.xml.serializer.WriteExternalException;
+import consulo.virtualFileSystem.LocalFileSystem;
+import consulo.virtualFileSystem.VirtualFile;
+import org.jdom.Element;
+
+import javax.annotation.Nonnull;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.jdom.Element;
-import javax.annotation.Nonnull;
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.Executor;
-import com.intellij.execution.configuration.EnvironmentVariablesComponent;
-import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.ModuleBasedConfiguration;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.configurations.RunConfigurationModule;
-import com.intellij.execution.configurations.RunProfileState;
-import com.intellij.execution.configurations.RuntimeConfigurationException;
-import com.intellij.execution.executors.DefaultDebugExecutor;
-import com.intellij.execution.filters.TextConsoleBuilder;
-import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.util.InvalidDataException;
-import com.intellij.openapi.util.JDOMExternalizerUtil;
-import com.intellij.openapi.util.WriteExternalException;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.sylvanaar.idea.Lua.run.lua.LuaCommandLineState;
-import com.sylvanaar.idea.Lua.util.LuaModuleUtil;
-import consulo.lua.bundle.BaseLuaSdkType;
-import consulo.lua.bundle.LuaSdkType;
 
 public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurationModule> implements CommonLuaRunConfigurationParams,
 		LuaRunConfigurationParams
@@ -107,7 +104,7 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 			}
 		}
 
-		TextConsoleBuilder textConsoleBuilder = new LuaTextConsoleBuilder(getProject());
+		TextConsoleBuilder textConsoleBuilder = TextConsoleBuilderFactory.getInstance().createBuilder(getProject());
 		textConsoleBuilder.addFilter(new LuaLineErrorFilter(getProject()));
 
 		state.setConsoleBuilder(textConsoleBuilder);

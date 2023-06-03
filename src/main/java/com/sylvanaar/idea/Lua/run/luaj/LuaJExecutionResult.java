@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.run.luaj;
 
-import com.intellij.execution.ExecutionResult;
-import com.intellij.execution.process.ProcessHandler;
-import com.intellij.execution.ui.ExecutionConsole;
-import com.intellij.openapi.actionSystem.AnAction;
+import consulo.execution.ExecutionResult;
+import consulo.execution.ui.ExecutionConsole;
+import consulo.ui.ex.action.AnAction;
+import consulo.process.ProcessHandler;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,7 +27,8 @@ import com.intellij.openapi.actionSystem.AnAction;
  * Date: Sep 6, 2010
  * Time: 8:51:55 AM
  */
-public class LuaJExecutionResult implements ExecutionResult {
+public class LuaJExecutionResult implements ExecutionResult
+{
     private final ExecutionConsole myConsole;
     private final AnAction[] myActions;
 

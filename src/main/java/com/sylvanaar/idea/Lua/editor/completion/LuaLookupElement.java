@@ -16,30 +16,24 @@
 
 package com.sylvanaar.idea.Lua.editor.completion;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import com.intellij.codeInsight.completion.InsertionContext;
-import com.intellij.codeInsight.completion.util.ParenthesesInsertHandler;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.codeInsight.lookup.LookupElementBuilder;
-import com.intellij.codeInsight.lookup.LookupElementPresentation;
-import com.intellij.lang.LanguageNamesValidation;
-import com.intellij.lang.refactoring.NamesValidator;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.LibraryOrderEntry;
-import com.intellij.openapi.roots.ModuleExtensionWithSdkOrderEntry;
-import com.intellij.openapi.roots.OrderEntry;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.LuaIcons;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.Lua.lang.psi.impl.expressions.LuaStringLiteralExpressionImpl;
-import consulo.awt.TargetAWT;
+import consulo.content.bundle.Sdk;
+import consulo.language.editor.completion.lookup.*;
+import consulo.language.editor.refactoring.NamesValidator;
+import consulo.module.content.ProjectRootManager;
+import consulo.module.content.layer.orderEntry.LibraryOrderEntry;
+import consulo.module.content.layer.orderEntry.ModuleExtensionWithSdkOrderEntry;
+import consulo.module.content.layer.orderEntry.OrderEntry;
+import consulo.project.Project;
+import consulo.util.lang.StringUtil;
+import consulo.virtualFileSystem.VirtualFile;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -48,7 +42,6 @@ import consulo.awt.TargetAWT;
  * Time: 10:50:28 AM
  */
 public class LuaLookupElement extends LookupElement {
-    static final NamesValidator namesValidator = LanguageNamesValidation.INSTANCE.forLanguage(LuaFileType.LUA_LANGUAGE);
     private String str;
     private boolean typeInferred = false;
     private Object obj;
@@ -86,12 +79,15 @@ public class LuaLookupElement extends LookupElement {
     }
 
     public static LookupElement create_GPrefixedElement(LuaDeclarationExpression symbol) {
-        String name =  StringUtil.notNullize(symbol.getDefinedName(), symbol.getText());
+        String name = StringUtil.notNullize(symbol.getDefinedName(), symbol.getText());
 
-        if (namesValidator.isIdentifier(name, symbol.getProject()))
+        NamesValidator namesValidator = NamesValidator.forLanguage(LuaLanguage.INSTANCE);
+        if (namesValidator.isIdentifier(name, symbol.getProject())) {
             name = "_G.";
-        else
+        }
+        else {
             name = "_G[\"" + name + "\"]";
+        }
 
         return createElement(symbol, name);
     }
@@ -112,7 +108,7 @@ public class LuaLookupElement extends LookupElement {
         ProjectRootManager manager = ProjectRootManager.getInstance(project);
         VirtualFile file = symbol.getContainingFile().getVirtualFile();
 
-        if (file != null && !manager.getFileIndex().isInContent(file))
+        if (file != null && !manager.getFileIndex().isInContent(file)) {
             if (manager.getFileIndex().isInLibraryClasses(file)) {
                 final List<OrderEntry> entries = manager.getFileIndex().getOrderEntriesForFile(file);
 
@@ -121,23 +117,28 @@ public class LuaLookupElement extends LookupElement {
 
 
                 String libraryName = null;
-                if (first instanceof ModuleExtensionWithSdkOrderEntry)
-                   libraryName =  ((ModuleExtensionWithSdkOrderEntry) first).getSdkName();
+                if (first instanceof ModuleExtensionWithSdkOrderEntry) {
+                    libraryName = ((ModuleExtensionWithSdkOrderEntry) first).getSdkName();
+                }
 
-                if (first instanceof LibraryOrderEntry)
-                    libraryName = ((LibraryOrderEntry) first).getLibraryName() ;
+                if (first instanceof LibraryOrderEntry) {
+                    libraryName = ((LibraryOrderEntry) first).getLibraryName();
+                }
 
 
-                if (libraryName != null)
+                if (libraryName != null) {
                     return LookupElementBuilder.create(symbol, name).withTypeText(
                             String.format("< %s > (%s)", libraryName, file.getName()), true).withIcon(LuaIcons.LUA_ICON)
-                                                                    .withInsertHandler(new LuaInsertHandler());
-            } else {
+                            .withInsertHandler(new LuaInsertHandler());
+                }
+            }
+            else {
                 return LookupElementBuilder.create(symbol, name).withTypeText("External File", true);
             }
+        }
 
         return LookupElementBuilder.create(symbol, name).withTypeText(symbol.getContainingFile().getName(), true)
-                                   .withIcon(LuaIcons.LUA_ICON).withInsertHandler(new LuaInsertHandler());
+                .withIcon(LuaIcons.LUA_ICON).withInsertHandler(new LuaInsertHandler());
     }
 
     public static LookupElement createElement(String s) {
@@ -175,7 +176,9 @@ public class LuaLookupElement extends LookupElement {
     @Nonnull
     @Override
     public Object getObject() {
-        if (obj == null) return super.getObject();
+        if (obj == null) {
+            return super.getObject();
+        }
 
         return obj;
     }
@@ -191,14 +194,24 @@ public class LuaLookupElement extends LookupElement {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         final LuaLookupElement that = (LuaLookupElement) o;
 
-        if (typeInferred != that.typeInferred) return false;
-        if (obj != null ? !obj.equals(that.obj) : that.obj != null) return false;
-        if (str != null ? !str.equals(that.str) : that.str != null) return false;
+        if (typeInferred != that.typeInferred) {
+            return false;
+        }
+        if (obj != null ? !obj.equals(that.obj) : that.obj != null) {
+            return false;
+        }
+        if (str != null ? !str.equals(that.str) : that.str != null) {
+            return false;
+        }
 
         return true;
     }
@@ -222,7 +235,7 @@ public class LuaLookupElement extends LookupElement {
             this.offset = offser;
         }
 
-//        @Override
+        //        @Override
 //        public void renderElement(LookupElementPresentation presentation) {
 //            presentation.setItemText(str);
 //        }

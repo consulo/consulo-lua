@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.resolve;
 
-import com.intellij.psi.PsiReference;
 import com.sylvanaar.idea.Lua.LightLuaTestCase;
+import consulo.language.psi.PsiReference;
 
 /**
  * @author ven

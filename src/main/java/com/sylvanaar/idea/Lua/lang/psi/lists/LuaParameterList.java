@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.lists;
 
-import com.intellij.psi.PsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.Lua.lang.psi.symbols.LuaParameter;
+import consulo.language.psi.PsiElement;
 
 /**
  * Created by IntelliJ IDEA.

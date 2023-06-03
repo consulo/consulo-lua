@@ -19,9 +19,9 @@ package com.sylvanaar.idea.Lua.debugger;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.xdebugger.frame.XExecutionStack;
-import com.intellij.xdebugger.frame.XStackFrame;
+import consulo.execution.debug.frame.XExecutionStack;
+import consulo.execution.debug.frame.XStackFrame;
+import consulo.project.Project;
 
 /**
  * Created by IntelliJ IDEA.

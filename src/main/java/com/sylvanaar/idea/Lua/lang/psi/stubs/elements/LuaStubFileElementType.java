@@ -16,10 +16,8 @@
 
 package com.sylvanaar.idea.Lua.lang.psi.stubs.elements;
 
-import com.intellij.psi.StubBuilder;
-import com.intellij.psi.stubs.*;
-import com.intellij.psi.tree.IStubFileElementType;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.*;
+import consulo.index.io.StringRef;
 import com.sylvanaar.idea.Lua.LuaFileType;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaFileStub;
 import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaFileStubBuilder;
@@ -27,7 +25,8 @@ import com.sylvanaar.idea.Lua.lang.psi.stubs.LuaFileStubBuilder;
 import java.io.IOException;
 
 
-public class LuaStubFileElementType extends IStubFileElementType<LuaFileStub> implements StubSerializer<LuaFileStub> {
+public class LuaStubFileElementType extends IStubFileElementType<LuaFileStub> implements StubSerializer<LuaFileStub>
+{
     private static final int CACHES_VERSION = 19;
 
     public LuaStubFileElementType() {

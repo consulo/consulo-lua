@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.Lua.sdk;
 
-import com.intellij.openapi.vfs.VirtualFile;
+import consulo.virtualFileSystem.VirtualFile;
 import com.sylvanaar.idea.Lua.util.LuaFileUtil;
 
 /**

@@ -16,10 +16,10 @@
 
 package com.sylvanaar.idea.Lua.lang.parser.util;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiBuilder.Marker;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.PsiBuilder.Marker;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
 
 
 /**

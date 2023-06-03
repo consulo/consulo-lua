@@ -16,8 +16,12 @@
 
 package com.sylvanaar.idea.Lua.editor.highlighter;
 
-import com.intellij.openapi.fileTypes.SingleLazyInstanceSyntaxHighlighterFactory;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
+import com.sylvanaar.idea.Lua.lang.LuaLanguage;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.highlight.SingleLazyInstanceSyntaxHighlighterFactory;
+import consulo.language.editor.highlight.SyntaxHighlighter;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -26,9 +30,17 @@ import javax.annotation.Nonnull;
 * Date: 1/14/11
 * Time: 1:43 PM
 */
-public class LuaSyntaxHighlighterFactory extends SingleLazyInstanceSyntaxHighlighterFactory {
+@ExtensionImpl
+public class LuaSyntaxHighlighterFactory extends SingleLazyInstanceSyntaxHighlighterFactory
+{
   @Nonnull
   protected SyntaxHighlighter createHighlighter() {
     return new LuaSyntaxHighlighter();
+  }
+
+  @Nonnull
+  @Override
+  public Language getLanguage() {
+    return LuaLanguage.INSTANCE;
   }
 }

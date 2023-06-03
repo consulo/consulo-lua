@@ -26,10 +26,9 @@ import consulo.ui.image.Image;
  * Date: Apr 3, 2010
  * Time: 2:30:48 AM
  */
-public interface LuaIcons
-{
-	final Image LUA_ICON = LuaIconGroup.Lua();
-	final Image LUA_FUNCTION = PlatformIconGroup.nodesFunction();
+public interface LuaIcons {
+    final Image LUA_ICON = LuaIconGroup.lua();
+    final Image LUA_FUNCTION = PlatformIconGroup.nodesFunction();
 }
 
 
