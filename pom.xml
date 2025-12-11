@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  - Copyright 2013-2018 must-be.org
+  - Copyright 2013-2025 consulo.org
   -
   - Licensed under the Apache License, Version 2.0 (the "License");
   - you may not use this file except in compliance with the License.
@@ -15,96 +15,96 @@
   - limitations under the License.
   -->
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>consulo</groupId>
-		<artifactId>arch.ide-api-provided</artifactId>
-		<version>3-SNAPSHOT</version>
-		<relativePath/>
-	</parent>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>consulo</groupId>
+        <artifactId>arch.ide-api-provided</artifactId>
+        <version>3-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
 
-	<groupId>consulo.plugin</groupId>
-	<artifactId>consulo.lua</artifactId>
-	<version>3-SNAPSHOT</version>
-	<packaging>consulo-plugin</packaging>
+    <groupId>consulo.plugin</groupId>
+    <artifactId>consulo.lua</artifactId>
+    <version>3-SNAPSHOT</version>
+    <packaging>consulo-plugin</packaging>
 
-	<repositories>
-		<repository>
-			<id>consulo</id>
-			<url>https://maven.consulo.io/repository/snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>interval:60</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>consulo</id>
+            <url>https://maven.consulo.dev/repository/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>interval:60</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>consulo.maven</groupId>
-				<artifactId>maven-consulo-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<dependencies>
-					</dependencies>
-					<packaging>
-						<skip>${dev.mode}</skip>
-						<version>${build.number}</version>
-					</packaging>
-				</configuration>
-				<executions>
-					<execution>
-						<id>gen</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate-icon</goal>
-							<goal>generate-localize</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>pack</id>
-						<phase>package</phase>
-						<goals>
-							<goal>workspace</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>consulo.maven</groupId>
+                <artifactId>maven-consulo-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <dependencies>
+                    </dependencies>
+                    <packaging>
+                        <skip>${dev.mode}</skip>
+                        <version>${build.number}</version>
+                    </packaging>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>gen</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate-icon</goal>
+                            <goal>generate-localize</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>pack</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>workspace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.luaj</groupId>
-			<artifactId>luaj-jse</artifactId>
-			<version>3.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>de.sciss</groupId>
-			<artifactId>jsyntaxpane</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>krka</groupId>
-			<artifactId>core</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>krka</groupId>
-			<artifactId>j2se</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>krka</groupId>
-			<artifactId>interpreter</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>consulo.internal</groupId>
-			<artifactId>forms_rt</artifactId>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.luaj</groupId>
+            <artifactId>luaj-jse</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>de.sciss</groupId>
+            <artifactId>jsyntaxpane</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>krka</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>krka</groupId>
+            <artifactId>j2se</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>krka</groupId>
+            <artifactId>interpreter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>consulo.internal</groupId>
+            <artifactId>forms_rt</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
