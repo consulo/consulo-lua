@@ -16,10 +16,18 @@
 
 package com.sylvanaar.idea.lua.kahlua;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import jsyntaxpane.lexers.LuaLexer;
+import se.krka.kahlua.j2se.interpreter.History;
+import se.krka.kahlua.j2se.interpreter.InputTerminal;
+import se.krka.kahlua.j2se.interpreter.OutputTerminal;
+import se.krka.kahlua.j2se.interpreter.autocomplete.AutoComplete;
+import se.krka.kahlua.j2se.interpreter.jsyntax.JSyntaxUtil;
+import se.krka.kahlua.j2se.interpreter.jsyntax.KahluaKit;
+import se.krka.kahlua.luaj.compiler.LuaCompiler;
+import se.krka.kahlua.vm.*;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
@@ -29,27 +37,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import jsyntaxpane.lexers.LuaLexer;
-import se.krka.kahlua.converter.KahluaConverterManager;
-import se.krka.kahlua.integration.LuaCaller;
-import se.krka.kahlua.integration.LuaReturn;
-import se.krka.kahlua.integration.expose.LuaJavaClassExposer;
-import se.krka.kahlua.j2se.interpreter.History;
-import se.krka.kahlua.j2se.interpreter.InputTerminal;
-import se.krka.kahlua.j2se.interpreter.OutputTerminal;
-import se.krka.kahlua.j2se.interpreter.autocomplete.AutoComplete;
-import se.krka.kahlua.j2se.interpreter.jsyntax.JSyntaxUtil;
-import se.krka.kahlua.j2se.interpreter.jsyntax.KahluaKit;
-import se.krka.kahlua.luaj.compiler.LuaCompiler;
-import se.krka.kahlua.vm.KahluaException;
-import se.krka.kahlua.vm.KahluaTable;
-import se.krka.kahlua.vm.KahluaThread;
-import se.krka.kahlua.vm.KahluaUtil;
-import se.krka.kahlua.vm.LuaClosure;
-import se.krka.kahlua.vm.Platform;
+//import se.krka.kahlua.converter.KahluaConverterManager;
+//import se.krka.kahlua.integration.LuaCaller;
+//import se.krka.kahlua.integration.LuaReturn;
+//import se.krka.kahlua.integration.expose.LuaJavaClassExposer;
 
 /**
  * Created by IntelliJ IDEA.
@@ -67,17 +58,17 @@ public class KahluaInterpreter extends JPanel {
     private final ExecutorService executors = Executors.newSingleThreadExecutor(Executors.defaultThreadFactory());
     private Future<?> future;
 
-    final KahluaConverterManager manager = new KahluaConverterManager();
-    final LuaCaller caller = new LuaCaller(manager);
-    final LuaJavaClassExposer exposer;
+//    final KahluaConverterManager manager = new KahluaConverterManager();
+//    final LuaCaller caller = new LuaCaller(manager);
+//    final LuaJavaClassExposer exposer;
 
     public KahluaInterpreter(Platform platform, KahluaTable env) {
         super(new BorderLayout());
 
         JSyntaxUtil.setup();
 
-        exposer = new LuaJavaClassExposer(manager, platform, env);
-        exposer.exposeGlobalFunctions(this);
+//        exposer = new LuaJavaClassExposer(manager, platform, env);
+//        exposer.exposeGlobalFunctions(this);
 
         final InputTerminal input = new InputTerminal(Color.BLACK);
 
@@ -184,16 +175,16 @@ public class KahluaInterpreter extends JPanel {
                 status.setText("[running...]");
                 try {
                     LuaClosure luaClosure = smartCompile(text);
-                    LuaReturn result = caller.protectedCall(thread, luaClosure);
-                    if (result.isSuccess()) {
-                        for (Object o : result) {
-                            terminal.appendOutput(KahluaUtil.tostring(o, thread)+"\n");
-                        }
-                    } else {
-                        terminal.appendError(result.getErrorString()+"\n");
-                        terminal.appendError(result.getLuaStackTrace()+"\n");
-                        result.getJavaException().printStackTrace(System.err);
-                    }
+//                    LuaReturn result = caller.protectedCall(thread, luaClosure);
+//                    if (result.isSuccess()) {
+//                        for (Object o : result) {
+//                            terminal.appendOutput(KahluaUtil.tostring(o, thread)+"\n");
+//                        }
+//                    } else {
+//                        terminal.appendError(result.getErrorString()+"\n");
+//                        terminal.appendError(result.getLuaStackTrace()+"\n");
+//                        result.getJavaException().printStackTrace(System.err);
+//                    }
                 } catch (IOException e) {
                     e.printStackTrace(terminal.getPrintStream());
                 } catch (RuntimeException e) {

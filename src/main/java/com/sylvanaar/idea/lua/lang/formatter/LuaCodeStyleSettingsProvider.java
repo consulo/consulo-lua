@@ -20,8 +20,8 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.configurable.Configurable;
 import consulo.language.codeStyle.CodeStyleSettings;
 import consulo.language.codeStyle.setting.CodeStyleSettingsProvider;
-
-import javax.annotation.Nonnull;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,7 +38,7 @@ public class LuaCodeStyleSettingsProvider extends CodeStyleSettingsProvider {
     }
 
     @Override
-    public String getConfigurableDisplayName() {
-        return "Lua";
+    public LocalizeValue getConfigurableDisplayName() {
+        return LocalizeValue.localizeTODO("Lua");
     }
 }

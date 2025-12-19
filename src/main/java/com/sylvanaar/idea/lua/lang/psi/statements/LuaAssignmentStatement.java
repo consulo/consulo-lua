@@ -13,10 +13,7 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.psi.statements;
-
-import javax.annotation.Nonnull;
 
 import com.sylvanaar.idea.lua.lang.InferenceCapable;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
@@ -26,11 +23,12 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaAssignment;
 import consulo.language.ast.IElementType;
 import consulo.language.psi.PsiElement;
-
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public interface LuaAssignmentStatement extends LuaMaybeDeclarationAssignmentStatement, LuaStatementElement, LuaDeclarationStatement, InferenceCapable {
     public LuaIdentifierList getLeftExprs();
+
     public LuaExpressionList getRightExprs();
 
     @Nonnull
@@ -38,7 +36,8 @@ public interface LuaAssignmentStatement extends LuaMaybeDeclarationAssignmentSta
 
     @Nullable
     public LuaExpression getAssignedValue(LuaSymbol symbol);
-    
+
     public IElementType getOperationTokenType();
+
     public PsiElement getOperatorElement();
 }

@@ -23,8 +23,7 @@ import consulo.execution.configuration.RunConfiguration;
 import consulo.execution.runner.ExecutionEnvironment;
 import consulo.process.cmd.GeneralCommandLine;
 import consulo.virtualFileSystem.VirtualFile;
-
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

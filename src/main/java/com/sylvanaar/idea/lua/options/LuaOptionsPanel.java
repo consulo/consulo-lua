@@ -16,17 +16,15 @@
 
 package com.sylvanaar.idea.lua.options;
 
-import javax.swing.JCheckBox;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-
 import consulo.configurable.BaseConfigurable;
-import org.jetbrains.annotations.Nls;
 import consulo.configurable.Configurable;
+import consulo.language.psi.PsiManager;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
 import consulo.project.ProjectManager;
-import consulo.language.psi.PsiManager;
-import com.sylvanaar.idea.lua.LuaFileType;
+import org.jetbrains.annotations.Nls;
+
+import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -77,9 +75,9 @@ public class LuaOptionsPanel extends BaseConfigurable implements Configurable
 
 	@Nls
 	@Override
-	public String getDisplayName()
+	public LocalizeValue getDisplayName()
 	{
-		return LuaFileType.LUA;
+		return LocalizeValue.localizeTODO("Lua");
 	}
 
 	@Override

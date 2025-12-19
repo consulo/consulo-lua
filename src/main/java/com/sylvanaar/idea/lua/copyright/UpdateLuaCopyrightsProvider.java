@@ -30,8 +30,7 @@ import consulo.language.copyright.ui.TemplateCommentPanel;
 import consulo.language.psi.PsiFile;
 import consulo.project.Project;
 import consulo.virtualFileSystem.fileType.FileType;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class UpdateLuaCopyrightsProvider extends UpdateCopyrightsProvider<CopyrightFileConfig> {

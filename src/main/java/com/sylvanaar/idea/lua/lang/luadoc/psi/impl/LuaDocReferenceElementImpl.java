@@ -16,15 +16,12 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import javax.annotation.Nonnull;
-
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocReferenceElement;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
-
-import javax.annotation.Nullable;
-
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public abstract class LuaDocReferenceElementImpl extends LuaDocPsiElementImpl implements LuaDocReferenceElement {
 

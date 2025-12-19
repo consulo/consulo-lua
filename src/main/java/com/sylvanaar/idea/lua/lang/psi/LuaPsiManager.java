@@ -47,9 +47,9 @@ import consulo.project.content.scope.ProjectScopes;
 import consulo.project.startup.StartupManager;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.util.PathsList;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -114,7 +114,7 @@ public class LuaPsiManager {
 
     public LuaPsiManager(Project project, StartupManager startupManager) {
         myProject = project;
-        startupManager.registerPostStartupActivity(uiAccess -> projectOpened());
+        startupManager.registerPostStartupActivity(this::projectOpened);
     }
 
     private void reset() {

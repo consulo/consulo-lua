@@ -15,19 +15,6 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.BLOCK;
-import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.PARAMETER_LIST;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import consulo.document.util.TextRange;
-import consulo.language.psi.PsiElementVisitor;
-import consulo.language.psi.resolve.PsiScopeProcessor;
-import consulo.language.psi.resolve.ResolveState;
-import consulo.language.psi.util.PsiTreeUtil;
-import consulo.navigation.ItemPresentation;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.LuaIcons;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.LuaDocCommentUtil;
@@ -45,8 +32,20 @@ import com.sylvanaar.idea.lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import com.sylvanaar.idea.lua.util.LuaAtomicNotNullLazyValue;
+import consulo.document.util.TextRange;
 import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+
+import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.BLOCK;
+import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.PARAMETER_LIST;
 
 /**
  * Created by IntelliJ IDEA.

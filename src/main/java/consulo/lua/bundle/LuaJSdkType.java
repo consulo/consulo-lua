@@ -20,11 +20,12 @@ import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.lua.run.luaj.LuaJExternalCommandLineState;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.application.Application;
+import consulo.content.bundle.SdkType;
 import consulo.execution.runner.ExecutionEnvironment;
 import consulo.process.ExecutionException;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * @author VISTALL
@@ -36,7 +37,7 @@ public class LuaJSdkType extends LuaSdkType
 	@Nonnull
 	public static LuaJSdkType getInstance()
 	{
-		return EP_NAME.findExtension(LuaJSdkType.class);
+		return Application.get().getExtensionPoint(SdkType.class).findExtensionOrFail(LuaJSdkType.class);
 	}
 
 	public LuaJSdkType()

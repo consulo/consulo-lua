@@ -16,8 +16,6 @@
 
 package com.sylvanaar.idea.lua.editor.inspections.performance;
 
-import consulo.language.editor.inspection.LocalQuickFix;
-import consulo.language.editor.inspection.ProblemsHolder;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.editor.inspections.LuaFix;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
@@ -27,13 +25,16 @@ import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaDeclarationStatement;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaLocalDefinitionStatement;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.inspection.ProblemDescriptor;
+import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.util.IncorrectOperationException;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
-import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,14 +47,14 @@ public class RedundantInitializationInspection extends AbstractInspection {
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-        return "Redundant Initialization";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Redundant Initialization");
     }
 
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PERFORMANCE_ISSUES;
     }
 
@@ -113,8 +114,8 @@ public class RedundantInitializationInspection extends AbstractInspection {
 
         @Nonnull
         @Override
-        public String getName() {
-            return "Remove unnecessary initialization";
+        public LocalizeValue getName() {
+            return LocalizeValue.localizeTODO("Remove unnecessary initialization");
         }
     }
 }

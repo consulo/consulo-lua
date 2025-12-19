@@ -21,8 +21,7 @@ import com.sylvanaar.idea.lua.lang.psi.expressions.LuaModuleExpression;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.stub.PsiFileWithStubSupport;
-
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

@@ -15,14 +15,14 @@
  */
 package com.sylvanaar.idea.lua.intentions.utils;
 
-import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionCallStatement;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import consulo.language.ast.IElementType;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;

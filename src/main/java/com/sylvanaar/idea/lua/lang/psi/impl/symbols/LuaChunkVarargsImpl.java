@@ -17,7 +17,7 @@
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
 import consulo.language.ast.ASTNode;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

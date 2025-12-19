@@ -15,7 +15,6 @@
  */
 package com.sylvanaar.idea.lua.intentions.control;
 
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle;
 import com.sylvanaar.idea.lua.intentions.base.MutablyNamedIntention;
 import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
@@ -24,9 +23,8 @@ import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import consulo.language.ast.IElementType;
 import consulo.language.psi.PsiElement;
-
-import javax.annotation.Nonnull;
-
+import consulo.language.util.IncorrectOperationException;
+import jakarta.annotation.Nonnull;
 
 public class NegateComparisonIntention extends MutablyNamedIntention {
   protected String getTextForElement(PsiElement element) {

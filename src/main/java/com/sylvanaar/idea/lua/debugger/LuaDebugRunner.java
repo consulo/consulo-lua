@@ -16,23 +16,22 @@
 
 package com.sylvanaar.idea.lua.debugger;
 
+import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
 import consulo.annotation.component.ExtensionImpl;
-import consulo.execution.ExecutionResult;
-import consulo.execution.configuration.RunProfileState;
-import consulo.execution.runner.ExecutionEnvironment;
-import consulo.process.ExecutionException;
-import consulo.execution.configuration.RunProfile;
-import consulo.execution.debug.DefaultDebugExecutor;
-import consulo.execution.runner.GenericProgramRunner;
-import consulo.execution.ui.RunContentDescriptor;
 import consulo.document.FileDocumentManager;
+import consulo.execution.ExecutionResult;
+import consulo.execution.configuration.RunProfile;
+import consulo.execution.configuration.RunProfileState;
+import consulo.execution.debug.DefaultDebugExecutor;
 import consulo.execution.debug.XDebugSession;
 import consulo.execution.debug.XDebuggerManager;
-import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
+import consulo.execution.runner.ExecutionEnvironment;
+import consulo.execution.runner.GenericProgramRunner;
+import consulo.execution.ui.RunContentDescriptor;
+import consulo.process.ExecutionException;
 import consulo.ui.annotation.RequiredUIAccess;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

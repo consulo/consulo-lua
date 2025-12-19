@@ -27,10 +27,11 @@ import consulo.language.editor.Pass;
 import consulo.language.editor.gutter.LineMarkerInfo;
 import consulo.language.editor.gutter.LineMarkerProviderDescriptor;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.function.Function;
 
 @ExtensionImpl
@@ -58,8 +59,8 @@ public class LuaTailCallLineMarkerProvider extends LineMarkerProviderDescriptor 
 
     @Nullable
     @Override
-    public String getName() {
-        return "Tail call";
+    public LocalizeValue getName() {
+        return LocalizeValue.localizeTODO("Tail call");
     }
 
     @Nonnull

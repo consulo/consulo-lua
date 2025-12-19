@@ -1,21 +1,21 @@
 package com.sylvanaar.idea.lua.lang.psi.resolve;
 
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.resolve.processors.*;
-import com.sylvanaar.idea.lua.lang.psi.stubs.index.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.lua.lang.psi.util.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.resolve.processors.SymbolResolveProcessor;
+import com.sylvanaar.idea.lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocal;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaAssignmentUtil;
 import consulo.language.psi.PsiManager;
 import consulo.language.psi.resolve.ResolveCache;
 import consulo.language.psi.resolve.ResolveState;
 import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.logging.Logger;
 import consulo.project.Project;
+import jakarta.annotation.Nullable;
 
-import java.util.*;
-
-import javax.annotation.Nullable;
+import java.util.Collection;
 
 public class LuaResolver implements ResolveCache.PolyVariantResolver<LuaReferenceElement> {
     public static final Logger log = Logger.getInstance("Lua.LuaResolver");

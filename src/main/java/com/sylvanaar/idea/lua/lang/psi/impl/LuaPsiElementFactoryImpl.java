@@ -15,8 +15,6 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.impl;
 
-import consulo.annotation.component.ServiceImpl;
-import consulo.language.psi.PsiComment;
 import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.debugger.LuaCodeFragment;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
@@ -33,15 +31,15 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.annotation.component.ServiceImpl;
+import consulo.language.psi.PsiComment;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFileFactory;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.project.Project;
+import jakarta.annotation.Nullable;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
-
-import javax.annotation.Nullable;
-
 
 /**
  * Created by IntelliJ IDEA.

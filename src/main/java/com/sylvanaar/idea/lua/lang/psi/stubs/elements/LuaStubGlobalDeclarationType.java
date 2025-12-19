@@ -15,16 +15,6 @@
 */
 package com.sylvanaar.idea.lua.lang.psi.stubs.elements;
 
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-
-import consulo.index.io.StringRef;
-import consulo.logging.Logger;
-import consulo.language.psi.stub.IndexSink;
-import consulo.language.psi.stub.StubElement;
-import consulo.language.psi.stub.StubInputStream;
-import consulo.language.psi.stub.StubOutputStream;
 import com.sylvanaar.idea.lua.lang.psi.impl.symbols.LuaGlobalDeclarationImpl;
 import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubElementType;
 import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubUtils;
@@ -35,8 +25,17 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobalDeclaration;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.lua.util.LuaSerializationUtils;
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.IndexSink;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.psi.stub.StubInputStream;
+import consulo.language.psi.stub.StubOutputStream;
+import consulo.logging.Logger;
 import consulo.util.lang.Pair;
 import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nonnull;
+
+import java.io.IOException;
 
 
 /**

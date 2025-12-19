@@ -22,10 +22,8 @@ import com.sylvanaar.idea.lua.lang.structure.itemsPresentations.LuaItemPresentat
 import consulo.application.util.NotNullLazyValue;
 import consulo.colorScheme.TextAttributesKey;
 import consulo.ui.image.Image;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public class LuaFunctionItemPresentation extends LuaItemPresentation {
 

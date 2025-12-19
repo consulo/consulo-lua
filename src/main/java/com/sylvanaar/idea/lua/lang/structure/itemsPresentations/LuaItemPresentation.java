@@ -15,11 +15,9 @@
  */
 package com.sylvanaar.idea.lua.lang.structure.itemsPresentations;
 
-import javax.annotation.Nullable;
-
-import consulo.navigation.ItemPresentation;
 import consulo.language.psi.PsiElement;
-
+import consulo.navigation.ItemPresentation;
+import jakarta.annotation.Nullable;
 
 public abstract class LuaItemPresentation implements ItemPresentation {
   protected final PsiElement myElement;

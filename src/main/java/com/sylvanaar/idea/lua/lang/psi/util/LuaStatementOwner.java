@@ -16,11 +16,10 @@
 
 package com.sylvanaar.idea.lua.lang.psi.util;
 
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
-import javax.annotation.Nonnull;
-
+import consulo.language.util.IncorrectOperationException;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author ilyas

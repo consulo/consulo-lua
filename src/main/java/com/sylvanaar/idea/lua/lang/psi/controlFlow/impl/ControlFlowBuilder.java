@@ -15,12 +15,6 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.controlFlow.impl;
 
-import consulo.project.Project;
-import consulo.util.lang.Pair;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiErrorElement;
-import consulo.language.psi.PsiFile;
-import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
@@ -37,15 +31,19 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaAssignment;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaRecursiveElementVisitor;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.util.PsiTreeUtil;
 import consulo.logging.Logger;
+import consulo.project.Project;
+import consulo.util.lang.Pair;
+import jakarta.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
-
-import javax.annotation.Nullable;
-
 
 /**
  * @author ven

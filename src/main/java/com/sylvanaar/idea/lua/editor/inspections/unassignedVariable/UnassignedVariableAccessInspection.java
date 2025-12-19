@@ -15,13 +15,6 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.unassignedVariable;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.editor.inspection.UnfairLocalInspectionTool;
-import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
-import consulo.language.editor.inspection.ProblemHighlightType;
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.psi.LuaControlFlowOwner;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
@@ -31,8 +24,15 @@ import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
 import com.sylvanaar.idea.lua.lang.psi.controlFlow.ReadWriteVariableInstruction;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.inspection.UnfairLocalInspectionTool;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
 
 /**
@@ -43,8 +43,8 @@ public class UnassignedVariableAccessInspection extends AbstractInspection  impl
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-        return "Variable not assigned";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Variable not assigned");
     }
 
     @Override
@@ -54,7 +54,7 @@ public class UnassignedVariableAccessInspection extends AbstractInspection  impl
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 

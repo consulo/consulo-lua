@@ -16,15 +16,14 @@
 
 package com.sylvanaar.idea.lua.lang.psi.search;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.util.LuaModuleUtil;
+import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.module.Module;
+import consulo.module.content.ProjectFileIndex;
 import consulo.module.content.ProjectRootManager;
 import consulo.project.Project;
-import consulo.module.content.ProjectFileIndex;
 import consulo.virtualFileSystem.VirtualFile;
-import consulo.language.psi.scope.GlobalSearchScope;
-import com.sylvanaar.idea.lua.util.LuaModuleUtil;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

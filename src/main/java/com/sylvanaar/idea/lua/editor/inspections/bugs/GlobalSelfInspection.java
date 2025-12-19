@@ -16,17 +16,17 @@
 
 package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.editor.inspection.LocalQuickFix;
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
 
 /**
@@ -39,8 +39,8 @@ public class GlobalSelfInspection extends AbstractInspection {
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-       return "Usage of global self";
+    public LocalizeValue getDisplayName() {
+       return LocalizeValue.localizeTODO("Usage of global self");
     }
 
     @Override
@@ -50,7 +50,7 @@ public class GlobalSelfInspection extends AbstractInspection {
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 

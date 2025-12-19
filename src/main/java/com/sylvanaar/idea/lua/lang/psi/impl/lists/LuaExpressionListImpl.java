@@ -16,10 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.lists;
 
-import consulo.language.ast.ASTNode;
-import consulo.language.codeStyle.CodeStyleManager;
-import consulo.language.psi.PsiElement;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaExpressionImpl;
@@ -27,7 +23,11 @@ import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaList;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
-import javax.annotation.Nonnull;
+import consulo.language.ast.ASTNode;
+import consulo.language.codeStyle.CodeStyleManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
+import jakarta.annotation.Nonnull;
 
 import java.util.Arrays;
 import java.util.List;

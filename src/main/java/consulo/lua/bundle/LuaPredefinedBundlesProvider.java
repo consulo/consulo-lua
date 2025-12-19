@@ -20,8 +20,8 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.content.bundle.PredefinedBundlesProvider;
 import consulo.content.bundle.Sdk;
 import consulo.content.bundle.SdkModificator;
+import jakarta.annotation.Nonnull;
 
-import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 

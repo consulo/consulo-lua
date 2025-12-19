@@ -16,12 +16,11 @@
 
 package com.sylvanaar.idea.lua.lang.psi.util;
 
-import javax.annotation.Nonnull;
-
-import consulo.util.lang.StringUtil;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

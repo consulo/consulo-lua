@@ -16,18 +16,25 @@
 
 package com.sylvanaar.idea.lua.lang.psi.visitor;
 
-import javax.annotation.Nonnull;
-
-import com.sylvanaar.idea.lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.lua.lang.psi.*;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocFieldReference;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocPsiElement;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocReferenceElement;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.impl.*;
-import com.sylvanaar.idea.lua.lang.psi.impl.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.impl.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiKeywordImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiTokenImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.statements.LuaRepeatStatementImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.symbols.LuaCompoundReferenceElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.symbols.LuaPsiDeclarationReferenceElementImpl;
 import com.sylvanaar.idea.lua.lang.psi.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import consulo.application.progress.ProgressIndicatorProvider;
 import consulo.language.psi.PsiElementVisitor;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

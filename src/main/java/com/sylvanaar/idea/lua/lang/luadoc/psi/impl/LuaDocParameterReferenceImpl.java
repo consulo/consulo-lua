@@ -16,12 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import consulo.language.ast.ASTNode;
-import consulo.document.util.TextRange;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.ResolveResult;
-import consulo.util.collection.ArrayUtil;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocParameterReference;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
@@ -29,14 +23,18 @@ import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
 import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResultImpl;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiReference;
+import consulo.language.psi.ResolveResult;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.collection.ArrayUtil;
 import consulo.util.lang.StringUtil;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.util.ArrayList;
-
-import javax.annotation.Nullable;
 
 /**
  * @author ilyas

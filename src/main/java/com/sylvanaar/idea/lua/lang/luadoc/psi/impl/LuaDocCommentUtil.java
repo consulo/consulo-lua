@@ -16,9 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import consulo.language.ast.ASTNode;
-import consulo.logging.Logger;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocPsiElement;
@@ -27,7 +24,10 @@ import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaMaybeDeclarationAssignmentStatement;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
-import javax.annotation.Nullable;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.logging.Logger;
+import jakarta.annotation.Nullable;
 
 
 public abstract class LuaDocCommentUtil {

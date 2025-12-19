@@ -16,10 +16,9 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs.api;
 
-import javax.annotation.Nullable;
-
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobalDeclaration;
 import consulo.language.psi.stub.NamedStub;
+import jakarta.annotation.Nullable;
 
 /**
 * Created by IntelliJ IDEA.

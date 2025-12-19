@@ -15,27 +15,26 @@
  */
 package com.sylvanaar.idea.lua.lang.parser.kahlua;
 
-import consulo.component.ProcessCanceledException;
-import consulo.language.ast.ASTNode;
-import consulo.language.parser.PsiBuilder;
-import consulo.language.parser.WhitespaceSkippedCallback;
-import consulo.language.psi.PsiFile;
-import consulo.logging.Logger;
-import consulo.virtualFileSystem.VirtualFile;
-import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.parser.LuaPsiBuilder;
+import consulo.component.ProcessCanceledException;
 import consulo.container.PluginException;
 import consulo.container.plugin.PluginId;
-import consulo.language.version.LanguageVersion;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.parser.PsiBuilder;
 import consulo.language.parser.PsiParser;
+import consulo.language.parser.WhitespaceSkippedCallback;
+import consulo.language.psi.PsiFile;
+import consulo.language.version.LanguageVersion;
+import consulo.logging.Logger;
+import consulo.virtualFileSystem.VirtualFile;
+import jakarta.annotation.Nonnull;
 import se.krka.kahlua.vm.Prototype;
 
-import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.io.Reader;
-
 
 public class KahluaParser implements PsiParser, LuaElementTypes {
 

@@ -16,15 +16,10 @@
 
 package com.sylvanaar.idea.lua.debugger;
 
-import javax.annotation.Nonnull;
-
-import consulo.application.AllIcons;
 import consulo.execution.debug.frame.*;
-import consulo.execution.debug.frame.XValueNode;
-import consulo.execution.debug.frame.XValuePlace;
-import consulo.execution.debug.frame.XNavigatable;
-import consulo.execution.debug.frame.XValueModifier;
+import consulo.execution.debug.icon.ExecutionDebugIconGroup;
 import consulo.logging.Logger;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -45,7 +40,7 @@ public class LuaDebugValue extends XValue {
 
     @Override
     public void computePresentation(@Nonnull XValueNode node, @Nonnull XValuePlace place) {
-        node.setPresentation(AllIcons.Debugger.Value, myTypeName, myValueAsString, false);
+        node.setPresentation(ExecutionDebugIconGroup.nodeValue(), myTypeName, myValueAsString, false);
     }
 
     @Override

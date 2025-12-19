@@ -16,17 +16,17 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import com.sylvanaar.idea.lua.lang.lexer.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.lexer.LuaElementType;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
+import jakarta.annotation.Nonnull;
 
 import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.*;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

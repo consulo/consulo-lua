@@ -29,32 +29,30 @@ import com.sylvanaar.idea.lua.lang.psi.statements.LuaWhileStatement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.refactoring.LuaRefactoringUtil;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.application.ApplicationManager;
 import consulo.application.util.function.Computable;
 import consulo.codeEditor.Editor;
 import consulo.codeEditor.EditorColors;
 import consulo.codeEditor.SelectionModel;
 import consulo.codeEditor.markup.RangeHighlighter;
-import consulo.colorScheme.EditorColorsManager;
-import consulo.colorScheme.TextAttributes;
 import consulo.dataContext.DataContext;
 import consulo.document.Document;
 import consulo.document.util.TextRange;
 import consulo.language.editor.highlight.HighlightManager;
-import consulo.language.editor.refactoring.IntroduceTargetChooser;
 import consulo.language.editor.refactoring.RefactoringBundle;
 import consulo.language.editor.refactoring.action.RefactoringActionHandler;
+import consulo.language.editor.refactoring.introduce.IntroduceTargetChooser;
 import consulo.language.editor.refactoring.util.CommonRefactoringUtil;
 import consulo.language.psi.PsiDocumentManager;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.project.Project;
-import consulo.project.ui.wm.WindowManager;
 import consulo.undoRedo.CommandProcessor;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -310,17 +308,15 @@ public abstract class LuaIntroduceHandlerBase<Settings extends LuaIntroduceSetti
     }
 
     @Nullable
+    @RequiredReadAction
     private Settings showDialog(LuaIntroduceContext context) {
-
-        // Add occurences highlighting
-        ArrayList<RangeHighlighter> highlighters = new ArrayList<RangeHighlighter>();
+        // Add occurrences highlighting
+        List<RangeHighlighter> highlighters = new ArrayList<RangeHighlighter>();
         HighlightManager highlightManager = null;
         if (context.editor != null) {
             highlightManager = HighlightManager.getInstance(context.project);
-            EditorColorsManager colorsManager = EditorColorsManager.getInstance();
-            TextAttributes attributes = colorsManager.getGlobalScheme().getAttributes(EditorColors.SEARCH_RESULT_ATTRIBUTES);
             if (context.occurrences.length > 1) {
-                highlightManager.addOccurrenceHighlights(context.editor, context.occurrences, attributes, true, highlighters);
+                highlightManager.addOccurrenceHighlights(context.editor, context.occurrences, EditorColors.SEARCH_RESULT_ATTRIBUTES, true, highlighters);
             }
         }
 
@@ -338,8 +334,8 @@ public abstract class LuaIntroduceHandlerBase<Settings extends LuaIntroduceSetti
         }
         else {
             if (context.occurrences.length > 1) {
-                WindowManager.getInstance().getStatusBar(context.project)
-                        .setInfo("Press escape to remove highlighting");
+//                WindowManager.getInstance().getStatusBar(context.project)
+//                        .setInfo("Press escape to remove highlighting");
             }
         }
         return null;

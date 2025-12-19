@@ -16,17 +16,15 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs.impl;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.psi.stub.StubElement;
-import consulo.index.io.StringRef;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaModuleExpression;
 import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaModuleDeclarationStub;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import consulo.index.io.StringRef;
 import consulo.language.psi.stub.NamedStubBase;
-
-import javax.annotation.Nullable;
+import consulo.language.psi.stub.StubElement;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

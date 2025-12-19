@@ -16,8 +16,8 @@
 
 package com.sylvanaar.idea.lua.run.kahlua;
 
-import consulo.process.ProcessHandler;
 import consulo.logging.Logger;
+import consulo.process.BaseProcessHandler;
 
 import java.io.OutputStream;
 
@@ -27,7 +27,7 @@ import java.io.OutputStream;
  * Date: Sep 19, 2010
  * Time: 3:06:41 PM
  */
-public class KahluaProcessHandler extends ProcessHandler {
+public class KahluaProcessHandler extends BaseProcessHandler {
     private static final Logger log = Logger.getInstance("Lua.KahluaProcessHandler");
     public KahluaProcessHandler() {
     }

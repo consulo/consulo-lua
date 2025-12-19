@@ -26,8 +26,7 @@ import consulo.language.editor.template.TextResult;
 import consulo.language.editor.template.macro.Macro;
 import consulo.language.psi.PsiDocumentManager;
 import consulo.language.psi.PsiFile;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

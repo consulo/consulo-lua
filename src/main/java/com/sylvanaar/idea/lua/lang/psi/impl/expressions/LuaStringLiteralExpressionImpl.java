@@ -16,13 +16,13 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import consulo.language.ast.ASTNode;
-import consulo.document.util.TextRange;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

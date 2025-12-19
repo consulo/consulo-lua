@@ -16,7 +16,8 @@
 
 package com.sylvanaar.idea.lua.util;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+
 import java.util.function.Supplier;
 
 @Deprecated

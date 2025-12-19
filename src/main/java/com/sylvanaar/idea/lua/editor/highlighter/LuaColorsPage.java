@@ -23,10 +23,11 @@ import consulo.colorScheme.setting.AttributesDescriptor;
 import consulo.colorScheme.setting.ColorDescriptor;
 import consulo.language.editor.colorScheme.setting.ColorSettingsPage;
 import consulo.language.editor.highlight.SyntaxHighlighter;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -126,8 +127,8 @@ public class LuaColorsPage implements ColorSettingsPage {
 
     @Override
     @Nonnull
-    public String getDisplayName() {
-        return LuaBundle.message("color.settings.name");
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO(LuaBundle.message("color.settings.name"));
     }
 
     @Override

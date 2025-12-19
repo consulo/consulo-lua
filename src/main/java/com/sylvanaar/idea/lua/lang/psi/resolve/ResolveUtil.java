@@ -16,18 +16,17 @@
 
 package com.sylvanaar.idea.lua.lang.psi.resolve;
 
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.resolve.ResolveState;
-import consulo.language.psi.resolve.PsiScopeProcessor;
-import consulo.language.psi.scope.GlobalSearchScope;
-import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.lua.lang.psi.resolve.completion.CompletionProcessor;
 import com.sylvanaar.idea.lua.lang.psi.stubs.index.LuaGlobalDeclarationIndex;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.scope.GlobalSearchScope;
+import consulo.language.psi.util.PsiTreeUtil;
 import consulo.project.Project;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -15,18 +15,17 @@
  */
 package com.sylvanaar.idea.lua.projectView.nodes;
 
-import consulo.project.ui.view.tree.AbstractTreeNode;
-import consulo.project.ui.view.tree.ViewSettings;
-import consulo.ui.ex.tree.PresentationData;
-import consulo.project.Project;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.util.SymbolUtil;
+import consulo.project.Project;
+import consulo.project.ui.view.tree.AbstractTreeNode;
+import consulo.project.ui.view.tree.ViewSettings;
+import consulo.ui.ex.tree.PresentationData;
 import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nullable;
 
 import java.util.Collection;
-
-import javax.annotation.Nullable;
 
 public class LuaFunctionNode extends BasePsiMemberNode<LuaFunctionDefinition> {
     public LuaFunctionNode(Project project, LuaFunctionDefinition value, ViewSettings viewSettings) {

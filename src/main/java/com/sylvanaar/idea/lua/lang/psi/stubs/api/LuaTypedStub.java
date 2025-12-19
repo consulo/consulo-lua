@@ -16,9 +16,8 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs.api;
 
-import javax.annotation.Nullable;
-
-import com.sylvanaar.idea.lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

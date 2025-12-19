@@ -15,14 +15,13 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.utils;
 
-import javax.annotation.Nonnull;
-
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaUnaryExpression;
 import consulo.language.ast.IElementType;
 import consulo.util.lang.ObjectUtil;
+import jakarta.annotation.Nonnull;
 
 public class BoolUtils {
   private static Object UNKNOWN = new Object();

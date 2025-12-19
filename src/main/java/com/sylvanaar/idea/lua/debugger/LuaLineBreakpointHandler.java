@@ -1,9 +1,8 @@
 package com.sylvanaar.idea.lua.debugger;
 
-import javax.annotation.Nonnull;
-
 import consulo.execution.debug.breakpoint.XBreakpoint;
 import consulo.execution.debug.breakpoint.XBreakpointHandler;
+import jakarta.annotation.Nonnull;
 
 public class LuaLineBreakpointHandler extends XBreakpointHandler
 {

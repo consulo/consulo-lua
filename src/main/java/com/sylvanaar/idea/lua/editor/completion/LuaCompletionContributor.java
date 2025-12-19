@@ -52,8 +52,8 @@ import consulo.language.util.ProcessingContext;
 import consulo.logging.Logger;
 import consulo.util.dataholder.Key;
 import consulo.util.lang.ObjectUtil;
+import jakarta.annotation.Nonnull;
 
-import javax.annotation.Nonnull;
 import java.util.*;
 
 import static consulo.language.pattern.PlatformPatterns.psiElement;

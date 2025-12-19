@@ -15,20 +15,19 @@
  */
 package com.sylvanaar.idea.lua.intentions.comments;
 
-import consulo.language.ast.IElementType;
-import consulo.language.psi.PsiComment;
-import consulo.language.psi.PsiElement;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.intentions.base.Intention;
 import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
-import javax.annotation.Nonnull;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Nullable;
 
 public class ChangeToCStyleCommentIntention extends Intention {
 

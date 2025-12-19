@@ -23,11 +23,10 @@ import consulo.util.io.FileUtil;
 import consulo.virtualFileSystem.LocalFileSystem;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.VirtualFileFilter;
-import consulo.virtualFileSystem.internal.matcher.ExtensionFileNameMatcher;
+import consulo.virtualFileSystem.fileType.FileNameMatcher;
 import consulo.virtualFileSystem.util.VirtualFileUtil;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * @author Maxim.Manuylov
@@ -63,8 +62,8 @@ public class LuaFileUtil {
                 return true;
             }
 
-            for (ExtensionFileNameMatcher matcher : LuaFileType.EXTENSION_FILE_NAME_MATCHERS) {
-                if (matcher.accept(file.getName())) {
+            for (FileNameMatcher matcher : LuaFileType.EXTENSION_FILE_NAME_MATCHERS) {
+                if (matcher.acceptsCharSequence(file.getName())) {
                     return true;
                 }
             }

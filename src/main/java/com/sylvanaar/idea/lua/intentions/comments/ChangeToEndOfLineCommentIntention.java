@@ -15,15 +15,13 @@
  */
 package com.sylvanaar.idea.lua.intentions.comments;
 
-import consulo.language.psi.PsiComment;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.intentions.base.Intention;
 import com.sylvanaar.idea.lua.intentions.base.PsiElementPredicate;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
-
-import javax.annotation.Nonnull;
-
+import jakarta.annotation.Nonnull;
 
 public class ChangeToEndOfLineCommentIntention extends Intention {
 

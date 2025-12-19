@@ -16,16 +16,14 @@
 
 package com.sylvanaar.idea.lua.lang.structure;
 
-import javax.annotation.Nonnull;
-
-import consulo.fileEditor.structureView.tree.Sorter;
-import consulo.language.psi.PsiFile;
-
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.lua.lang.structure.impl.LuaFileStructureViewElement;
 import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.fileEditor.structureView.tree.Sorter;
 import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
+import consulo.language.psi.PsiFile;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

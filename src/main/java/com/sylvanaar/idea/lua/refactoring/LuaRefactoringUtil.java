@@ -16,23 +16,23 @@
 
 package com.sylvanaar.idea.lua.refactoring;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import consulo.language.editor.PsiEquivalenceUtil;
-import consulo.language.lexer.Lexer;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.util.PsiTreeUtil;
-import consulo.language.editor.util.PsiUtilBase;
 import com.sylvanaar.idea.lua.lang.lexer.LuaLexer;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
+import consulo.language.editor.PsiEquivalenceUtil;
+import consulo.language.editor.util.PsiUtilBase;
+import consulo.language.lexer.Lexer;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
 import consulo.util.lang.reflect.ReflectionUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by IntelliJ IDEA.

@@ -16,17 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
-import javax.annotation.Nonnull;
-
-import consulo.application.util.CachedValueProvider;
-import consulo.application.util.CachedValuesManager;
-import consulo.language.ast.ASTNode;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiElementVisitor;
-import consulo.language.psi.resolve.ResolveState;
-import consulo.language.psi.resolve.PsiScopeProcessor;
-import consulo.application.util.CachedValue;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
 import com.sylvanaar.idea.lua.lang.psi.controlFlow.impl.ControlFlowBuilder;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
@@ -38,6 +27,16 @@ import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.application.util.CachedValue;
+import consulo.application.util.CachedValueProvider;
+import consulo.application.util.CachedValuesManager;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.util.IncorrectOperationException;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

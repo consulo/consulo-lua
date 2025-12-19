@@ -16,19 +16,19 @@
 package com.sylvanaar.idea.lua.editor.inspections.metrics;
 
 
-import consulo.language.editor.inspection.ProblemsHolder;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.LocalQuickFix;
-
-import javax.annotation.Nonnull;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 
 public class LuaOverlyComplexMethodInspection extends LuaMethodMetricInspection {
 
   @Nonnull
-  public String getDisplayName() {
-    return "Overly complex method";
+  public LocalizeValue getDisplayName() {
+    return LocalizeValue.localizeTODO("Overly complex method");
   }
 
 

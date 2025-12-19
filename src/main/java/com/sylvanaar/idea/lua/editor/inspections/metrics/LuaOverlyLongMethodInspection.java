@@ -15,24 +15,24 @@
 */
 package com.sylvanaar.idea.lua.editor.inspections.metrics;
 
-import javax.annotation.Nonnull;
-
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 
 
 public class LuaOverlyLongMethodInspection extends LuaMethodMetricInspection {
 
   @Nonnull
-  public String getDisplayName() {
-    return "Overly long method";
+  public LocalizeValue getDisplayName() {
+    return LocalizeValue.localizeTODO("Overly long method");
   }
 
   @Nonnull
-  public String getGroupDisplayName() {
+  public LocalizeValue getGroupDisplayName() {
     return METHOD_METRICS;
   }
 

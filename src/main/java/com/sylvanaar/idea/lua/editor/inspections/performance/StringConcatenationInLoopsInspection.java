@@ -15,13 +15,6 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.performance;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.ast.IElementType;
-import consulo.language.editor.inspection.LocalQuickFix;
-import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.editor.inspections.utils.ControlFlowUtils;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
@@ -31,6 +24,13 @@ import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 
 public class StringConcatenationInLoopsInspection extends AbstractInspection {
 
@@ -41,8 +41,8 @@ public class StringConcatenationInLoopsInspection extends AbstractInspection {
 
     @Override
     @Nonnull
-    public String getDisplayName() {
-        return "String concatenation in a loop";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("String concatenation in a loop");
     }
 
     //    @Override
@@ -53,7 +53,7 @@ public class StringConcatenationInLoopsInspection extends AbstractInspection {
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PERFORMANCE_ISSUES;
     }
 

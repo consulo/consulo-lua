@@ -15,15 +15,13 @@
  */
 package com.sylvanaar.idea.lua.refactoring.introduce;
 
-import javax.annotation.Nonnull;
-
-import consulo.codeEditor.Editor;
-import consulo.project.Project;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
-
-import javax.annotation.Nullable;
+import consulo.codeEditor.Editor;
+import consulo.language.psi.PsiElement;
+import consulo.project.Project;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * @author Maxim.Medvedev

@@ -16,16 +16,19 @@
 
 package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
-import javax.annotation.Nonnull;
-
-import com.sylvanaar.idea.lua.editor.inspections.*;
-import com.sylvanaar.idea.lua.editor.inspections.utils.*;
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.lists.*;
-import com.sylvanaar.idea.lua.lang.psi.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
+import com.sylvanaar.idea.lua.editor.inspections.LuaFix;
+import com.sylvanaar.idea.lua.editor.inspections.utils.ExpressionUtils;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaDeclarationStatement;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaLocalDefinitionStatement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.inspection.ProblemDescriptor;
 import consulo.language.editor.inspection.ProblemsHolder;
@@ -33,8 +36,10 @@ import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.util.IncorrectOperationException;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
-import org.jetbrains.annotations.*;
+import jakarta.annotation.Nonnull;
+import org.jetbrains.annotations.Nls;
 
 /**
  * Created by IntelliJ IDEA.
@@ -46,13 +51,13 @@ public class UnbalancedAssignmentInspection extends AbstractInspection {
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-        return "Unbalanced Assignment";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Unbalanced Assignment");
     }
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
@@ -173,11 +178,11 @@ public class UnbalancedAssignmentInspection extends AbstractInspection {
 
         @Nonnull
         @Override
-        public String getName() {
+        public LocalizeValue getName() {
             if (tooManyExprs)
-                return "Balance by adding '_' identifiers on the left";
+                return LocalizeValue.localizeTODO("Balance by adding '_' identifiers on the left");
             else
-                return "Balance by adding nil's on the right";
+                return LocalizeValue.localizeTODO("Balance by adding nil's on the right");
         }
     }
 

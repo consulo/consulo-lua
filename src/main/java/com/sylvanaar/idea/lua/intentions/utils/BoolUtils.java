@@ -15,12 +15,11 @@
  */
 package com.sylvanaar.idea.lua.intentions.utils;
 
-import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.*;
+import consulo.language.ast.IElementType;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nullable;
-
 
 public class BoolUtils {
   private BoolUtils() {

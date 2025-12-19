@@ -16,22 +16,19 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.parser;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.Language;
-import consulo.language.ast.ASTNode;
-import consulo.language.ast.ILazyParseableElementType;
-import consulo.language.parser.PsiBuilder;
-import consulo.language.parser.PsiBuilderFactory;
-import consulo.language.parser.PsiParser;
 import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocElementType;
 import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocElementTypeImpl;
 import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocLexer;
 import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocTokenTypes;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.LuaDocCommentImpl;
-import consulo.language.version.LanguageVersionUtil;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.ILazyParseableElementType;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.PsiBuilderFactory;
+import consulo.language.parser.PsiParser;
 import consulo.language.psi.PsiElement;
+import consulo.language.version.LanguageVersionUtil;
 import consulo.project.Project;
 
 /**
@@ -42,12 +39,7 @@ public interface LuaDocElementTypes extends LuaDocTokenTypes {
   /**
    * LuaDoc comment
    */
-  ILazyParseableElementType LUADOC_COMMENT = new ILazyParseableElementType("LuaDocComment") {
-    @Nonnull
-    public Language getLanguage() {
-      return LuaFileType.LUA_FILE_TYPE.getLanguage();
-    }
-
+  ILazyParseableElementType LUADOC_COMMENT = new ILazyParseableElementType("LuaDocComment", LuaFileType.LUA_FILE_TYPE.getLanguage()) {
     public ASTNode parseContents(ASTNode chameleon) {
 
       final PsiElement parentElement = chameleon.getTreeParent().getPsi();

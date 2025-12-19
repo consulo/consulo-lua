@@ -31,9 +31,7 @@ import consulo.language.cacheBuilder.WordsScanner;
 import consulo.language.findUsage.FindUsagesProvider;
 import consulo.language.psi.PsiElement;
 import consulo.util.lang.StringUtil;
-
-import javax.annotation.Nonnull;
-
+import jakarta.annotation.Nonnull;
 
 /**
  * @author ven

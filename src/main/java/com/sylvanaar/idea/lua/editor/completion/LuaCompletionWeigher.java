@@ -33,9 +33,7 @@ import consulo.module.content.ProjectFileIndex;
 import consulo.module.content.ProjectRootManager;
 import consulo.util.lang.StringUtil;
 import consulo.virtualFileSystem.VirtualFile;
-
-import javax.annotation.Nonnull;
-
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

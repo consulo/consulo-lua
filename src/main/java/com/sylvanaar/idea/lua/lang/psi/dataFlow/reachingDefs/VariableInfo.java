@@ -15,11 +15,9 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs;
 
-import javax.annotation.Nonnull;
-
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
-
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * @author ven

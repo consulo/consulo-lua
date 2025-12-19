@@ -16,10 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import consulo.document.util.TextRange;
-import consulo.language.ast.ASTNode;
-import consulo.language.psi.PsiElement;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.*;
 import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementFactoryImpl;
@@ -35,14 +31,18 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.types.*;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiReference;
 import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
 import consulo.project.content.scope.ProjectScopes;
 import consulo.util.collection.ArrayUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.Collection;
 

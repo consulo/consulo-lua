@@ -16,16 +16,12 @@
 
 package com.sylvanaar.idea.lua.luaj;
 
-import consulo.execution.ui.console.ConsoleViewContentType;
 import consulo.application.ApplicationManager;
 import consulo.colorScheme.EditorColorsManager;
-import consulo.ui.ex.awtUnsafe.TargetAWT;
+import consulo.execution.ui.console.ConsoleViewContentType;
 import consulo.ui.color.ColorValue;
+import consulo.ui.ex.awtUnsafe.TargetAWT;
 import jsyntaxpane.lexers.LuaLexer;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaError;
-import org.luaj.vm2.LuaValue;
-import org.luaj.vm2.lib.jse.JsePlatform;
 import se.krka.kahlua.j2se.interpreter.History;
 import se.krka.kahlua.j2se.interpreter.InputTerminal;
 import se.krka.kahlua.j2se.interpreter.OutputTerminal;
@@ -36,10 +32,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+
+//import org.luaj.vm2.Globals;
+//import org.luaj.vm2.LuaError;
+//import org.luaj.vm2.LuaValue;
+//import org.luaj.vm2.lib.jse.JsePlatform;
 
 /**
  * Created by IntelliJ IDEA.
@@ -55,7 +54,7 @@ public class LuaJInterpreter extends JPanel
 
 	private History history = new History();
 	private Future<?> future;
-	private Globals _G;
+//	private Globals _G;
 
 	public LuaJInterpreter()
 	{
@@ -64,7 +63,7 @@ public class LuaJInterpreter extends JPanel
 		JSyntaxUtil.setup();
 
 		// create a Lua engine
-		_G = JsePlatform.debugGlobals();
+//		_G = JsePlatform.debugGlobals();
 
 		ColorValue consoleColor = EditorColorsManager.getInstance().getGlobalScheme().getColor(ConsoleViewContentType.CONSOLE_BACKGROUND_KEY);
 
@@ -204,16 +203,16 @@ public class LuaJInterpreter extends JPanel
 					final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
 					// evaluate Lua code from String
-					final PrintStream stdout = _G.STDOUT;
-					_G.STDOUT = new PrintStream(outputStream);
-					_G.get("load").call(LuaValue.valueOf(text)).call();
-
-					print(new String(outputStream.toByteArray(), StandardCharsets.UTF_8));
-					_G.STDOUT = stdout;
-				}
-				catch(LuaError e)
-				{
-					printError(e);
+//					final PrintStream stdout = _G.STDOUT;
+//					_G.STDOUT = new PrintStream(outputStream);
+//					_G.get("load").call(LuaValue.valueOf(text)).call();
+//
+//					print(new String(outputStream.toByteArray(), StandardCharsets.UTF_8));
+//					_G.STDOUT = stdout;
+//				}
+//				catch(LuaError e)
+//				{
+//					printError(e);
 				}
 				finally
 				{

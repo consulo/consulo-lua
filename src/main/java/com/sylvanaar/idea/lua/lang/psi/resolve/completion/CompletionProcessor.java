@@ -16,16 +16,16 @@
 
 package com.sylvanaar.idea.lua.lang.psi.resolve.completion;
 
-import com.sylvanaar.idea.lua.lang.psi.impl.symbols.*;
-import com.sylvanaar.idea.lua.lang.psi.resolve.*;
-import com.sylvanaar.idea.lua.lang.psi.resolve.processors.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
+import com.sylvanaar.idea.lua.lang.psi.impl.symbols.LuaCompoundReferenceElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
+import com.sylvanaar.idea.lua.lang.psi.resolve.processors.SymbolResolveProcessor;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocal;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.resolve.ResolveState;
+import jakarta.annotation.Nonnull;
 
-import java.util.*;
-
-import javax.annotation.Nonnull;
+import java.util.Iterator;
 
 /**
  * @author ilyas

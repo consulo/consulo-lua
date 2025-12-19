@@ -23,8 +23,7 @@ import consulo.language.parser.PsiBuilder;
 import consulo.language.parser.WhitespaceSkippedCallback;
 import consulo.language.psi.PsiFile;
 import consulo.logging.Logger;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

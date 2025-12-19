@@ -39,9 +39,9 @@ import consulo.util.xml.serializer.JDOMExternalizerUtil;
 import consulo.util.xml.serializer.WriteExternalException;
 import consulo.virtualFileSystem.LocalFileSystem;
 import consulo.virtualFileSystem.VirtualFile;
+import jakarta.annotation.Nonnull;
 import org.jdom.Element;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;

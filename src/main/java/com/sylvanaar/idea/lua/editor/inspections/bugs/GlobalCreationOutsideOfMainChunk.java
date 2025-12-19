@@ -16,19 +16,20 @@
 
 package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
-import consulo.language.editor.inspection.LocalQuickFix;
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
-import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
 import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
-import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +44,8 @@ public class GlobalCreationOutsideOfMainChunk extends AbstractInspection {
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-       return "Suspicious global creation";
+    public LocalizeValue getDisplayName() {
+       return LocalizeValue.localizeTODO("Suspicious global creation");
     }
 
     @Override
@@ -54,7 +55,7 @@ public class GlobalCreationOutsideOfMainChunk extends AbstractInspection {
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 

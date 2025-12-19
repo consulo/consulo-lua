@@ -15,34 +15,32 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.validity;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.editor.inspection.ProblemsHolder;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.editor.inspections.utils.ControlFlowUtils;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.Nls;
-
-import javax.annotation.Nullable;
-
 
 public class LuaUnreachableStatementInspection extends AbstractInspection {
 
     @Nls
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return VALIDITY_ISSUES;
     }
 
     @Nls
     @Nonnull
-    public String getDisplayName() {
-        return "Unreachable Statement";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Unreachable Statement");
     }
 
     @Nullable

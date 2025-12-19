@@ -31,9 +31,8 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.PsiWhiteSpace;
 import consulo.language.util.IncorrectOperationException;
-import consulo.util.lang.ref.Ref;
-
-import javax.annotation.Nonnull;
+import consulo.util.lang.ref.SimpleReference;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,7 +43,7 @@ import javax.annotation.Nonnull;
 @ExtensionImpl
 public class LuaEnterHandlerDelegate implements EnterHandlerDelegate {
     @Override
-    public Result preprocessEnter(PsiFile file, Editor editor, consulo.util.lang.ref.Ref<Integer> caretOffsetRef, Ref<Integer> caretAdvance,
+    public Result preprocessEnter(PsiFile file, Editor editor, consulo.util.lang.ref.SimpleReference<Integer> caretOffsetRef, SimpleReference<Integer> caretAdvance,
                                   DataContext dataContext, EditorActionHandler originalHandler) {
         if (!(file instanceof LuaPsiFile && CodeInsightSettings.getInstance().SMART_INDENT_ON_ENTER)) {
             return Result.Continue;

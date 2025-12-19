@@ -15,7 +15,7 @@
  */
 package com.sylvanaar.idea.lua.refactoring.introduce;
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
 * @author Maxim.Medvedev

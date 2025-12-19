@@ -25,8 +25,8 @@ import consulo.execution.ui.console.ConsoleViewContentType;
 import consulo.execution.ui.console.TextConsoleBuilderFactory;
 import consulo.process.ExecutionException;
 import consulo.process.cmd.GeneralCommandLine;
-import consulo.process.local.ExecUtil;
-import consulo.process.local.ProcessOutput;
+import consulo.process.util.CapturingProcessUtil;
+import consulo.process.util.ProcessOutput;
 import consulo.project.Project;
 import consulo.project.ui.wm.ToolWindowManager;
 import consulo.ui.ex.content.Content;
@@ -38,8 +38,8 @@ import consulo.util.dataholder.Key;
 import consulo.util.io.FileUtil;
 import consulo.util.lang.StringUtil;
 import consulo.virtualFileSystem.VirtualFile;
+import jakarta.annotation.Nonnull;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.util.*;
 
@@ -81,7 +81,7 @@ public class LuaSystemUtil {
     @Nonnull
     public static ProcessOutput execute(@Nonnull final GeneralCommandLine cmd,
                                         final int timeout) throws ExecutionException {
-        return ExecUtil.execAndGetOutput(cmd, timeout);
+        return CapturingProcessUtil.execAndGetOutput(cmd, timeout);
     }
 
     public static void addStdPaths(@Nonnull final GeneralCommandLine cmd, @Nonnull final Sdk sdk) {

@@ -16,25 +16,24 @@
 
 package com.sylvanaar.idea.lua.debugger;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import consulo.execution.debug.evaluation.EvaluationMode;
-import consulo.language.psi.*;
-import consulo.logging.Logger;
-import consulo.document.Document;
-import consulo.document.FileDocumentManager;
-import consulo.project.Project;
-import consulo.virtualFileSystem.fileType.FileType;
-import consulo.virtualFileSystem.VirtualFile;
-import consulo.language.file.FileViewProvider;
-import consulo.execution.debug.XSourcePosition;
-import consulo.execution.debug.evaluation.XDebuggerEditorsProvider;
 import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.lang.lexer.LuaElementType;
 import com.sylvanaar.idea.lua.lang.psi.LuaExpressionCodeFragment;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import consulo.document.Document;
+import consulo.document.FileDocumentManager;
+import consulo.execution.debug.XSourcePosition;
+import consulo.execution.debug.evaluation.EvaluationMode;
+import consulo.execution.debug.evaluation.XDebuggerEditorsProvider;
+import consulo.language.file.FileViewProvider;
+import consulo.language.psi.*;
+import consulo.logging.Logger;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

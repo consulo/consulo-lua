@@ -16,10 +16,9 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-
-import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTagValueToken;
-import javax.annotation.Nonnull;
+import consulo.language.ast.ASTNode;
+import jakarta.annotation.Nonnull;
 
 public class LuaDocTagValueTokenImpl extends LuaDocPsiElementImpl implements LuaDocTagValueToken {
 

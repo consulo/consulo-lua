@@ -15,24 +15,21 @@
  */
 package com.sylvanaar.idea.lua.intentions.base;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle;
+import com.sylvanaar.idea.lua.intentions.utils.BoolUtils;
+import com.sylvanaar.idea.lua.intentions.utils.QuickfixUtil;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import consulo.codeEditor.CaretModel;
 import consulo.codeEditor.Editor;
 import consulo.language.editor.intention.IntentionAction;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.lua.intentions.utils.QuickfixUtil;
-import com.sylvanaar.idea.lua.intentions.LuaIntentionsBundle;
-import com.sylvanaar.idea.lua.intentions.utils.BoolUtils;
-import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
-import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
-
-import javax.annotation.Nullable;
-
-
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public abstract class Intention implements IntentionAction {
   private final PsiElementPredicate predicate;
@@ -136,8 +133,8 @@ public abstract class Intention implements IntentionAction {
   }
 
   @Nonnull
-  public String getText() {
-    return LuaIntentionsBundle.message(getPrefix() + ".name");
+  public LocalizeValue getText() {
+    return LocalizeValue.localizeTODO(LuaIntentionsBundle.message(getPrefix() + ".name"));
   }
 
   @Nonnull

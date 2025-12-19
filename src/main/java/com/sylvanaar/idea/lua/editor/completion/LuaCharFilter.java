@@ -21,8 +21,7 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.completion.lookup.CharFilter;
 import consulo.language.editor.completion.lookup.Lookup;
 import consulo.language.psi.PsiFile;
-
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

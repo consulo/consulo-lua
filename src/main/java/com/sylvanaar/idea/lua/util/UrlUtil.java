@@ -23,9 +23,9 @@ import consulo.util.io.URLUtil;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.VirtualFileManager;
 import consulo.virtualFileSystem.util.VirtualFileUtil;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
 
-import javax.annotation.Nullable;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;

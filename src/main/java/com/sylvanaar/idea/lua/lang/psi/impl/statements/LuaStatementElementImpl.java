@@ -16,13 +16,13 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
-import consulo.language.ast.ASTNode;
-import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
-import javax.annotation.Nonnull;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElementVisitor;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
