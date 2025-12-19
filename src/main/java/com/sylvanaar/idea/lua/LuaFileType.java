@@ -13,7 +13,6 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua;
 
 import com.sylvanaar.idea.lua.lang.LuaLanguage;
@@ -22,10 +21,10 @@ import consulo.language.file.LanguageFileType;
 import consulo.localize.LocalizeValue;
 import consulo.lua.localize.LuaLocalize;
 import consulo.ui.image.Image;
-import consulo.virtualFileSystem.internal.matcher.ExtensionFileNameMatcher;
+import consulo.virtualFileSystem.fileType.FileNameMatcher;
+import consulo.virtualFileSystem.fileType.FileNameMatcherFactory;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -42,9 +41,16 @@ public class LuaFileType extends LanguageFileType {
     public static final String DEFAULT_EXTENSION = "lua";
     public static final String LUA = "Lua";
 
-    public static final ExtensionFileNameMatcher[] EXTENSION_FILE_NAME_MATCHERS = {
-        new ExtensionFileNameMatcher(LuaFileType.DEFAULT_EXTENSION), new ExtensionFileNameMatcher("doclua"), new ExtensionFileNameMatcher("wlua"),
-    };
+    public static final FileNameMatcher[] EXTENSION_FILE_NAME_MATCHERS;
+
+    static {
+        FileNameMatcherFactory factory = FileNameMatcherFactory.getInstance();
+        EXTENSION_FILE_NAME_MATCHERS = new FileNameMatcher[] {
+            factory.createExtensionFileNameMatcher(LuaFileType.DEFAULT_EXTENSION),
+            factory.createExtensionFileNameMatcher("doclua"),
+            factory.createExtensionFileNameMatcher("wlua")
+        };
+    }
 
     private LuaFileType() {
         super(LuaLanguage.INSTANCE);
@@ -77,7 +83,6 @@ public class LuaFileType extends LanguageFileType {
     public Image getIcon() {
         return com.sylvanaar.idea.lua.LuaIcons.LUA_ICON;
     }
-
 }
 
 

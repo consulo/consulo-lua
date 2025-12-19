@@ -16,22 +16,23 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.lists.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaFunctionArguments;
 import com.sylvanaar.idea.lua.lang.psi.types.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiNamedElement;
 import consulo.language.util.IncorrectOperationException;
-import org.jetbrains.annotations.*;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+import org.jetbrains.annotations.NonNls;
 
-import java.util.*;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.Iterator;
 
 /**
  * Created by IntelliJ IDEA.

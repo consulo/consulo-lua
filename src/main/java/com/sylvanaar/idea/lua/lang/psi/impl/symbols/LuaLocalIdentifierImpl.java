@@ -16,15 +16,14 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import consulo.language.ast.ASTNode;
-import consulo.language.psi.scope.GlobalSearchScope;
 import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementFactoryImpl;
 import com.sylvanaar.idea.lua.lang.psi.symbols.*;
+import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiReference;
+import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.language.util.IncorrectOperationException;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

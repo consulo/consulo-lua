@@ -16,14 +16,13 @@
 
 package com.sylvanaar.idea.lua.lang.psi.statements;
 
-import javax.annotation.Nonnull;
-
-import com.sylvanaar.idea.lua.lang.*;
+import com.sylvanaar.idea.lua.lang.InferenceCapable;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.psi.LuaNamedElement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import jakarta.annotation.Nonnull;
 
 public interface LuaFunctionDefinitionStatement extends LuaStatementElement, LuaFunctionDefinition, LuaNamedElement, LuaDocCommentOwner, InferenceCapable /*, PsiMethod */ {
     @Nonnull

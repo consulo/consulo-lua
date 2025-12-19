@@ -16,17 +16,17 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.lists;
 
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
+import com.sylvanaar.idea.lua.lang.psi.impl.PsiUtil;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import consulo.language.ast.ASTNode;
 import consulo.language.codeStyle.CodeStyleManager;
 import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
-import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
-import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
-import com.sylvanaar.idea.lua.lang.psi.impl.PsiUtil;
-import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import static com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes.COMMA;
 

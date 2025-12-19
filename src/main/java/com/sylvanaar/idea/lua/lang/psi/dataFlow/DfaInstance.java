@@ -15,9 +15,8 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.dataFlow;
 
-import javax.annotation.Nonnull;
-
 import com.sylvanaar.idea.lua.lang.psi.controlFlow.Instruction;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author ven

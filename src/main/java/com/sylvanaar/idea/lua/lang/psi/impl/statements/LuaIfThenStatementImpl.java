@@ -16,19 +16,20 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
-import com.sylvanaar.idea.lua.lang.parser.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaConditionalExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaIfThenStatement;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.util.collection.ArrayUtil;
+import jakarta.annotation.Nonnull;
 
-import java.util.*;
-
-import javax.annotation.Nonnull;
+import java.util.Arrays;
 
 /**
  * Created by IntelliJ IDEA.

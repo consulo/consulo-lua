@@ -16,18 +16,16 @@
 
 package com.sylvanaar.idea.lua.lang.formatter.processors;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;
 import consulo.language.ast.TokenSet;
 import consulo.language.codeStyle.FormatterUtil;
 import consulo.language.impl.ast.LeafElement;
 import consulo.language.impl.psi.LeafPsiElement;
-import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiWhiteSpace;
-
+import jakarta.annotation.Nonnull;
 
 /**
  * @author ilyas

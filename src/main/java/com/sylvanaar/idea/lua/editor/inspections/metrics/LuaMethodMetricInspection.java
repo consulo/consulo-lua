@@ -17,8 +17,8 @@ package com.sylvanaar.idea.lua.editor.inspections.metrics;
 
 
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
-
-import javax.annotation.Nonnull;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 
 public abstract class LuaMethodMetricInspection extends AbstractInspection {
 
@@ -34,7 +34,7 @@ public abstract class LuaMethodMetricInspection extends AbstractInspection {
     }
 
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return METHOD_METRICS;
     }
 

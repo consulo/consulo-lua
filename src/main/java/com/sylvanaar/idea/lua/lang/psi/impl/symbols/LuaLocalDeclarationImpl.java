@@ -16,9 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import consulo.language.ast.ASTNode;
-import consulo.util.collection.ArrayUtil;
-import consulo.util.lang.ref.SoftReference;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementFactoryImpl;
@@ -26,10 +23,12 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocalDeclaration;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocalIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import consulo.util.collection.ArrayUtil;
+import consulo.util.lang.ref.SoftReference;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

@@ -15,32 +15,32 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.ast.IElementType;
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
-import consulo.language.psi.PsiElementVisitor;
-import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NonNls;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
+import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NonNls;
 
 public class LuaDivideByZeroInspection extends AbstractInspection {
 
     @Nls
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 
     @Nls
     @Nonnull
-    public String getDisplayName() {
-        return "Divide by zero";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Divide by zero");
     }
 
     @Override

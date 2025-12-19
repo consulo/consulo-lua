@@ -16,19 +16,19 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.parser.elements;
 
-import consulo.language.ast.ASTNode;
-import consulo.language.parser.PsiBuilder;
-import consulo.language.parser.PsiBuilderFactory;
-import consulo.language.psi.PsiElement;
-import consulo.project.Project;
-import consulo.language.impl.psi.LeafPsiElement;
 import com.sylvanaar.idea.lua.lang.luadoc.lexer.ILuaDocElementType;
 import com.sylvanaar.idea.lua.lang.luadoc.lexer.LuaDocLexer;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
 import com.sylvanaar.idea.lua.lang.parser.util.ParserUtils;
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.psi.LeafPsiElement;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.parser.PsiBuilderFactory;
+import consulo.language.psi.PsiElement;
 import consulo.language.version.LanguageVersionUtil;
+import consulo.project.Project;
+import jakarta.annotation.Nonnull;
 
-import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;

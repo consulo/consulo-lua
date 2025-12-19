@@ -16,13 +16,11 @@
 
 package com.sylvanaar.idea.lua.lang.psi;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.navigation.NavigationItem;
-
+import jakarta.annotation.Nonnull;
 
 public interface LuaPsiElement extends PsiElement, NavigationItem
 {

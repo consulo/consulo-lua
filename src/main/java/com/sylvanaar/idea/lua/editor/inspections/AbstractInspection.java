@@ -16,19 +16,20 @@
 
 package com.sylvanaar.idea.lua.editor.inspections;
 
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import consulo.application.ApplicationManager;
 import consulo.application.util.function.Computable;
 import consulo.language.editor.inspection.CustomSuppressableInspectionTool;
 import consulo.language.editor.inspection.LocalInspectionTool;
+import consulo.language.editor.inspection.SuppressionUtil;
 import consulo.language.editor.intention.SuppressIntentionAction;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
-import consulo.language.editor.inspection.SuppressionUtil;
-import consulo.application.ApplicationManager;
 import consulo.language.psi.PsiElement;
-import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.regex.Pattern;
 
@@ -43,24 +44,24 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
     private static final SuppressIntentionAction[] EMPTY_ARRAY = new SuppressIntentionAction[0];
 
 
-    protected static final String ASSIGNMENT_ISSUES = "Assignment issues";
-    protected static final String CONFUSING_CODE_CONSTRUCTS = "Potentially confusing code constructs";
-    protected static final String CONTROL_FLOW = "Control Flow";
-    protected static final String PROBABLE_BUGS = "Probable bugs";
-    protected static final String ERROR_HANDLING = "Error handling";
-    protected static final String GPATH = "GPath inspections";
-    protected static final String METHOD_METRICS = "Method Metrics";
-    protected static final String PERFORMANCE_ISSUES = "Performance issues";
-    protected static final String VALIDITY_ISSUES = "Validity issues";
-    protected static final String DATA_FLOW = "Data Flow Issues";
-    protected static final String ANNOTATIONS_ISSUES = "Annotations verifying";
+    protected static final LocalizeValue ASSIGNMENT_ISSUES = LocalizeValue.localizeTODO("Assignment issues");
+    protected static final LocalizeValue CONFUSING_CODE_CONSTRUCTS = LocalizeValue.localizeTODO("Potentially confusing code constructs");
+    protected static final LocalizeValue CONTROL_FLOW = LocalizeValue.localizeTODO("Control Flow");
+    protected static final LocalizeValue PROBABLE_BUGS = LocalizeValue.localizeTODO("Probable bugs");
+    protected static final LocalizeValue ERROR_HANDLING = LocalizeValue.localizeTODO("Error handling");
+    protected static final LocalizeValue GPATH = LocalizeValue.localizeTODO("GPath inspections");
+    protected static final LocalizeValue METHOD_METRICS = LocalizeValue.localizeTODO("Method Metrics");
+    protected static final LocalizeValue PERFORMANCE_ISSUES = LocalizeValue.localizeTODO("Performance issues");
+    protected static final LocalizeValue VALIDITY_ISSUES = LocalizeValue.localizeTODO("Validity issues");
+    protected static final LocalizeValue DATA_FLOW = LocalizeValue.localizeTODO("Data Flow Issues");
+    protected static final LocalizeValue ANNOTATIONS_ISSUES = LocalizeValue.localizeTODO("Annotations verifying");
     
     private static Pattern SUPPRESS_IN_LINE_COMMENT_PATTERN = Pattern.compile("--" + SuppressionUtil.COMMON_SUPPRESS_REGEXP);;
 
     @Nonnull
     @Override
-    public String[] getGroupPath() {
-        return new String[]{"Lua", getGroupDisplayName()};
+    public LocalizeValue[] getGroupPath() {
+        return new LocalizeValue[]{LocalizeValue.localizeTODO("Lua"), getGroupDisplayName()};
     }
 
     private final String m_shortName = null;
@@ -132,8 +133,8 @@ public abstract class AbstractInspection extends LocalInspectionTool implements 
 
     @Nls
     @Nonnull
-    public String getGroupDisplayName() {
-        return "Lua";
+    public LocalizeValue getGroupDisplayName() {
+        return LocalizeValue.localizeTODO("Lua");
     }
 
 //    @Nullable

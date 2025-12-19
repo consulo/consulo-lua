@@ -16,17 +16,16 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionCallStatement;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
-import consulo.language.psi.resolve.ResolveState;
 import consulo.language.psi.resolve.PsiScopeProcessor;
-import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
-import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFunctionCallExpression;
-import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionCallStatement;
-import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.psi.resolve.ResolveState;
+import jakarta.annotation.Nonnull;
 
 //import com.sylvanaar.idea.Lua.lang.psi.expressions.LuaFunctionIdentifier;
 

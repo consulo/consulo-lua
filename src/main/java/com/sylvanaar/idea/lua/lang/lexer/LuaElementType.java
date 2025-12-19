@@ -20,8 +20,7 @@ import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

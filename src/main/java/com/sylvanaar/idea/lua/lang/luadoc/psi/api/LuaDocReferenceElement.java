@@ -16,10 +16,8 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.api;
 
-
 import consulo.language.psi.PsiReference;
-import javax.annotation.Nullable;
-
+import jakarta.annotation.Nullable;
 
 public interface LuaDocReferenceElement extends LuaDocPsiElement, PsiReference {
     @Nullable

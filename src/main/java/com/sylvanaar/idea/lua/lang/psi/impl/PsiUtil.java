@@ -16,16 +16,15 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl;
 
-import javax.annotation.Nullable;
-
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaParenthesizedExpression;
+import consulo.document.util.TextRange;
 import consulo.language.codeStyle.CodeStyleManager;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiErrorElement;
 import consulo.language.psi.PsiWhiteSpace;
-import consulo.logging.Logger;
-import consulo.document.util.TextRange;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.lua.lang.psi.expressions.LuaParenthesizedExpression;
+import consulo.logging.Logger;
+import jakarta.annotation.Nullable;
 
 /**
  * @author ven

@@ -30,30 +30,26 @@ import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.PsiManager;
 import consulo.logging.Logger;
-import consulo.util.io.CharsetToolkit;
 import consulo.util.io.ClassPathUtil;
 import consulo.virtualFileSystem.VirtualFile;
 import consulo.virtualFileSystem.VirtualFileManager;
 import consulo.virtualFileSystem.archive.ArchiveVfsUtil;
 import consulo.virtualFileSystem.util.VirtualFileUtil;
-import se.krka.kahlua.converter.KahluaConverterManager;
-import se.krka.kahlua.integration.LuaCaller;
-import se.krka.kahlua.integration.LuaReturn;
-import se.krka.kahlua.integration.annotations.LuaMethod;
-import se.krka.kahlua.integration.expose.LuaJavaClassExposer;
-import se.krka.kahlua.j2se.J2SEPlatform;
-import se.krka.kahlua.luaj.compiler.LuaCompiler;
-import se.krka.kahlua.vm.KahluaTable;
-import se.krka.kahlua.vm.KahluaThread;
-import se.krka.kahlua.vm.LuaClosure;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+//import se.krka.kahlua.converter.KahluaConverterManager;
+//import se.krka.kahlua.integration.LuaCaller;
+//import se.krka.kahlua.integration.LuaReturn;
+//import se.krka.kahlua.integration.annotations.LuaMethod;
+//import se.krka.kahlua.integration.expose.LuaJavaClassExposer;
+//import se.krka.kahlua.j2se.J2SEPlatform;
 
 
 /**
@@ -64,10 +60,10 @@ import java.util.Map;
  */
 @ExtensionImpl(id = "lua.kahlua", order = "before lua.doc")
 public class KahluaPluginDocumentationProvider implements LanguageDocumentationProvider {
-    private static final KahluaConverterManager converterManager = new KahluaConverterManager();
-    private static final J2SEPlatform platform = new J2SEPlatform();
+//    private static final KahluaConverterManager converterManager = new KahluaConverterManager();
+//    private static final J2SEPlatform platform = new J2SEPlatform();
 
-    private static final LuaCaller caller = new LuaCaller(converterManager);
+//    private static final LuaCaller caller = new LuaCaller(converterManager);
 
 
     private final Object VMLock = new Object();
@@ -86,30 +82,30 @@ public class KahluaPluginDocumentationProvider implements LanguageDocumentationP
 
 
     private class ScriptEnvironment {
-        KahluaTable env = platform.newEnvironment();
-        final KahluaThread thread = new KahluaThread(platform, env);
-        final LuaJavaClassExposer exposer = new LuaJavaClassExposer(converterManager, platform, env);
+//        KahluaTable env = platform.newEnvironment();
+//        final KahluaThread thread = new KahluaThread(platform, env);
+//        final LuaJavaClassExposer exposer = new LuaJavaClassExposer(converterManager, platform, env);
     }
 
 
-    @LuaMethod(name = "log", global = true)
+//    @LuaMethod(name = "log", global = true)
     public void luaLog(String msg) {
         log.info(msg);
     }
 
-    @LuaMethod(name = "disableCache", global = true)
+//    @LuaMethod(name = "disableCache", global = true)
     public void clearCaches() {
         scriptEnvironmentMap.clear();
     }
 
-    @LuaMethod(name = "fetchURL", global = true)
+//    @LuaMethod(name = "fetchURL", global = true)
     public String fetchURL(String url) {
         UrlUtil.UrlFetcher fetcher = new UrlUtil.UrlFetcher(url);
         fetcher.run();
         return fetcher.getData();
     }
 
-    @LuaMethod(name = "getBaseJarUrl", global = true)
+//    @LuaMethod(name = "getBaseJarUrl", global = true)
     public String getBaseJarUrl() {
         String url = VirtualFileUtil.pathToUrl(ClassPathUtil.getJarPathForClass(LuaPsiFile.class));
         VirtualFile sdkFile = VirtualFileManager.getInstance().findFileByUrl(url);
@@ -273,21 +269,22 @@ public class KahluaPluginDocumentationProvider implements LanguageDocumentationP
                 return scriptEnvironmentMap.get(vf);
             }
 
-            ScriptEnvironment scriptEnvironment = new ScriptEnvironment();
-            scriptEnvironment.exposer.exposeGlobalFunctions(this);
-
-            // Cache the environment
-            scriptEnvironmentMap.put(vf, scriptEnvironment);
-
-            // Run the initial script
-            LuaClosure closure = LuaCompiler.loadis(vf.getInputStream(), vf.getName(), scriptEnvironment.env);
-            LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
-
-            if (!rc.isSuccess()) {
-                log.info("Error during initial lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
-            }
-
-            return scriptEnvironment;
+//            ScriptEnvironment scriptEnvironment = new ScriptEnvironment();
+//            scriptEnvironment.exposer.exposeGlobalFunctions(this);
+//
+//            // Cache the environment
+//            scriptEnvironmentMap.put(vf, scriptEnvironment);
+//
+//            // Run the initial script
+//            LuaClosure closure = LuaCompiler.loadis(vf.getInputStream(), vf.getName(), scriptEnvironment.env);
+//            LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
+//
+//            if (!rc.isSuccess()) {
+//                log.info("Error during initial lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
+//            }
+//
+//            return scriptEnvironment;
+            return null;
         }
     }
 
@@ -326,22 +323,22 @@ public class KahluaPluginDocumentationProvider implements LanguageDocumentationP
                     return null;
                 }
 
-                LuaClosure closure = LuaCompiler.loadstring(
-                        "return " + function + "('" + nameToDocument + "', '" + docLuaFileUrl + "')", "", scriptEnvironment.env
-                );
-                LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
-
-                if (!rc.isSuccess()) {
-                    log.info("Error during lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
-                }
-
-                if (!rc.isEmpty()) {
-                    String unencoded = (String) rc.getFirst();
-
-                    byte[] bytes = unencoded.getBytes();
-
-                    return new String(bytes, CharsetToolkit.UTF8);
-                }
+//                LuaClosure closure = LuaCompiler.loadstring(
+//                        "return " + function + "('" + nameToDocument + "', '" + docLuaFileUrl + "')", "", scriptEnvironment.env
+//                );
+//                LuaReturn rc = caller.protectedCall(scriptEnvironment.thread, closure);
+//
+//                if (!rc.isSuccess()) {
+//                    log.info("Error during lua call: " + rc.getErrorString() + "\r\n\r\n" + rc.getLuaStackTrace());
+//                }
+//
+//                if (!rc.isEmpty()) {
+//                    String unencoded = (String) rc.getFirst();
+//
+//                    byte[] bytes = unencoded.getBytes();
+//
+//                    return new String(bytes, CharsetToolkit.UTF8);
+//                }
 
             }
             catch (IOException e) {

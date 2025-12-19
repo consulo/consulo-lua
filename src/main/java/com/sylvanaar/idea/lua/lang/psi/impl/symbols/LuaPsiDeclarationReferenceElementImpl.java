@@ -16,17 +16,19 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import javax.annotation.Nonnull;
-
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
-import com.sylvanaar.idea.lua.lang.psi.util.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaTypeUtil;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.PsiReference;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

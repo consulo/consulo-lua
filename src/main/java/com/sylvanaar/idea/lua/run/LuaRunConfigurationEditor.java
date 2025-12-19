@@ -18,8 +18,7 @@ package com.sylvanaar.idea.lua.run;
 
 import consulo.configurable.ConfigurationException;
 import consulo.execution.configuration.ui.SettingsEditor;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import javax.swing.*;
 

@@ -24,8 +24,8 @@ import consulo.language.codeStyle.setting.CodeStyleSettingsCustomizable;
 import consulo.language.codeStyle.setting.IndentOptionsEditor;
 import consulo.language.codeStyle.setting.LanguageCodeStyleSettingsProvider;
 import consulo.language.codeStyle.ui.setting.SmartIndentOptionsEditor;
+import jakarta.annotation.Nonnull;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 

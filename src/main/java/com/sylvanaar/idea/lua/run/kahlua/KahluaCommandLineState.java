@@ -35,8 +35,7 @@ import consulo.project.ui.wm.ToolWindowManager;
 import consulo.ui.ex.toolWindow.ToolWindow;
 import consulo.virtualFileSystem.LocalFileSystem;
 import consulo.virtualFileSystem.VirtualFile;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -44,8 +43,6 @@ import javax.annotation.Nonnull;
  * Date: Aug 28, 2010
  * Time: 6:35:19 PM
  */
-
-
 public class KahluaCommandLineState extends LuaCommandLineState {
     private static final Logger log = Logger.getInstance("Lua.KahluaCommandLineState");
 

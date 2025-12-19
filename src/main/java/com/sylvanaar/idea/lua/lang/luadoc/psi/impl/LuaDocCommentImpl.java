@@ -16,13 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.util.PsiTreeUtil;
-import consulo.util.lang.StringUtil;
-import consulo.language.psi.PsiWhiteSpace;
-import consulo.language.impl.psi.LazyParseablePsiElement;
-import consulo.language.ast.IElementType;
-import consulo.util.lang.CharArrayUtil;
 import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
@@ -31,9 +24,16 @@ import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.impl.psi.LazyParseablePsiElement;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiWhiteSpace;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.util.lang.CharArrayUtil;
+import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.ArrayList;
 

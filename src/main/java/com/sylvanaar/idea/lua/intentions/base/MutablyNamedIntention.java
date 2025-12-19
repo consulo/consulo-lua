@@ -15,12 +15,12 @@
  */
 package com.sylvanaar.idea.lua.intentions.base;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.psi.PsiFile;
-import consulo.language.psi.PsiElement;
-import consulo.project.Project;
 import consulo.codeEditor.Editor;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
+import consulo.project.Project;
+import jakarta.annotation.Nonnull;
 
 public abstract class MutablyNamedIntention extends Intention {
   private String text = null;
@@ -28,8 +28,8 @@ public abstract class MutablyNamedIntention extends Intention {
   protected abstract String getTextForElement(PsiElement element);
 
   @Nonnull
-  public String getText() {
-    return text;
+  public LocalizeValue getText() {
+    return LocalizeValue.ofNullable(text);
   }
 
   public boolean isAvailable(@Nonnull Project project, Editor editor, PsiFile file) {

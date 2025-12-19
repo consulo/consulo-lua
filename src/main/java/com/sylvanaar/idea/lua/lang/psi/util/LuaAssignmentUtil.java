@@ -16,20 +16,23 @@
 
 package com.sylvanaar.idea.lua.lang.psi.util;
 
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.impl.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.lists.*;
-import com.sylvanaar.idea.lua.lang.psi.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
-import com.sylvanaar.idea.lua.util.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
+import com.sylvanaar.idea.lua.lang.psi.expressions.Assignable;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.impl.statements.LuaAssignmentStatementImpl;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaAlias;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaTypeUtil;
+import com.sylvanaar.idea.lua.util.LuaAtomicNotNullLazyValue;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.project.Project;
+import jakarta.annotation.Nonnull;
 
-import java.util.*;
-
-import javax.annotation.Nonnull;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.

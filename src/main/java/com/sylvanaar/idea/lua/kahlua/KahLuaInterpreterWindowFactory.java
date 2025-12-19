@@ -25,13 +25,12 @@ import consulo.ui.ex.toolWindow.ToolWindow;
 import consulo.ui.ex.toolWindow.ToolWindowAnchor;
 import consulo.ui.image.Image;
 import jakarta.annotation.Nonnull;
-import se.krka.kahlua.converter.KahluaConverterManager;
-import se.krka.kahlua.converter.KahluaEnumConverter;
-import se.krka.kahlua.converter.KahluaNumberConverter;
-import se.krka.kahlua.converter.KahluaTableConverter;
-import se.krka.kahlua.j2se.J2SEPlatform;
-import se.krka.kahlua.vm.KahluaTable;
-import se.krka.kahlua.vm.Platform;
+
+//import se.krka.kahlua.converter.KahluaConverterManager;
+//import se.krka.kahlua.converter.KahluaEnumConverter;
+//import se.krka.kahlua.converter.KahluaNumberConverter;
+//import se.krka.kahlua.converter.KahluaTableConverter;
+//import se.krka.kahlua.j2se.J2SEPlatform;
 
 /**
  * Created by IntelliJ IDEA.
@@ -53,30 +52,30 @@ public class KahLuaInterpreterWindowFactory implements ToolWindowFactory {
     @RequiredUIAccess
     @Override
     public void createToolWindowContent(Project project, ToolWindow toolWindow) {
-        final Platform platform = new J2SEPlatform();
-        final KahluaTable env = platform.newEnvironment();
+//        final Platform platform = new J2SEPlatform();
+//        final KahluaTable env = platform.newEnvironment();
+//
+//        KahluaConverterManager manager = new KahluaConverterManager();
+//        KahluaNumberConverter.install(manager);
+//        KahluaEnumConverter.install(manager);
+//        new KahluaTableConverter(platform).install(manager);
+//
+//        KahluaTable staticBase = platform.newTable();
+//        env.rawset("Java", staticBase);
+//
+//        KahluaInterpreter shell = new KahluaInterpreter(platform, env);
 
-        KahluaConverterManager manager = new KahluaConverterManager();
-        KahluaNumberConverter.install(manager);
-        KahluaEnumConverter.install(manager);
-        new KahluaTableConverter(platform).install(manager);
-
-        KahluaTable staticBase = platform.newTable();
-        env.rawset("Java", staticBase);
-
-        KahluaInterpreter shell = new KahluaInterpreter(platform, env);
-
-        INSTANCE = shell;
-
-        shell.getTerminal().appendInfo("Useful shortcuts:\n" +
-                "Ctrl-enter -- execute script\n" +
-                "Ctrl-space -- autocomplete global variables\n" +
-                "Ctrl-p -- show definition (if available)\n" +
-                "Ctrl-up/down -- browse input history\n" +
-                ""
-        );
-
-        toolWindow.getComponent().add(shell);
+//        INSTANCE = shell;
+//
+//        shell.getTerminal().appendInfo("Useful shortcuts:\n" +
+//                "Ctrl-enter -- execute script\n" +
+//                "Ctrl-space -- autocomplete global variables\n" +
+//                "Ctrl-p -- show definition (if available)\n" +
+//                "Ctrl-up/down -- browse input history\n" +
+//                ""
+//        );
+//
+//        toolWindow.getComponent().add(shell);
     }
 
     @Nonnull

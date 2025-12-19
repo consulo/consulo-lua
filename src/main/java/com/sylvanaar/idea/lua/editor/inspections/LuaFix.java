@@ -16,19 +16,19 @@
 
 package com.sylvanaar.idea.lua.editor.inspections;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.codeEditor.Editor;
 import consulo.language.editor.inspection.LocalQuickFix;
 import consulo.language.editor.inspection.ProblemDescriptor;
-import consulo.logging.Logger;
-import consulo.project.Project;
-import consulo.virtualFileSystem.ReadonlyStatusHandler;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
+import consulo.localize.LocalizeValue;
+import consulo.logging.Logger;
+import consulo.project.Project;
+import consulo.virtualFileSystem.ReadonlyStatusHandler;
 import consulo.virtualFileSystem.VirtualFile;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,7 +38,7 @@ import consulo.virtualFileSystem.VirtualFile;
  */
 public abstract class LuaFix implements LocalQuickFix {
     @Nonnull
-    public final String getText() {
+    public final LocalizeValue getText() {
         return getName();
     }
 

@@ -19,6 +19,7 @@ package com.sylvanaar.idea.lua.lang.formatter;
 import consulo.language.codeStyle.CodeStyleSettings;
 import consulo.language.codeStyle.ui.setting.CodeStyleAbstractConfigurable;
 import consulo.language.codeStyle.ui.setting.CodeStyleAbstractPanel;
+import consulo.localize.LocalizeValue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,7 +30,7 @@ import consulo.language.codeStyle.ui.setting.CodeStyleAbstractPanel;
 public class LuaCodeStyleConfigurable extends CodeStyleAbstractConfigurable
 {
     public LuaCodeStyleConfigurable(CodeStyleSettings settings, CodeStyleSettings originalSettings) {
-        super(settings, originalSettings, "Lua");
+        super(settings, originalSettings, LocalizeValue.localizeTODO("Lua"));
     }
 
     @Override

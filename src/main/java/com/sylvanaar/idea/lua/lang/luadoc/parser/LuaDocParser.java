@@ -16,15 +16,13 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.parser;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.ast.IElementType;
-import consulo.language.parser.PsiBuilder;
 import com.sylvanaar.idea.lua.lang.luadoc.parser.parsing.LuaDocParsing;
 import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.parser.PsiBuilder;
 import consulo.language.parser.PsiParser;
 import consulo.language.version.LanguageVersion;
-
+import jakarta.annotation.Nonnull;
 
 /**
 * @author ilyas

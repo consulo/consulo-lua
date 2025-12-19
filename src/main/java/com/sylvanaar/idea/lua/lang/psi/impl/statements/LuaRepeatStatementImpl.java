@@ -16,15 +16,14 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.statements;
 
-import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiToken;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaRepeatStatement;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
-
-import javax.annotation.Nonnull;
+import consulo.language.psi.PsiElementVisitor;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

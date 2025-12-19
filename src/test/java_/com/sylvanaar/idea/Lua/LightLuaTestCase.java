@@ -16,11 +16,11 @@
 
 package com.sylvanaar.idea.lua;
 
-import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
 import com.intellij.testFramework.TestModuleDescriptor;
 import com.intellij.testFramework.fixtures.LightPlatformCodeInsightFixtureTestCase;
 import com.sylvanaar.idea.lua.util.TestUtils;
+import jakarta.annotation.Nonnull;
+import org.jetbrains.annotations.NonNls;
 
 /**
  * @author peter

@@ -17,27 +17,26 @@
 package com.sylvanaar.idea.lua.codeInsight;
 
 import com.sylvanaar.idea.lua.lang.LuaLanguage;
-import consulo.annotation.component.ExtensionImpl;
-import consulo.codeEditor.CodeInsightColors;
-import consulo.codeEditor.markup.GutterIconRenderer;
-import consulo.colorScheme.EditorColorsScheme;
-import consulo.language.Language;
-import consulo.language.editor.DaemonCodeAnalyzerSettings;
-import consulo.language.editor.gutter.LineMarkerInfo;
-import consulo.colorScheme.EditorColorsManager;
-import consulo.codeEditor.markup.SeparatorPlacement;
-import consulo.document.util.TextRange;
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocCommentOwner;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.CodeInsightColors;
+import consulo.codeEditor.markup.GutterIconRenderer;
+import consulo.codeEditor.markup.SeparatorPlacement;
+import consulo.colorScheme.EditorColorsManager;
+import consulo.colorScheme.EditorColorsScheme;
+import consulo.document.util.TextRange;
+import consulo.language.Language;
+import consulo.language.editor.DaemonCodeAnalyzerSettings;
 import consulo.language.editor.Pass;
+import consulo.language.editor.gutter.LineMarkerInfo;
 import consulo.language.editor.gutter.LineMarkerProvider;
+import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import jakarta.inject.Inject;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 @ExtensionImpl
 public class LuaMethodSeparatorMarkerProvider implements LineMarkerProvider

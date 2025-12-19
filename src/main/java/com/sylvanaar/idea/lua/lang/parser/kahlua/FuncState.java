@@ -15,13 +15,11 @@
  */
 package com.sylvanaar.idea.lua.lang.parser.kahlua;
 
-
-import java.util.Hashtable;
-
-import consulo.logging.Logger;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import consulo.logging.Logger;
 import se.krka.kahlua.vm.Prototype;
 
+import java.util.Hashtable;
 
 public class FuncState {
 

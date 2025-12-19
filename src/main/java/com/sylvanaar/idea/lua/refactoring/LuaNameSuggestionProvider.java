@@ -16,13 +16,12 @@
 
 package com.sylvanaar.idea.lua.refactoring;
 
-import consulo.language.editor.refactoring.rename.SuggestedNameInfo;
 import consulo.language.editor.refactoring.rename.NameSuggestionProvider;
+import consulo.language.editor.refactoring.rename.SuggestedNameInfo;
 import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nullable;
 
 import java.util.Set;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

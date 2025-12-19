@@ -16,27 +16,26 @@
 
 package com.sylvanaar.idea.lua.debugger;
 
-import java.util.ArrayList;
-
-import javax.annotation.Nonnull;
-import javax.swing.SwingUtilities;
-
+import consulo.application.progress.ProgressIndicator;
+import consulo.application.progress.ProgressManager;
+import consulo.application.progress.Task;
 import consulo.execution.ExecutionResult;
+import consulo.execution.debug.XDebugProcess;
 import consulo.execution.debug.XDebugSession;
 import consulo.execution.debug.XSourcePosition;
+import consulo.execution.debug.breakpoint.XBreakpoint;
+import consulo.execution.debug.breakpoint.XBreakpointHandler;
 import consulo.execution.debug.evaluation.XDebuggerEditorsProvider;
 import consulo.execution.ui.ExecutionConsole;
 import consulo.execution.ui.console.ConsoleView;
 import consulo.execution.ui.console.ConsoleViewContentType;
 import consulo.logging.Logger;
-import consulo.application.progress.ProgressIndicator;
-import consulo.application.progress.ProgressManager;
-import consulo.application.progress.Task;
-import consulo.ui.ex.awt.Messages;
-import consulo.execution.debug.XDebugProcess;
-import consulo.execution.debug.breakpoint.XBreakpoint;
-import consulo.execution.debug.breakpoint.XBreakpointHandler;
 import consulo.process.ProcessHandler;
+import consulo.ui.ex.awt.Messages;
+import jakarta.annotation.Nonnull;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Created by IntelliJ IDEA.

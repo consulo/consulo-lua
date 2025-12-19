@@ -16,35 +16,35 @@
 
 package com.sylvanaar.idea.lua.actions;
 
-import consulo.document.FileDocumentManager;
-import consulo.execution.ui.console.ConsoleViewContentType;
-import consulo.fileEditor.FileEditorManager;
-import consulo.ide.IdeView;
-import consulo.language.psi.PsiDirectory;
-import consulo.language.psi.PsiFileFactory;
-import consulo.lua.bundle.BaseLuaSdkType;
-import consulo.module.ModuleManager;
-import consulo.navigation.OpenFileDescriptor;
-import consulo.navigation.OpenFileDescriptorFactory;
-import consulo.process.ExecutionException;
-import consulo.process.local.ProcessOutput;
-import consulo.ui.ex.action.AnAction;
-import consulo.ui.ex.action.AnActionEvent;
-import consulo.language.editor.LangDataKeys;
-import consulo.application.ApplicationManager;
-import consulo.module.Module;
-import consulo.project.Project;
-import consulo.content.bundle.Sdk;
-import consulo.util.lang.StringUtil;
-import consulo.virtualFileSystem.VirtualFile;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiFile;
 import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.sdk.StdLibrary;
 import com.sylvanaar.idea.lua.util.LuaModuleUtil;
 import com.sylvanaar.idea.lua.util.LuaSystemUtil;
+import consulo.application.ApplicationManager;
+import consulo.content.bundle.Sdk;
+import consulo.document.FileDocumentManager;
+import consulo.execution.ui.console.ConsoleViewContentType;
+import consulo.fileEditor.FileEditorManager;
+import consulo.ide.IdeView;
+import consulo.language.editor.LangDataKeys;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiFileFactory;
+import consulo.lua.bundle.BaseLuaSdkType;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
+import consulo.navigation.OpenFileDescriptor;
+import consulo.navigation.OpenFileDescriptorFactory;
+import consulo.process.ExecutionException;
+import consulo.process.util.ProcessOutput;
+import consulo.project.Project;
+import consulo.ui.ex.action.AnAction;
+import consulo.ui.ex.action.AnActionEvent;
+import consulo.util.lang.StringUtil;
 import consulo.util.lang.ref.Ref;
+import consulo.virtualFileSystem.VirtualFile;
 
 /**
  * Created by IntelliJ IDEA.

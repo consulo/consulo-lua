@@ -15,9 +15,8 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.controlFlow;
 
-import javax.annotation.Nullable;
-
 import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nullable;
 
 public interface Instruction {
   Iterable<? extends Instruction> succ(CallEnvironment env);

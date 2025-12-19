@@ -16,14 +16,12 @@
 
 package com.sylvanaar.idea.lua.debugger;
 
-import javax.annotation.Nonnull;
-
 import consulo.execution.debug.XSourcePosition;
-import consulo.logging.Logger;
 import consulo.execution.debug.evaluation.XDebuggerEvaluator;
+import consulo.logging.Logger;
 import consulo.project.Project;
-
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

@@ -16,28 +16,26 @@
 
 package com.sylvanaar.idea.lua.lang.formatter.blocks;
 
-import consulo.document.util.TextRange;
-import consulo.language.ast.ASTNode;
-import consulo.language.codeStyle.*;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiErrorElement;
-import consulo.language.psi.PsiWhiteSpace;
-import consulo.logging.Logger;
-import consulo.language.psi.PsiComment;
-import consulo.language.ast.ILazyParseableElementType;
 import com.sylvanaar.idea.lua.lang.formatter.processors.LuaSpacingProcessorBasic;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaBinaryExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.lua.lang.psi.lists.LuaIdentifierList;
 import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
-import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.ILazyParseableElementType;
+import consulo.language.codeStyle.*;
+import consulo.language.psi.PsiComment;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.PsiWhiteSpace;
+import consulo.logging.Logger;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
-
 
 public class LuaFormattingBlock implements Block
 {

@@ -17,8 +17,7 @@
 package com.sylvanaar.idea.lua.lang.luadoc.psi.api;
 
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
-import javax.annotation.Nullable;
-
+import jakarta.annotation.Nullable;
 
 public interface LuaDocCommentOwner extends LuaPsiElement /*, PsiDocCommentOwner */ {
   @Nullable

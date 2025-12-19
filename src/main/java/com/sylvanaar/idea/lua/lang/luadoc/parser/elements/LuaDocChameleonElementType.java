@@ -17,20 +17,12 @@
 package com.sylvanaar.idea.lua.lang.luadoc.parser.elements;
 
 import com.sylvanaar.idea.lua.LuaFileType;
-import consulo.language.Language;
 import consulo.language.ast.ILazyParseableElementType;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
 
 public abstract class LuaDocChameleonElementType extends ILazyParseableElementType
 {
   public LuaDocChameleonElementType(@NonNls String debugName) {
-    super(debugName);
+    super(debugName, LuaFileType.LUA_FILE_TYPE.getLanguage());
   }
-
-  @Nonnull
-  public Language getLanguage() {
-    return LuaFileType.LUA_FILE_TYPE.getLanguage();
-  }
-
 }

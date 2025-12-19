@@ -16,10 +16,9 @@
 
 package com.sylvanaar.idea.lua.lang.psi.expressions;
 
-import javax.annotation.Nullable;
-
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
 import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

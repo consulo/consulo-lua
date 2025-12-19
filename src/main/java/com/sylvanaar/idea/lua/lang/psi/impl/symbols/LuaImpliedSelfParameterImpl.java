@@ -16,13 +16,13 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
-import javax.annotation.Nonnull;
+import consulo.language.ast.ASTNode;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

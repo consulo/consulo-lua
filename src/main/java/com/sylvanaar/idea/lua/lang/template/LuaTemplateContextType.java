@@ -20,14 +20,14 @@ import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.editor.highlighter.LuaSyntaxHighlighter;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.highlight.SyntaxHighlighter;
-import consulo.language.editor.template.context.TemplateContextType;
+import consulo.language.editor.template.context.BaseTemplateContextType;
 import consulo.language.editor.util.PsiUtilBase;
 import consulo.language.psi.PsiComment;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.util.PsiTreeUtil;
-
-import javax.annotation.Nonnull;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -36,9 +36,9 @@ import javax.annotation.Nonnull;
  * Time: 10:45 PM
  */
 @ExtensionImpl
-public class LuaTemplateContextType extends TemplateContextType {
+public class LuaTemplateContextType extends BaseTemplateContextType {
     public LuaTemplateContextType() {
-        super("LUA", "Lua");
+        super("LUA", LocalizeValue.localizeTODO("Lua"));
     }
 
     public boolean isInContext(@Nonnull PsiFile file, int offset) {

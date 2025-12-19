@@ -16,16 +16,15 @@
 
 package com.sylvanaar.idea.lua.editor.highlighter;
 
-import consulo.codeEditor.HighlighterColors;
-import consulo.colorScheme.TextAttributesKey;
-import consulo.language.editor.highlight.SyntaxHighlighterBase;
-import consulo.language.ast.IElementType;
 import com.sylvanaar.idea.lua.lang.lexer.LuaLexer;
 import com.sylvanaar.idea.lua.lang.lexer.LuaTokenTypes;
 import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
+import consulo.codeEditor.HighlighterColors;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.highlight.SyntaxHighlighterBase;
 import consulo.language.lexer.Lexer;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import java.util.HashMap;
 import java.util.Map;

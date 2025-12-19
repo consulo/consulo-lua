@@ -20,8 +20,7 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.execution.ui.console.ConsoleFilterProvider;
 import consulo.execution.ui.console.Filter;
 import consulo.project.Project;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

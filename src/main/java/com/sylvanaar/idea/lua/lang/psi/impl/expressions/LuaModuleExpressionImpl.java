@@ -16,18 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import consulo.document.util.TextRange;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiElementVisitor;
-import consulo.language.psi.PsiReference;
-import consulo.language.psi.ResolveResult;
-import consulo.language.psi.resolve.ResolveState;
-import consulo.language.psi.stub.IStubElementType;
-import consulo.language.util.IncorrectOperationException;
-import consulo.util.lang.StringUtil;
-import consulo.language.psi.resolve.ResolveCache;
-import consulo.language.psi.resolve.PsiScopeProcessor;
-import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
@@ -45,10 +33,22 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.types.*;
 import com.sylvanaar.idea.lua.lang.psi.util.SymbolUtil;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.document.util.TextRange;
 import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiReference;
+import consulo.language.psi.ResolveResult;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveCache;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.List;
 

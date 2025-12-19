@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.lua.lang.psi.types;
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import java.util.Map;
 

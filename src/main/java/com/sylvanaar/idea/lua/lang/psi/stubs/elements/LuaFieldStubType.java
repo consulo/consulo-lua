@@ -16,12 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs.elements;
 
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-
-import consulo.index.io.StringRef;
-import consulo.language.psi.stub.*;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFieldIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.impl.symbols.LuaFieldIdentifierImpl;
 import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubElementType;
@@ -30,7 +24,12 @@ import com.sylvanaar.idea.lua.lang.psi.stubs.impl.LuaFieldStub;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.lua.util.LuaSerializationUtils;
+import consulo.index.io.StringRef;
+import consulo.language.psi.stub.*;
 import consulo.util.lang.Pair;
+import jakarta.annotation.Nonnull;
+
+import java.io.IOException;
 
 /**
 * Created by IntelliJ IDEA.

@@ -16,25 +16,30 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import com.sylvanaar.idea.lua.lang.luadoc.psi.api.*;
-import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.*;
-import com.sylvanaar.idea.lua.lang.parser.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.impl.*;
-import com.sylvanaar.idea.lua.lang.psi.lists.*;
-import com.sylvanaar.idea.lua.lang.psi.statements.*;
-import com.sylvanaar.idea.lua.lang.psi.stubs.api.*;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
-import com.sylvanaar.idea.lua.lang.psi.util.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocComment;
+import com.sylvanaar.idea.lua.lang.luadoc.psi.impl.LuaDocCommentUtil;
+import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaFieldIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaKeyValueInitializer;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
+import com.sylvanaar.idea.lua.lang.psi.impl.LuaStubElementBase;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.statements.LuaAssignmentStatement;
+import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaTableStub;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaNamespacedType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaTable;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.types.StubType;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaAssignment;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.util.PsiTreeUtil;
+import jakarta.annotation.Nonnull;
 
-import java.util.*;
-
-import javax.annotation.Nonnull;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.

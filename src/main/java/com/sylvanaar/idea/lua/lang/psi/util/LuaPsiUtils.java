@@ -15,22 +15,6 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.util;
 
-import java.util.Collection;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import consulo.language.ast.ASTNode;
-import consulo.language.ast.IElementType;
-import consulo.language.psi.resolve.ResolveState;
-import consulo.language.psi.util.PsiTreeUtil;
-import consulo.navigation.ItemPresentation;
-import consulo.document.util.TextRange;
-import consulo.language.file.FileViewProvider;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiErrorElement;
-import consulo.language.psi.resolve.PsiScopeProcessor;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.LuaIcons;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
@@ -48,7 +32,22 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaRecursiveElementVisitor;
+import consulo.document.util.TextRange;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.file.FileViewProvider;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.resolve.PsiScopeProcessor;
+import consulo.language.psi.resolve.ResolveState;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
+import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+
+import java.util.Collection;
 
 
 /**

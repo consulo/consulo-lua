@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.lua.refactoring.introduce;
 
-import com.sylvanaar.idea.lua.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.refactoring.*;
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.refactoring.LuaRefactoringUtil;
 import consulo.document.event.DocumentEvent;
 import consulo.document.event.DocumentListener;
 import consulo.language.editor.ui.awt.EditorComboBoxEditor;
@@ -28,12 +28,12 @@ import consulo.language.editor.ui.awt.StringComboboxEditor;
 import consulo.project.Project;
 import consulo.ui.ex.awt.ComboBox;
 import consulo.ui.ex.awt.DialogWrapper;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nullable;
 import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.event.EventListenerList;
 import java.awt.event.*;
-import java.util.*;
+import java.util.EventListener;
 
 public class LuaIntroduceVariableDialog extends DialogWrapper implements LuaIntroduceDialog<LuaIntroduceVariableSettings> {
 

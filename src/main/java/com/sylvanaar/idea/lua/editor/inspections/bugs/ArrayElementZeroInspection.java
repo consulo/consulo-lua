@@ -16,10 +16,6 @@
 
 package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
@@ -27,7 +23,11 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemsHolder;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
 
 /**
@@ -40,8 +40,8 @@ public class ArrayElementZeroInspection  extends AbstractInspection {
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-        return "Use of element 0";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Use of element 0");
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ArrayElementZeroInspection  extends AbstractInspection {
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 

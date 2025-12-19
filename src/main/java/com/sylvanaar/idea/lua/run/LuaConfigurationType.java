@@ -17,14 +17,15 @@ package com.sylvanaar.idea.lua.run;
 
 import com.sylvanaar.idea.lua.LuaIcons;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.application.Application;
 import consulo.execution.configuration.ConfigurationFactory;
 import consulo.execution.configuration.ConfigurationType;
 import consulo.execution.configuration.RunConfiguration;
 import consulo.execution.configuration.RunConfigurationModule;
+import consulo.localize.LocalizeValue;
 import consulo.project.Project;
 import consulo.ui.image.Image;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 @ExtensionImpl
 public class LuaConfigurationType implements ConfigurationType
@@ -39,12 +40,12 @@ public class LuaConfigurationType implements ConfigurationType
             }
     };
   }
-    public String getDisplayName() {
-        return "Lua Script";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Lua Script");
     }
 
-    public String getConfigurationTypeDescription() {
-        return "Lua run configuration";
+    public LocalizeValue getConfigurationTypeDescription() {
+        return LocalizeValue.localizeTODO("Lua run configuration");
     }
 
     public Image getIcon() {
@@ -57,7 +58,7 @@ public class LuaConfigurationType implements ConfigurationType
     }
 
     public static LuaConfigurationType getInstance() {
-        return EP_NAME.findExtensionOrFail(LuaConfigurationType.class);
+        return Application.get().getExtensionPoint(ConfigurationType.class).findExtensionOrFail(LuaConfigurationType.class);
     }
 
     public ConfigurationFactory[] getConfigurationFactories() {

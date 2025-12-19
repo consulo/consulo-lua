@@ -15,9 +15,6 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.dataFlow.reachingDefs;
 
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiManager;
-import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.lua.lang.psi.LuaControlFlowOwner;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
@@ -29,10 +26,13 @@ import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiManager;
+import consulo.language.psi.util.PsiTreeUtil;
 import consulo.util.collection.primitive.ints.*;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.IntConsumer;
 

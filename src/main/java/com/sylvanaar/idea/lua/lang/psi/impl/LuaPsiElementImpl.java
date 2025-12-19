@@ -16,23 +16,22 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl;
 
-import javax.annotation.Nonnull;
-
+import com.sylvanaar.idea.lua.LuaFileType;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
 import consulo.language.impl.ast.ChangeUtil;
 import consulo.language.impl.ast.CompositeElement;
 import consulo.language.impl.ast.TreeElement;
 import consulo.language.impl.psi.ASTWrapperPsiElement;
-import consulo.language.ast.ASTNode;
-import consulo.language.Language;
-import consulo.language.impl.psi.SourceTreeToPsiMap;
-import consulo.language.psi.PsiElementVisitor;
-import consulo.logging.Logger;
-import consulo.language.psi.PsiElement;
 import consulo.language.impl.psi.CheckUtil;
+import consulo.language.impl.psi.SourceTreeToPsiMap;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
 import consulo.language.util.IncorrectOperationException;
-import com.sylvanaar.idea.lua.LuaFileType;
-import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
-import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.logging.Logger;
+import jakarta.annotation.Nonnull;
 
 public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiElement  {
     private static final Logger log = Logger.getInstance("Lua.LuaPsiElementImpl");

@@ -16,10 +16,6 @@
 
 package com.sylvanaar.idea.lua.refactoring.introduce;
 
-import consulo.language.psi.util.PsiTreeUtil;
-import consulo.logging.Logger;
-import consulo.language.psi.PsiElement;
-import consulo.language.util.IncorrectOperationException;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFileBase;
 import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
@@ -34,11 +30,14 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaStatementOwner;
 import com.sylvanaar.idea.lua.refactoring.LuaRefactoringUtil;
-import javax.annotation.Nonnull;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
+import consulo.logging.Logger;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 import java.util.ArrayList;
-
-import javax.annotation.Nullable;
 
 /**
  * @author ilyas

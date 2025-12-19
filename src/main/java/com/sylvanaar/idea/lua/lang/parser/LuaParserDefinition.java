@@ -38,8 +38,7 @@ import consulo.language.psi.PsiFile;
 import consulo.language.psi.stub.IStubFileElementType;
 import consulo.language.util.LanguageUtil;
 import consulo.language.version.LanguageVersion;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 import static com.sylvanaar.idea.lua.lang.parser.LuaElementTypes.*;
 

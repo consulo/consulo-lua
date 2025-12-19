@@ -19,8 +19,7 @@ package com.sylvanaar.idea.lua;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.virtualFileSystem.fileType.FileTypeConsumer;
 import consulo.virtualFileSystem.fileType.FileTypeFactory;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.

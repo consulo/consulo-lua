@@ -19,8 +19,7 @@ package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.impl.LuaPsiElementImpl;
 import consulo.language.ast.ASTNode;
-
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 
 /**
  * @author ilyas

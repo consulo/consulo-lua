@@ -16,16 +16,15 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs.impl;
 
-import consulo.language.psi.stub.NamedStubBase;
-import consulo.language.psi.stub.StubElement;
-import consulo.index.io.StringRef;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.stubs.api.LuaGlobalDeclarationStub;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobalDeclaration;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import consulo.index.io.StringRef;
 import consulo.language.psi.stub.IStubElementType;
-
-import javax.annotation.Nullable;
+import consulo.language.psi.stub.NamedStubBase;
+import consulo.language.psi.stub.StubElement;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

@@ -16,12 +16,10 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.api;
 
-import javax.annotation.Nonnull;
-
 import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nullable;
 
 public interface LuaDocComment extends /*PsiDocComment,*/ LuaDocPsiElement {
 

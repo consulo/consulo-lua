@@ -16,13 +16,12 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs;
 
-import javax.annotation.Nonnull;
-
-import com.sylvanaar.idea.lua.lang.psi.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import consulo.language.psi.PsiFile;
 import consulo.language.psi.stub.DefaultStubBuilder;
 import consulo.language.psi.stub.StubElement;
 import consulo.logging.Logger;
+import jakarta.annotation.Nonnull;
 
 
 public class LuaFileStubBuilder extends DefaultStubBuilder

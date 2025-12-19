@@ -31,8 +31,8 @@ import consulo.language.editor.folding.CodeFoldingSettings;
 import consulo.language.editor.folding.FoldingBuilder;
 import consulo.language.editor.folding.FoldingDescriptor;
 import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nonnull;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 

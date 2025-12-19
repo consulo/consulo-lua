@@ -16,22 +16,18 @@
 
 package com.sylvanaar.idea.lua.lang.formatter.processors;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.codeStyle.Indent;
-import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.lua.lang.formatter.blocks.LuaFormattingBlock;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.lua.lang.psi.lists.LuaFunctionArguments;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaBlock;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaStatementElement;
+import consulo.language.ast.ASTNode;
+import consulo.language.codeStyle.Indent;
 import consulo.language.psi.PsiComment;
 import consulo.language.psi.PsiElement;
-
-import javax.annotation.Nullable;
-
-
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public abstract class LuaIndentProcessor implements LuaElementTypes {
  

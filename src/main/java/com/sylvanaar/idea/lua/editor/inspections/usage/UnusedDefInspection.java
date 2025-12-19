@@ -15,14 +15,6 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.usage;
 
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.editor.inspection.UnfairLocalInspectionTool;
-import consulo.language.psi.PsiElementVisitor;
-import consulo.language.psi.PsiReference;
-import consulo.logging.Logger;
-import consulo.application.progress.ProgressIndicatorProvider;
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiFile;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.psi.LuaControlFlowOwner;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
@@ -37,15 +29,24 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocal;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.application.progress.ProgressIndicatorProvider;
 import consulo.language.editor.inspection.ProblemHighlightType;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.inspection.UnfairLocalInspectionTool;
 import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiReference;
+import consulo.localize.LocalizeValue;
+import consulo.logging.Logger;
 import consulo.util.collection.primitive.ints.IntObjConsumer;
 import consulo.util.collection.primitive.ints.IntObjectMap;
 import consulo.util.collection.primitive.ints.IntSet;
 import consulo.util.collection.primitive.ints.IntSets;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.function.IntConsumer;
 
@@ -64,7 +65,7 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
     @Override
     @Nls
     @Nonnull
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return DATA_FLOW;
     }
 
@@ -77,8 +78,8 @@ public class UnusedDefInspection extends AbstractInspection implements UnfairLoc
     @Override
     @Nls
     @Nonnull
-    public String getDisplayName() {
-        return "Unused Assignment";
+    public LocalizeValue getDisplayName() {
+        return LocalizeValue.localizeTODO("Unused Assignment");
     }
 
     @Nonnull

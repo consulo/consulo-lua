@@ -15,8 +15,8 @@
  */
 package com.sylvanaar.idea.lua.intentions.utils;
 
-import javax.annotation.Nullable;
 import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nullable;
 
 public class TreeUtil {
   private TreeUtil() {

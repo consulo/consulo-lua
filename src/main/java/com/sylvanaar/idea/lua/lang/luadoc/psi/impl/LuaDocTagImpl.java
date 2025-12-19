@@ -16,22 +16,21 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
-import consulo.language.ast.ASTNode;
-import consulo.language.psi.PsiElement;
-import consulo.language.ast.TokenSet;
 import com.sylvanaar.idea.lua.lang.luadoc.psi.api.*;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElementFactory;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.TokenSet;
+import consulo.language.psi.PsiElement;
 import consulo.language.util.IncorrectOperationException;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import java.util.List;
 
 import static com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes.*;
-
 
 /**
  * @author ilyas

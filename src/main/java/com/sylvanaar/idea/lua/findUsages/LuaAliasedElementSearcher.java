@@ -15,7 +15,6 @@
  */
 package com.sylvanaar.idea.lua.findUsages;
 
-import consulo.application.util.function.Processor;
 import consulo.content.scope.SearchScope;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiNamedElement;
@@ -25,9 +24,10 @@ import consulo.language.psi.search.ReferencesSearch;
 import consulo.language.psi.search.SearchSession;
 import consulo.project.util.query.QueryExecutorBase;
 import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
 public class LuaAliasedElementSearcher extends QueryExecutorBase<PsiReference, ReferencesSearch.SearchParameters> {
 
@@ -36,7 +36,7 @@ public class LuaAliasedElementSearcher extends QueryExecutorBase<PsiReference, R
     }
 
     @Override
-    public void processQuery(@Nonnull ReferencesSearch.SearchParameters parameters, @Nonnull Processor<? super PsiReference> consumer) {
+    public void processQuery(@Nonnull ReferencesSearch.SearchParameters parameters, @Nonnull Predicate<? super PsiReference> consumer) {
         final PsiElement target = parameters.getElementToSearch();
       if (!(target instanceof PsiNamedElement)) {
         return;
@@ -66,7 +66,7 @@ public class LuaAliasedElementSearcher extends QueryExecutorBase<PsiReference, R
         }
 
         @Override
-        public boolean processTextOccurrence(final PsiElement element, int offsetInElement, Processor<? super PsiReference> consumer) {
+        public boolean processTextOccurrence(final PsiElement element, int offsetInElement, Predicate<? super PsiReference> consumer) {
             String alias = element.getText();
           if (alias == null) {
             return true;

@@ -16,11 +16,6 @@
 
 package com.sylvanaar.idea.lua.lang.psi.stubs.elements;
 
-import java.io.IOException;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaTableConstructor;
 import com.sylvanaar.idea.lua.lang.psi.impl.expressions.LuaTableConstructorImpl;
 import com.sylvanaar.idea.lua.lang.psi.stubs.LuaStubElementType;
@@ -29,6 +24,10 @@ import com.sylvanaar.idea.lua.lang.psi.stubs.impl.LuaTableStubImpl;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaTable;
 import com.sylvanaar.idea.lua.util.LuaSerializationUtils;
 import consulo.language.psi.stub.*;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+
+import java.io.IOException;
 
 /**
  * Created by IntelliJ IDEA.

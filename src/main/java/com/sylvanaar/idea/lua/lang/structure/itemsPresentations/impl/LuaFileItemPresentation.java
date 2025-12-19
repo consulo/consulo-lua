@@ -15,14 +15,12 @@
  */
 package com.sylvanaar.idea.lua.lang.structure.itemsPresentations.impl;
 
-import javax.annotation.Nullable;
-
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.lua.lang.structure.itemsPresentations.LuaItemPresentation;
 import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.ui.image.Image;
-
+import jakarta.annotation.Nullable;
 
 public class LuaFileItemPresentation extends LuaItemPresentation {
   public LuaFileItemPresentation(LuaPsiFile myElement) {

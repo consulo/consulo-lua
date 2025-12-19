@@ -1,15 +1,17 @@
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.resolve.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
-import com.sylvanaar.idea.lua.lang.psi.util.*;
-import com.sylvanaar.idea.lua.lang.psi.visitor.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolver;
+import com.sylvanaar.idea.lua.lang.psi.resolve.ResolveUtil;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaGlobal;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaIdentifier;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
+import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.document.util.TextRange;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.*;
@@ -17,6 +19,8 @@ import consulo.language.psi.resolve.ResolveCache;
 import consulo.language.util.IncorrectOperationException;
 import consulo.project.Project;
 import consulo.util.lang.StringUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 
 /**

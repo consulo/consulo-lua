@@ -18,7 +18,7 @@ package com.sylvanaar.idea.lua.lang.psi.statements;
 
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

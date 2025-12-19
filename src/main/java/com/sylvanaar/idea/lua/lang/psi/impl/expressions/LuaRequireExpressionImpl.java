@@ -16,15 +16,15 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.sylvanaar.idea.lua.lang.psi.*;
-import com.sylvanaar.idea.lua.lang.psi.expressions.*;
-import com.sylvanaar.idea.lua.lang.psi.lists.*;
-import com.sylvanaar.idea.lua.lang.psi.resolve.*;
-import com.sylvanaar.idea.lua.lang.psi.symbols.*;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.LuaReferenceElement;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaLiteralExpression;
+import com.sylvanaar.idea.lua.lang.psi.expressions.LuaRequireExpression;
+import com.sylvanaar.idea.lua.lang.psi.lists.LuaExpressionList;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolveResult;
+import com.sylvanaar.idea.lua.lang.psi.resolve.LuaResolver;
+import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 import consulo.document.util.TextRange;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
@@ -34,7 +34,9 @@ import consulo.language.psi.resolve.ResolveCache;
 import consulo.language.util.IncorrectOperationException;
 import consulo.util.collection.ArrayUtil;
 import consulo.util.lang.StringUtil;
-import org.jetbrains.annotations.*;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+import org.jetbrains.annotations.NonNls;
 
 /**
  * Created by IntelliJ IDEA.

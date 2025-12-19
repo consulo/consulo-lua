@@ -21,13 +21,15 @@ import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.lua.util.LuaSystemUtil;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.application.Application;
 import consulo.application.util.SystemInfo;
+import consulo.content.bundle.SdkType;
 import consulo.execution.runner.ExecutionEnvironment;
 import consulo.process.ExecutionException;
-import consulo.process.local.ProcessOutput;
+import consulo.process.util.ProcessOutput;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,7 +43,7 @@ import java.util.List;
 public class BaseLuaSdkType extends LuaSdkType {
     @Nonnull
     public static BaseLuaSdkType getInstance() {
-        return EP_NAME.findExtensionOrFail(BaseLuaSdkType.class);
+        return Application.get().getExtensionPoint(SdkType.class).findExtensionOrFail(BaseLuaSdkType.class);
     }
 
     public BaseLuaSdkType() {

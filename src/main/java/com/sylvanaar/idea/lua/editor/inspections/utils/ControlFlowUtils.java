@@ -15,16 +15,13 @@
  */
 package com.sylvanaar.idea.lua.editor.inspections.utils;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.psi.util.PsiTreeUtil;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaConditionalExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.*;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
-
-import javax.annotation.Nullable;
-
+import consulo.language.psi.util.PsiTreeUtil;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 @SuppressWarnings({"OverlyComplexClass"})
 public class ControlFlowUtils {

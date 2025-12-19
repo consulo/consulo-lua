@@ -16,12 +16,11 @@
 
 package com.sylvanaar.idea.lua.lang.luadoc.lexer;
 
-import consulo.language.ast.IElementType;
 import consulo.language.Language;
+import consulo.language.ast.IElementType;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * @author ilyas

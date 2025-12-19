@@ -16,9 +16,9 @@
 
 package consulo.lua.debugger.breakpoint;
 
-import javax.annotation.Nullable;
-import consulo.util.xml.serializer.XmlSerializerUtil;
 import consulo.execution.debug.breakpoint.XBreakpointProperties;
+import consulo.util.xml.serializer.XmlSerializerUtil;
+import jakarta.annotation.Nullable;
 
 /**
  * @author VISTALL

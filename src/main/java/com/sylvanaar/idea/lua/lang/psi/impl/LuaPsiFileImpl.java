@@ -40,9 +40,9 @@ import consulo.language.psi.resolve.ResolveState;
 import consulo.language.util.IncorrectOperationException;
 import consulo.logging.Logger;
 import consulo.virtualFileSystem.fileType.FileType;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.*;
 
 /**

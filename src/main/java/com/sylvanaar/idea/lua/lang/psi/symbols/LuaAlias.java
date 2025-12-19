@@ -16,9 +16,9 @@
 
 package com.sylvanaar.idea.lua.lang.psi.symbols;
 
-import consulo.language.psi.PsiElement;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
-import javax.annotation.Nullable;
+import consulo.language.psi.PsiElement;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

@@ -16,18 +16,19 @@
 
 package com.sylvanaar.idea.lua.editor.inspections.bugs;
 
-import consulo.language.editor.inspection.ProblemsHolder;
-import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
-import consulo.language.editor.inspection.LocalQuickFix;
-import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.lua.editor.inspections.AbstractInspection;
 import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaParameter;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.editor.inspection.LocalQuickFix;
+import consulo.language.editor.inspection.ProblemsHolder;
+import consulo.language.editor.rawHighlight.HighlightDisplayLevel;
+import consulo.language.psi.PsiElementVisitor;
+import consulo.localize.LocalizeValue;
+import jakarta.annotation.Nonnull;
 import org.jetbrains.annotations.Nls;
-import javax.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
@@ -39,8 +40,8 @@ public class ParameterSelfInspection extends AbstractInspection {
     @Nls
     @Nonnull
     @Override
-    public String getDisplayName() {
-       return "Parameter hides implicit self";
+    public LocalizeValue getDisplayName() {
+       return LocalizeValue.localizeTODO("Parameter hides implicit self");
     }
 
     @Override
@@ -50,7 +51,7 @@ public class ParameterSelfInspection extends AbstractInspection {
 
     @Nonnull
     @Override
-    public String getGroupDisplayName() {
+    public LocalizeValue getGroupDisplayName() {
         return PROBABLE_BUGS;
     }
 

@@ -15,10 +15,6 @@
  */
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.psi.PsiElement;
-import consulo.language.psi.PsiElementVisitor;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
@@ -29,8 +25,11 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaUpvalueIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiElementVisitor;
 import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.language.psi.resolve.ResolveState;
+import jakarta.annotation.Nonnull;
 
 public class LuaParameterImpl extends LuaLocalDeclarationImpl implements LuaParameter {
     public LuaParameterImpl(@Nonnull

@@ -16,13 +16,12 @@
 package com.sylvanaar.idea.lua;
 
 
-import javax.annotation.Nonnull;
-
+import com.intellij.testFramework.TestModuleDescriptor;
 import consulo.content.bundle.Sdk;
 import consulo.module.Module;
-import consulo.module.content.layer.ModifiableRootModel;
-import com.intellij.testFramework.TestModuleDescriptor;
 import consulo.module.content.layer.ContentEntry;
+import consulo.module.content.layer.ModifiableRootModel;
+import jakarta.annotation.Nonnull;
 
 import java.util.function.Consumer;
 

@@ -16,7 +16,7 @@
 
 package com.sylvanaar.idea.lua.lang.psi.symbols;
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 
 /**
  * Created by IntelliJ IDEA.

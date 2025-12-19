@@ -16,14 +16,14 @@
 
 package com.sylvanaar.idea.lua.lang.psi.impl.expressions;
 
-import javax.annotation.Nonnull;
-
-import consulo.language.ast.ASTNode;
 import com.sylvanaar.idea.lua.lang.parser.LuaElementTypes;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaExpression;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaParenthesizedExpression;
-import com.sylvanaar.idea.lua.lang.psi.types.*;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
+import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.language.ast.ASTNode;
+import jakarta.annotation.Nonnull;
 
 /**
  * Created by IntelliJ IDEA.
