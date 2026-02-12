@@ -25,6 +25,7 @@ import consulo.application.Application;
 import consulo.application.util.SystemInfo;
 import consulo.content.bundle.SdkType;
 import consulo.execution.runner.ExecutionEnvironment;
+import consulo.localize.LocalizeValue;
 import consulo.process.ExecutionException;
 import consulo.process.util.ProcessOutput;
 import jakarta.annotation.Nonnull;
@@ -47,7 +48,7 @@ public class BaseLuaSdkType extends LuaSdkType {
     }
 
     public BaseLuaSdkType() {
-        super("LUA_SDK");
+        super("LUA_SDK", LocalizeValue.localizeTODO("Lua SDK"));
     }
 
     @Nonnull
@@ -148,12 +149,6 @@ public class BaseLuaSdkType extends LuaSdkType {
         }
 
         return stdout.split(" ");
-    }
-
-    @Nonnull
-    @Override
-    public String getPresentableName() {
-        return "Lua SDK";
     }
 
     @Nonnull

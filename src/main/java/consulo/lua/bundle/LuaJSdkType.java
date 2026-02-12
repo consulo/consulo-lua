@@ -23,6 +23,7 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.application.Application;
 import consulo.content.bundle.SdkType;
 import consulo.execution.runner.ExecutionEnvironment;
+import consulo.localize.LocalizeValue;
 import consulo.process.ExecutionException;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
@@ -32,61 +33,45 @@ import jakarta.annotation.Nullable;
  * @since 10.03.2015
  */
 @ExtensionImpl
-public class LuaJSdkType extends LuaSdkType
-{
-	@Nonnull
-	public static LuaJSdkType getInstance()
-	{
-		return Application.get().getExtensionPoint(SdkType.class).findExtensionOrFail(LuaJSdkType.class);
-	}
+public class LuaJSdkType extends LuaSdkType {
+    @Nonnull
+    public static LuaJSdkType getInstance() {
+        return Application.get().getExtensionPoint(SdkType.class).findExtensionOrFail(LuaJSdkType.class);
+    }
 
-	public LuaJSdkType()
-	{
-		super("LUAJ_SDK");
-	}
+    public LuaJSdkType() {
+        super("LUAJ_SDK", LocalizeValue.localizeTODO("LuaJ"));
+    }
 
-	@Override
-	public boolean supportsUserAdd()
-	{
-		return false;
-	}
+    @Override
+    public boolean supportsUserAdd() {
+        return false;
+    }
 
-	@Override
-	public boolean isValidSdkHome(String path)
-	{
-		return false;
-	}
+    @Override
+    public boolean isValidSdkHome(String path) {
+        return false;
+    }
 
-	@Nullable
-	@Override
-	public String getVersionString(String sdkHome)
-	{
-		return null;
-	}
+    @Nullable
+    @Override
+    public String getVersionString(String sdkHome) {
+        return null;
+    }
 
-	@Override
-	public String suggestSdkName(String currentSdkName, String sdkHome)
-	{
-		return null;
-	}
+    @Override
+    public String suggestSdkName(String currentSdkName, String sdkHome) {
+        return getDisplayName().get();
+    }
 
-	@Nonnull
-	@Override
-	public String getPresentableName()
-	{
-		return "LuaJ";
-	}
-
-	@Nonnull
-	@Override
-	public LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration,
-			ExecutionEnvironment env,
-			boolean isDebugger) throws ExecutionException
-	{
-		if(isDebugger)
-		{
-			throw new ExecutionException("Debugger is not supported");
-		}
-		return new LuaJExternalCommandLineState(luaRunConfiguration, env);
-	}
+    @Nonnull
+    @Override
+    public LuaCommandLineState createCommandLinState(LuaRunConfiguration luaRunConfiguration,
+                                                     ExecutionEnvironment env,
+                                                     boolean isDebugger) throws ExecutionException {
+        if (isDebugger) {
+            throw new ExecutionException("Debugger is not supported");
+        }
+        return new LuaJExternalCommandLineState(luaRunConfiguration, env);
+    }
 }

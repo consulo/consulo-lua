@@ -26,12 +26,11 @@ import consulo.content.bundle.Sdk;
 import consulo.content.bundle.SdkModificator;
 import consulo.content.bundle.SdkType;
 import consulo.execution.runner.ExecutionEnvironment;
+import consulo.localize.LocalizeValue;
 import consulo.process.ExecutionException;
-import consulo.ui.image.Image;
 import consulo.virtualFileSystem.LocalFileSystem;
 import consulo.virtualFileSystem.VirtualFile;
 import jakarta.annotation.Nonnull;
-import org.jetbrains.annotations.NonNls;
 
 import java.io.File;
 
@@ -40,8 +39,8 @@ import java.io.File;
  * @since 10.03.2015
  */
 public abstract class LuaSdkType extends SdkType {
-    public LuaSdkType(@NonNls String name) {
-        super(name);
+    public LuaSdkType(@Nonnull String id, @Nonnull LocalizeValue displayName) {
+        super(id, displayName, LuaIcons.LUA_ICON);
     }
 
     @Nonnull
@@ -67,11 +66,5 @@ public abstract class LuaSdkType extends SdkType {
     @Nonnull
     public File getStdLibraryDirectory() {
         return new File(PluginManager.getPluginPath(LuaSdkType.class), "stdlibrary");
-    }
-
-    @Override
-    @Nonnull
-    public Image getIcon() {
-        return LuaIcons.LUA_ICON;
     }
 }
