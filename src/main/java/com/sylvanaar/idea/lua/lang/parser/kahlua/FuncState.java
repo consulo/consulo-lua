@@ -478,7 +478,7 @@ public class FuncState {
 			idx = ((Integer) htable.get(v)).intValue();
 		} else {
 			idx = this.nk;
-			this.htable.put(v, new Integer(idx));
+			this.htable.put(v, Integer.valueOf(idx));
 			final Prototype f = this.f;
 			if (f.constants == null || nk + 1 >= f.constants.length)
 				f.constants = realloc( f.constants, nk*2 + 1 );
@@ -495,7 +495,7 @@ public class FuncState {
 	}
 
 	int numberK(double r) {
-		return this.addk(new Double(r));
+		return this.addk(Double.valueOf(r));
 	}
 
 	int boolK(boolean b) {
