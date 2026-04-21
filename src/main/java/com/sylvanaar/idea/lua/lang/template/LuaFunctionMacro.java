@@ -20,6 +20,7 @@ import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaAnonymousFunctionExpression;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.language.editor.completion.lookup.LookupElement;
 import consulo.language.editor.template.Expression;
@@ -30,13 +31,12 @@ import consulo.language.editor.template.macro.Macro;
 import consulo.language.psi.PsiDocumentManager;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
 import jakarta.annotation.Nonnull;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Jon S Akhtar
- * Date: 2/25/11
- * Time: 1:35 PM
+ * @author Jon S Akhtar
+ * @since 2011-02-25
  */
 @ExtensionImpl
 public class LuaFunctionMacro extends Macro {
@@ -46,8 +46,8 @@ public class LuaFunctionMacro extends Macro {
     }
 
     @Override
-    public String getPresentableName() {
-        return "currentLuaFunction()";
+    public LocalizeValue getPresentableName() {
+        return LocalizeValue.of("currentLuaFunction()");
     }
 
     @Nonnull
@@ -57,9 +57,10 @@ public class LuaFunctionMacro extends Macro {
     }
 
     @Override
+    @RequiredReadAction
     public Result calculateResult(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
-        PsiFile file = PsiDocumentManager.getInstance(expressionContext.getProject()).getPsiFile(
-                expressionContext.getEditor().getDocument());
+        PsiFile file = PsiDocumentManager.getInstance(expressionContext.getProject())
+            .getPsiFile(expressionContext.getEditor().getDocument());
 
         if (file instanceof LuaPsiFile) {
             PsiElement e = file.findElementAt(expressionContext.getTemplateStartOffset());
@@ -70,15 +71,14 @@ public class LuaFunctionMacro extends Macro {
                 }
 
                 e = e.getContext();
-
             }
 
             if (e == null) {
                 return null;
             }
 
-            if (e instanceof LuaFunctionDefinitionStatement) {
-                String name = ((LuaFunctionDefinitionStatement) e).getIdentifier().getName();
+            if (e instanceof LuaFunctionDefinitionStatement funDef) {
+                String name = funDef.getIdentifier().getName();
 
                 if (name != null) {
                     return new TextResult(name);
@@ -99,8 +99,7 @@ public class LuaFunctionMacro extends Macro {
     }
 
     @Override
-    public LookupElement[] calculateLookupItems(@Nonnull Expression[] expressions,
-                                                ExpressionContext expressionContext) {
+    public LookupElement[] calculateLookupItems(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
         return new LookupElement[0];
     }
 }
