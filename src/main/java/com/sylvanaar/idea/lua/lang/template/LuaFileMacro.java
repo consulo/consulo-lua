@@ -26,13 +26,12 @@ import consulo.language.editor.template.TextResult;
 import consulo.language.editor.template.macro.Macro;
 import consulo.language.psi.PsiDocumentManager;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
 import jakarta.annotation.Nonnull;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Jon S Akhtar
- * Date: 2/25/11
- * Time: 1:35 PM
+ * @author Jon S Akhtar
+ * @since 2011-02-25
  */
 @ExtensionImpl
 public class LuaFileMacro extends Macro {
@@ -42,8 +41,8 @@ public class LuaFileMacro extends Macro {
     }
 
     @Override
-    public String getPresentableName() {
-        return "currentLuaFile()";
+    public LocalizeValue getPresentableName() {
+        return LocalizeValue.of("currentLuaFile()");
     }
 
     @Nonnull
@@ -54,8 +53,8 @@ public class LuaFileMacro extends Macro {
 
     @Override
     public Result calculateResult(@Nonnull Expression[] expressions, ExpressionContext expressionContext) {
-        PsiFile file = PsiDocumentManager.getInstance(
-                expressionContext.getProject()).getPsiFile(expressionContext.getEditor().getDocument());
+        PsiFile file = PsiDocumentManager.getInstance(expressionContext.getProject())
+            .getPsiFile(expressionContext.getEditor().getDocument());
 
         if (file instanceof LuaPsiFile) {
             return new TextResult(file.getName());
