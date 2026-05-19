@@ -86,8 +86,8 @@ public class LuaSystemUtil {
 
     public static void addStdPaths(@Nonnull final GeneralCommandLine cmd, @Nonnull final Sdk sdk) {
         final List<VirtualFile> files = new ArrayList<VirtualFile>();
-        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(SourcesOrderRootType.getInstance())));
-        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(BinariesOrderRootType.getInstance())));
+        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(SourcesOrderRootType.ID)));
+        files.addAll(Arrays.asList(sdk.getRootProvider().getFiles(BinariesOrderRootType.ID)));
         final Set<String> paths = new HashSet<String>();
         for (final VirtualFile file : files) {
             paths.add(LuaFileUtil.getPathToDisplay(file));

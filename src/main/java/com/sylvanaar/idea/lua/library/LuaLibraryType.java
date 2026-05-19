@@ -82,7 +82,7 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
             @Override
             public void addRoots(@Nonnull LibraryEditor editor) {
                 for (VirtualFile file : files) {
-                    editor.addRoot(file, BinariesOrderRootType.getInstance());
+                    editor.addRoot(file, BinariesOrderRootType.ID);
                 }
             }
         };

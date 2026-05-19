@@ -48,8 +48,8 @@ public abstract class LuaSdkType extends SdkType {
                                                               boolean isDebugger) throws ExecutionException;
 
     @Override
-    public boolean isRootTypeApplicable(OrderRootType type) {
-        return type == BinariesOrderRootType.getInstance();
+    public boolean isRootTypeApplicable(String type) {
+        return BinariesOrderRootType.ID.equals(type);
     }
 
     @Override
@@ -58,7 +58,7 @@ public abstract class LuaSdkType extends SdkType {
 
         VirtualFile stdlibrary = LocalFileSystem.getInstance().findFileByIoFile(getStdLibraryDirectory());
         if (stdlibrary != null) {
-            sdkModificator.addRoot(stdlibrary, BinariesOrderRootType.getInstance());
+            sdkModificator.addRoot(stdlibrary, BinariesOrderRootType.ID);
         }
         sdkModificator.commitChanges();
     }

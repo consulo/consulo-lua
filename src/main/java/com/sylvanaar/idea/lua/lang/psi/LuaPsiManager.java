@@ -319,7 +319,7 @@ public class LuaPsiManager {
         public boolean process(OrderEntry orderEntry) {
             log.debug("process " + orderEntry.getPresentableName());
             final List<InferenceCapable> files = new ArrayList<>();
-            for (final VirtualFile f : orderEntry.getFiles(BinariesOrderRootType.getInstance())) {
+            for (final VirtualFile f : orderEntry.getFiles(BinariesOrderRootType.ID)) {
                 log.debug("process class " + f.getName());
                 processRoot(files, f);
             }
