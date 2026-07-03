@@ -42,6 +42,7 @@ import consulo.process.util.ProcessOutput;
 import consulo.project.Project;
 import consulo.ui.ex.action.AnAction;
 import consulo.ui.ex.action.AnActionEvent;
+import consulo.ui.ex.action.AnActionWithSyncUpdate;
 import consulo.util.lang.StringUtil;
 import consulo.util.lang.ref.Ref;
 import consulo.virtualFileSystem.VirtualFile;
@@ -52,7 +53,7 @@ import consulo.virtualFileSystem.VirtualFile;
  * Date: 8/5/11
  * Time: 8:55 AM
  */
-public class GenerateLuaListingAction extends AnAction {
+public class GenerateLuaListingAction extends AnAction implements AnActionWithSyncUpdate {
     @Override
     public void update(AnActionEvent e) {
         e.getPresentation().setVisible(false);

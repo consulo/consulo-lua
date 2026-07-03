@@ -33,8 +33,7 @@ import consulo.ui.ex.action.AnActionEvent;
  * Date: 1/27/12
  * Time: 2:44 PM
  */
-public class InferFile extends AnAction
-{
+public class InferFile extends AnAction {
     @Override
     public void actionPerformed(AnActionEvent e) {
         Project project = e.getData(LangDataKeys.PROJECT);
