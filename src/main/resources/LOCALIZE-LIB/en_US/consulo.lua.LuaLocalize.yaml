@@ -78,10 +78,30 @@ program.parameters:
   text: program parms
 run.configuration.classpath.from.module.choose:
   text: Create Property
+run.configuration.common.options:
+  text: Common options
+run.configuration.interpreter.options.label:
+  text: 'Interpreter options:'
+run.configuration.interpreter.path.label:
+  text: 'Lua interpreter:'
+run.configuration.script.name.label:
+  text: 'Script name:'
+run.configuration.script.parameters.label:
+  text: 'Script parameters:'
+run.configuration.select.interpreter.title:
+  text: Select Lua Interpreter
+run.configuration.select.script.title:
+  text: Select Script
+run.configuration.select.working.directory.title:
+  text: Select Working Directory
 run.configuration.title:
   text: Execute Lua Script
 run.configuration.type.description:
   text: Execute the script using the Lua interpreter
+run.configuration.use.module.sdk:
+  text: Use Module SDK
+run.configuration.working.directory.label:
+  text: 'Working directory:'
 show.smth:
   text: show smth
 vm.parameters:

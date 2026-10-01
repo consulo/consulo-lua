@@ -124,7 +124,7 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 		to.setInterpreterPath(from.getInterpreterPath());
 		to.setOverrideSDKInterpreter(from.isOverrideSDKInterpreter());
 		//        to.setUsingLuaJInterpreter(from.isUsingLuaJInterpreter());
-		//to.setPassParentEnvs(from.isPassParentEnvs());
+		to.setPassParentEnvs(from.isPassParentEnvs());
 	}
 
 	public static void copyParams(LuaRunConfigurationParams from, LuaRunConfigurationParams to)
@@ -257,11 +257,13 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 		this.workingDirectory = workingDirectory;
 	}
 
+	@Override
 	public boolean isPassParentEnvs()
 	{
 		return passParentEnvs;
 	}
 
+	@Override
 	public void setPassParentEnvs(boolean passParentEnvs)
 	{
 		this.passParentEnvs = passParentEnvs;

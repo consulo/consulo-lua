@@ -18,9 +18,9 @@ package com.sylvanaar.idea.lua.run;
 
 import consulo.configurable.ConfigurationException;
 import consulo.execution.configuration.ui.SettingsEditor;
-import jakarta.annotation.Nonnull;
-
-import javax.swing.*;
+import consulo.ui.Component;
+import consulo.ui.annotation.RequiredUIAccess;
+import jakarta.annotation.Nullable;
 
 /**
  * Uses code from the intellij-batch plugin.
@@ -28,27 +28,41 @@ import javax.swing.*;
  * @author wibotwi, jansorg
  */
 public class LuaRunConfigurationEditor extends SettingsEditor<LuaRunConfiguration> {
+    private final LuaRunConfiguration myConfiguration;
+
+    @Nullable
     private LuaRunConfigurationForm myForm;
 
     public LuaRunConfigurationEditor(LuaRunConfiguration batchRunConfiguration) {
-        this.myForm = new LuaRunConfigurationForm(batchRunConfiguration);
+        myConfiguration = batchRunConfiguration;
     }
 
     @Override
+    @RequiredUIAccess
+    protected Component createUIComponent() {
+        LuaRunConfigurationForm form = new LuaRunConfigurationForm(myConfiguration);
+        myForm = form;
+        return form.getComponent();
+    }
+
+    @Override
+    @RequiredUIAccess
     protected void resetEditorFrom(LuaRunConfiguration runConfiguration) {
-        LuaRunConfiguration.copyParams(runConfiguration, myForm);
+        LuaRunConfigurationForm form = myForm;
+        if (form == null) {
+            return;
+        }
+        LuaRunConfiguration.copyParams(runConfiguration, form);
     }
 
     @Override
-    protected void applyEditorTo(LuaRunConfiguration runConfiguration) throws ConfigurationException
-	{
-        LuaRunConfiguration.copyParams(myForm, runConfiguration);
-    }
-
-    @Override
-    @Nonnull
-    protected JComponent createEditor() {
-        return myForm.getRootPanel();
+    @RequiredUIAccess
+    protected void applyEditorTo(LuaRunConfiguration runConfiguration) throws ConfigurationException {
+        LuaRunConfigurationForm form = myForm;
+        if (form == null) {
+            return;
+        }
+        LuaRunConfiguration.copyParams(form, runConfiguration);
     }
 
     @Override

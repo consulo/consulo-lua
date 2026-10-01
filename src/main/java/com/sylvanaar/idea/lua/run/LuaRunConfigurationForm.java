@@ -16,12 +16,19 @@
 
 package com.sylvanaar.idea.lua.run;
 
-import consulo.ui.ex.awt.TextFieldWithBrowseButton;
-import consulo.ui.ex.awt.util.BrowseFilesListener;
-import consulo.execution.ui.awt.RawCommandLineEditor;
-
-import javax.swing.*;
-import java.awt.*;
+import consulo.fileChooser.FileChooserDescriptorFactory;
+import consulo.fileChooser.FileChooserTextBoxBuilder;
+import consulo.lua.localize.LuaLocalize;
+import consulo.platform.base.icon.PlatformIconGroup;
+import consulo.process.cmd.ParametersListUtil;
+import consulo.ui.Component;
+import consulo.ui.TextBoxWithExpandAction;
+import consulo.ui.annotation.RequiredUIAccess;
+import consulo.ui.layout.DockLayout;
+import consulo.ui.layout.LabeledLayout;
+import consulo.ui.layout.VerticalLayout;
+import consulo.ui.util.FormBuilder;
+import consulo.util.lang.StringUtil;
 
 /**
  * The configuration user interface to configure a new Lua run configuration.
@@ -31,46 +38,70 @@ import java.awt.*;
  * Time: 21:30:48
  */
 public class LuaRunConfigurationForm implements LuaRunConfigurationParams {
-    private JPanel rootPanel;
-    private TextFieldWithBrowseButton scriptNameEdit;
-    private RawCommandLineEditor commandLineEdit;
-    private JPanel commonOptionsPlaceholder;
-    private LuaCommonOptionsForm commonOptionsForm=null;
-    private LuaRunConfiguration myLuaRunConfiguration;
+    private final FileChooserTextBoxBuilder.Controller myScriptName;
+    private final TextBoxWithExpandAction myScriptParameters;
+    private final LuaCommonOptionsForm myCommonOptionsForm;
+    private final Component myComponent;
 
+    @RequiredUIAccess
     public LuaRunConfigurationForm(LuaRunConfiguration luaRunConfiguration) {
-        this.myLuaRunConfiguration = luaRunConfiguration;
+        myScriptName = FileChooserTextBoxBuilder.create(luaRunConfiguration.getProject())
+            .dialogTitle(LuaLocalize.runConfigurationSelectScriptTitle())
+            .fileChooserDescriptor(FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor())
+            .build();
 
-        assert myLuaRunConfiguration != null;
+        myScriptParameters = TextBoxWithExpandAction.create(
+            PlatformIconGroup.actionsShow(),
+            "",
+            ParametersListUtil.DEFAULT_LINE_PARSER,
+            ParametersListUtil.DEFAULT_LINE_JOINER
+        );
 
-        try {
-        commonOptionsForm = new LuaCommonOptionsForm(myLuaRunConfiguration);
-        commonOptionsPlaceholder.add(commonOptionsForm.getRootPanel(), BorderLayout.CENTER);
-        } catch (Throwable unused) {}
-        scriptNameEdit.addBrowseFolderListener("Select script", "", myLuaRunConfiguration.getProject(), BrowseFilesListener.SINGLE_FILE_DESCRIPTOR);
+        myCommonOptionsForm = new LuaCommonOptionsForm(luaRunConfiguration);
+
+        FormBuilder builder = FormBuilder.create();
+        builder.addLabeled(LuaLocalize.runConfigurationScriptNameLabel(), myScriptName.getComponent());
+        builder.addLabeled(LuaLocalize.runConfigurationScriptParametersLabel(), myScriptParameters);
+
+        VerticalLayout panel = VerticalLayout.create();
+        panel.add(builder.build());
+        panel.add(LabeledLayout.create(
+            LuaLocalize.runConfigurationCommonOptions(),
+            DockLayout.create().center(myCommonOptionsForm.getComponent())
+        ));
+        myComponent = panel;
     }
 
+    @Override
     public CommonLuaRunConfigurationParams getCommonParams() {
-        return commonOptionsForm;
+        return myCommonOptionsForm;
     }
 
+    @Override
+    @RequiredUIAccess
     public String getScriptName() {
-        return scriptNameEdit.getText();
+        return StringUtil.notNullize(myScriptName.getValue());
     }
 
+    @Override
+    @RequiredUIAccess
     public void setScriptName(String scriptName) {
-        this.scriptNameEdit.setText(scriptName);
+        myScriptName.setValue(StringUtil.notNullize(scriptName));
     }
 
+    @Override
+    @RequiredUIAccess
     public String getScriptParameters() {
-        return commandLineEdit.getText();
+        return StringUtil.notNullize(myScriptParameters.getValue());
     }
 
+    @Override
+    @RequiredUIAccess
     public void setScriptParameters(String scriptParameters) {
-        commandLineEdit.setText(scriptParameters);
+        myScriptParameters.setValue(StringUtil.notNullize(scriptParameters));
     }
 
-    public JComponent getRootPanel() {
-        return rootPanel;
+    public Component getComponent() {
+        return myComponent;
     }
 }

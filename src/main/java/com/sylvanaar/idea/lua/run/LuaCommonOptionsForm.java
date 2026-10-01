@@ -16,14 +16,24 @@
 
 package com.sylvanaar.idea.lua.run;
 
-import consulo.execution.ui.awt.EnvironmentVariablesComponent;
-import consulo.execution.ui.awt.RawCommandLineEditor;
-import consulo.ui.ex.awt.TextFieldWithBrowseButton;
-import consulo.ui.ex.awt.util.BrowseFilesListener;
+import consulo.execution.localize.ExecutionLocalize;
+import consulo.execution.ui.awt.EnvironmentVariablesTextFieldWithBrowseButton;
+import consulo.fileChooser.FileChooserDescriptorFactory;
+import consulo.fileChooser.FileChooserTextBoxBuilder;
+import consulo.localize.LocalizeValue;
+import consulo.lua.localize.LuaLocalize;
+import consulo.platform.base.icon.PlatformIconGroup;
+import consulo.process.cmd.ParametersListUtil;
+import consulo.project.Project;
+import consulo.ui.CheckBox;
+import consulo.ui.Component;
+import consulo.ui.Space;
+import consulo.ui.TextBoxWithExpandAction;
+import consulo.ui.annotation.RequiredUIAccess;
+import consulo.ui.layout.DockLayout;
+import consulo.ui.util.FormBuilder;
+import consulo.util.lang.StringUtil;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Map;
 
 /**
@@ -32,87 +42,135 @@ import java.util.Map;
  * Time: 21:43:12
  */
 public class LuaCommonOptionsForm implements CommonLuaRunConfigurationParams {
-    private JPanel rootPanel;
-    private RawCommandLineEditor interpreterOptions;
-    private EnvironmentVariablesComponent environmentVariablesEdit;
-    private TextFieldWithBrowseButton luaInterpreterEdit;
-    private TextFieldWithBrowseButton workingDirEdit;
-    private JRadioButton kahluaRadioButton;
-    private JRadioButton luajRadioButton;
-    private JCheckBox useSDKCheckbox;
+    private final CheckBox myUseSdkCheckBox;
+    private final FileChooserTextBoxBuilder.Controller myInterpreterPath;
+    private final TextBoxWithExpandAction myInterpreterOptions;
+    private final FileChooserTextBoxBuilder.Controller myWorkingDirectory;
+    private final EnvironmentVariablesTextFieldWithBrowseButton myEnvironmentVariables;
+    private final Component myComponent;
 
+    @RequiredUIAccess
     public LuaCommonOptionsForm(LuaRunConfiguration luaRunConfiguration) {
-        luaInterpreterEdit.addBrowseFolderListener("Select Lua Interpreter", "", luaRunConfiguration.getProject(), BrowseFilesListener.SINGLE_FILE_DESCRIPTOR);
-        workingDirEdit.addBrowseFolderListener("Select Working Directory", "", luaRunConfiguration.getProject(), BrowseFilesListener.SINGLE_DIRECTORY_DESCRIPTOR);
+        Project project = luaRunConfiguration.getProject();
 
-        useSDKCheckbox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                updateInterpreterOptionsWidgets();
-            }
-        });
+        myInterpreterPath = FileChooserTextBoxBuilder.create(project)
+            .dialogTitle(LuaLocalize.runConfigurationSelectInterpreterTitle())
+            .fileChooserDescriptor(FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor())
+            .build();
+
+        myUseSdkCheckBox = CheckBox.create(LuaLocalize.runConfigurationUseModuleSdk());
+        myUseSdkCheckBox.addValueListener(event -> updateInterpreterOptionsWidgets());
+
+        myInterpreterOptions = TextBoxWithExpandAction.create(
+            PlatformIconGroup.actionsShow(),
+            "",
+            ParametersListUtil.DEFAULT_LINE_PARSER,
+            ParametersListUtil.DEFAULT_LINE_JOINER
+        );
+
+        myWorkingDirectory = FileChooserTextBoxBuilder.create(project)
+            .dialogTitle(LuaLocalize.runConfigurationSelectWorkingDirectoryTitle())
+            .fileChooserDescriptor(FileChooserDescriptorFactory.createSingleFolderDescriptor())
+            .build();
+
+        myEnvironmentVariables = new EnvironmentVariablesTextFieldWithBrowseButton();
+
+        FormBuilder builder = FormBuilder.create();
+        builder.addLabeled(
+            LuaLocalize.runConfigurationInterpreterPathLabel(),
+            DockLayout.create(Space.SMALL).left(myUseSdkCheckBox).center(myInterpreterPath.getComponent())
+        );
+        builder.addLabeled(LuaLocalize.runConfigurationInterpreterOptionsLabel(), myInterpreterOptions);
+        builder.addLabeled(LuaLocalize.runConfigurationWorkingDirectoryLabel(), myWorkingDirectory.getComponent());
+        builder.addLabeled(
+            LocalizeValue.join(ExecutionLocalize.environmentVariablesComponentTitle(), LocalizeValue.colon()),
+            myEnvironmentVariables.getComponent()
+        );
+        myComponent = builder.build();
     }
 
+    @RequiredUIAccess
     private void updateInterpreterOptionsWidgets() {
-        luaInterpreterEdit.setEnabled(!useSDKCheckbox.isSelected());
+        myInterpreterPath.getComponent().setEnabled(!isUseSdkSelected());
+    }
+
+    @RequiredUIAccess
+    private boolean isUseSdkSelected() {
+        return Boolean.TRUE.equals(myUseSdkCheckBox.getValue());
     }
 
     @Override
+    @RequiredUIAccess
     public String getInterpreterOptions() {
-        return interpreterOptions.getText();
+        return StringUtil.notNullize(myInterpreterOptions.getValue());
     }
 
     @Override
+    @RequiredUIAccess
     public void setInterpreterOptions(String options) {
-        interpreterOptions.setText(options);
+        myInterpreterOptions.setValue(StringUtil.notNullize(options));
     }
 
     @Override
+    @RequiredUIAccess
     public String getWorkingDirectory() {
-        return workingDirEdit.getText();
+        return StringUtil.notNullize(myWorkingDirectory.getValue());
     }
 
     @Override
+    @RequiredUIAccess
     public void setWorkingDirectory(String workingDirectory) {
-        workingDirEdit.setText(workingDirectory);
+        myWorkingDirectory.setValue(StringUtil.notNullize(workingDirectory));
     }
 
     @Override
     public Map<String, String> getEnvs() {
-        return environmentVariablesEdit.getEnvs();
+        return myEnvironmentVariables.getEnvs();
     }
 
     @Override
+    @RequiredUIAccess
     public void setEnvs(Map<String, String> envs) {
-        environmentVariablesEdit.setEnvs(envs);
+        myEnvironmentVariables.setEnvs(envs);
     }
 
     @Override
+    public boolean isPassParentEnvs() {
+        return myEnvironmentVariables.isPassParentEnvs();
+    }
+
+    @Override
+    @RequiredUIAccess
+    public void setPassParentEnvs(boolean passParentEnvs) {
+        myEnvironmentVariables.setPassParentEnvs(passParentEnvs);
+    }
+
+    @Override
+    @RequiredUIAccess
     public String getInterpreterPath() {
-        return luaInterpreterEdit.getText();
+        return StringUtil.notNullize(myInterpreterPath.getValue());
     }
 
     @Override
+    @RequiredUIAccess
     public void setInterpreterPath(String path) {
-        this.luaInterpreterEdit.setText(path);
+        myInterpreterPath.setValue(StringUtil.notNullize(path));
     }
 
     @Override
+    @RequiredUIAccess
     public boolean isOverrideSDKInterpreter() {
-        return !useSDKCheckbox.isSelected();
+        return !isUseSdkSelected();
     }
 
     @Override
+    @RequiredUIAccess
     public void setOverrideSDKInterpreter(boolean b) {
-        useSDKCheckbox.setSelected(!b);
+        myUseSdkCheckBox.setValue(!b);
         updateInterpreterOptionsWidgets();
     }
 
-    public JComponent getRootPanel() {
-        return rootPanel;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here 
+    public Component getComponent() {
+        return myComponent;
     }
 }

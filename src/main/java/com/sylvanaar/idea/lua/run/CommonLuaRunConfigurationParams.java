@@ -31,6 +31,10 @@ public interface CommonLuaRunConfigurationParams {
 
     public void setEnvs(Map<String, String> envs);
 
+    boolean isPassParentEnvs();
+
+    void setPassParentEnvs(boolean passParentEnvs);
+
     public String getInterpreterPath();
 
     public void setInterpreterPath(String path);
