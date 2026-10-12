@@ -13,7 +13,6 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.luadoc.psi.impl;
 
 import com.sylvanaar.idea.lua.lang.luadoc.parser.LuaDocElementTypes;
@@ -23,125 +22,152 @@ import com.sylvanaar.idea.lua.lang.luadoc.psi.api.LuaDocTag;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;
 import consulo.language.impl.psi.LazyParseablePsiElement;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiWhiteSpace;
 import consulo.language.psi.util.PsiTreeUtil;
+import consulo.localize.LocalizeValue;
 import consulo.util.lang.CharArrayUtil;
 import consulo.util.lang.StringUtil;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
-import org.jetbrains.annotations.NonNls;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author ilyas
  */
 public class LuaDocCommentImpl extends LazyParseablePsiElement implements LuaDocElementTypes, LuaDocComment {
-  public LuaDocCommentImpl(CharSequence text) {
-    super(LUADOC_COMMENT, text);
-  }
-
-  public String toString() {
-      LuaDocCommentOwner owner = getOwner();
-      return "LuaDoc: " + StringUtil.notNullize(owner != null ? owner.toString() : null, "no owner");
-  }
-
-  public IElementType getTokenType() {
-    return getElementType();
-  }
-
-  public void accept(LuaElementVisitor visitor) {
-    visitor.visitDocComment(this);
-  }
-
-  public void acceptChildren(LuaElementVisitor visitor) {
-    PsiElement child = getFirstChild();
-    while (child != null) {
-      if (child instanceof LuaPsiElement) {
-        ((LuaPsiElement)child).accept(visitor);
-      }
-
-      child = child.getNextSibling();
+    public LuaDocCommentImpl(CharSequence text) {
+        super(LUADOC_COMMENT, text);
     }
-  }
 
     @Override
-    public String getPresentationText() {
+    public String toString() {
+        LuaDocCommentOwner owner = getOwner();
+        return "LuaDoc: " + StringUtil.notNullize(owner != null ? owner.toString() : null, "no owner");
+    }
+
+    public IElementType getTokenType() {
+        return getElementType();
+    }
+
+    @Override
+    public void accept(LuaElementVisitor visitor) {
+        visitor.visitDocComment(this);
+    }
+
+    @Override
+    @RequiredReadAction
+    public void acceptChildren(LuaElementVisitor visitor) {
+        PsiElement child = getFirstChild();
+        while (child != null) {
+            if (child instanceof LuaPsiElement childElem) {
+                childElem.accept(visitor);
+            }
+
+            child = child.getNextSibling();
+        }
+    }
+
+    @Override
+    public LocalizeValue getPresentationText() {
+        return LocalizeValue.empty();
+    }
+
+    @Override
+    public LuaDocCommentOwner getOwner() {
+        return LuaDocCommentUtil.findDocOwner(this);
+    }
+
+    @Nonnull
+    @Override
+    @RequiredReadAction
+    public LuaDocTag[] getTags() {
+        LuaDocTag[] tags = PsiTreeUtil.getChildrenOfType(this, LuaDocTag.class);
+        return tags == null ? LuaDocTag.EMPTY_ARRAY : tags;
+    }
+
+    @Nullable
+    @Override
+    @RequiredReadAction
+    public LuaDocTag findTagByName(String name) {
+        if (!getText().contains(name)) {
+            return null;
+        }
+        for (PsiElement e = getFirstChild(); e != null; e = e.getNextSibling()) {
+            if (e instanceof LuaDocTag docTag && docTag.getName().equals(name)) {
+                return docTag;
+            }
+        }
         return null;
     }
 
-    public LuaDocCommentOwner getOwner() {
-    return LuaDocCommentUtil.findDocOwner(this);
-  }
-
-  @Nonnull
-  public LuaDocTag[] getTags() {
-    final LuaDocTag[] tags = PsiTreeUtil.getChildrenOfType(this, LuaDocTag.class);
-    return tags == null ? LuaDocTag.EMPTY_ARRAY : tags;
-  }
-
-  @Nullable
-  public LuaDocTag findTagByName(@NonNls String name) {
-    if (!getText().contains(name)) return null;
-    for (PsiElement e = getFirstChild(); e != null; e = e.getNextSibling()) {
-      if (e instanceof LuaDocTag && ((LuaDocTag)e).getName().equals(name)) {
-        return (LuaDocTag)e;
-      }
+    @Nonnull
+    @Override
+    @RequiredReadAction
+    public LuaDocTag[] findTagsByName(String name) {
+        if (!getText().contains(name)) {
+            return LuaDocTag.EMPTY_ARRAY;
+        }
+        List<LuaDocTag> list = new ArrayList<>();
+        for (PsiElement e = getFirstChild(); e != null; e = e.getNextSibling()) {
+            if (e instanceof LuaDocTag docTag && CharArrayUtil.regionMatches(docTag.getName(), 1, name)) {
+                list.add(docTag);
+            }
+        }
+        return list.toArray(new LuaDocTag[list.size()]);
     }
-    return null;
-  }
 
-  @Nonnull
-  public LuaDocTag[] findTagsByName(@NonNls String name) {
-    if (!getText().contains(name)) return LuaDocTag.EMPTY_ARRAY;
-    ArrayList<LuaDocTag> list = new ArrayList<LuaDocTag>();
-    for (PsiElement e = getFirstChild(); e != null; e = e.getNextSibling()) {
-      if (e instanceof LuaDocTag && CharArrayUtil.regionMatches(((LuaDocTag)e).getName(), 1, name)) {
-        list.add((LuaDocTag)e);
-      }
+    @Nonnull
+    @Override
+    @RequiredReadAction
+    public PsiElement[] getDescriptionElements() {
+        List<PsiElement> array = new ArrayList<>();
+        for (PsiElement child = getFirstChild(); child != null; child = child.getNextSibling()) {
+
+            if (child instanceof PsiWhiteSpace) {
+                continue;
+            }
+            ASTNode node = child.getNode();
+            if (node == null) {
+                continue;
+            }
+            IElementType i = node.getElementType();
+            if (i == LDOC_TAG) {
+                break;
+            }
+            if (i == LDOC_COMMENT_DATA) {
+                array.add(child);
+            }
+        }
+        return LuaPsiUtils.toPsiElementArray(array);
     }
-    return list.toArray(new LuaDocTag[list.size()]);
-  }
 
-  @Nonnull
-  public PsiElement[] getDescriptionElements() {
-    ArrayList<PsiElement> array = new ArrayList<PsiElement>();
-    for (PsiElement child = getFirstChild(); child != null; child = child.getNextSibling()) {
+    // Return the first line of the description
+    // up to and including the first '.'
+    @Nonnull
+    @Override
+    @RequiredReadAction
+    public String getSummaryDescription() {
+        PsiElement[] elems = getDescriptionElements();
 
-      if (child instanceof PsiWhiteSpace)
-          continue;
-      final ASTNode node = child.getNode();
-      if (node == null) continue;
-      final IElementType i = node.getElementType();
-      if (i == LDOC_TAG) break;
-      if (i == LDOC_COMMENT_DATA ) {
-        array.add(child);
-      }
+        if (elems.length == 0) {
+            return "";
+        }
+
+        String first = StringUtil.notNullize(elems[0].getText());
+
+        int pos = first.indexOf('.');
+
+        if (pos > 0) {
+            return first.substring(0, pos);
+        }
+
+        return first;
     }
-    return LuaPsiUtils.toPsiElementArray(array);
-  }
-
-   // Return the first line of the description
-   // up to and including the first '.'
-   @Nonnull
-   @Override
-   public String getSummaryDescription() {
-       PsiElement[] elems = getDescriptionElements();
-
-       if (elems.length == 0)
-           return "";
-
-       String first = StringUtil.notNullize(elems[0].getText());
-
-       int pos = first.indexOf('.');
-
-       if (pos>0)
-           return first.substring(0, pos);
-
-       return first;
-   }
 }

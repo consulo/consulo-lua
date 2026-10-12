@@ -19,51 +19,49 @@ import com.sylvanaar.idea.lua.LuaIcons;
 import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.structure.LuaElementPresentation;
 import com.sylvanaar.idea.lua.lang.structure.itemsPresentations.LuaItemPresentation;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.application.util.NotNullLazyValue;
 import consulo.colorScheme.TextAttributesKey;
+import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class LuaFunctionItemPresentation extends LuaItemPresentation {
-
-    private final NotNullLazyValue<String> myPresentableText = new NotNullLazyValue<String>() {
-
+    private final NotNullLazyValue<String> myPresentableText = new NotNullLazyValue<>() {
         @Nonnull
         @Override
+        @RequiredReadAction
         protected String compute() {
-            return LuaElementPresentation.
-                    getFunctionPresentableText(((LuaFunctionDefinition) myElement));
+            return LuaElementPresentation.getFunctionPresentableText(((LuaFunctionDefinition) myElement)).get();
         }
     };
 
-    private final NotNullLazyValue<String> myLocationText = new NotNullLazyValue<String>() {
+    private final NotNullLazyValue<String> myLocationText = new NotNullLazyValue<>() {
         @Nonnull
         @Override
         protected String compute() {
-            return LuaElementPresentation.
-                    getFunctionLocationText(((LuaFunctionDefinition) myElement));
+            return LuaElementPresentation.getFunctionLocationText(((LuaFunctionDefinition) myElement));
         }
     };
-    TextAttributesKey textKey =
-            TextAttributesKey.createTextAttributesKey(LuaFunctionItemPresentation.class.toString());
+    TextAttributesKey textKey = TextAttributesKey.createTextAttributesKey(LuaFunctionItemPresentation.class.toString());
 
     public LuaFunctionItemPresentation(LuaFunctionDefinition myElement) {
         super(myElement);
-
     }
 
-    public String getPresentableText() {
-        return myPresentableText.getValue();
+    @Override
+    public LocalizeValue getPresentableText() {
+        return LocalizeValue.of(myPresentableText.getValue());
     }
 
-    @Nullable
-    public String getLocationString() {
+    @Override
+    public @Nullable String getLocationString() {
         return myLocationText.getValue();
     }
 
-    @Nullable
-    public Image getIcon() {
+    @Override
+    public @Nullable Image getIcon() {
         return LuaIcons.LUA_FUNCTION;
     }
 }

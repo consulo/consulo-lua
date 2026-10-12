@@ -13,37 +13,39 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
-/*
- * User: anna
- * Date: 17-Jan-2008
- */
 package com.sylvanaar.idea.lua.projectView.nodes;
 
+import consulo.annotation.access.RequiredReadAction;
 import consulo.project.ui.view.tree.BasePsiNode;
 import consulo.project.Project;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import consulo.project.ui.view.tree.ViewSettings;
 
-public abstract class BasePsiMemberNode<T extends LuaPsiElement> extends BasePsiNode<T>{
-  protected BasePsiMemberNode(Project project, T value, ViewSettings viewSettings) {
-    super(project, value, viewSettings);
-  }
-
-  @Override
-  protected String calcTooltip() {
-    T t = getValue();
-    if (t != null && t.isValid()) {
-      return t.getPresentationText();
+/**
+ * @author anna
+ * @since 2008-01-17
+ */
+public abstract class BasePsiMemberNode<T extends LuaPsiElement> extends BasePsiNode<T> {
+    protected BasePsiMemberNode(Project project, T value, ViewSettings viewSettings) {
+        super(project, value, viewSettings);
     }
-    return super.calcTooltip();
-  }
-//
-//  @Override
-//  protected boolean isDeprecated() {
-//    final PsiModifierListOwner element = getValue();
-//    return element != null && element.isValid() &&
-//           element instanceof PsiDocCommentOwner &&
-//           ((PsiDocCommentOwner)element).isDeprecated();
-//  }
+
+    @Override
+    @RequiredReadAction
+    protected String calcTooltip() {
+        T t = getValue();
+        if (t != null && t.isValid()) {
+            return t.getPresentationText().get();
+        }
+        return super.calcTooltip();
+    }
+
+//    @Override
+//    protected boolean isDeprecated() {
+//        PsiModifierListOwner element = getValue();
+//        return element != null
+//             && element.isValid()
+//             && element instanceof PsiDocCommentOwner docCommentOwner
+//             && docCommentOwner.isDeprecated();
+//    }
 }

@@ -13,7 +13,6 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.psi.impl;
 
 import com.sylvanaar.idea.lua.LuaFileType;
@@ -29,6 +28,8 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaLocalIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaRecursiveElementVisitor;
 import com.sylvanaar.idea.lua.util.LuaAtomicNotNullLazyValue;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.access.RequiredWriteAction;
 import consulo.application.util.CachedValueProvider;
 import consulo.application.util.CachedValuesManager;
 import consulo.language.file.FileViewProvider;
@@ -38,6 +39,7 @@ import consulo.language.psi.PsiModificationTracker;
 import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.language.psi.resolve.ResolveState;
 import consulo.language.util.IncorrectOperationException;
+import consulo.localize.LocalizeValue;
 import consulo.logging.Logger;
 import consulo.virtualFileSystem.fileType.FileType;
 import jakarta.annotation.Nonnull;
@@ -46,10 +48,8 @@ import jakarta.annotation.Nullable;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Jon S Akhtar
- * Date: Apr 10, 2010
- * Time: 12:19:03 PM
+ * @author Jon S Akhtar
+ * @since 2010-04-10
  */
 public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, PsiFileEx, LuaPsiFileBase, LuaExpressionCodeFragment {
     private static final Logger log = Logger.getInstance("Lua.LuaPsiFileImp");
@@ -65,21 +65,24 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
         return LuaFileType.LUA_FILE_TYPE;
     }
 
-
     @Override
+    @RequiredReadAction
     public String toString() {
         return "Lua script: " + getName();
     }
 
     @Override
-    public LuaStatementElement addStatementBefore(@Nonnull LuaStatementElement statement, LuaStatementElement anchor) throws IncorrectOperationException {
+    @RequiredWriteAction
+    public LuaStatementElement addStatementBefore(@Nonnull LuaStatementElement statement, LuaStatementElement anchor)
+        throws IncorrectOperationException {
         return (LuaStatementElement) addBefore(statement, anchor);
     }
 
     Modules moduleStatements = new Modules();
 
-    public LuaModuleExpression getModuleAtOffset(final int offset) {
-        final List<LuaModuleExpression> modules = moduleStatements.getValue();
+    @Override
+    public LuaModuleExpression getModuleAtOffset(int offset) {
+        List<LuaModuleExpression> modules = moduleStatements.getValue();
         if (modules.size() == 0) {
             return null;
         }
@@ -88,8 +91,8 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
         for (LuaModuleExpression m : modules) {
             if (m.getIncludedTextRange().contains(offset)) {
                 module = module == null ? m :
-                        m.getIncludedTextRange().getStartOffset() >
-                                module.getIncludedTextRange().getStartOffset() ? m : module;
+                    m.getIncludedTextRange().getStartOffset() >
+                        module.getIncludedTextRange().getStartOffset() ? m : module;
             }
         }
 
@@ -113,11 +116,10 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
 
     @Override
     @Nullable
-    public String getModuleNameAtOffset(final int offset) {
+    public String getModuleNameAtOffset(int offset) {
         LuaModuleExpression module = getModuleAtOffset(offset);
         return module == null ? null : module.getGlobalEnvironmentName();
     }
-
 
     @Override
     public void clearCaches() {
@@ -128,6 +130,7 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
+    @RequiredReadAction
     public LuaExpression getReturnedValue() {
         // This only works for the last statement in the file
         LuaStatementElement[] stmts = getStatements();
@@ -144,9 +147,8 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
-    public boolean processDeclarations(PsiScopeProcessor processor,
-                                       ResolveState state, PsiElement lastParent,
-                                       PsiElement place) {
+    @RequiredReadAction
+    public boolean processDeclarations(PsiScopeProcessor processor, ResolveState state, PsiElement lastParent, PsiElement place) {
         PsiElement run = lastParent == null ? getLastChild() : lastParent.getPrevSibling();
         if (run != null && run.getParent() != this) {
             run = null;
@@ -161,15 +163,18 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
         return true;
     }
 
+    @Override
     public void accept(LuaElementVisitor visitor) {
         visitor.visitFile(this);
     }
 
+    @Override
+    @RequiredReadAction
     public void acceptChildren(LuaElementVisitor visitor) {
         PsiElement child = getFirstChild();
         while (child != null) {
-            if (child instanceof LuaPsiElement) {
-                ((LuaPsiElement) child).accept(visitor);
+            if (child instanceof LuaPsiElement childElem) {
+                childElem.accept(visitor);
             }
 
             child = child.getNextSibling();
@@ -177,17 +182,17 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
-    public String getPresentationText() {
-        return getName();
+    @RequiredReadAction
+    public LocalizeValue getPresentationText() {
+        return LocalizeValue.ofNullable(getName());
     }
-
 
     @Override
     public Assignable[] getSymbolDefs() {
-        final Set<Assignable> decls =
-                new HashSet<Assignable>();
+        final Set<Assignable> decls = new HashSet<>();
 
         LuaElementVisitor v = new LuaRecursiveElementVisitor() {
+            @Override
             public void visitDeclarationExpression(LuaDeclarationExpression e) {
                 super.visitDeclarationExpression(e);
                 if (!(e instanceof LuaLocalIdentifier)) {
@@ -213,10 +218,10 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
 
     @Override
     public LuaStatementElement[] getAllStatements() {
-        final List<LuaStatementElement> stats =
-                new ArrayList<LuaStatementElement>();
+        final List<LuaStatementElement> stats = new ArrayList<>();
 
         LuaElementVisitor v = new LuaRecursiveElementVisitor() {
+            @Override
             public void visitElement(LuaPsiElement e) {
                 super.visitElement(e);
                 if (e instanceof LuaStatementElement) {
@@ -231,6 +236,7 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
+    @RequiredReadAction
     public LuaStatementElement[] getStatements() {
         return findChildrenByClass(LuaStatementElement.class);
     }
@@ -243,28 +249,31 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
+    @RequiredReadAction
     public synchronized Instruction[] getControlFlow() {
         assert isValid();
         if (getStub() != null) {
             return EMPTY_CONTROL_FLOW;
         }
 
+        return CachedValuesManager.getManager(getProject()).getCachedValue(
+            this,
+            CONTROL_FLOW,
+            () -> {
+                Instruction[] value =
+                    new ControlFlowBuilder(getProject()).buildControlFlow(LuaPsiFileImpl.this);
 
-        return CachedValuesManager.getManager(getProject()).getCachedValue(this, CONTROL_FLOW,
-                new CachedValueProvider<Instruction[]>() {
-                    @Override
-                    public Result<Instruction[]> compute() {
-                        Instruction[] value =
-                                new ControlFlowBuilder(getProject()).buildControlFlow(LuaPsiFileImpl.this);
+                if (value == null || value.length > MAX_CONTROL_FLOW_LEN) {
+                    value = EMPTY_CONTROL_FLOW;
+                }
 
-                        if (value == null || value.length > MAX_CONTROL_FLOW_LEN) {
-                            value = EMPTY_CONTROL_FLOW;
-                        }
-
-                        return Result.create(value, value == EMPTY_CONTROL_FLOW ? null : PsiModificationTracker.MODIFICATION_COUNT);
-                    }
-                },
-                false);
+                return CachedValueProvider.Result.create(
+                    value,
+                    value == EMPTY_CONTROL_FLOW ? null : PsiModificationTracker.MODIFICATION_COUNT
+                );
+            },
+            false
+        );
     }
 
     @Override
@@ -273,11 +282,15 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     }
 
     @Override
-    public LuaDeclarationStatement addVariableDeclarationBefore(LuaDeclarationStatement declaration, LuaStatementElement anchor) throws IncorrectOperationException {
+    public LuaDeclarationStatement addVariableDeclarationBefore(
+        LuaDeclarationStatement declaration,
+        LuaStatementElement anchor
+    ) throws IncorrectOperationException {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
+    @RequiredReadAction
     public void inferTypes() {
         log.debug("start infer " + getName());
         final LuaPsiManager m = LuaPsiManager.getInstance(getProject());
@@ -285,8 +298,8 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
             @Override
             public void visitElement(LuaPsiElement element) {
                 super.visitElement(element);
-                if (element instanceof InferenceCapable && element != LuaPsiFileImpl.this) {
-                    m.queueInferences((InferenceCapable) element);
+                if (element instanceof InferenceCapable inferenceCapable && element != LuaPsiFileImpl.this) {
+                    m.queueInferences(inferenceCapable);
                 }
             }
         };
@@ -299,10 +312,10 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
         @Nonnull
         @Override
         protected LuaFunctionDefinition[] compute() {
-            final List<LuaFunctionDefinition> funcs =
-                    new ArrayList<LuaFunctionDefinition>();
+            final List<LuaFunctionDefinition> funcs = new ArrayList<>();
 
             LuaElementVisitor v = new LuaRecursiveElementVisitor() {
+                @Override
                 public void visitFunctionDef(LuaFunctionDefinitionStatement e) {
                     super.visitFunctionDef(e);
                     funcs.add(e);
@@ -347,8 +360,9 @@ public class LuaPsiFileImpl extends LuaPsiFileBaseImpl implements LuaPsiFile, Ps
     private class Modules extends LuaAtomicNotNullLazyValue<List<LuaModuleExpression>> {
         @Nonnull
         @Override
+        @RequiredReadAction
         protected List<LuaModuleExpression> compute() {
-            List<LuaModuleExpression> val = new ArrayList<LuaModuleExpression>();
+            List<LuaModuleExpression> val = new ArrayList<>();
             acceptChildren(new LuaModuleVisitor(val));
             return val;
         }

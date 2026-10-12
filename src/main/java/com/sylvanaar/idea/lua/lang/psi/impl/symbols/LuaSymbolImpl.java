@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.psi.impl.symbols;
 
 import com.sylvanaar.idea.lua.LuaIcons;
@@ -27,32 +26,33 @@ import com.sylvanaar.idea.lua.lang.psi.types.LuaPrimitiveType;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaType;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaTypeUtil;
 import com.sylvanaar.idea.lua.lang.psi.util.LuaPsiUtils;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.access.RequiredWriteAction;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Jon S Akhtar
- * Date: 1/23/11
- * Time: 8:52 PM
+ * @author Jon S Akhtar
+ * @since 2011-01-23
  */
 public abstract class LuaSymbolImpl extends LuaPsiElementImpl implements LuaSymbol {
-
-
     public LuaSymbolImpl(ASTNode node) {
         super(node);
     }
 
     @Override
+    @RequiredReadAction
     public String getName() {
         return getText();
     }
 
     protected LuaType type = LuaPrimitiveType.ANY;
+
     @Nonnull
     @Override
     public LuaType getLuaType() {
@@ -72,68 +72,84 @@ public abstract class LuaSymbolImpl extends LuaPsiElementImpl implements LuaSymb
     @Override
     public ItemPresentation getPresentation() {
         return new ItemPresentation() {
-            public String getPresentableText() {
+            @Override
+            @RequiredReadAction
+            public LocalizeValue getPresentableText() {
                 return getPresentationText();
             }
 
-            @Nullable
-            public String getLocationString() {
+            @Override
+            @RequiredReadAction
+            public @Nullable String getLocationString() {
                 String name = getContainingFile().getName();
                 return "(in " + name + ")";
             }
 
-            @Nullable
-            public Image getIcon() {
+            @Override
+            public @Nullable Image getIcon() {
                 return LuaIcons.LUA_ICON;
             }
         };
     }
 
-    public String getPresentationText() {
-        return getName();
+    @Override
+    @RequiredReadAction
+    public LocalizeValue getPresentationText() {
+        return LocalizeValue.ofNullable(getName());
     }
 
     @Override
+    @RequiredWriteAction
     public PsiElement replaceWithExpression(LuaExpression newExpr, boolean removeUnnecessaryParentheses) {
         return LuaPsiUtils.replaceElement(this, newExpr);
     }
 
     @Override
-    public boolean isEquivalentTo(PsiElement another) {
-        if (this == another)
+    @RequiredReadAction
+    public boolean isEquivalentTo(PsiElement that) {
+        if (this == that) {
             return true;
+        }
 
         PsiElement self = this;
 
-        if (another instanceof LuaReferenceElement)
-            another = ((LuaReferenceElement) another).getElement();
-
-        if (this instanceof LuaReferenceElement)
-            self = ((LuaReferenceElement) this).getElement();
-
-        if (self == another)
-            return true;
-
-        if (!(self instanceof LuaNamedElement))
-            return false;
-
-        if (another instanceof LuaAlias) {
-            final PsiElement aliasElement = ((LuaAlias) another).getAliasElement();
-            if (aliasElement instanceof LuaSymbol) if (isEquivalentTo(aliasElement)) return true;
+        if (that instanceof LuaReferenceElement thatRef) {
+            that = thatRef.getElement();
         }
 
-        if (another instanceof LuaSymbol) {
-            String myName = ((LuaNamedElement) self).getName();
-            if (myName == null) return false;
+        if (this instanceof LuaReferenceElement thisRef) {
+            self = thisRef.getElement();
+        }
 
-            if (this instanceof LuaCompoundReferenceElementImpl) {
-                return myName.equals(((LuaSymbol) another).getName());
-            } else if (this instanceof LuaReferenceElement) {
-                return myName.equals(((LuaSymbol) another).getName()) &&
-                       ((LuaSymbol) another).isSameKind((LuaSymbol) ((LuaReferenceElement) this).getElement());
+        if (self == that) {
+            return true;
+        }
+
+        if (!(self instanceof LuaNamedElement thisNamedElem)) {
+            return false;
+        }
+
+        if (that instanceof LuaAlias thatAlias
+            && thatAlias.getAliasElement() instanceof LuaSymbol thatSymbol
+            && isEquivalentTo(thatSymbol)) {
+            return true;
+        }
+
+        if (that instanceof LuaSymbol thatSymbol) {
+            String myName = thisNamedElem.getName();
+            if (myName == null) {
+                return false;
             }
 
-            return myName.equals(((LuaSymbol) another).getName());
+            if (this instanceof LuaCompoundReferenceElementImpl) {
+                return myName.equals(thatSymbol.getName());
+            }
+            else if (this instanceof LuaReferenceElement thisRef) {
+                return myName.equals(thatSymbol.getName())
+                    && thatSymbol.isSameKind((LuaSymbol) thisRef.getElement());
+            }
+
+            return myName.equals(thatSymbol.getName());
         }
 
         return false;
