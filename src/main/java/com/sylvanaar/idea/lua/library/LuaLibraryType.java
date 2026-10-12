@@ -28,17 +28,22 @@ import consulo.content.library.PersistentLibraryKind;
 import consulo.content.library.ui.LibraryEditor;
 import consulo.content.library.ui.LibraryEditorComponent;
 import consulo.content.library.ui.LibraryPropertiesEditor;
+import consulo.fileChooser.FileChooser;
 import consulo.fileChooser.FileChooserDescriptor;
 import consulo.fileChooser.FileChooserDescriptorFactory;
-import consulo.fileChooser.IdeaFileChooser;
+import consulo.lua.localize.LuaLocalize;
 import consulo.project.Project;
+import consulo.ui.Component;
+import consulo.ui.annotation.RequiredUIAccess;
+import consulo.ui.ex.awtUnsafe.TargetAWT;
 import consulo.ui.image.Image;
 import consulo.virtualFileSystem.VirtualFile;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 
-import javax.swing.*;
 import java.util.List;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by IntelliJ IDEA.
@@ -68,24 +73,27 @@ public class LuaLibraryType extends LibraryType<DummyLibraryProperties> implemen
         return "Lua";
     }
 
+    @RequiredUIAccess
     @Override
-    public NewLibraryConfiguration createNewLibrary(@Nonnull JComponent jComponent, @Nullable VirtualFile virtualFile,
-                                                    @Nonnull Project project) {
-        final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
-        descriptor.setTitle(LuaBundle.message("new.library.file.chooser.title"));
-        descriptor.setDescription(LuaBundle.message("new.library.file.chooser.description"));
-        final VirtualFile[] files = IdeaFileChooser.chooseFiles(descriptor, jComponent, project, virtualFile);
-        if (files.length == 0) {
-            return null;
-        }
-        return new NewLibraryConfiguration("Lua Library", this, new DummyLibraryProperties()) {
-            @Override
-            public void addRoots(@Nonnull LibraryEditor editor) {
-                for (VirtualFile file : files) {
-                    editor.addRoot(file, BinariesOrderRootType.ID);
-                }
+    public CompletableFuture<NewLibraryConfiguration> createNewLibrary(@Nullable Component parentComponent,
+                                                                       @Nullable VirtualFile contextDirectory,
+                                                                       @Nonnull Project project) {
+        FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
+        descriptor.withTitle(LuaLocalize.newLibraryFileChooserTitle());
+        descriptor.withDescription(LuaLocalize.newLibraryFileChooserDescription());
+        return FileChooser.chooseFiles(descriptor, TargetAWT.to(parentComponent), project, contextDirectory).thenApply(files -> {
+            if (files.length == 0) {
+                throw new CancellationException();
             }
-        };
+            return new NewLibraryConfiguration("Lua Library", this, new DummyLibraryProperties()) {
+                @Override
+                public void addRoots(@Nonnull LibraryEditor editor) {
+                    for (VirtualFile file : files) {
+                        editor.addRoot(file, BinariesOrderRootType.ID);
+                    }
+                }
+            };
+        });
     }
 //
 //    @NotNull

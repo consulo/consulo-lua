@@ -18,10 +18,13 @@ package com.sylvanaar.idea.lua.options;
 
 import consulo.configurable.BaseConfigurable;
 import consulo.configurable.Configurable;
+import consulo.disposer.Disposable;
 import consulo.language.psi.PsiManager;
 import consulo.localize.LocalizeValue;
 import consulo.project.Project;
 import consulo.project.ProjectManager;
+import consulo.ui.Component;
+import consulo.ui.ex.awtUnsafe.TargetAWT;
 import org.jetbrains.annotations.Nls;
 
 import javax.swing.*;
@@ -50,10 +53,10 @@ public class LuaOptionsPanel extends BaseConfigurable implements Configurable
 	private JCheckBox enableTypeInference;
 
 	@Override
-	public JComponent createComponent()
+	public Component createUIComponent(Disposable parentDisposable)
 	{
 		setData(LuaApplicationSettings.getInstance());
-		return getMainPanel();
+		return TargetAWT.wrap(getMainPanel());
 	}
 
 	public void apply()
