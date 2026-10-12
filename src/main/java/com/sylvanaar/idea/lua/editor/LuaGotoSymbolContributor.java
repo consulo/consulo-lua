@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.editor;
 
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiManager;
 import com.sylvanaar.idea.lua.lang.psi.expressions.LuaDeclarationExpression;
 import com.sylvanaar.idea.lua.lang.psi.resolve.ResolveUtil;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
 import consulo.application.util.function.Processor;
 import consulo.content.scope.SearchScope;
@@ -27,21 +27,18 @@ import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.language.psi.scope.GlobalSearchScope;
 import consulo.language.psi.search.FindSymbolParameters;
 import consulo.language.psi.stub.IdFilter;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.NavigationItem;
 import consulo.project.Project;
 import consulo.project.content.scope.ProjectAwareFileFilter;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Jon S Akhtar
- * Date: 11/23/10
- * Time: 3:38 PM
+ * @author Jon S Akhtar
+ * @since 2011-11-23
  */
 @ExtensionImpl
 public class LuaGotoSymbolContributor implements GotoSymbolContributor {
@@ -49,7 +46,7 @@ public class LuaGotoSymbolContributor implements GotoSymbolContributor {
     public void processNames(@Nonnull Processor<String> processor, @Nonnull SearchScope searchScope, @Nullable IdFilter idFilter) {
         ProjectAwareFileFilter fileFilter = (ProjectAwareFileFilter) searchScope;
 
-        final Collection<LuaDeclarationExpression> globals = LuaPsiManager.getInstance(fileFilter.getProject()).getFilteredGlobalsCache();
+        Collection<LuaDeclarationExpression> globals = LuaPsiManager.getInstance(fileFilter.getProject()).getFilteredGlobalsCache();
 
         for (LuaDeclarationExpression global : globals) {
             processor.process(global.getDefinedName());
@@ -57,13 +54,18 @@ public class LuaGotoSymbolContributor implements GotoSymbolContributor {
     }
 
     @Override
-    public void processElementsWithName(@Nonnull String s, @Nonnull Processor<NavigationItem> processor, @Nonnull FindSymbolParameters findSymbolParameters) {
+    @RequiredReadAction
+    public void processElementsWithName(
+        @Nonnull String s,
+        @Nonnull Processor<NavigationItem> processor,
+        @Nonnull FindSymbolParameters findSymbolParameters
+    ) {
         boolean includeNonProjectItems = findSymbolParameters.isSearchInLibraries();
         Project project = findSymbolParameters.getProject();
 
         GlobalSearchScope scope = includeNonProjectItems ? GlobalSearchScope.allScope(project) : GlobalSearchScope.projectScope(project);
 
-        final Collection<LuaDeclarationExpression> globals = ResolveUtil.getFilteredGlobals(project, scope);
+        Collection<LuaDeclarationExpression> globals = ResolveUtil.getFilteredGlobals(project, scope);
 
         for (LuaDeclarationExpression global : globals) {
             if (!includeNonProjectItems && !scope.contains(global.getContainingFile().getVirtualFile())) {
@@ -71,7 +73,11 @@ public class LuaGotoSymbolContributor implements GotoSymbolContributor {
             }
 
             if (global.getDefinedName().startsWith(s)) {
-                processor.process(new BaseNavigationItem(global, global.getDefinedName(), IconDescriptorUpdaters.getIcon(global, 0)));
+                processor.process(new BaseNavigationItem(
+                    global,
+                    LocalizeValue.of(global.getDefinedName()),
+                    IconDescriptorUpdaters.getIcon(global, 0)
+                ));
             }
         }
     }

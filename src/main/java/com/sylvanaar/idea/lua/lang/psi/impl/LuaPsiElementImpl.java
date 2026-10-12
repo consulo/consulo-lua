@@ -13,12 +13,13 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.psi.impl;
 
 import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.access.RequiredWriteAction;
 import consulo.language.Language;
 import consulo.language.ast.ASTNode;
 import consulo.language.impl.ast.ChangeUtil;
@@ -30,12 +31,12 @@ import consulo.language.impl.psi.SourceTreeToPsiMap;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiElementVisitor;
 import consulo.language.util.IncorrectOperationException;
+import consulo.localize.LocalizeValue;
 import consulo.logging.Logger;
 import jakarta.annotation.Nonnull;
 
-public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiElement  {
+public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiElement {
     private static final Logger log = Logger.getInstance("Lua.LuaPsiElementImpl");
-
 
     public LuaPsiElementImpl(ASTNode node) {
         super(node);
@@ -51,29 +52,35 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
     }
 
     @Override
+    @RequiredReadAction
     public void acceptChildren(LuaElementVisitor visitor) {
         acceptLuaChildren(this, visitor);
     }
 
     @Override
-    public String getPresentationText() {
-        return null;
+    public LocalizeValue getPresentationText() {
+        return LocalizeValue.empty();
     }
 
     @Override
     public void accept(@Nonnull PsiElementVisitor visitor) {
-        if (visitor instanceof LuaElementVisitor) {
-            ((LuaElementVisitor) visitor).visitElement(this);
-        } else {
+        if (visitor instanceof LuaElementVisitor elementVisitor) {
+            elementVisitor.visitElement(this);
+        }
+        else {
             visitor.visitElement(this);
         }
     }
 
+    @Override
+    @RequiredReadAction
     public String toString() {
         return getNode().getElementType().toString();
     }
 
     @Nonnull
+    @Override
+    @RequiredReadAction
     public Language getLanguage() {
         return LuaFileType.LUA_LANGUAGE;
     }
@@ -94,6 +101,8 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
 //        return LuaPsiUtils.processChildDeclarations(this, processor, state, lastParent, place);
 //    }
 
+    @Override
+    @RequiredWriteAction
     public PsiElement replace(@Nonnull PsiElement newElement) throws IncorrectOperationException {
         CompositeElement treeElement = calcTreeElement();
         assert treeElement.getTreeParent() != null;
@@ -104,21 +113,20 @@ public class LuaPsiElementImpl extends ASTWrapperPsiElement implements LuaPsiEle
         return SourceTreeToPsiMap.treeElementToPsi(elementCopy);
     }
 
+    @RequiredReadAction
     protected CompositeElement calcTreeElement() {
         return (CompositeElement) getNode();
     }
 
-
+    @RequiredReadAction
     public static void acceptLuaChildren(PsiElement parent, LuaElementVisitor visitor) {
         PsiElement child = parent.getFirstChild();
         while (child != null) {
-            if (child instanceof LuaPsiElement) {
-                ((LuaPsiElement) child).accept(visitor);
+            if (child instanceof LuaPsiElement childElem) {
+                childElem.accept(visitor);
             }
 
             child = child.getNextSibling();
         }
     }
-    
-    
 }

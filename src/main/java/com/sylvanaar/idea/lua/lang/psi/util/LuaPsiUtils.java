@@ -32,6 +32,8 @@ import com.sylvanaar.idea.lua.lang.psi.symbols.LuaCompoundIdentifier;
 import com.sylvanaar.idea.lua.lang.psi.symbols.LuaSymbol;
 import com.sylvanaar.idea.lua.lang.psi.types.LuaFunction;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaRecursiveElementVisitor;
+import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.access.RequiredWriteAction;
 import consulo.document.util.TextRange;
 import consulo.language.ast.ASTNode;
 import consulo.language.ast.IElementType;
@@ -42,39 +44,39 @@ import consulo.language.psi.resolve.PsiScopeProcessor;
 import consulo.language.psi.resolve.ResolveState;
 import consulo.language.psi.util.PsiTreeUtil;
 import consulo.language.util.IncorrectOperationException;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.ui.image.Image;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
 
-
 /**
- * User: jansorg
- * Date: 04.08.2009
- * Time: 21:45:47
+ * @author jansorg
+ * @since 2009-08-04
  */
 public final class LuaPsiUtils {
-    public static ItemPresentation getFunctionPresentation(
-        final LuaPsiElement e) {
+    public static ItemPresentation getFunctionPresentation(LuaPsiElement e) {
         return new ItemPresentation() {
-                public String getPresentableText() {
-                    return e.getPresentationText();
-                }
+            @Override
+            public LocalizeValue getPresentableText() {
+                return e.getPresentationText();
+            }
 
-                @Nullable
-                public String getLocationString() {
-                    String name = e.getContainingFile().getName();
+            @Override
+            @RequiredReadAction
+            public String getLocationString() {
+                String name = e.getContainingFile().getName();
 
-                    return "(in " + name + ")";
-                }
+                return "(in " + name + ")";
+            }
 
-                @Nullable
-                public Image getIcon() {
-                    return LuaIcons.LUA_FUNCTION;
-                }
-            };
+            @Override
+            public Image getIcon() {
+                return LuaIcons.LUA_FUNCTION;
+            }
+        };
     }
 
     /**
@@ -118,7 +120,7 @@ public final class LuaPsiUtils {
     /**
      * Returns the element after the given element. It may either be the next sibling or the
      * next logical element after the given element (i.e. the element after the parent context).
-     * If it's the last element of the file null is retunred.
+     * If it's the last element of the file null is returned.
      *
      * @param element The element to check
      * @return Next element or null
@@ -126,7 +128,7 @@ public final class LuaPsiUtils {
     @Nullable
     public static PsiElement elementAfter(PsiElement element) {
         ASTNode node = element.getNode();
-        ASTNode next = (node != null) ? node.getTreeNext() : null;
+        ASTNode next = node != null ? node.getTreeNext() : null;
 
         return (next != null) ? next.getPsi() : null;
 
@@ -163,14 +165,18 @@ public final class LuaPsiUtils {
         return element instanceof LuaBlock;
     }
 
+    @RequiredReadAction
     public static boolean processChildDeclarationsS(
-			PsiElement parentContainer, PsiScopeProcessor processor,
-			ResolveState resolveState, PsiElement parent, PsiElement place) {
+        PsiElement parentContainer,
+        PsiScopeProcessor processor,
+        ResolveState resolveState,
+        PsiElement parent,
+        PsiElement place
+    ) {
         PsiElement child = parentContainer.getFirstChild();
 
         while (child != null) {
-            if (!child.processDeclarations(processor, resolveState, parent,
-                        place)) {
+            if (!child.processDeclarations(processor, resolveState, parent, place)) {
                 return false;
             }
 
@@ -180,11 +186,15 @@ public final class LuaPsiUtils {
         return true;
     }
 
-    public static boolean processChildDeclarations(PsiElement element,
-												   PsiScopeProcessor processor, ResolveState substitutor,
-												   PsiElement lastParent, PsiElement place) {
-        PsiElement run = (lastParent == null) ? element.getLastChild()
-                                              : lastParent.getPrevSibling();
+    @RequiredReadAction
+    public static boolean processChildDeclarations(
+        PsiElement element,
+        PsiScopeProcessor processor,
+        ResolveState substitutor,
+        PsiElement lastParent,
+        PsiElement place
+    ) {
+        PsiElement run = (lastParent == null) ? element.getLastChild() : lastParent.getPrevSibling();
 
         while (run != null) {
             if (!run.processDeclarations(processor, substitutor, null, place)) {
@@ -198,39 +208,32 @@ public final class LuaPsiUtils {
     }
 
     public static int getElementLineNumber(PsiElement element) {
-        FileViewProvider fileViewProvider = element.getContainingFile()
-                                                   .getViewProvider();
+        FileViewProvider fileViewProvider = element.getContainingFile().getViewProvider();
 
         if (fileViewProvider.getDocument() != null) {
-            return fileViewProvider.getDocument()
-                                   .getLineNumber(element.getTextOffset()) + 1;
+            return fileViewProvider.getDocument().getLineNumber(element.getTextOffset()) + 1;
         }
 
         return 0;
     }
 
+    @RequiredReadAction
     public static int getElementEndLineNumber(PsiElement element) {
-        FileViewProvider fileViewProvider = element.getContainingFile()
-                                                   .getViewProvider();
+        FileViewProvider fileViewProvider = element.getContainingFile().getViewProvider();
 
         if (fileViewProvider.getDocument() != null) {
-            return fileViewProvider.getDocument()
-                                   .getLineNumber(element.getTextOffset() +
-                element.getTextLength()) + 1;
+            return fileViewProvider.getDocument().getLineNumber(element.getTextOffset() + element.getTextLength()) + 1;
         }
 
         return 0;
     }
 
-    @Nullable
-    public static LuaPsiElement getCoveringPsiElement(
-        @Nonnull
-    final PsiElement psiElement) {
+    public static @Nullable LuaPsiElement getCoveringPsiElement(@Nonnull PsiElement psiElement) {
         PsiElement current = psiElement;
 
         while (current != null) {
-            if (current instanceof LuaPsiElement) {
-                return (LuaPsiElement) current;
+            if (current instanceof LuaPsiElement curElem) {
+                return curElem;
             }
 
             current = current.getParent();
@@ -239,6 +242,7 @@ public final class LuaPsiUtils {
         return null;
     }
 
+    @RequiredReadAction
     public static TextRange createRange(PsiElement node) {
         return TextRange.from(node.getTextOffset(), node.getTextLength());
     }
@@ -253,8 +257,8 @@ public final class LuaPsiUtils {
         return node.getElementType();
     }
 
-    public static PsiElement findNextSibling(PsiElement start,
-																  IElementType ignoreType) {
+    @RequiredReadAction
+    public static PsiElement findNextSibling(PsiElement start, IElementType ignoreType) {
         PsiElement current = start.getNextSibling();
 
         while (current != null) {
@@ -268,8 +272,8 @@ public final class LuaPsiUtils {
         return null;
     }
 
-    public static PsiElement findPreviousSibling(PsiElement start,
-																	  IElementType ignoreType) {
+    @RequiredReadAction
+    public static PsiElement findPreviousSibling(PsiElement start, IElementType ignoreType) {
         PsiElement current = start.getPrevSibling();
 
         while (current != null) {
@@ -284,72 +288,69 @@ public final class LuaPsiUtils {
     }
 
     /**
-     * Replaces the priginal element with the replacement.
+     * Replaces the original element with the replacement.
      *
      * @param original    The original element which should be replaced.
      * @param replacement The new element
      * @return The replaces element. Depending on the context of the original element it either the original element
      * or the replacement element.
-     * @throws IncorrectOperationException
-     *          cant do it
+     * @throws IncorrectOperationException cant do it
      */
-    public static PsiElement replaceElement(PsiElement original,
-											PsiElement replacement) throws IncorrectOperationException {
+    @RequiredWriteAction
+    public static PsiElement replaceElement(PsiElement original, PsiElement replacement) throws IncorrectOperationException {
         try {
-            try {
-                return original.replace(replacement);
-            } catch (IncorrectOperationException e) {
-                //failed, try another way
-            } catch (UnsupportedOperationException e) {
-                //failed, try another way
-            }
+            return original.replace(replacement);
+        }
+        catch (IncorrectOperationException | UnsupportedOperationException e) {
+            //failed, try another way
+        }
 
-            PsiElement parent = original.getParent();
+        PsiElement parent = original.getParent();
 
-            if (parent != null) {
-                PsiElement inserted = parent.addBefore(replacement, original);
-                original.delete();
+        if (parent != null) {
+            PsiElement inserted = parent.addBefore(replacement, original);
+            original.delete();
 
-                return inserted;
-            } else {
-                //last try, not optimal
-                original.getNode()
-                        .replaceAllChildrenToChildrenOf(replacement.getNode());
+            return inserted;
+        }
+        else {
+            //last try, not optimal
+            original.getNode()
+                .replaceAllChildrenToChildrenOf(replacement.getNode());
 
-                return original;
-            }
-        } finally {
+            return original;
         }
     }
 
+    @RequiredReadAction
     public static boolean isLValue(LuaPsiElement element) {
-        if (element instanceof LuaStubElementBase) {
-            assert ((LuaStubElementBase) element).getStub() == null : "Operating on a stub";
+        if (element instanceof LuaStubElementBase stubElementBase) {
+            assert stubElementBase.getStub() == null : "Operating on a stub";
         }
 
-        if (element instanceof LuaReferenceElement) {
+        if (element instanceof LuaReferenceElement ref) {
             if (!(element instanceof LuaFieldIdentifier) && element.getParent() instanceof LuaIdentifierList) {
-                return checkForErrors((LuaReferenceElement) element);
+                return checkForErrors(ref);
             }
 
-            final PsiElement element1 = ((LuaReferenceElement) element).getElement();
+            PsiElement element1 = ref.getElement();
 
-            if (element1 instanceof LuaCompoundIdentifier) {
-                return ((LuaCompoundIdentifier) element1).isCompoundDeclaration();
+            if (element1 instanceof LuaCompoundIdentifier compoundId) {
+                return compoundId.isCompoundDeclaration();
             }
 
 //        if (element1 instanceof LuaDeclarationExpression)
 //            return true;
 
-          if (element1 instanceof LuaSymbol && ((LuaSymbol) element1).isAssignedTo())
-              return true;
+            if (element1 instanceof LuaSymbol symbol && symbol.isAssignedTo()) {
+                return true;
+            }
         }
 
         if (element instanceof LuaSymbol) {
-            final LuaReferenceElement reference = (LuaReferenceElement) element.getReference();
+            LuaReferenceElement reference = (LuaReferenceElement) element.getReference();
 
-            if ((reference != null) &&
-                    reference.getParent() instanceof LuaIdentifierList) {
+            if (reference != null && reference.getParent() instanceof LuaIdentifierList) {
                 return checkForErrors(reference);
             }
         }
@@ -357,8 +358,9 @@ public final class LuaPsiUtils {
         return false;
     }
 
+    @RequiredReadAction
     private static boolean checkForErrors(LuaReferenceElement reference) {
-        final LuaIdentifierList identifierList = (LuaIdentifierList) reference.getParent();
+        LuaIdentifierList identifierList = (LuaIdentifierList) reference.getParent();
 
         if (identifierList.getParent() instanceof LuaAssignmentStatement) {
             return !PsiTreeUtil.hasErrorElements(identifierList.getParent());
@@ -378,9 +380,7 @@ public final class LuaPsiUtils {
     //    return collection.toArray(new LuaPsiElement[collection.size()]);
     //  }
     @Nonnull
-    public static PsiElement[] toPsiElementArray(
-        @Nonnull
-    Collection<?extends PsiElement> collection) {
+    public static PsiElement[] toPsiElementArray(@Nonnull Collection<? extends PsiElement> collection) {
         if (collection.isEmpty()) {
             return PsiElement.EMPTY_ARRAY;
         }
@@ -388,9 +388,8 @@ public final class LuaPsiUtils {
         return collection.toArray(new PsiElement[collection.size()]);
     }
 
-    public static boolean hasDirectChildErrorElements(
-        @Nonnull
-    final PsiElement element) {
+    @RequiredReadAction
+    public static boolean hasDirectChildErrorElements(@Nonnull PsiElement element) {
         if (element instanceof PsiErrorElement) {
             return true;
         }

@@ -13,19 +13,18 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.psi;
 
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
 import consulo.language.ast.ASTNode;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.NavigationItem;
 import jakarta.annotation.Nonnull;
 
-public interface LuaPsiElement extends PsiElement, NavigationItem
-{
+public interface LuaPsiElement extends PsiElement, NavigationItem {
     LuaPsiElement[] EMPTY_ARRAY = new LuaPsiElement[0];
-    
+
     @Nonnull
     ASTNode getNode();
 
@@ -33,7 +32,7 @@ public interface LuaPsiElement extends PsiElement, NavigationItem
 
     void acceptChildren(LuaElementVisitor visitor);
 
-    String getPresentationText();
+    LocalizeValue getPresentationText();
 
 //    String getText();
 //

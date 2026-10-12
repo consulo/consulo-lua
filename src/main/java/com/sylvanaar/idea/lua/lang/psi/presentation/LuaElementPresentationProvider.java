@@ -13,23 +13,21 @@
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-
 package com.sylvanaar.idea.lua.lang.psi.presentation;
 
 import com.sylvanaar.idea.lua.LuaIcons;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.navigation.ItemPresentationProvider;
 import consulo.ui.image.Image;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
- * Created by IntelliJ IDEA.
- * User: Jon S Akhtar
- * Date: 2/17/12
- * Time: 6:20 AM
+ * @author Jon S Akhtar
+ * @since 2012-02-17
  */
 @ExtensionImpl
 public class LuaElementPresentationProvider implements ItemPresentationProvider<LuaPsiElement> {
@@ -42,17 +40,19 @@ public class LuaElementPresentationProvider implements ItemPresentationProvider<
     @Override
     public ItemPresentation getPresentation(final LuaPsiElement item) {
         return new ItemPresentation() {
-            public String getPresentableText() {
+            @Override
+            public LocalizeValue getPresentableText() {
                 return item.getPresentationText();
             }
 
-            @Nullable
+            @Override
+            @RequiredReadAction
             public String getLocationString() {
                 String name = item.getContainingFile().getName();
                 return "(in " + name + ")";
             }
 
-            @Nullable
+            @Override
             public Image getIcon() {
                 return LuaIcons.LUA_ICON;
             }

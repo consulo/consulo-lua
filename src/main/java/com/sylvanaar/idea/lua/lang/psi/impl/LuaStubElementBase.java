@@ -19,6 +19,7 @@ import com.sylvanaar.idea.lua.LuaFileType;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiElement;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.visitor.LuaElementVisitor;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.language.Language;
 import consulo.language.ast.ASTNode;
 import consulo.language.impl.ast.CompositeElement;
@@ -27,6 +28,7 @@ import consulo.language.impl.psi.stub.StubBasedPsiElementBase;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.stub.IStubElementType;
 import consulo.language.psi.stub.StubElement;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.navigation.ItemPresentationProvider;
 import jakarta.annotation.Nonnull;
@@ -34,48 +36,54 @@ import jakarta.annotation.Nonnull;
 /**
  * @author ilyas
  */
-public abstract class LuaStubElementBase<T extends StubElement> extends StubBasedPsiElementBase<T> implements
-        LuaPsiElement {
-
-    protected LuaStubElementBase(final T stub, IStubElementType nodeType) {
+public abstract class LuaStubElementBase<T extends StubElement> extends StubBasedPsiElementBase<T> implements LuaPsiElement {
+    protected LuaStubElementBase(T stub, IStubElementType nodeType) {
         super(stub, nodeType);
     }
 
-    public LuaStubElementBase(final ASTNode node) {
+    public LuaStubElementBase(ASTNode node) {
         super(node);
     }
 
     @Nonnull
     @Override
+    @RequiredReadAction
     public Language getLanguage() {
         return LuaFileType.LUA_LANGUAGE;
     }
 
     @Override
+    @RequiredReadAction
     public int getTextOffset() {
       return calcTreeElement().getTextOffset();
     }
 
+    @RequiredReadAction
     protected CompositeElement calcTreeElement() {
       return (CompositeElement)getNode();
     }
 
     @Override
+    @RequiredReadAction
     public PsiElement getParent() {
         return getParentByStub();
     }
 
+    @Override
     public void accept(LuaElementVisitor visitor) {
         visitor.visitElement(this);
     }
 
+    @Override
+    @RequiredReadAction
     public void acceptChildren(LuaElementVisitor visitor) {
         //LuaPsiElementImpl.acceptLuaChildren(this, visitor);
         SharedImplUtil.acceptChildren(visitor, calcTreeElement());
     }
 
+    @RequiredReadAction
     protected PsiElement getDefinitionParent() {
-        final PsiElement candidate = getParentByStub();
+        PsiElement candidate = getParentByStub();
         if (candidate instanceof LuaPsiFile) {
             return candidate;
         }
@@ -83,13 +91,14 @@ public abstract class LuaStubElementBase<T extends StubElement> extends StubBase
         return SharedImplUtil.getParent(getNode());
     }
 
-    public String getPresentationText() {
-        return getText();
+    @Override
+    @RequiredReadAction
+    public LocalizeValue getPresentationText() {
+        return LocalizeValue.of(getText());
     }
 
     @Override
     public ItemPresentation getPresentation() {
         return ItemPresentationProvider.getItemPresentation(this);
     }
-
 }

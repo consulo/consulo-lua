@@ -1,99 +1,105 @@
 package com.sylvanaar.idea.lua.editor;
 
+import consulo.annotation.access.RequiredReadAction;
 import consulo.language.impl.psi.FakePsiElement;
 import consulo.language.psi.PsiElement;
 import consulo.language.psi.PsiFile;
+import consulo.localize.LocalizeValue;
 import consulo.navigation.ItemPresentation;
 import consulo.project.Project;
 import consulo.ui.image.Image;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-import org.jetbrains.annotations.NonNls;
+import org.jspecify.annotations.Nullable;
 
-public class BaseNavigationItem extends FakePsiElement
-{
+public class BaseNavigationItem extends FakePsiElement {
+    private final PsiElement myPsiElement;
+    private final LocalizeValue myText;
+    private final Image myIcon;
 
-	private final PsiElement myPsiElement;
-	private final String myText;
-	private final Image myIcon;
+    /**
+     * Creates a new display item.
+     *
+     * @param psiElement The PsiElement to navigate to.
+     * @param text       Text to show for this element.
+     * @param icon       Icon to show for this element.
+     */
+    public BaseNavigationItem(@Nonnull PsiElement psiElement, @Nonnull LocalizeValue text, @Nullable Image icon) {
+        myPsiElement = psiElement;
+        myText = text;
+        myIcon = icon;
+    }
 
-	/**
-	 * Creates a new display item.
-	 *
-	 * @param psiElement The PsiElement to navigate to.
-	 * @param text       Text to show for this element.
-	 * @param icon       Icon to show for this element.
-	 */
-	public BaseNavigationItem(@Nonnull PsiElement psiElement, @Nonnull @NonNls String text, @Nullable Image icon) {
-		myPsiElement = psiElement;
-		myText = text;
-		myIcon = icon;
-	}
+    @Nonnull
+    @Override
+    public PsiElement getNavigationElement() {
+        return myPsiElement;
+    }
 
-	@Nonnull
-	public PsiElement getNavigationElement() {
-		return myPsiElement;
-	}
+    @Override
+    public Image getIcon() {
+        return myIcon;
+    }
 
-	public Image getIcon() {
-		return myIcon;
-	}
+    @Override
+    public ItemPresentation getPresentation() {
+        return new ItemPresentation() {
+            @Override
+            public LocalizeValue getPresentableText() {
+                return myText;
+            }
 
-	public ItemPresentation getPresentation() {
-		return new ItemPresentation() {
+            @Override
+            @RequiredReadAction
+            public @Nullable String getLocationString() {
+                return '(' + myPsiElement.getContainingFile().getName() + ')';
+            }
 
-			public String getPresentableText() {
-				return myText;
-			}
+            @Override
+            public @Nullable Image getIcon() {
+                return myIcon;
+            }
+        };
+    }
 
-			@Nullable
-			public String getLocationString() {
-				return '(' + myPsiElement.getContainingFile().getName() + ')';
-			}
+    @Override
+    public PsiElement getParent() {
+        return myPsiElement.getParent();
+    }
 
-			@Nullable
-			public Image getIcon() {
-				return myIcon;
-			}
-		};
-	}
+    @Nonnull
+    @Override
+    public Project getProject() {
+        return myPsiElement.getProject();
+    }
 
-	public PsiElement getParent() {
-		return myPsiElement.getParent();
-	}
+    @Override
+    public PsiFile getContainingFile() {
+        return myPsiElement.getContainingFile();
+    }
 
-	@Nonnull
-	@Override
-	public Project getProject() {
-		return myPsiElement.getProject();
-	}
+    @Override
+    @RequiredReadAction
+    public boolean isValid() {
+        return myPsiElement.isValid();
+    }
 
-	@Override
-	public PsiFile getContainingFile() {
-		return myPsiElement.getContainingFile();
-	}
+    @Override
+    public boolean equals(@Nullable Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
-	@Override
-	public boolean isValid() {
-		return myPsiElement.isValid();
-	}
+        BaseNavigationItem that = (BaseNavigationItem) o;
 
-	public boolean equals(final Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+        return myPsiElement.equals(that.myPsiElement)
+            && myText.equals(that.myText);
+    }
 
-		final BaseNavigationItem that = (BaseNavigationItem) o;
-
-		if (!myPsiElement.equals(that.myPsiElement)) return false;
-		if (!myText.equals(that.myText)) return false;
-
-		return true;
-	}
-
-	public int hashCode() {
-		int result;
-		result = myPsiElement.hashCode();
-		result = 31 * result + myText.hashCode();
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        return 31 * myPsiElement.hashCode() + myText.hashCode();
+    }
 }

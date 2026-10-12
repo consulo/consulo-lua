@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Jon S Akhtar (Sylvanaar)
- *  
+ *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
  *   You may obtain a copy of the License at
- *  
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  *   Unless required by applicable law or agreed to in writing, software
  *   distributed under the License is distributed on an "AS IS" BASIS,
  *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,39 +19,44 @@ import com.sylvanaar.idea.lua.lang.psi.LuaFunctionDefinition;
 import com.sylvanaar.idea.lua.lang.psi.LuaPsiFile;
 import com.sylvanaar.idea.lua.lang.psi.lists.LuaParameterList;
 import com.sylvanaar.idea.lua.lang.psi.statements.LuaFunctionDefinitionStatement;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.language.psi.PsiElement;
+import consulo.localize.LocalizeValue;
+import consulo.util.lang.StringUtil;
 
 public class LuaElementPresentation {
-  public static String getPresentableText(PsiElement element) {
-    assert element != null;
+    @RequiredReadAction
+    public static LocalizeValue getPresentableText(PsiElement element) {
+        assert element != null;
 
-    if (element instanceof LuaPsiFile) {
-      return getFilePresentableText(((LuaPsiFile) element));
+        if (element instanceof LuaPsiFile file) {
+            return getFilePresentableText(file);
 
-    } else if (element instanceof LuaFunctionDefinitionStatement) {
-        return getFunctionPresentableText((LuaFunctionDefinition) element);
+        }
+        else if (element instanceof LuaFunctionDefinitionStatement functionDef) {
+            return getFunctionPresentableText(functionDef);
+        }
+        else {
+            return LocalizeValue.of(element.getText());
+        }
     }
-    else {
-      return element.getText();
+
+    @RequiredReadAction
+    public static LocalizeValue getFunctionPresentableText(LuaFunctionDefinition function) {
+        LuaParameterList o = function.getParameters();
+
+        try {
+          return LocalizeValue.of(StringUtil.notNullize(function.getName()) + "(" + StringUtil.notNullize(o.getText()) + ")");
+        }
+        catch (Throwable e) {
+            return e.getMessage() == null ? LocalizeValue.localizeTODO("Anonymous") : LocalizeValue.of(e);
+        }
     }
-  }
 
-  public static String getFunctionPresentableText(LuaFunctionDefinition function) {
-
-    LuaParameterList o = function.getParameters();
-
-    try {
-    String s = function.getName();
-    if (s == null) s = "";
-    return s + "(" + (o!=null?o.getText():"")+ ")";
-    } catch (Throwable e) {
-        return e.getMessage()==null?"Anonymous":e.getMessage();
+    @RequiredReadAction
+    public static LocalizeValue getFilePresentableText(LuaPsiFile file) {
+        return LocalizeValue.of(file.getName());
     }
-  }
-
-  public static String getFilePresentableText(LuaPsiFile file) {
-    return file.getName();
-  }
 
     public static String getFunctionLocationText(LuaFunctionDefinition function) {
         return "";//function.getIdentifier().getNameSpace();
