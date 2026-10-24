@@ -36,7 +36,7 @@ public class LuaDebugCommandlineState extends LuaCommandLineState {
 
     @Override
     protected GeneralCommandLine configureCommandLine(GeneralCommandLine commandLine) {
-        final LuaRunConfigurationParams configuration = (LuaRunConfigurationParams) getRunConfiguration();
+        final LuaRunConfiguration configuration = (LuaRunConfiguration) getRunConfiguration();
 
         // '%s -e "package.path=%s" -l debug %s'
         // TODO: can we use any of the arguments? commandLine.getParametersList().addParametersString(getRunConfiguration().getInterpreterOptions());

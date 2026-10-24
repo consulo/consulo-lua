@@ -73,10 +73,6 @@ public class LuaRunConfigurationProducer extends RuntimeConfigurationProducer im
                 runConfiguration.setModule(module);
             }
 
-            if (StringUtil.isEmptyOrSpaces(runConfiguration.getInterpreterPath())) {
-                runConfiguration.setOverrideSDKInterpreter(false);
-            }
-
             return settings;
         }
 

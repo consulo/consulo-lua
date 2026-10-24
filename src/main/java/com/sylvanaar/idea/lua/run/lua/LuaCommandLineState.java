@@ -61,10 +61,9 @@ public class LuaCommandLineState extends CommandLineState {
         GeneralCommandLine commandLine = new GeneralCommandLine();
         final LuaRunConfiguration cfg = (LuaRunConfiguration) runConfiguration;
 
-        if (cfg.isOverrideSDKInterpreter()) {
-            if (!StringUtil.isEmptyOrSpaces(cfg.getInterpreterPath())) {
-                commandLine.setExePath(cfg.getInterpreterPath());
-            }
+        String interpreterPath = cfg.getInterpreterPath();
+        if (interpreterPath != null) {
+            commandLine.setExePath(interpreterPath);
         }
         else {
             final Sdk sdk = cfg.getSdk();
@@ -83,7 +82,7 @@ public class LuaCommandLineState extends CommandLineState {
 
     protected GeneralCommandLine configureCommandLine(GeneralCommandLine commandLine) {
         final LuaRunConfiguration configuration = (LuaRunConfiguration) runConfiguration;
-        commandLine.getParametersList().addParametersString(configuration.getInterpreterOptions());
+        commandLine.getParametersList().addParametersString(StringUtil.notNullize(configuration.getInterpreterOptions()));
 
         if (!StringUtil.isEmptyOrSpaces(configuration.getWorkingDirectory())) {
             commandLine.setWorkDirectory(configuration.getWorkingDirectory());
@@ -93,7 +92,7 @@ public class LuaCommandLineState extends CommandLineState {
             commandLine.addParameter(configuration.getScriptName());
         }
 
-        commandLine.getParametersList().addParametersString(configuration.getScriptParameters());
+        commandLine.getParametersList().addParametersString(StringUtil.notNullize(configuration.getProgramParameters()));
 
         return commandLine;
     }

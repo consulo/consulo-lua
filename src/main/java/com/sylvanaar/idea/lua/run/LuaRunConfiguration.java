@@ -18,13 +18,16 @@ package com.sylvanaar.idea.lua.run;
 import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
 import com.sylvanaar.idea.lua.util.LuaModuleUtil;
 import consulo.content.bundle.Sdk;
+import consulo.execution.CommonProgramRunConfigurationParameters;
 import consulo.execution.RuntimeConfigurationException;
 import consulo.execution.configuration.*;
-import consulo.execution.configuration.ui.SettingsEditor;
+import consulo.execution.configuration.fragment.EnvironmentFragmentState;
+import consulo.execution.configuration.fragment.ProgramParametersFragmentState;
+import consulo.execution.configuration.fragment.RunConfigurationFragment;
+import consulo.execution.configuration.fragment.WorkingDirectoryFragmentState;
 import consulo.execution.debug.DefaultDebugExecutor;
 import consulo.execution.executor.Executor;
 import consulo.execution.runner.ExecutionEnvironment;
-import consulo.execution.ui.awt.EnvironmentVariablesComponent;
 import consulo.execution.ui.console.TextConsoleBuilder;
 import consulo.execution.ui.console.TextConsoleBuilderFactory;
 import consulo.lua.bundle.BaseLuaSdkType;
@@ -34,47 +37,57 @@ import consulo.module.ModuleManager;
 import consulo.module.content.ProjectRootManager;
 import consulo.process.ExecutionException;
 import consulo.util.lang.StringUtil;
-import consulo.util.xml.serializer.InvalidDataException;
-import consulo.util.xml.serializer.JDOMExternalizerUtil;
-import consulo.util.xml.serializer.WriteExternalException;
 import consulo.virtualFileSystem.LocalFileSystem;
 import consulo.virtualFileSystem.VirtualFile;
 import jakarta.annotation.Nonnull;
-import org.jdom.Element;
+import org.jspecify.annotations.Nullable;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurationModule> implements CommonLuaRunConfigurationParams,
-		LuaRunConfigurationParams
+public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurationModule> implements CommonProgramRunConfigurationParameters
 {
-	// common config
-	private String interpreterOptions = "";
-	private String workingDirectory = "";
-	private boolean passParentEnvs = true;
-	private Map<String, String> envs = new HashMap<String, String>();
-
-	private boolean overrideSDK = false;
-	private String interpreterPath = "";
-
-	// run config
-	private String scriptName;
-	private String scriptParameters;
-	//    private boolean usingKahlua;
-	//    private boolean usingLuaJ;
-
 	public LuaRunConfiguration(RunConfigurationModule runConfigurationModule, ConfigurationFactory configurationFactory, String name)
 	{
 		super(name, runConfigurationModule, configurationFactory);
 	}
 
 	@Override
-	public SettingsEditor<? extends RunConfiguration> getConfigurationEditor()
+	protected Class<LuaRunConfigurationOptions> getOptionsClass()
 	{
-		return new LuaRunConfigurationEditor(this);
+		return LuaRunConfigurationOptions.class;
+	}
+
+	@Override
+	public LuaRunConfigurationOptions getOptions()
+	{
+		return (LuaRunConfigurationOptions) super.getOptions();
+	}
+
+	@Override
+	protected void convertLegacyState(LegacyRunConfigurationConverter converter)
+	{
+		super.convertLegacyState(converter);
+
+		LuaRunConfigurationLegacyState old = converter.readXml(LuaRunConfigurationLegacyState.class);
+
+		LuaRunConfigurationOptions options = new LuaRunConfigurationOptions();
+		options.setScriptName(old.SCRIPT_NAME);
+		options.setInterpreterOptions(old.INTERPRETER_OPTIONS);
+		options.setInterpreterPath(old.ALTERNATE_INTERPRETER ? old.INTERPRETER_PATH : null);
+		converter.setOptions(options);
+
+		converter.addFragment(new ProgramParametersFragmentState(old.PARAMETERS));
+		converter.addFragment(new WorkingDirectoryFragmentState(old.WORKING_DIRECTORY));
+		converter.addFragment(new EnvironmentFragmentState(converter.readEnvs(), old.PARENT_ENVS));
+	}
+
+	@Override
+	public List<RunConfigurationFragment<?>> createFragments()
+	{
+		return List.of(new LuaScriptFragment(), new LuaInterpreterFragment(), new LuaInterpreterOptionsFragment());
 	}
 
 	@Override
@@ -116,102 +129,27 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 		return LuaModuleUtil.findLuaSdk(getConfigurationModule().getModule());
 	}
 
-	public static void copyParams(CommonLuaRunConfigurationParams from, CommonLuaRunConfigurationParams to)
-	{
-		to.setEnvs(new HashMap<String, String>(from.getEnvs()));
-		to.setInterpreterOptions(from.getInterpreterOptions());
-		to.setWorkingDirectory(from.getWorkingDirectory());
-		to.setInterpreterPath(from.getInterpreterPath());
-		to.setOverrideSDKInterpreter(from.isOverrideSDKInterpreter());
-		//        to.setUsingLuaJInterpreter(from.isUsingLuaJInterpreter());
-		to.setPassParentEnvs(from.isPassParentEnvs());
-	}
-
-	public static void copyParams(LuaRunConfigurationParams from, LuaRunConfigurationParams to)
-	{
-		copyParams(from.getCommonParams(), to.getCommonParams());
-
-		to.setScriptName(from.getScriptName());
-		to.setScriptParameters(from.getScriptParameters());
-	}
-
-	@Override
-	public void readExternal(Element element) throws InvalidDataException
-	{
-		super.readExternal(element);
-
-		// common config
-		interpreterOptions = JDOMExternalizerUtil.readField(element, "INTERPRETER_OPTIONS");
-		interpreterPath = JDOMExternalizerUtil.readField(element, "INTERPRETER_PATH");
-		workingDirectory = JDOMExternalizerUtil.readField(element, "WORKING_DIRECTORY", getProject().getBasePath());
-
-		String str = JDOMExternalizerUtil.readField(element, "PARENT_ENVS");
-		if(str != null)
-		{
-			passParentEnvs = Boolean.parseBoolean(str);
-		}
-		str = JDOMExternalizerUtil.readField(element, "ALTERNATE_INTERPRETER");
-		if(str != null)
-		{
-			overrideSDK = Boolean.parseBoolean(str);
-		}
-		EnvironmentVariablesComponent.readExternal(element, envs);
-
-		// ???
-		getConfigurationModule().readExternal(element);
-
-		// run config
-		scriptName = JDOMExternalizerUtil.readField(element, "SCRIPT_NAME");
-		scriptParameters = JDOMExternalizerUtil.readField(element, "PARAMETERS");
-	}
-
-	@Override
-	public void writeExternal(Element element) throws WriteExternalException
-	{
-		super.writeExternal(element);
-
-		// common config
-		JDOMExternalizerUtil.writeField(element, "INTERPRETER_OPTIONS", interpreterOptions);
-		JDOMExternalizerUtil.writeField(element, "INTERPRETER_PATH", interpreterPath);
-		JDOMExternalizerUtil.writeField(element, "WORKING_DIRECTORY", workingDirectory);
-		JDOMExternalizerUtil.writeField(element, "PARENT_ENVS", Boolean.toString(passParentEnvs));
-		JDOMExternalizerUtil.writeField(element, "ALTERNATE_INTERPRETER", Boolean.toString(overrideSDK));
-
-		EnvironmentVariablesComponent.writeExternal(element, envs);
-
-		// ???
-		getConfigurationModule().writeExternal(element);
-
-		// run config
-		JDOMExternalizerUtil.writeField(element, "SCRIPT_NAME", scriptName);
-		JDOMExternalizerUtil.writeField(element, "PARAMETERS", scriptParameters);
-	}
-
-
 	@Override
 	public void checkConfiguration() throws RuntimeConfigurationException
 	{
 		super.checkConfiguration();
 
-		if(overrideSDK)
+		String interpreterPath = getInterpreterPath();
+		if(interpreterPath != null)
 		{
-			if(StringUtil.isEmptyOrSpaces(interpreterPath))
-			{
-				throw new RuntimeConfigurationException("No interpreter path given.");
-			}
-
 			File interpreterFile = new File(interpreterPath);
 			if(!interpreterFile.isFile() || !interpreterFile.canRead())
 			{
 				throw new RuntimeConfigurationException("Interpreter path is invalid or not readable.");
 			}
 		}
-		if(StringUtil.isEmptyOrSpaces(scriptName))
+
+		String name = getScriptName();
+		if(StringUtil.isEmptyOrSpaces(name))
 		{
 			throw new RuntimeConfigurationException("No script name given.");
 		}
 
-		String name = getScriptName();
 		final String dir = getWorkingDirectory();
 		if(StringUtil.isNotEmpty(dir))
 		{
@@ -230,109 +168,42 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 		{
 			throw new RuntimeConfigurationException("File is not in the current project");
 		}
-
 	}
 
-	@Override
-	public String getInterpreterOptions()
-	{
-		return interpreterOptions;
-	}
-
-	@Override
-	public void setInterpreterOptions(String interpreterOptions)
-	{
-		this.interpreterOptions = interpreterOptions;
-	}
-
-	@Override
-	public String getWorkingDirectory()
-	{
-		return workingDirectory;
-	}
-
-	@Override
-	public void setWorkingDirectory(String workingDirectory)
-	{
-		this.workingDirectory = workingDirectory;
-	}
-
-	@Override
-	public boolean isPassParentEnvs()
-	{
-		return passParentEnvs;
-	}
-
-	@Override
-	public void setPassParentEnvs(boolean passParentEnvs)
-	{
-		this.passParentEnvs = passParentEnvs;
-	}
-
-	@Override
-	public Map<String, String> getEnvs()
-	{
-		return envs;
-	}
-
-	@Override
-	public void setEnvs(Map<String, String> envs)
-	{
-		this.envs = envs;
-	}
-
-	@Override
-	public String getInterpreterPath()
-	{
-		return interpreterPath;
-	}
-
-	@Override
-	public void setInterpreterPath(String path)
-	{
-		this.interpreterPath = path;
-	}
-
-	@Override
-	public CommonLuaRunConfigurationParams getCommonParams()
-	{
-		return this;
-	}
-
-	@Override
+	@Nullable
 	public String getScriptName()
 	{
-		return scriptName;
+		return getOptions().getScriptName();
 	}
 
-	@Override
-	public void setScriptName(String scriptName)
+	public void setScriptName(@Nullable String scriptName)
 	{
-		this.scriptName = scriptName;
+		getOptions().setScriptName(scriptName);
 	}
 
-	@Override
-	public String getScriptParameters()
+	@Nullable
+	public String getInterpreterOptions()
 	{
-		return scriptParameters;
+		return getOptions().getInterpreterOptions();
 	}
 
-	@Override
-	public void setScriptParameters(String scriptParameters)
+	public void setInterpreterOptions(@Nullable String interpreterOptions)
 	{
-		this.scriptParameters = scriptParameters;
+		getOptions().setInterpreterOptions(interpreterOptions);
 	}
 
-	@Override
-	public boolean isOverrideSDKInterpreter()
+	/**
+	 * @return the interpreter to run instead of the one of the module SDK, {@code null} for the module SDK
+	 */
+	@Nullable
+	public String getInterpreterPath()
 	{
-		return this.overrideSDK;
+		return getOptions().getInterpreterPath();
 	}
 
-	@Override
-	public void setOverrideSDKInterpreter(boolean b)
+	public void setInterpreterPath(@Nullable String path)
 	{
-		this.overrideSDK = b;
+		getOptions().setInterpreterPath(path);
 	}
 
 	@Override
@@ -347,6 +218,4 @@ public class LuaRunConfiguration extends ModuleBasedConfiguration<RunConfigurati
 	{
 		return new LuaRunConfiguration(getConfigurationModule(), getFactory(), getName());
 	}
-
-
 }

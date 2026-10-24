@@ -18,7 +18,7 @@ package com.sylvanaar.idea.lua.run.kahlua;
 
 import com.sylvanaar.idea.lua.kahlua.KahLuaInterpreterWindowFactory;
 import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
-import com.sylvanaar.idea.lua.run.LuaRunConfigurationParams;
+import com.sylvanaar.idea.lua.run.LuaRunConfiguration;
 import com.sylvanaar.idea.lua.run.lua.LuaCommandLineState;
 import consulo.document.Document;
 import consulo.document.FileDocumentManager;
@@ -62,7 +62,7 @@ public class KahluaCommandLineState extends LuaCommandLineState {
         }
 
         VirtualFile file = LocalFileSystem.getInstance().findFileByPath(
-                ((LuaRunConfigurationParams) getRunConfiguration()).getScriptName());
+                ((LuaRunConfiguration) getRunConfiguration()).getScriptName());
 
         final String text;
         if (file != null) {

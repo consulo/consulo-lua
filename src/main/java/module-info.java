@@ -58,4 +58,6 @@ module consulo.lua {
     requires interpreter;
     requires jakarta.annotation;
     requires jsyntaxpane;
+
+    opens com.sylvanaar.idea.lua.run to consulo.util.xml.serializer, consulo.execution.api;
 }
