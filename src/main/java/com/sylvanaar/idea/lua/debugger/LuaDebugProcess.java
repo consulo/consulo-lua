@@ -22,7 +22,6 @@ import consulo.application.progress.Task;
 import consulo.execution.ExecutionResult;
 import consulo.execution.debug.XDebugProcess;
 import consulo.execution.debug.XDebugSession;
-import consulo.execution.debug.XSourcePosition;
 import consulo.execution.debug.breakpoint.XBreakpoint;
 import consulo.execution.debug.breakpoint.XBreakpointHandler;
 import consulo.execution.debug.evaluation.XDebuggerEditorsProvider;
@@ -97,11 +96,6 @@ public class LuaDebugProcess extends XDebugProcess {
     @Override
     public void resume() {
         controller.resume();
-    }
-
-    @Override
-    public void runToPosition(@Nonnull XSourcePosition position) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
